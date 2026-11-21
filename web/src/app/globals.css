@@ -23,6 +23,15 @@
   --sky-near: #7f97ab;
   --sea-band: #bcd6e1;
   --shadow: 30 29 27;
+  --ch-wall: #f3dcb9;
+  --ch-shade: #dcb98a;
+  --ch-trim: #fff3de;
+  --ch-dark: #6a5242;
+  --ch-glass: #a9cbd8;
+  --ch-road: #d4c6b4;
+  --ch-leaf: #5b9a86;
+  --ch-leaf-dark: #3f7766;
+  --ch-trunk: #8a6d55;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -48,6 +57,15 @@
     --sky-near: #35506a;
     --sea-band: #142b3a;
     --shadow: 0 0 0;
+    --ch-wall: #3b4b5d;
+    --ch-shade: #2c3a4a;
+    --ch-trim: #566b80;
+    --ch-dark: #0e1721;
+    --ch-glass: #e8a458;
+    --ch-road: #1b2631;
+    --ch-leaf: #2f6a5a;
+    --ch-leaf-dark: #1f4a3f;
+    --ch-trunk: #4a4036;
   }
 }
 
@@ -67,13 +85,6 @@
   --color-unpaid: var(--unpaid);
   --color-line: var(--line);
   --color-rule: var(--rule);
-  --color-st-bg: var(--st-bg);
-  --color-st-text: var(--st-text);
-  --color-st-muted: var(--st-muted);
-  --color-st-line: var(--st-line);
-  --color-st-sea: var(--st-sea);
-  --color-st-hot: var(--st-hot);
-  --color-st-hot-text: var(--st-hot-text);
   --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
   --font-serif: var(--font-instrument-serif), Georgia, serif;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -190,64 +201,77 @@ input[type="range"] {
   }
 }
 
-/* The map stage: always a night sea, in light or dark mode, so the glowing map reads the same way. */
-.stage {
-  --st-bg: #08121b;
-  --st-text: #eef3f7;
-  --st-muted: #aebccb;
-  --st-line: rgb(255 255 255 / 0.18);
-  --st-cool: #18394e;
-  --st-hot: #ff8a2b;
-  --st-hot-text: #ffb067;
-  --st-sea: #5ec8e5;
-  --focus: #ffffff;
-  isolation: isolate;
-  color: var(--st-text);
-  background: radial-gradient(110% 90% at 72% 18%, #14384f 0%, #0b1d2b 48%, #08121b 100%);
+/* The Churchgate picture: clouds drift, the sun breathes, the train creeps in. Off with reduced motion. */
+@keyframes ch-drift {
+  from { transform: translateX(-40px); }
+  to { transform: translateX(60px); }
 }
-/* A faint chart grid, like survey paper. */
+@keyframes ch-pulse {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
+}
+@keyframes ch-train {
+  from { transform: translateX(46px); }
+  to { transform: translateX(0); }
+}
+@keyframes ch-vehicle {
+  from { transform: translateX(-30px); }
+  to { transform: translateX(40px); }
+}
+.ch-drift { animation: ch-drift 26s ease-in-out infinite alternate; }
+.ch-pulse { animation: ch-pulse 6s ease-in-out infinite alternate; }
+.ch-train { animation: ch-train 14s ease-out infinite alternate; }
+.ch-vehicle { animation: ch-vehicle 22s ease-in-out infinite alternate; }
+
+/* The map stage: a dawn sea chart in the same tokens as the rest of the site. */
+.stage {
+  isolation: isolate;
+  background:
+    radial-gradient(60% 70% at 85% 8%, color-mix(in oklab, var(--glow) 22%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 30%, var(--mist)) 42%, var(--mist) 100%);
+  border: 1px solid var(--rule);
+  box-shadow: 0 1px 2px rgb(var(--shadow) / 0.04), 0 18px 50px rgb(var(--shadow) / 0.08);
+}
+/* A faint survey grid under the map. */
 .stage::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(color-mix(in oklab, var(--sea) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--sea) 14%, transparent) 1px, transparent 1px);
   background-size: 44px 44px;
-  mask-image: radial-gradient(80% 80% at 50% 40%, #000 30%, transparent 100%);
-}
-.stage .display em {
-  color: var(--st-hot-text);
+  mask-image: radial-gradient(80% 80% at 50% 45%, #000 20%, transparent 100%);
 }
 .stage-panel {
-  background: rgb(10 24 36 / 0.82);
-  border: 1px solid var(--st-line);
-  box-shadow: 0 12px 40px rgb(0 0 0 / 0.35);
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  border: 1px solid var(--rule);
+  box-shadow: 0 10px 34px rgb(var(--shadow) / 0.1);
 }
 @supports (backdrop-filter: blur(12px)) {
   .stage-panel {
-    background: rgb(10 24 36 / 0.62);
-    backdrop-filter: blur(16px) saturate(1.2);
+    background: color-mix(in srgb, var(--card) 70%, transparent);
+    backdrop-filter: blur(16px) saturate(1.15);
   }
 }
 .stage-pill {
   display: inline-flex;
   min-height: 2.75rem;
+  flex: 1 1 auto;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  flex: 1 1 auto;
   padding: 0 0.9rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--st-muted);
+  color: var(--muted);
   transition: background-color 0.15s var(--ease-out), color 0.15s var(--ease-out);
 }
 .stage-pill:hover {
-  color: var(--st-text);
+  color: var(--foreground);
 }
 .stage-pill[aria-pressed="true"] {
-  background: var(--st-text);
-  color: var(--st-bg);
+  background: var(--foreground);
+  color: var(--background);
 }
 .stage-icon {
   display: inline-grid;
@@ -255,33 +279,37 @@ input[type="range"] {
   height: 2.75rem;
   place-items: center;
   border-radius: 9999px;
-  color: var(--st-text);
+  color: var(--foreground);
   transition: background-color 0.15s var(--ease-out);
 }
 .stage-icon:hover:not(:disabled) {
-  background: rgb(255 255 255 / 0.14);
+  background: var(--mist);
+}
+.stage-icon[aria-pressed="true"] {
+  background: var(--foreground);
+  color: var(--background);
 }
 .stage-icon:disabled {
-  color: var(--st-muted);
-  opacity: 0.45;
+  color: var(--muted);
+  opacity: 0.5;
 }
 .stage-card {
   display: block;
   width: 13.5rem;
   border-radius: 1.25rem;
-  border: 1px solid var(--st-line);
-  background: rgb(255 255 255 / 0.06);
+  border: 1px solid var(--rule);
+  background: var(--card);
   padding: 0.8rem 0.9rem;
   text-align: left;
-  transition: background-color 0.15s var(--ease-out), border-color 0.15s var(--ease-out), transform 0.15s var(--ease-out);
+  transition: border-color 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out), transform 0.15s var(--ease-out);
 }
 .stage-card:hover {
-  background: rgb(255 255 255 / 0.12);
+  border-color: var(--line);
+  transform: translateY(-2px);
 }
 .stage-card[aria-pressed="true"] {
-  border-color: var(--st-hot);
-  background: rgb(255 138 43 / 0.16);
-  box-shadow: 0 0 0 1px var(--st-hot);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 24px color-mix(in oklab, var(--glow) 28%, transparent);
 }
 .stage-cta {
   display: inline-flex;
@@ -290,12 +318,12 @@ input[type="range"] {
   justify-content: center;
   gap: 0.5rem;
   border-radius: 9999px;
-  background: var(--st-hot);
+  background: var(--foreground);
   padding: 0 1.4rem;
   font-weight: 600;
-  color: #1a1007;
-  transition: filter 0.15s var(--ease-out);
+  color: var(--background);
+  transition: transform 0.15s var(--ease-out);
 }
 .stage-cta:hover {
-  filter: brightness(1.1);
+  transform: translateY(-1px);
 }
