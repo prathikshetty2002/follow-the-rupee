@@ -80,7 +80,7 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-        <BmcOffice className="relative mt-2 block aspect-[2400/880] w-full lg:aspect-auto lg:h-0 lg:min-h-0 lg:flex-1" />
+        <BmcOffice className="relative mt-2 block aspect-[2400/880] w-[210%] max-w-none self-center sm:w-[140%] lg:w-full lg:self-stretch lg:aspect-auto lg:h-0 lg:min-h-0 lg:flex-1" />
       </section>
 
       <div id="map" className="scroll-mt-4">

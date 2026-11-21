@@ -66,7 +66,7 @@ function Skeleton() {
 function SearchForm({ q }: { q: string }) {
   return (
     <form action="/complaints" method="get" role="search" className="mb-6 flex flex-wrap items-end gap-3">
-      <div className="flex min-w-72 flex-1 flex-col gap-1">
+      <div className="flex min-w-0 flex-1 basis-64 flex-col gap-1">
         <label htmlFor="q" className="text-[14px] font-semibold">
           Complaint ID, locality or road
         </label>
@@ -80,7 +80,7 @@ function SearchForm({ q }: { q: string }) {
           className={`min-h-13 rounded-md border-2 border-foreground px-4 text-[16px]`}
         />
       </div>
-      <button type="submit" className={`min-h-13 rounded-md bg-sea-fill px-7 text-[16px] font-bold text-background`}>
+      <button type="submit" className={`min-h-13 w-full rounded-md bg-sea-fill px-7 text-[16px] font-bold text-background sm:w-auto`}>
         Check status
       </button>
     </form>
