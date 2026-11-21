@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Guide } from "@/components/guide";
 import { Nav, NavFallback } from "@/components/nav";
-import { ThemeToggle } from "@/components/theme-toggle";
 import "./globals.css";
 
 const sans = Instrument_Sans({ variable: "--font-instrument-sans", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
@@ -29,11 +28,7 @@ function Mark() {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sans.variable} ${serif.variable} h-full`} suppressHydrationWarning>
-      <head>
-        {/* Apply the saved theme before the first paint, so there is no flash. */}
-        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}` }} />
-      </head>
+    <html lang="en" className={`${sans.variable} ${serif.variable} h-full`}>
       <body className="flex min-h-full flex-col">
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-foreground focus:px-5 focus:py-3 focus:text-background">
           Skip to the main content
@@ -50,7 +45,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Suspense fallback={<NavFallback />}>
                 <Nav />
               </Suspense>
-              <ThemeToggle />
             </div>
           </div>
         </header>

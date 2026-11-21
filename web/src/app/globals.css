@@ -34,40 +34,6 @@
   --ch-trunk: #8a6d55;
 }
 
-/* Light is the default. Dark applies only when the visitor picks it with the toggle (data-theme on <html>). */
-:root[data-theme="dark"] {
-  --background: #0e141b;
-  --card: #16202b;
-  --peach: #2a1e22;
-  --mist: #12202b;
-  --foreground: #f3efe8;
-  --muted: #a5afba;
-  --accent: #ff9a3c;
-  --accent-ink: #ffb874;
-  --glow: #ff8a00;
-  --sea: #7cc8e0;
-  --sea-fill: #3e9bba;
-  --sea-soft: #17313e;
-  --unpaid: #2c3947;
-  --line: #6e7c8b;
-  --rule: #243241;
-  --focus: #f3efe8;
-  --sky-far: #1b2a38;
-  --sky-mid: #25384a;
-  --sky-near: #35506a;
-  --sea-band: #142b3a;
-  --shadow: 0 0 0;
-  --ch-wall: #3b4b5d;
-  --ch-shade: #2c3a4a;
-  --ch-trim: #566b80;
-  --ch-dark: #0e1721;
-  --ch-glass: #e8a458;
-  --ch-road: #1b2631;
-  --ch-leaf: #2f6a5a;
-  --ch-leaf-dark: #1f4a3f;
-  --ch-trunk: #4a4036;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-card: var(--card);
@@ -87,13 +53,6 @@
   --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
   --font-serif: var(--font-instrument-serif), Georgia, serif;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-:root[data-theme="light"] {
-  color-scheme: light;
-}
-:root[data-theme="dark"] {
-  color-scheme: dark;
 }
 
 html {

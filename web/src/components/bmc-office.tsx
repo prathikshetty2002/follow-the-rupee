@@ -2,7 +2,7 @@
  * The BMC head office at sunrise, drawn in the Mumbai dawn palette: the Victorian Gothic front opposite CST with its tall
  * central tower and pointed crown, corner turrets, banded stone and pointed arches, the statue in front, gulmohar trees,
  * a BEST bus and kaali-peeli taxis on the road, and Marine Drive's Art Deco blocks and the Nariman Point towers behind.
- * Decorative only, so hidden from assistive tech. Colours come from tokens, so it follows light and dark.
+ * Decorative only, so hidden from assistive tech. Colours come from tokens.
  */
 
 /** Small repeatable random numbers, so the picture is identical on every render. */
