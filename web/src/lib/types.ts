@@ -62,6 +62,16 @@ export type Flag = {
   amount_at_risk_inr: number;
   reason: string;
   evidence_work_order_ids: string[];
+  context?: string[]; // plain-language context checked before flagging, e.g. "heavy-rain week"
+};
+
+export type IssueReport = {
+  report_id: string;
+  channel: string; // e.g. "MyBMC app", "WhatsApp", "1916 helpline"
+  language: string; // e.g. "Marathi", "Hinglish"
+  text: string; // original text as received
+  read_as: string; // one-line plain-language reading of it
+  reported_at: string;
 };
 
 export type Issue = {
@@ -76,6 +86,7 @@ export type Issue = {
   first_reported_at: string;
   status: "fixed" | "fixed_failed" | "never_fixed";
   work_order_ids: string[];
+  reports?: IssueReport[]; // raw reports merged into this issue, for the complaint trail screen
 };
 
 // next_rupee.json: full issue-level output of the index

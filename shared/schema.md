@@ -74,7 +74,8 @@ All money is in rupees (integers). Rates are 0–1 fractions. Dates are ISO stri
   "severity": "high",                   // high | medium | low
   "amount_at_risk_inr": 64000,
   "reason": "One line: billed ₹1,16,079 vs ~₹52,000 expected at the rate card.",
-  "evidence_work_order_ids": ["WO25-00004"]
+  "evidence_work_order_ids": ["WO25-00004"],
+  "context": ["heavy-rain week", "low-lying ward"]   // optional: plain-language context checked before flagging; shown as fairness chips
 }
 ```
 
@@ -90,7 +91,11 @@ All money is in rupees (integers). Rates are 0–1 fractions. Dates are ISO stri
   "category": "Pothole",
   "first_reported_at": "2025-06-01T07:10:00",
   "status": "fixed",                    // fixed | fixed_failed | never_fixed
-  "work_order_ids": ["WO25-00004"]
+  "work_order_ids": ["WO25-00004"],
+  "reports": [                          // optional: the raw reports merged into this issue, for the complaint trail screen
+    { "report_id": "BMC25-000012", "channel": "MyBMC app", "language": "Marathi",
+      "text": "original complaint text", "read_as": "pothole, Link Road, Goregaon West", "reported_at": "2025-06-01T07:10:00" }
+  ]
 }
 ```
 

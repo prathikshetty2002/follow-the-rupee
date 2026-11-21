@@ -14,6 +14,15 @@ Entry template:
 
 ---
 
+## 2026-11-21, Noel, noel/dashboard
+**Changed:** Starting the Ward page on real `wards.json` + `next_rupee.json`. Wireframes for the five screens are done.
+**Contract:** Two additive, optional fields, in one commit across `shared/schema.md` and `web/src/lib/types.ts`:
+1. `flags.json`: `context: string[]` per flag (e.g. "heavy-rain week", "low-lying ward"). The audit screen shows these as fairness chips.
+2. `issues.json`: `reports: [{ report_id, channel, language, text, read_as, reported_at }]` per issue. The complaint trail screen needs the original text, channel and language.
+Both are optional so the current stubs keep working. I did not touch `web/public/data/` or `pipeline/`.
+**You need to:** when you build the real `flags.json` and `issues.json`, fill these two fields. Say if you want different names or shapes and I will change both files in one commit.
+**Status:** UI on stubs for flags, contractors and issues until your real files land.
+
 ## 2026-11-21 12:00, Prathik, main
 **Changed:** First real model output. The pipeline now ranks open complaints for the next rupee, per ward, and backtests the ranking.
 Files: `pipeline/` (code), `web/public/data/next_rupee.json`, `validation.json`, `wards.json` (`next_rupee` and `risk_score` are now real).
