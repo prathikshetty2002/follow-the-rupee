@@ -13,7 +13,7 @@ Written 2026-11-21 so the work can continue in Claude Code on **Anthropic Consol
 
 ## 2. What this is
 Hackathon: **Claude Impact Lab Mumbai, 21 Nov 2026**, brief "Follow the Rupee" (`docs/CHALLENGE.md`, data dictionary and rubric in `docs/`). All data is synthetic.
-**Scope decided by Prathik:** the site is one tool, the **Next Rupee Planner** (use case 4): given a ward's remaining road-repair budget, recommend what to fix first, ranked by risk, with **precision and transparency**. No audit, contractor or complaint pages on the site (the pipeline still builds that data). Rubric weights: audit accuracy 25%, fair accountability 20%, budget recommendation 20%, connecting the trail 15%, usability 10%, demo 10%.
+**Scope:** the **Next Rupee Planner** (use case 4) is the hero: given a ward's remaining road-repair budget, recommend what to fix first, ranked by risk, with **precision and transparency**. Since 16:00 (team decision, on `main`) the `/audit`, `/contractors` and `/complaints` pages are back as the evidence behind it, cross-linked from the planner; keep them. The site is light mode only. Rubric weights: audit accuracy 25%, fair accountability 20%, budget recommendation 20%, connecting the trail 15%, usability 10%, demo 10%.
 Team: Prathik (owns pipeline and now the web app). Noel (`technoelogy`) was blocked and has pushed nothing; his work should come as a PR into `dev`.
 
 ## 3. Where things stand

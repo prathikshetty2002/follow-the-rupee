@@ -2,7 +2,7 @@
 
 **Resuming in a new session (for example on Console credits)? Read `CONTINUE.md` first.** It has the current state, commands, decisions, gotchas and the next steps.
 
-**Scope (decided 2026-11-21): the site is one tool, the Next Rupee Planner** (use case 4): given a ward's remaining budget, recommend what to fix first, ranked by risk, with precision and transparency. Do not add pages for audit, contractors or complaint lookup; the pipeline still produces that data, but the site does not show it. UI direction comes from Prathik, so keep components small and easy to restyle.
+**Scope (decided 2026-11-21, revised 16:00 by the team): the Next Rupee Planner is the hero** (use case 4): given a ward's remaining budget, recommend what to fix first, ranked by risk, with precision and transparency. The `/audit`, `/contractors` and `/complaints` pages stay on the site as the evidence behind it, cross-linked from the planner and back; do not delete them. Do not add further features; prefer improving ranking precision, confidence and explanations. UI direction comes from Prathik, so keep components small and easy to restyle.
 
 Claude Impact Lab Mumbai hackathon, 21 Nov 2026. Two-person team. Full brief: `docs/CHALLENGE.md`,
 columns: `docs/DATA_DICTIONARY.md`, ideas and **judging rubric**: `docs/STARTER_IDEAS.md`.
