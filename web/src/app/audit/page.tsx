@@ -218,7 +218,7 @@ async function FlagList({ searchParams }: { searchParams: SearchParams }) {
       <form action="/audit" method="get" className="mb-5 flex flex-wrap items-end gap-3">
         {view !== "billing" && <input type="hidden" name="view" value={view} />}
         {type && <input type="hidden" name="type" value={type} />}
-        <div className="flex flex-col gap-1">
+        <div className="flex min-w-0 flex-1 basis-60 flex-col gap-1 sm:flex-none">
           <label htmlFor="ward" className="text-[14px] font-semibold">
             Ward
           </label>
@@ -226,7 +226,7 @@ async function FlagList({ searchParams }: { searchParams: SearchParams }) {
             id="ward"
             name="ward"
             defaultValue={ward ?? ""}
-            className={`min-h-11 rounded-md border-2 border-foreground bg-card px-3 text-[15px]`}
+            className={`min-h-11 w-full min-w-0 rounded-md border-2 border-foreground bg-card px-3 text-[15px] sm:w-auto`}
           >
             <option value="">All wards</option>
             {wards.map((w) => (

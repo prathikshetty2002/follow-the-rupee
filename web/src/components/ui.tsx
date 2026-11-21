@@ -70,11 +70,18 @@ export function Card({ children, className }: { children: ReactNode; className?:
   return <div className={cx("soft rounded-3xl p-6 sm:p-8", className)}>{children}</div>;
 }
 
-/** A horizontally scrollable region for wide tables; focusable so keyboard users can scroll it. */
-export function TableWrap({ children, label }: { children: ReactNode; label: string }) {
+/** A horizontally scrollable region for wide tables; focusable so keyboard users can scroll it. On phones it says it scrolls. */
+export function TableWrap({ children, label, hint = true }: { children: ReactNode; label: string; hint?: boolean }) {
   return (
-    <div className="overflow-x-auto" role="region" aria-label={label} tabIndex={0}>
-      {children}
+    <div>
+      {hint && (
+        <p aria-hidden className="mb-2 px-1 text-xs text-muted sm:hidden">
+          Swipe the table sideways to see every column →
+        </p>
+      )}
+      <div className="overflow-x-auto" role="region" aria-label={label} tabIndex={0}>
+        {children}
+      </div>
     </div>
   );
 }

@@ -34,14 +34,14 @@ export default async function MethodPage() {
       <Section id="m2" title="How risk is scored" accent="scored">
         <p className={`${prose} mb-6`}>Each issue gets a score out of 100 that answers three questions. Every factor is first scaled from 0 to 1 against all roads in the city, then multiplied by its weight, and the points are added.</p>
         <Card className="!p-3 sm:!p-5">
-          <TableWrap label="Factors and weights">
-            <table className="w-full min-w-[34rem]">
+          <TableWrap label="Factors and weights" hint={false}>
+            <table className="w-full sm:min-w-[34rem]">
               <caption className="sr-only">The six factors, their weights, and what each measures</caption>
               <thead>
                 <tr>
                   <th scope="col" className={th}>Factor</th>
                   <th scope="col" className={`${th} text-right`}>Weight</th>
-                  <th scope="col" className={th}>What it measures</th>
+                  <th scope="col" className={`${th} hidden sm:table-cell`}>What it measures</th>
                 </tr>
               </thead>
               {FAMILIES.map((fam) => (
@@ -55,9 +55,10 @@ export default async function MethodPage() {
                     <tr key={f}>
                       <th scope="row" className={`${td} text-left font-semibold`}>
                         {FACTOR_INFO[f].label}
+                        <span className="mt-1 block font-normal text-muted sm:hidden">{FACTOR_INFO[f].help}</span>
                       </th>
                       <td className={`${td} num text-right`}>{pct(w[f])}</td>
-                      <td className={`${td} text-muted`}>{FACTOR_INFO[f].help}</td>
+                      <td className={`${td} hidden text-muted sm:table-cell`}>{FACTOR_INFO[f].help}</td>
                     </tr>
                   ))}
                 </tbody>
