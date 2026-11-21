@@ -1,0 +1,2870 @@
+[
+  {
+    "ward_code": "A",
+    "ward_name": "Colaba, Fort, Churchgate",
+    "budget_inr": 1600000,
+    "spend_inr": 1655330,
+    "spend_on_failed_inr": 582099,
+    "work_orders": 29,
+    "sla_met_rate": 0.66,
+    "reopen_rate": 0.38,
+    "low_lying_index": 0.35,
+    "risk_score": 35,
+    "spend_by_method": [
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 610896
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 285181
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 238033
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 185467
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 84687
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 77291
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 70770
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 55707
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 47298
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 592238
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 339671
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 263681
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 159249
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 155457
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 72625
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 54576
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 17833
+      }
+    ],
+    "summary": "[STUB] Colaba, Fort, Churchgate: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0011",
+        "road_name": "Colaba Causeway",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0007",
+        "road_name": "Veer Nariman Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0001",
+        "road_name": "Shahid Bhagat Singh Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "B",
+    "ward_name": "Dongri, Masjid Bunder",
+    "budget_inr": 4300000,
+    "spend_inr": 3507952,
+    "spend_on_failed_inr": 578915,
+    "work_orders": 44,
+    "sla_met_rate": 0.57,
+    "reopen_rate": 0.2,
+    "low_lying_index": 0.55,
+    "risk_score": 55,
+    "spend_by_method": [
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 968703
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 673302
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 532479
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 490832
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 410330
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 170132
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 124400
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 84721
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 41778
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 11275
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 781363
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 766738
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 617836
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 527095
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 249736
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 244465
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 204427
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 116292
+      }
+    ],
+    "summary": "[STUB] Dongri, Masjid Bunder: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0016",
+        "road_name": "P D'Mello Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0020",
+        "road_name": "Nishanpada Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0021",
+        "road_name": "Nishanpada Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "C",
+    "ward_name": "Kalbadevi, Bhuleshwar, Marine Lines",
+    "budget_inr": 900000,
+    "spend_inr": 796803,
+    "spend_on_failed_inr": 247660,
+    "work_orders": 20,
+    "sla_met_rate": 0.65,
+    "reopen_rate": 0.4,
+    "low_lying_index": 0.45,
+    "risk_score": 45,
+    "spend_by_method": [
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 381063
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 113876
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 103828
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 81343
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 66884
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 49809
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 237077
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 196539
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 124811
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 88368
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 73924
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 27860
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 26950
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 21274
+      }
+    ],
+    "summary": "[STUB] Kalbadevi, Bhuleshwar, Marine Lines: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0032",
+        "road_name": "Nepean Sea Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0023",
+        "road_name": "Kalbadevi Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0033",
+        "road_name": "Nepean Sea Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "D",
+    "ward_name": "Grant Road, Malabar Hill, Tardeo",
+    "budget_inr": 1600000,
+    "spend_inr": 1272300,
+    "spend_on_failed_inr": 235027,
+    "work_orders": 40,
+    "sla_met_rate": 0.55,
+    "reopen_rate": 0.2,
+    "low_lying_index": 0.4,
+    "risk_score": 40,
+    "spend_by_method": [
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 307528
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 187676
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 172034
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 153813
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 134094
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 122940
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 98931
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 95284
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 393630
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 234744
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 202114
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 139203
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 135966
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 86287
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 65099
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 15257
+      }
+    ],
+    "summary": "[STUB] Grant Road, Malabar Hill, Tardeo: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0039",
+        "road_name": "Tardeo Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0037",
+        "road_name": "Tardeo Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0034",
+        "road_name": "Pandita Ramabai Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "E",
+    "ward_name": "Byculla, Agripada, Mumbai Central",
+    "budget_inr": 5300000,
+    "spend_inr": 6322991,
+    "spend_on_failed_inr": 2011624,
+    "work_orders": 118,
+    "sla_met_rate": 0.63,
+    "reopen_rate": 0.31,
+    "low_lying_index": 0.7,
+    "risk_score": 70,
+    "spend_by_method": [
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 1550852
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 1034163
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 834303
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 776658
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 523959
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 491352
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 300231
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 288722
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 282374
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 240377
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 1207172
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 988038
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 924949
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 714863
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 705721
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 668983
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 661453
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 451812
+      }
+    ],
+    "summary": "[STUB] Byculla, Agripada, Mumbai Central: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0055",
+        "road_name": "Bellasis Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0052",
+        "road_name": "Clare Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0049",
+        "road_name": "Maulana Azad Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "F/S",
+    "ward_name": "Parel, Lalbaug, Sewri",
+    "budget_inr": 9800000,
+    "spend_inr": 8026151,
+    "spend_on_failed_inr": 1335554,
+    "work_orders": 135,
+    "sla_met_rate": 0.27,
+    "reopen_rate": 0.16,
+    "low_lying_index": 0.85,
+    "risk_score": 85,
+    "spend_by_method": [
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 2099709
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 1829641
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 1281839
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 976863
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 539846
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 339566
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 323637
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 318818
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 223426
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 92806
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 1372104
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1149128
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 999565
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 949295
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 942284
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 925508
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 886909
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 801358
+      }
+    ],
+    "summary": "[STUB] Parel, Lalbaug, Sewri: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0058",
+        "road_name": "Dr Babasaheb Ambedkar Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0093",
+        "road_name": "Ganpatrao Kadam Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0063",
+        "road_name": "Dr E Moses Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "F/N",
+    "ward_name": "Matunga, Sion, Wadala",
+    "budget_inr": 10500000,
+    "spend_inr": 9412574,
+    "spend_on_failed_inr": 2134363,
+    "work_orders": 150,
+    "sla_met_rate": 0.43,
+    "reopen_rate": 0.25,
+    "low_lying_index": 0.9,
+    "risk_score": 90,
+    "spend_by_method": [
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 2472761
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 1700212
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 1590920
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 880719
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 879748
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 531221
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 383209
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 366416
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 318706
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 288662
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 2014298
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 1490646
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1296028
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 1172621
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 1067157
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 949448
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 823519
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 598857
+      }
+    ],
+    "summary": "[STUB] Matunga, Sion, Wadala: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0078",
+        "road_name": "Road No 24 Sion",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0071",
+        "road_name": "Sion Trombay Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0074",
+        "road_name": "Sion Trombay Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "G/S",
+    "ward_name": "Worli, Lower Parel, Prabhadevi",
+    "budget_inr": 3200000,
+    "spend_inr": 2821986,
+    "spend_on_failed_inr": 1057467,
+    "work_orders": 64,
+    "sla_met_rate": 0.56,
+    "reopen_rate": 0.33,
+    "low_lying_index": 0.6,
+    "risk_score": 60,
+    "spend_by_method": [
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 1012792
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 408014
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 388751
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 260415
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 201662
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 190750
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 187010
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 118194
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 54398
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 496871
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 444092
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 438547
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 351707
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 312143
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 306414
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 270805
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 201407
+      }
+    ],
+    "summary": "[STUB] Worli, Lower Parel, Prabhadevi: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0083",
+        "road_name": "Senapati Bapat Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0084",
+        "road_name": "Senapati Bapat Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0088",
+        "road_name": "Dr Annie Besant Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "G/N",
+    "ward_name": "Dadar West, Mahim, Dharavi",
+    "budget_inr": 8400000,
+    "spend_inr": 6755738,
+    "spend_on_failed_inr": 1729109,
+    "work_orders": 139,
+    "sla_met_rate": 0.37,
+    "reopen_rate": 0.29,
+    "low_lying_index": 0.8,
+    "risk_score": 80,
+    "spend_by_method": [
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 1525432
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 923323
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 688116
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 625390
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 566060
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 564452
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 528856
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 503392
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 469876
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 360841
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 1541646
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 1103153
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1071472
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 797665
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 689081
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 680642
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 551781
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 320298
+      }
+    ],
+    "summary": "[STUB] Dadar West, Mahim, Dharavi: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0102",
+        "road_name": "90 Feet Road Dharavi",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0096",
+        "road_name": "Senapati Bapat Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0101",
+        "road_name": "90 Feet Road Dharavi",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "H/E",
+    "ward_name": "Bandra East, Santacruz East, Khar East",
+    "budget_inr": 8200000,
+    "spend_inr": 6145533,
+    "spend_on_failed_inr": 1612052,
+    "work_orders": 111,
+    "sla_met_rate": 0.49,
+    "reopen_rate": 0.26,
+    "low_lying_index": 0.75,
+    "risk_score": 75,
+    "spend_by_method": [
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 1317488
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 1153755
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 854862
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 622099
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 445505
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 438912
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 400474
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 397396
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 335868
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 179174
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 1171183
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1061624
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 835989
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 753268
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 704878
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 604270
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 582327
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 431994
+      }
+    ],
+    "summary": "[STUB] Bandra East, Santacruz East, Khar East: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0110",
+        "road_name": "Kalanagar Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0108",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0115",
+        "road_name": "Vakola Bridge Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "H/W",
+    "ward_name": "Bandra West, Khar West, Santacruz West",
+    "budget_inr": 4300000,
+    "spend_inr": 4245242,
+    "spend_on_failed_inr": 1391670,
+    "work_orders": 62,
+    "sla_met_rate": 0.45,
+    "reopen_rate": 0.26,
+    "low_lying_index": 0.55,
+    "risk_score": 55,
+    "spend_by_method": [
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 1151834
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 706174
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 660742
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 643436
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 502163
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 202046
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 138030
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 88590
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 83256
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 68971
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 813676
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 704217
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 626378
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 589626
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 529564
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 443781
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 412980
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 125020
+      }
+    ],
+    "summary": "[STUB] Bandra West, Khar West, Santacruz West: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0119",
+        "road_name": "SV Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0124",
+        "road_name": "Hill Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0120",
+        "road_name": "Linking Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "K/E",
+    "ward_name": "Andheri East, Vile Parle East, Jogeshwari East",
+    "budget_inr": 9100000,
+    "spend_inr": 8264048,
+    "spend_on_failed_inr": 1741105,
+    "work_orders": 165,
+    "sla_met_rate": 0.61,
+    "reopen_rate": 0.24,
+    "low_lying_index": 0.65,
+    "risk_score": 65,
+    "spend_by_method": [
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 1780351
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 1572169
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 1095671
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 801936
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 724616
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 668912
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 528565
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 459079
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 379800
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 252949
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1680225
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 1288243
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 1152199
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 1101933
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 918753
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 814645
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 804721
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 503329
+      }
+    ],
+    "summary": "[STUB] Andheri East, Vile Parle East, Jogeshwari East: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0136",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0133",
+        "road_name": "Andheri Kurla Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0137",
+        "road_name": "Mahakali Caves Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "K/W",
+    "ward_name": "Andheri West, Juhu, Vile Parle West",
+    "budget_inr": 8900000,
+    "spend_inr": 7845240,
+    "spend_on_failed_inr": 1866600,
+    "work_orders": 143,
+    "sla_met_rate": 0.56,
+    "reopen_rate": 0.26,
+    "low_lying_index": 0.7,
+    "risk_score": 70,
+    "spend_by_method": [
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 1528704
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 1129627
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 1020364
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 951149
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 754175
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 722707
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 649786
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 485216
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 334232
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 269280
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 1639047
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 1200034
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 1052243
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 933883
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 904996
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 858593
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 811431
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 445013
+      }
+    ],
+    "summary": "[STUB] Andheri West, Juhu, Vile Parle West: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0148",
+        "road_name": "Juhu Tara Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0156",
+        "road_name": "Link Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0149",
+        "road_name": "Juhu Tara Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "P/S",
+    "ward_name": "Goregaon",
+    "budget_inr": 4800000,
+    "spend_inr": 4349997,
+    "spend_on_failed_inr": 340751,
+    "work_orders": 82,
+    "sla_met_rate": 0.61,
+    "reopen_rate": 0.21,
+    "low_lying_index": 0.5,
+    "risk_score": 50,
+    "spend_by_method": [
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 1425811
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 437683
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 434172
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 428655
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 415500
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 394086
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 264948
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 219499
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 206312
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 123331
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 921130
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 827272
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 600982
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 509465
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 504607
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 363806
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 341293
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 281442
+      }
+    ],
+    "summary": "[STUB] Goregaon: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0166",
+        "road_name": "MG Road Goregaon",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0165",
+        "road_name": "Aarey Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0169",
+        "road_name": "Link Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "P/N",
+    "ward_name": "Malad",
+    "budget_inr": 7700000,
+    "spend_inr": 7006462,
+    "spend_on_failed_inr": 1816577,
+    "work_orders": 141,
+    "sla_met_rate": 0.6,
+    "reopen_rate": 0.25,
+    "low_lying_index": 0.6,
+    "risk_score": 60,
+    "spend_by_method": [
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 1298098
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 1145025
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 780170
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 746880
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 698169
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 590062
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 579660
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 493741
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 468924
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 205733
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 1380140
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1198576
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 997309
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 837724
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 707886
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 672020
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 645184
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 567623
+      }
+    ],
+    "summary": "[STUB] Malad: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0180",
+        "road_name": "Malad Subway",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0175",
+        "road_name": "Marve Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0173",
+        "road_name": "Marve Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "R/S",
+    "ward_name": "Kandivali",
+    "budget_inr": 6600000,
+    "spend_inr": 6642234,
+    "spend_on_failed_inr": 1020154,
+    "work_orders": 121,
+    "sla_met_rate": 0.56,
+    "reopen_rate": 0.21,
+    "low_lying_index": 0.5,
+    "risk_score": 50,
+    "spend_by_method": [
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 1785079
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 1043548
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 687700
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 650586
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 556817
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 437808
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 398971
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 385079
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 365138
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 331508
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 1188375
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 1104327
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1067704
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 802204
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 718015
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 659058
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 648531
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 454020
+      }
+    ],
+    "summary": "[STUB] Kandivali: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0183",
+        "road_name": "Link Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0195",
+        "road_name": "Thakur Village Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0193",
+        "road_name": "Thakur Village Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "R/C",
+    "ward_name": "Borivali",
+    "budget_inr": 2900000,
+    "spend_inr": 3312447,
+    "spend_on_failed_inr": 539981,
+    "work_orders": 86,
+    "sla_met_rate": 0.59,
+    "reopen_rate": 0.14,
+    "low_lying_index": 0.4,
+    "risk_score": 40,
+    "spend_by_method": [
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 633590
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 537827
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 371558
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 369276
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 338552
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 325846
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 273002
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 227755
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 135878
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 99163
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 785832
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 713411
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 467343
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 429575
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 401784
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 278570
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 219541
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 16391
+      }
+    ],
+    "summary": "[STUB] Borivali: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0199",
+        "road_name": "SV Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0200",
+        "road_name": "LT Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0208",
+        "road_name": "Gorai Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "R/N",
+    "ward_name": "Dahisar",
+    "budget_inr": 4800000,
+    "spend_inr": 3533838,
+    "spend_on_failed_inr": 1160682,
+    "work_orders": 82,
+    "sla_met_rate": 0.55,
+    "reopen_rate": 0.27,
+    "low_lying_index": 0.65,
+    "risk_score": 65,
+    "spend_by_method": [
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 813290
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 460969
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 428772
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 423167
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 387424
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 320774
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 306271
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 233600
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 159571
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 972620
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 655052
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 452208
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 387125
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 316438
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 305242
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 250624
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 194529
+      }
+    ],
+    "summary": "[STUB] Dahisar: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0212",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0211",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0213",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "L",
+    "ward_name": "Kurla",
+    "budget_inr": 11900000,
+    "spend_inr": 13043418,
+    "spend_on_failed_inr": 1820204,
+    "work_orders": 232,
+    "sla_met_rate": 0.32,
+    "reopen_rate": 0.18,
+    "low_lying_index": 0.85,
+    "risk_score": 85,
+    "spend_by_method": [
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 2751187
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 2385648
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 1911905
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 1478009
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 967964
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 917247
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 847986
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 652936
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 630950
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 499586
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 2160647
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 2009975
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1769854
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 1720714
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 1634435
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 1293376
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 1285415
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 1169002
+      }
+    ],
+    "summary": "[STUB] Kurla: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0216",
+        "road_name": "LBS Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0220",
+        "road_name": "Kurla Andheri Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0224",
+        "road_name": "CST Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "M/E",
+    "ward_name": "Govandi, Mankhurd, Deonar",
+    "budget_inr": 9100000,
+    "spend_inr": 7235685,
+    "spend_on_failed_inr": 1427808,
+    "work_orders": 148,
+    "sla_met_rate": 0.41,
+    "reopen_rate": 0.26,
+    "low_lying_index": 0.75,
+    "risk_score": 75,
+    "spend_by_method": [
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 1273823
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 1165962
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 834374
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 767240
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 716814
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 617774
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 597274
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 516154
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 470534
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 275736
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 1336145
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1137601
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 1081129
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 1040969
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 1013566
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 929900
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 364241
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 332134
+      }
+    ],
+    "summary": "[STUB] Govandi, Mankhurd, Deonar: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0237",
+        "road_name": "Deonar Village Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0230",
+        "road_name": "Ghatkopar Mankhurd Link Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0235",
+        "road_name": "Sion Trombay Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "M/W",
+    "ward_name": "Chembur",
+    "budget_inr": 4400000,
+    "spend_inr": 4689823,
+    "spend_on_failed_inr": 1150699,
+    "work_orders": 87,
+    "sla_met_rate": 0.56,
+    "reopen_rate": 0.28,
+    "low_lying_index": 0.6,
+    "risk_score": 60,
+    "spend_by_method": [
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 1060141
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 828839
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 724126
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 442151
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 387159
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 378377
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 334146
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 228894
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 163346
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 142644
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 934872
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 713145
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 703380
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 640000
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 528454
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 456670
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 447219
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 266083
+      }
+    ],
+    "summary": "[STUB] Chembur: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0244",
+        "road_name": "RC Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0243",
+        "road_name": "RC Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0245",
+        "road_name": "RC Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "N",
+    "ward_name": "Ghatkopar, Vikhroli",
+    "budget_inr": 6200000,
+    "spend_inr": 5999557,
+    "spend_on_failed_inr": 970747,
+    "work_orders": 112,
+    "sla_met_rate": 0.54,
+    "reopen_rate": 0.2,
+    "low_lying_index": 0.55,
+    "risk_score": 55,
+    "spend_by_method": [
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 1492730
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 1044420
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 778270
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 587482
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 573107
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 477564
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 320219
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 319783
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 213263
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 192719
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 1643624
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 1082402
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 754931
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 670825
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 572790
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 558726
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 370371
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 345888
+      }
+    ],
+    "summary": "[STUB] Ghatkopar, Vikhroli: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0252",
+        "road_name": "LBS Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0251",
+        "road_name": "LBS Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0259",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "S",
+    "ward_name": "Bhandup, Powai, Kanjurmarg",
+    "budget_inr": 9500000,
+    "spend_inr": 7489270,
+    "spend_on_failed_inr": 2219613,
+    "work_orders": 123,
+    "sla_met_rate": 0.5,
+    "reopen_rate": 0.33,
+    "low_lying_index": 0.55,
+    "risk_score": 55,
+    "spend_by_method": [
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 2040481
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 878950
+      },
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 836658
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 772390
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 709795
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 613052
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 572847
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 505645
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 383073
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 176379
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 1321811
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 1189561
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 1170687
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 1000117
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 782242
+      },
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 745806
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 707462
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 571584
+      }
+    ],
+    "summary": "[STUB] Bhandup, Powai, Kanjurmarg: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0273",
+        "road_name": "Powai Adi Shankaracharya Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0268",
+        "road_name": "LBS Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0267",
+        "road_name": "LBS Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  },
+  {
+    "ward_code": "T",
+    "ward_name": "Mulund",
+    "budget_inr": 5100000,
+    "spend_inr": 3953564,
+    "spend_on_failed_inr": 1677820,
+    "work_orders": 65,
+    "sla_met_rate": 0.49,
+    "reopen_rate": 0.32,
+    "low_lying_index": 0.45,
+    "risk_score": 45,
+    "spend_by_method": [
+      {
+        "repair_method": "Drain desilting",
+        "spend_inr": 971220
+      },
+      {
+        "repair_method": "Pump + debris removal",
+        "spend_inr": 731398
+      },
+      {
+        "repair_method": "Excavation, pipeline repair, PQC patch",
+        "spend_inr": 661555
+      },
+      {
+        "repair_method": "Desilting and garbage removal",
+        "spend_inr": 524211
+      },
+      {
+        "repair_method": "Manhole cover replaced + grating",
+        "spend_inr": 289293
+      },
+      {
+        "repair_method": "Dewatering pump deployed",
+        "spend_inr": 285704
+      },
+      {
+        "repair_method": "Hot mix patch",
+        "spend_inr": 161554
+      },
+      {
+        "repair_method": "Paver blocks relaid",
+        "spend_inr": 132211
+      },
+      {
+        "repair_method": "Cold mix patch",
+        "spend_inr": 102568
+      },
+      {
+        "repair_method": "Mastic asphalt",
+        "spend_inr": 93850
+      }
+    ],
+    "spend_by_contractor": [
+      {
+        "contractor_id": "CT07",
+        "spend_inr": 891396
+      },
+      {
+        "contractor_id": "CT04",
+        "spend_inr": 855769
+      },
+      {
+        "contractor_id": "CT08",
+        "spend_inr": 614344
+      },
+      {
+        "contractor_id": "CT05",
+        "spend_inr": 413461
+      },
+      {
+        "contractor_id": "CT03",
+        "spend_inr": 349342
+      },
+      {
+        "contractor_id": "CT02",
+        "spend_inr": 320018
+      },
+      {
+        "contractor_id": "CT06",
+        "spend_inr": 257505
+      },
+      {
+        "contractor_id": "CT01",
+        "spend_inr": 251729
+      }
+    ],
+    "summary": "[STUB] Mulund: placeholder summary. Claude will write this.",
+    "next_rupee": [
+      {
+        "rank": 1,
+        "road_id": "RD0291",
+        "road_name": "Devidayal Road",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 2,
+        "road_id": "RD0280",
+        "road_name": "LBS Marg",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      },
+      {
+        "rank": 3,
+        "road_id": "RD0283",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Mastic asphalt",
+        "est_cost_inr": 150000,
+        "reasons": [
+          "[STUB] reason"
+        ]
+      }
+    ]
+  }
+]

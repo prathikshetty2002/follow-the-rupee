@@ -1,0 +1,373 @@
+[
+  {
+    "issue_id": "ISS-0001",
+    "complaint_ids": [
+      "BMC25-000013",
+      "BMC25-000012"
+    ],
+    "social_post_ids": [],
+    "ward_code": "P/S",
+    "locality": "Goregaon West",
+    "lat": null,
+    "lon": null,
+    "category": "Waterlogging",
+    "first_reported_at": "2025-06-01T16:00:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00004"
+    ]
+  },
+  {
+    "issue_id": "ISS-0002",
+    "complaint_ids": [
+      "BMC25-000023",
+      "BMC25-000022",
+      "BMC25-000021"
+    ],
+    "social_post_ids": [],
+    "ward_code": "E",
+    "locality": "Madanpura",
+    "lat": null,
+    "lon": null,
+    "category": "Choked drain / nullah overflow",
+    "first_reported_at": "2025-06-01T10:33:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00008"
+    ]
+  },
+  {
+    "issue_id": "ISS-0003",
+    "complaint_ids": [
+      "BMC25-000005",
+      "BMC25-000006",
+      "BMC25-000003",
+      "BMC25-000007",
+      "BMC25-000004"
+    ],
+    "social_post_ids": [],
+    "ward_code": "F/S",
+    "locality": "Hindmata",
+    "lat": 19.000536,
+    "lon": 72.834779,
+    "category": "Open or broken manhole",
+    "first_reported_at": "2025-06-01T08:26:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00002"
+    ]
+  },
+  {
+    "issue_id": "ISS-0004",
+    "complaint_ids": [
+      "BMC25-000026"
+    ],
+    "social_post_ids": [],
+    "ward_code": "K/E",
+    "locality": "Jogeshwari East",
+    "lat": null,
+    "lon": null,
+    "category": "Waterlogging",
+    "first_reported_at": "2025-06-02T07:04:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00011"
+    ]
+  },
+  {
+    "issue_id": "ISS-0005",
+    "complaint_ids": [
+      "BMC25-000025"
+    ],
+    "social_post_ids": [],
+    "ward_code": "H/E",
+    "locality": "Bandra East",
+    "lat": 19.078346,
+    "lon": 72.860761,
+    "category": "Broken paver blocks",
+    "first_reported_at": "2025-06-02T06:58:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00010"
+    ]
+  },
+  {
+    "issue_id": "ISS-0006",
+    "complaint_ids": [
+      "BMC25-000042",
+      "BMC25-000040",
+      "BMC25-000039",
+      "BMC25-000041",
+      "BMC25-000038",
+      "BMC25-000037"
+    ],
+    "social_post_ids": [],
+    "ward_code": "H/W",
+    "locality": "Santacruz",
+    "lat": 19.077903,
+    "lon": 72.84158,
+    "category": "Waterlogging",
+    "first_reported_at": "2025-06-03T06:59:00",
+    "status": "fixed_failed",
+    "work_order_ids": [
+      "WO25-00017"
+    ]
+  },
+  {
+    "issue_id": "ISS-0007",
+    "complaint_ids": [
+      "BMC25-000018",
+      "BMC25-000017",
+      "BMC25-000016"
+    ],
+    "social_post_ids": [],
+    "ward_code": "G/S",
+    "locality": "Elphinstone",
+    "lat": 18.996673,
+    "lon": 72.820183,
+    "category": "Pothole",
+    "first_reported_at": "2025-06-01T20:31:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00006"
+    ]
+  },
+  {
+    "issue_id": "ISS-0008",
+    "complaint_ids": [
+      "BMC25-000014",
+      "BMC25-000015"
+    ],
+    "social_post_ids": [],
+    "ward_code": "F/N",
+    "locality": "Kings Circle",
+    "lat": null,
+    "lon": null,
+    "category": "Choked drain / nullah overflow",
+    "first_reported_at": "2025-06-01T15:22:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00005"
+    ]
+  },
+  {
+    "issue_id": "ISS-0009",
+    "complaint_ids": [
+      "BMC25-000027",
+      "BMC25-000028"
+    ],
+    "social_post_ids": [],
+    "ward_code": "L",
+    "locality": "Kamani",
+    "lat": null,
+    "lon": null,
+    "category": "Waterlogging",
+    "first_reported_at": "2025-06-02T17:37:00",
+    "status": "fixed_failed",
+    "work_order_ids": [
+      "WO25-00012"
+    ]
+  },
+  {
+    "issue_id": "ISS-0010",
+    "complaint_ids": [
+      "BMC25-000059",
+      "BMC25-000060"
+    ],
+    "social_post_ids": [],
+    "ward_code": "K/W",
+    "locality": "Lokhandwala",
+    "lat": 19.127869,
+    "lon": 72.84168,
+    "category": "Pothole",
+    "first_reported_at": "2025-06-03T08:33:00",
+    "status": "fixed_failed",
+    "work_order_ids": [
+      "WO25-00025"
+    ]
+  },
+  {
+    "issue_id": "ISS-0011",
+    "complaint_ids": [
+      "BMC25-000009",
+      "BMC25-000008"
+    ],
+    "social_post_ids": [],
+    "ward_code": "M/W",
+    "locality": "Tilak Nagar",
+    "lat": 19.054555,
+    "lon": 72.906916,
+    "category": "Pothole",
+    "first_reported_at": "2025-06-01T20:03:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00003"
+    ]
+  },
+  {
+    "issue_id": "ISS-0012",
+    "complaint_ids": [
+      "BMC25-000052",
+      "BMC25-000053",
+      "BMC25-000051"
+    ],
+    "social_post_ids": [],
+    "ward_code": "H/W",
+    "locality": "Linking Road",
+    "lat": null,
+    "lon": null,
+    "category": "Open or broken manhole",
+    "first_reported_at": "2025-06-03T10:00:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00021"
+    ]
+  },
+  {
+    "issue_id": "ISS-0013",
+    "complaint_ids": [
+      "BMC25-000032"
+    ],
+    "social_post_ids": [],
+    "ward_code": "E",
+    "locality": "Byculla",
+    "lat": 18.984017,
+    "lon": 72.834986,
+    "category": "Waterlogging",
+    "first_reported_at": "2025-06-02T22:06:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00014"
+    ]
+  },
+  {
+    "issue_id": "ISS-0014",
+    "complaint_ids": [
+      "BMC25-000054"
+    ],
+    "social_post_ids": [],
+    "ward_code": "K/W",
+    "locality": "Juhu",
+    "lat": 19.138154,
+    "lon": 72.848067,
+    "category": "Pothole",
+    "first_reported_at": "2025-06-03T07:32:00",
+    "status": "fixed_failed",
+    "work_order_ids": [
+      "WO25-00022"
+    ]
+  },
+  {
+    "issue_id": "ISS-0015",
+    "complaint_ids": [
+      "BMC25-000045",
+      "BMC25-000046"
+    ],
+    "social_post_ids": [],
+    "ward_code": "S",
+    "locality": "Bhandup West",
+    "lat": 19.14291,
+    "lon": 72.936776,
+    "category": "Pothole",
+    "first_reported_at": "2025-06-03T06:18:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00019"
+    ]
+  },
+  {
+    "issue_id": "ISS-0016",
+    "complaint_ids": [
+      "BMC25-000033",
+      "BMC25-000034"
+    ],
+    "social_post_ids": [],
+    "ward_code": "F/S",
+    "locality": "Parel",
+    "lat": 18.985175,
+    "lon": 72.842847,
+    "category": "Pothole",
+    "first_reported_at": "2025-06-02T12:19:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00015"
+    ]
+  },
+  {
+    "issue_id": "ISS-0017",
+    "complaint_ids": [
+      "BMC25-000061",
+      "BMC25-000062"
+    ],
+    "social_post_ids": [],
+    "ward_code": "R/N",
+    "locality": "Anand Nagar",
+    "lat": 19.243059,
+    "lon": 72.861184,
+    "category": "Open or broken manhole",
+    "first_reported_at": "2025-06-03T13:31:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00026"
+    ]
+  },
+  {
+    "issue_id": "ISS-0018",
+    "complaint_ids": [
+      "BMC25-000088",
+      "BMC25-000090",
+      "BMC25-000089"
+    ],
+    "social_post_ids": [],
+    "ward_code": "E",
+    "locality": "Nagpada",
+    "lat": 18.977849,
+    "lon": 72.841148,
+    "category": "Pothole",
+    "first_reported_at": "2025-06-04T07:46:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00033"
+    ]
+  },
+  {
+    "issue_id": "ISS-0019",
+    "complaint_ids": [
+      "BMC25-000078",
+      "BMC25-000081",
+      "BMC25-000079",
+      "BMC25-000082",
+      "BMC25-000080",
+      "BMC25-000077"
+    ],
+    "social_post_ids": [],
+    "ward_code": "R/C",
+    "locality": "Gorai",
+    "lat": 19.229824,
+    "lon": 72.871011,
+    "category": "Open or broken manhole",
+    "first_reported_at": "2025-06-04T06:49:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00030"
+    ]
+  },
+  {
+    "issue_id": "ISS-0020",
+    "complaint_ids": [
+      "BMC25-000111",
+      "BMC25-000110"
+    ],
+    "social_post_ids": [],
+    "ward_code": "P/N",
+    "locality": "Malad West",
+    "lat": null,
+    "lon": null,
+    "category": "Pothole",
+    "first_reported_at": "2025-06-05T11:32:00",
+    "status": "fixed",
+    "work_order_ids": [
+      "WO25-00041"
+    ]
+  }
+]

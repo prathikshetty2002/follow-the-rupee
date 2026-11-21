@@ -1,0 +1,197 @@
+[
+  {
+    "work_order_id": "WO25-00017",
+    "ward_code": "H/W",
+    "road_id": "RD0119",
+    "contractor_id": "CT06",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 55748,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00017"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00012",
+    "ward_code": "L",
+    "road_id": "RD0224",
+    "contractor_id": "CT06",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 134046,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00012"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00025",
+    "ward_code": "K/W",
+    "road_id": "RD0143",
+    "contractor_id": "CT05",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 12166,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00025"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00022",
+    "ward_code": "K/W",
+    "road_id": "RD0158",
+    "contractor_id": "CT02",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 3513,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00022"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00037",
+    "ward_code": "A",
+    "road_id": "RD0009",
+    "contractor_id": "CT08",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 221697,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00037"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00016",
+    "ward_code": "R/N",
+    "road_id": "RD0212",
+    "contractor_id": "CT03",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 91929,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00016"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00034",
+    "ward_code": "L",
+    "road_id": "RD0217",
+    "contractor_id": "CT04",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 8330,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00034"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00055",
+    "ward_code": "M/W",
+    "road_id": "RD0243",
+    "contractor_id": "CT03",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 3654,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00055"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00020",
+    "ward_code": "L",
+    "road_id": "RD0220",
+    "contractor_id": "CT07",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 195064,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00020"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00024",
+    "ward_code": "N",
+    "road_id": "RD0256",
+    "contractor_id": "CT07",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 7028,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00024"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00056",
+    "ward_code": "E",
+    "road_id": "RD0052",
+    "contractor_id": "CT07",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 42742,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00056"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00059",
+    "ward_code": "N",
+    "road_id": "RD0262",
+    "contractor_id": "CT04",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 19991,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00059"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00093",
+    "ward_code": "K/E",
+    "road_id": "RD0136",
+    "contractor_id": "CT03",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 19214,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00093"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00070",
+    "ward_code": "G/S",
+    "road_id": "RD0088",
+    "contractor_id": "CT08",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 106061,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00070"
+    ]
+  },
+  {
+    "work_order_id": "WO25-00092",
+    "ward_code": "F/S",
+    "road_id": "RD0093",
+    "contractor_id": "CT01",
+    "flag_type": "reopened",
+    "severity": "medium",
+    "amount_at_risk_inr": 71904,
+    "reason": "[STUB] Fix failed within 30 days.",
+    "evidence_work_order_ids": [
+      "WO25-00092"
+    ]
+  }
+]

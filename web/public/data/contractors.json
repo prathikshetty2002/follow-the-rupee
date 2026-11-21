@@ -1,0 +1,202 @@
+[
+  {
+    "contractor_id": "CT01",
+    "contractor_name": "Sahyadri Infra Works (synthetic)",
+    "wards": [
+      "P/N",
+      "K/E",
+      "D",
+      "F/N",
+      "R/N",
+      "C",
+      "E"
+    ],
+    "work_orders": 337,
+    "spend_inr": 17209448,
+    "sla_met_rate": 0.62,
+    "reopen_rate": 0.14,
+    "cost_vs_rate_pct": 0.0,
+    "context_adjusted_score": 70,
+    "grade": "B",
+    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
+    "improve": "[STUB]",
+    "evidence_work_order_ids": [
+      "WO25-00041",
+      "WO25-00028",
+      "WO25-00007"
+    ]
+  },
+  {
+    "contractor_id": "CT02",
+    "contractor_name": "Konkan Roadcon Pvt Ltd (synthetic)",
+    "wards": [
+      "T",
+      "B",
+      "N",
+      "C",
+      "K/E",
+      "A"
+    ],
+    "work_orders": 337,
+    "spend_inr": 18906137,
+    "sla_met_rate": 0.46,
+    "reopen_rate": 0.27,
+    "cost_vs_rate_pct": 0.0,
+    "context_adjusted_score": 70,
+    "grade": "B",
+    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
+    "improve": "[STUB]",
+    "evidence_work_order_ids": [
+      "WO25-00011",
+      "WO25-00022",
+      "WO25-00026"
+    ]
+  },
+  {
+    "contractor_id": "CT03",
+    "contractor_name": "Mahalaxmi Civil Contractors (synthetic)",
+    "wards": [
+      "F/N",
+      "C",
+      "P/N",
+      "M/E",
+      "L",
+      "B",
+      "H/W"
+    ],
+    "work_orders": 303,
+    "spend_inr": 16190323,
+    "sla_met_rate": 0.39,
+    "reopen_rate": 0.38,
+    "cost_vs_rate_pct": 0.0,
+    "context_adjusted_score": 70,
+    "grade": "B",
+    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
+    "improve": "[STUB]",
+    "evidence_work_order_ids": [
+      "WO25-00003",
+      "WO25-00033",
+      "WO25-00018"
+    ]
+  },
+  {
+    "contractor_id": "CT04",
+    "contractor_name": "Western Coast Asphalt Co (synthetic)",
+    "wards": [
+      "E",
+      "M/E",
+      "F/N"
+    ],
+    "work_orders": 299,
+    "spend_inr": 17491777,
+    "sla_met_rate": 0.47,
+    "reopen_rate": 0.39,
+    "cost_vs_rate_pct": 0.0,
+    "context_adjusted_score": 70,
+    "grade": "B",
+    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
+    "improve": "[STUB]",
+    "evidence_work_order_ids": [
+      "WO25-00004",
+      "WO25-00008",
+      "WO25-00021"
+    ]
+  },
+  {
+    "contractor_id": "CT05",
+    "contractor_name": "Deccan Paving Solutions (synthetic)",
+    "wards": [
+      "K/W",
+      "R/S",
+      "B",
+      "A",
+      "H/E"
+    ],
+    "work_orders": 287,
+    "spend_inr": 14074782,
+    "sla_met_rate": 0.6,
+    "reopen_rate": 0.09,
+    "cost_vs_rate_pct": 0.0,
+    "context_adjusted_score": 70,
+    "grade": "B",
+    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
+    "improve": "[STUB]",
+    "evidence_work_order_ids": [
+      "WO25-00002",
+      "WO25-00010",
+      "WO25-00025"
+    ]
+  },
+  {
+    "contractor_id": "CT06",
+    "contractor_name": "Shivneri Construction (synthetic)",
+    "wards": [
+      "K/E",
+      "P/N",
+      "E",
+      "D"
+    ],
+    "work_orders": 289,
+    "spend_inr": 14672446,
+    "sla_met_rate": 0.47,
+    "reopen_rate": 0.26,
+    "cost_vs_rate_pct": 0.0,
+    "context_adjusted_score": 70,
+    "grade": "B",
+    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
+    "improve": "[STUB]",
+    "evidence_work_order_ids": [
+      "WO25-00017",
+      "WO25-00005",
+      "WO25-00012"
+    ]
+  },
+  {
+    "contractor_id": "CT07",
+    "contractor_name": "Arabian Sea Engineering (synthetic)",
+    "wards": [
+      "F/N",
+      "N",
+      "H/E"
+    ],
+    "work_orders": 328,
+    "spend_inr": 18639434,
+    "sla_met_rate": 0.44,
+    "reopen_rate": 0.32,
+    "cost_vs_rate_pct": 0.0,
+    "context_adjusted_score": 70,
+    "grade": "B",
+    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
+    "improve": "[STUB]",
+    "evidence_work_order_ids": [
+      "WO25-00006",
+      "WO25-00044",
+      "WO25-00058"
+    ]
+  },
+  {
+    "contractor_id": "CT08",
+    "contractor_name": "Mithi Infra Projects (synthetic)",
+    "wards": [
+      "G/S",
+      "R/N",
+      "P/N",
+      "C",
+      "K/E"
+    ],
+    "work_orders": 319,
+    "spend_inr": 17143836,
+    "sla_met_rate": 0.52,
+    "reopen_rate": 0.12,
+    "cost_vs_rate_pct": 0.0,
+    "context_adjusted_score": 70,
+    "grade": "B",
+    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
+    "improve": "[STUB]",
+    "evidence_work_order_ids": [
+      "WO25-00019",
+      "WO25-00037",
+      "WO25-00036"
+    ]
+  }
+]
