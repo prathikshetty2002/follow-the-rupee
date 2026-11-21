@@ -27,7 +27,7 @@ All money is in rupees (integers). Rates are 0–1 fractions. Dates are ISO stri
   "risk_score": 87,                     // 0–100, higher = needs money more urgently
   "spend_by_method": [{ "repair_method": "Cold mix patch", "spend_inr": 2100000 }],
   "spend_by_contractor": [{ "contractor_id": "CT01", "spend_inr": 3000000 }],
-  "summary": "Plain-language paragraph written by Claude.",
+  "summary": "Plain-language paragraph (Claude-written and checked; template if no API key).",
   "next_rupee": [                       // top 10 open issues, best first (full list in next_rupee.json)
     {
       "rank": 1,
@@ -112,21 +112,30 @@ Type `AuditSummary`. Each block has `work_orders`, `flags`, `by_type` (count and
 `billing_flagged_cost_inr` (each work order counted once, so overlapping billing flags are not double counted), and `high_severity`.
 `thresholds` lists the rule settings so the UI can show them.
 
-## issues.json: de-duplicated complaints linked to work orders
+## issues.json: the money trail, every complaint in exactly one issue (written by `uv run pipeline trail`)
+6,501 complaints become 3,529 issues. Types: `Issue`, `IssuesSummary` (`issues_summary.json`).
+- **fixed / fixed_failed**: the work order BMC linked is the issue (duplicates included). `fixed_failed` = re-opened within 30 days. 2,454 issues.
+- **never_fixed**: Open or In Progress complaints with no work order, merged by road, category and a 14-day window. 589 issues (the same ones the next-rupee plan ranks).
+- **not_bmc_scope**: Rejected or forwarded to MMRDA/PWD/SWM; `disposition` says which. 486 issues.
+- `social_post_ids`: posts matched on place, topic and timing (368 of 650 match; kinds are in `issues_summary.json`). A post that names a locality is matched through it, never through a road name, because road names repeat across wards.
 ```json
 {
   "issue_id": "ISS-0001",
   "complaint_ids": ["BMC25-000012", "BMC25-000013"],
   "social_post_ids": [],
-  "ward_code": "P/S",
-  "locality": "Goregaon West",
-  "lat": 19.16, "lon": 72.84,
+  "ward_code": "P/S", "locality": "Goregaon West", "lat": 19.16, "lon": 72.84,
   "category": "Pothole",
-  "first_reported_at": "2025-06-01T07:10:00",
-  "status": "fixed",                    // fixed | fixed_failed | never_fixed
-  "work_order_ids": ["WO25-00004"]
+  "first_reported_at": "2025-06-01T07:10",
+  "status": "fixed",                    // fixed | fixed_failed | never_fixed | not_bmc_scope
+  "work_order_ids": ["WO25-00004"],
+  "trail": "2 complaints about pothole near Goregaon West (MyBMC App) led to WO25-00004 by Western Coast Asphalt Co (hot mix patch, ₹16,100), finished 2 Jun, 1.8 days after the first complaint (within the 72-hour target). The repair held.",
+  // optional: road_id, road_name, n_complaints, channels, languages, upvotes, disposition,
+  "work_order": { "work_order_id": "WO25-00004", "contractor_id": "CT04", "contractor_name": "...", "repair_method": "Hot mix patch", "cost_inr": 16100,
+                  "completed_at": "2025-06-02T11:44", "days_to_fix": 1.8, "sla_hours": 72, "sla_met": true, "reopened_within_30d": false, "flags": [] }
 }
 ```
+`trail` is built from joins and rules, not by a model, so every link can be checked. It is meant for a "what happened to my complaint?" view.
+`issues_summary.json` has the totals: issues by status, share of fixes that failed (24.6%), money spent on failed fixes, median days to fix, social post coverage.
 
 ## next_rupee.json: the full next-rupee plan (written by `uv run pipeline next-rupee`)
 Types: `NextRupeeFile` in `web/src/lib/types.ts`. Open issue = Open / In Progress complaint with no work order,

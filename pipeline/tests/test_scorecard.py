@@ -39,7 +39,7 @@ def test_check_text_rejects_invented_numbers_banned_words_and_length():
     assert any("not in the facts" in p for p in check_text(GOOD.replace("287", "290"), FACTS))
     assert any("fraud" in p for p in check_text(GOOD + " This looks like fraud.", FACTS))
     assert any("words" in p for p in check_text(GOOD + " filler" * 100, FACTS))
-    assert any("never names" in p for p in check_text(GOOD.replace("Acme Roads", "This firm"), FACTS))
+    assert any("never names" in p for p in check_text(GOOD.replace("Acme Roads", "This firm"), FACTS, must_name="Acme Roads"))
 
 
 def test_claude_text_is_checked_cached_and_sent_with_safe_settings():
@@ -114,3 +114,16 @@ def test_improve_line_picks_a_real_weakness_not_a_strength():
     assert "faster" in improve_line(slow)
     fragile = card(adjusted={"reopen_vs_expected": 1.5, "reopen_expected_rate": 0.24, "sla_vs_expected_pp": 5.0, "sla_expected_rate": 0.5}, scores={"durability": 10, "billing": 100, "speed": 70})
     assert "fail within 30 days" in improve_line(fragile)
+
+
+def test_spelled_out_numbers_are_checked_like_digits():
+    ok = GOOD.replace("a few jobs", "two jobs")
+    assert check_text(ok, {**FACTS, "listed": 2}, must_name="Acme Roads") == []
+    assert any("not in the facts" in p for p in check_text(ok.replace("two jobs", "twelve jobs"), {**FACTS, "listed": 2}))
+    assert check_text(GOOD.replace("a few jobs", "one job"), FACTS) == []  # "one" is ordinary prose
+
+
+def test_short_rupee_format_handles_zero():
+    from pipeline.scorecard import inr_short
+
+    assert inr_short(0) == "₹0" and inr_short(1_410_000) == "₹14.1 lakh" and inr_short(14_074_782) == "₹1.41 crore"

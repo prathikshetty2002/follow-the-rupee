@@ -30,8 +30,17 @@ export type Ward = {
   risk_score: number;
   spend_by_method: { repair_method: string; spend_inr: number }[];
   spend_by_contractor: { contractor_id: string; spend_inr: number }[];
-  summary: string;
+  summary: string; // one plain-language paragraph (Claude-written, checked)
   next_rupee: NextRupee[];
+  // Added by the wards build
+  remaining_budget_inr?: number;
+  over_budget?: boolean;
+  open_issues?: number;
+  billing_flagged_inr?: number; // billed amount of work orders with billing flags, each counted once
+  billing_flagged_work_orders?: number;
+  adjusted?: { sla_expected_rate: number; sla_verdict: Verdict; reopen_expected_rate: number; reopen_verdict: Verdict };
+  summary_source?: "claude" | "template";
+  narration_hash?: string;
 };
 
 export type Contractor = {
@@ -118,18 +127,60 @@ export type AuditSummary = {
   thresholds: { over_billed_ratio: number; double_bill_window_days: number; sla_flag_ratio: number; normal_cost_range_vs_rate_card: [number, number] };
 };
 
+export type IssueStatus = "fixed" | "fixed_failed" | "never_fixed" | "not_bmc_scope";
+
 export type Issue = {
-  issue_id: string;
+  issue_id: string; // every complaint belongs to exactly one issue
   complaint_ids: string[];
-  social_post_ids: string[];
+  social_post_ids: string[]; // posts matched on place, topic and timing (not every post matches)
   ward_code: string;
   locality: string;
   lat: number | null;
   lon: number | null;
   category: string;
   first_reported_at: string;
-  status: "fixed" | "fixed_failed" | "never_fixed";
-  work_order_ids: string[];
+  status: IssueStatus; // fixed | fixed_failed (failed within 30 days) | never_fixed (open, no work order) | not_bmc_scope (rejected or forwarded)
+  work_order_ids: string[]; // empty unless fixed or fixed_failed
+  // Added by the trail build
+  trail: string; // one plain-language sentence: complaints -> work order -> contractor -> did it hold
+  road_id?: string | null;
+  road_name?: string | null;
+  n_complaints?: number;
+  channels?: string[];
+  languages?: string[]; // en, hi-en, mr, hi
+  upvotes?: number;
+  disposition?: string | null; // BMC's own status for never_fixed / not_bmc_scope, e.g. "Open", "Forwarded to MMRDA/PWD"
+  work_order?: {
+    work_order_id: string;
+    contractor_id: string;
+    contractor_name: string;
+    repair_method: string;
+    cost_inr: number;
+    completed_at: string | null;
+    days_to_fix: number | null; // from the first complaint
+    sla_hours: number;
+    sla_met: boolean;
+    reopened_within_30d: boolean;
+    flags: FlagType[]; // audit flags on this work order
+  } | null;
+};
+
+// issues_summary.json
+export type IssuesSummary = {
+  complaints: number;
+  issues: number;
+  complaints_per_issue: number;
+  by_status: Partial<Record<IssueStatus, { issues: number; complaints: number }>>;
+  fixed_issues_that_failed_pct: number;
+  spend_on_fixed_inr: number;
+  spend_on_failed_inr: number;
+  median_days_to_fix: number;
+  met_target_pct: number;
+  road_matched_pct_open: number;
+  social_posts: number;
+  social_posts_linked: number;
+  social_post_kinds: Record<string, number>;
+  social_linked_by_kind: Record<string, number>;
 };
 
 // next_rupee.json: full issue-level output of the index

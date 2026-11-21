@@ -75,7 +75,7 @@ def _locality_index(localities: pd.DataFrame) -> dict:
     for _, r in localities.iterrows():
         names = [r.locality] + (str(r.aliases).split(";") if pd.notna(r.aliases) else [])
         for name in names:
-            index[name.strip().lower()] = (r.ward_code, r.lat, r.lon)
+            index[name.strip().lower()] = (r.ward_code, r.lat, r.lon, r.locality)
     return index
 
 
@@ -90,6 +90,7 @@ def prepare_complaints() -> pd.DataFrame:
     c["ward_fill"] = c.ward_code.fillna(key.map(lambda k: loc.get(k, (None,))[0]))
     c["loc_lat"] = key.map(lambda k: loc.get(k, (None, np.nan, np.nan))[1])
     c["loc_lon"] = key.map(lambda k: loc.get(k, (None, np.nan, np.nan))[2])
+    c["locality"] = [loc[k][3] if k in loc else t for k, t in zip(key, c.locality_text)]  # canonical name when known
 
     cat = [classify_category(d, p, r) for d, p, r in zip(c.description, c.photo_description, c.category_reported)]
     c["category"] = [x[0] for x in cat]
@@ -124,12 +125,17 @@ def prepare_complaints() -> pd.DataFrame:
     return c
 
 
-def open_issues(complaints: pd.DataFrame | None = None) -> pd.DataFrame:
-    """One row per de-duplicated open issue, with the complaint IDs behind it."""
+def open_issues(
+    complaints: pd.DataFrame | None = None, statuses: tuple[str, ...] = config.OPEN_STATUSES, prefix: str = "OI", drop_no_ward: bool = True
+) -> pd.DataFrame:
+    """One row per de-duplicated issue among complaints with these statuses, with the complaint IDs behind it."""
     c = prepare_complaints() if complaints is None else complaints
-    op = c[c.status.isin(config.OPEN_STATUSES)].copy()
+    op = c[c.status.isin(statuses)].copy()
     no_ward = int(op.ward_fill.isna().sum())
-    op = op[op.ward_fill.notna()]  # cannot be budgeted without a ward
+    if drop_no_ward:
+        op = op[op.ward_fill.notna()]  # cannot be budgeted without a ward
+    else:
+        op["ward_fill"] = op.ward_fill.fillna("?")
     op["work_type"] = op.category.fillna(config.DEFAULT_WORK_TYPE)
     place = op.road_est.fillna(op.ward_fill.fillna("?") + "|" + op.locality_text.fillna(""))
     op["key"] = place + "|" + op.work_type
@@ -148,11 +154,17 @@ def open_issues(complaints: pd.DataFrame | None = None) -> pd.DataFrame:
         category_resolved=("category", lambda s: s.notna().any()),
         n_complaints=("complaint_id", "size"),
         upvotes=("upvotes", "sum"),
+        status=("status", lambda s: s.mode().iloc[0]),
+        canonical_locality=("locality", "first"),
+        lat=("lat", "mean"),
+        lon=("lon", "mean"),
+        channels=("channel", lambda s: sorted(set(s))),
+        languages=("language", lambda s: sorted(set(s))),
         first_reported_at=("received_at", "min"),
         last_reported_at=("received_at", "max"),
         complaint_ids=("complaint_id", list),
     ).reset_index(drop=True)
     issues = issues.sort_values("first_reported_at").reset_index(drop=True)
-    issues.insert(0, "issue_id", [f"OI-{i + 1:04d}" for i in range(len(issues))])
+    issues.insert(0, "issue_id", [f"{prefix}-{i + 1:04d}" for i in range(len(issues))])
     issues.attrs["complaints_without_ward"] = no_ward
     return issues

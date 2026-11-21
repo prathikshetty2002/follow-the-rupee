@@ -33,8 +33,15 @@ SCORECARD_SYSTEM = (
 )
 
 
+WORD_NUMBERS = {
+    w: n
+    for n, w in enumerate("two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty".split(), 2)
+} | {"thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90, "hundred": 100}  # "one" is left out: it is ordinary prose
+
+
 def _numbers(text: str) -> set[float]:
-    out = set()
+    """Every figure in the text, written as digits or as a number word, so spelled-out numbers are checked too."""
+    out = {float(WORD_NUMBERS[w]) for w in re.findall(r"[a-z]+", text.lower()) if w in WORD_NUMBERS}
     for token in NUMBER.findall(text):
         token = token.replace(",", "").rstrip(".")
         if token:
@@ -42,7 +49,7 @@ def _numbers(text: str) -> set[float]:
     return out
 
 
-def check_text(text: str, facts: dict, max_words: int = config.SCORECARD_MAX_WORDS) -> list[str]:
+def check_text(text: str, facts: dict, max_words: int = config.SCORECARD_MAX_WORDS, must_name: str | None = None) -> list[str]:
     """Problems that make a narration unusable; empty list means it is fine."""
     problems = []
     if len(text.split()) > max_words:
@@ -55,9 +62,8 @@ def check_text(text: str, facts: dict, max_words: int = config.SCORECARD_MAX_WOR
     stray = sorted(_numbers(text) - allowed)
     if stray:
         problems.append(f"these numbers are not in the facts: {', '.join(str(n) for n in stray)}")
-    name = str(facts.get("contractor", ""))
-    if name and name.lower() not in lowered:
-        problems.append("it never names the contractor")
+    if must_name and must_name.lower() not in lowered:
+        problems.append(f"it never names {must_name}")
     return problems
 
 
@@ -118,7 +124,7 @@ class Writer:
             return None
         return "".join(b.text for b in response.content if b.type == "text").strip()
 
-    def write(self, facts: dict, system: str, attempts: int = 2) -> str | None:
+    def write(self, facts: dict, system: str, attempts: int = 2, max_words: int = config.SCORECARD_MAX_WORDS, must_name: str | None = None) -> str | None:
         """A checked narration from Claude, or None."""
         if not self.active:
             return None
@@ -127,14 +133,16 @@ class Writer:
             text = self._ask(system, user)
             if text is None:
                 return None
-            problems = check_text(text, facts)
+            problems = check_text(text, facts, max_words, must_name)
             if not problems:
                 return text
             user += "\n\nYour previous draft was rejected because " + "; ".join(problems) + ". Write it again and fix this."
         return None
 
 
-def narrate(key: str, facts: dict, system: str, fallback: Callable[[dict], str], writer: Writer, prior: dict | None = None) -> tuple[str, str, str]:
+def narrate(
+    key: str, facts: dict, system: str, fallback: Callable[[dict], str], writer: Writer, prior: dict | None = None, *, max_words: int = config.SCORECARD_MAX_WORDS, must_name: str | None = None
+) -> tuple[str, str, str]:
     """(text, source, fingerprint). Reuse order: committed Claude text, disk cache, Claude, template."""
     h = fingerprint(facts, system)
     old = (prior or {}).get(key)
@@ -143,7 +151,7 @@ def narrate(key: str, facts: dict, system: str, fallback: Callable[[dict], str],
     cache = CACHE_DIR / f"{key}-{h}.txt"
     if cache.exists():
         return cache.read_text(), "claude", h
-    text = writer.write(facts, system)
+    text = writer.write(facts, system, max_words=max_words, must_name=must_name)
     if text:
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
         cache.write_text(text)
