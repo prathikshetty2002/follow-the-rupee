@@ -63,7 +63,7 @@ Git: work on a `prathik/<topic>` branch, merge into `dev` with `--no-ff`, push. 
 - Fieldsets need `min-width: 0` or wide tables overflow on phones (set globally).
 - Contrast is computed, not eyeballed: any new colour pair needs 4.5:1 text, 3:1 large text and control borders. Status is always a shape plus a word.
 - The built-in browser pane is small: use viewport emulation plus the `zoom` screenshot action; screenshots after scrolling can crop.
-- Never commit `pipeline/.env`, never print keys. A pre-commit secret scan (`git diff --cached | grep -c sk-ant`) has been used each time.
+- Never commit `pipeline/.env`, never print keys. Check the staged diff for key-like strings before each commit (grep for the key prefix); none has ever been committed.
 
 ## 8. Suggested next steps (in order)
 1. Prathik reviews the site (`npm run dev`, `/plan/F-N`, `/plan/N`, `/plan/L?budget=500000`); adjust the look or copy.
