@@ -85,7 +85,7 @@ async function Content({ params }: { params: Promise<{ slug: string }> }) {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="mx-auto max-w-6xl space-y-10">
       <div>
         <p className="mb-5">
           <Link href={`/?ward=${slug}`} className={`${link} inline-flex min-h-11 items-center`}>
