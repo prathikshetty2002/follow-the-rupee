@@ -23,12 +23,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to the main content
         </a>
         <header>
-          <div className="mx-auto flex max-w-[90rem] flex-wrap items-center justify-between gap-x-8 gap-y-2 px-4 py-4 sm:px-8">
-            <Link href="/" className="flex min-h-11 items-center gap-3">
-              <Image src="/logo.png" alt="" width={497} height={640} priority className="h-12 w-auto" />
-              <span className="font-serif text-2xl leading-none tracking-tight">
-                Next Rupee <span className="text-muted">Planner</span>
-              </span>
+          <div className="mx-auto flex max-w-[90rem] flex-wrap items-center justify-between gap-x-8 gap-y-2 px-4 py-2 sm:px-8">
+            <Link href="/" className="flex min-h-11 items-center">
+              <Image src="/logo.png" alt="Next Rupee Planner, home" width={497} height={640} priority className="h-16 w-auto sm:h-20" />
             </Link>
             <div className="flex items-center gap-2">
               <Suspense fallback={<NavFallback />}>
