@@ -102,3 +102,23 @@ test("explains why an issue is not covered", () => {
   assert.equal(why.short, first.cost);
   assert.equal(why.needs, first.cost);
 });
+
+test("riskiest-first has a clean cutoff: everything above it is paid, the rest only from leftovers", () => {
+  for (const w of wards) {
+    const ranked = rankItems(w.items, weights);
+    const need = ranked.reduce((s, i) => s + i.cost, 0);
+    for (const budget of [0, need / 4, need / 2, need]) {
+      const f = fillBudget(ranked, budget, "risk_first");
+      if (f.cutoff === null) {
+        assert.equal(f.funded.size, ranked.length);
+        assert.equal(f.fromLeftover.size, 0);
+        continue;
+      }
+      ranked.slice(0, f.cutoff).forEach((i) => assert.ok(f.funded.has(i.id), `${w.code}: ${i.id} is above the cutoff so must be paid`));
+      assert.ok(!f.funded.has(ranked[f.cutoff].id), "the cutoff issue itself did not fit");
+      assert.ok(ranked[f.cutoff].cost > f.leftAtCutoff);
+      for (const id of f.fromLeftover) assert.ok(ranked.findIndex((i) => i.id === id) > f.cutoff);
+      assert.ok(f.runningSpend.at(-1) === f.spend);
+    }
+  }
+});

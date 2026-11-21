@@ -1,28 +1,30 @@
-# Brand: Follow the Rupee
+# Brand: Next Rupee Planner
 
-_Status: chosen (civic ledger). Set by the team for the Claude Impact Lab Mumbai dashboard._
+_Direction: **civic ledger**. Industrial and utilitarian, with editorial restraint. Chosen 2026-11-21 to replace the earlier warm-beige, serif and card-heavy look, which read as generic._
 
-**Feel:** a public ledger a citizen can trust: warm paper, ink-black text, one saffron accent for money, red only for things to check, green for fixes that held. Calm, plain, evidence first.
+**Feel:** a budget worksheet a ward officer would trust. Flat paper, ink, hairline rules, tabular figures. One signal colour (vermilion) is reserved for the budget line and for money that is short. Nothing decorative.
 
-## Palette (tokens live in `web/src/app/globals.css`)
+## Design brief
+- **Density:** comfortable and tabular. Rows and columns, not cards. No box inside a box.
+- **Surface:** flat paper. Structure comes from rules, spacing and type, not shadows or rounded panels.
+- **Type:** Public Sans (the US government design-system face: plain, civic, deliberate) for text. IBM Plex Mono for every figure, ID and amount, with tabular numerals. Three weights: 400, 600, 700. Display text tracks tight (-0.02em); small uppercase labels track loose (+0.06em).
+- **Shape:** 2px corners on controls, none on rows. No pill badges: status is a glyph plus a word.
+- **Motion:** none decorative. State changes take 120 to 200ms with `cubic-bezier(0.23, 1, 0.32, 1)`; everything stops under `prefers-reduced-motion`.
+- **Do:** one accent; state in words and glyphs, never colour alone; lead with the number; put the budget line where the money runs out; show the arithmetic.
+- **Don't:** icon-and-paragraph feature grids, hero metric tiles, gradient or glass, centred everything, identical padding and radius everywhere, vague headlines.
+
+## Tokens (live in `web/src/app/globals.css`; every text pair is at least 4.5:1, control borders at least 3:1)
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `background` | `#faf8f3` | `#14130f` | page |
-| `surface` / `surface-2` | `#ffffff` / `#f3f0e8` | `#1c1b17` / `#242219` | cards, table stripes |
-| `foreground` | `#1b1a17` | `#f2efe6` | text |
-| `muted` | `#5e5a52` | `#a8a395` | secondary text (AA on background) |
-| `border` | `#e4dfd3` | `#2e2c25` | lines |
-| `accent` | `#b45309` | `#f59e0b` | money, key numbers, links |
-| `danger` | `#b42318` | `#f97066` | flags, failed repairs, over budget |
-| `success` | `#1e7b4f` | `#4cc38a` | repairs that held, on time |
-| `warn` | `#9a6700` | `#e3b341` | in-between |
-| `info` | `#2b5fa5` | `#7aa7e6` | neutral facts |
-
-Grades: A and B use `success`, C uses `warn` ("about as expected"), D and E use `danger`.
-Map ramps use `color-mix` of one token against `surface`, so they work in both themes.
-
-## Type
-- Headings: Fraunces (serif), the ledger feel. Body and UI: Geist. Numbers, IDs, money: Geist Mono with tabular figures.
+| `background` | `#EFEFEA` | `#101418` | page |
+| `panel` | `#FAFAF7` | `#171C21` | inputs, the expanded working |
+| `foreground` | `#12161B` | `#ECEDE8` | text, covered marks, primary button |
+| `muted` | `#4F5660` | `#9BA2AB` | secondary text |
+| `rule` | `#C3C6BD` | `#3A424B` | hairlines between rows (decorative) |
+| `line` | `#767C84` | `#7A838D` | borders of controls (3:1) |
+| `accent` | `#B52A0B` | `#FF7A59` | the budget line, short money, key figures |
+| `ok` | `#14684F` | `#5CC8A4` | rare positive state |
+| `warn` | `#8A5A00` | `#E3B341` | low-confidence marker |
 
 ## Voice
-Plain English a citizen can repeat. State what the data shows and what is expected for the same work. No accusations: say "listed for review", never fraud. Every claim links to the work orders behind it. Say "synthetic data" where it matters.
+Plain English a ward officer can repeat. Say what the number is and what to do with it. No filler headings.

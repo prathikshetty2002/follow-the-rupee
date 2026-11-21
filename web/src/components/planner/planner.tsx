@@ -1,18 +1,20 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { inrShort, int, pct } from "@/lib/format";
 import { fillBudget, rankItems, sameWeights, type Strategy, type Weights } from "@/lib/planner";
 import { cx } from "../ui";
-import { BudgetPanel } from "./budget-panel";
-import { IssueRow } from "./issue-row";
+import { BudgetLine } from "./budget-line";
+import { Controls } from "./controls";
+import { download, planCsv } from "./csv";
+import { Figures } from "./figures";
+import { Ledger } from "./ledger";
 import { PlanMap } from "./plan-map";
-import { SummaryPanel } from "./summary-panel";
 import type { PlannerData } from "./types";
 import { WeightsPanel } from "./weights-panel";
 
-type View = "all" | "covered" | "not";
+type View = "all" | "paid" | "not";
 
 /** Write one setting into the address bar so a link shares the plan: ?budget=500000&plan=most_risk&weights=likelihood */
 function setParam(key: string, value: string | null) {
@@ -23,11 +25,22 @@ function setParam(key: string, value: string | null) {
   window.history.replaceState(null, "", s ? `?${s}` : window.location.pathname);
 }
 
+/** Lags behind a fast-changing value, so a screen reader hears the result once the user pauses. */
+function useSettled<T>(value: T, ms: number): T {
+  const [settled, setSettled] = useState(value);
+  useEffect(() => {
+    const t = setTimeout(() => setSettled(value), ms);
+    return () => clearTimeout(t);
+  }, [value, ms]);
+  return settled;
+}
+
 export function Planner({ data }: { data: PlannerData }) {
   // The plan lives in the URL, so a link shares it. Custom slider weights are the one thing kept only here.
   const params = useSearchParams();
   const [view, setView] = useState<View>("all");
   const [custom, setCustom] = useState<Weights | null>(null);
+  const [notice, setNotice] = useState("");
 
   const raw = Number(params.get("budget"));
   const budget = params.has("budget") && Number.isFinite(raw) && raw >= 0 ? Math.round(raw) : data.defaultBudget;
@@ -51,71 +64,97 @@ export function Planner({ data }: { data: PlannerData }) {
   const ranked = useMemo(() => rankItems(data.issues, weights), [data.issues, weights]);
   const defaultRank = useMemo(() => new Map(rankItems(data.issues, data.weights).map((i) => [i.id, i.rank])), [data.issues, data.weights]);
   const fill = useMemo(() => fillBudget(ranked, budget, strategy), [ranked, budget, strategy]);
-  const shown = ranked.filter((i) => (view === "all" ? true : view === "covered" ? fill.funded.has(i.id) : !fill.funded.has(i.id)));
-  const freeCovered = ranked.filter((i) => i.dlp && fill.funded.has(i.id)).length;
-  const customWeights = !sameWeights(weights, data.weights);
+  const shown = ranked.filter((i) => (view === "all" ? true : view === "paid" ? fill.funded.has(i.id) : !fill.funded.has(i.id)));
+  const cutoffId = view === "all" && fill.cutoff !== null ? ranked[fill.cutoff].id : null;
+  const presetName = custom ? "Custom weights" : (preset ?? data.presets[0]).label;
+
+  const sentence = `With ${inrShort(budget)}, ${int(fill.funded.size)} of ${int(ranked.length)} open issues are paid for, covering ${pct(fill.riskCovered)} of the risk.`;
+  const settledSentence = useSettled(sentence, 700);
+
+  const say = (text: string) => {
+    setNotice(text);
+    setTimeout(() => setNotice(""), 3500);
+  };
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      say("Link copied.");
+    } catch {
+      say("Could not copy. Copy the address from the browser bar.");
+    }
+  };
+  const exportCsv = () => {
+    download(`next-rupee-plan-ward-${data.ward.code.replace("/", "-")}.csv`, planCsv(data.ward.code, ranked, fill));
+    say("Downloaded.");
+  };
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[22rem_minmax(0,1fr)] lg:items-start">
-      <aside aria-label="Plan settings" className="space-y-4 lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-1">
-        <section className="space-y-5 rounded-xl border border-border bg-surface p-4 sm:p-5">
-          <BudgetPanel budget={budget} onBudget={setBudget} strategy={strategy} onStrategy={setStrategy} defaultBudget={data.defaultBudget} need={data.need} />
-          <div className="border-t border-border pt-4">
-            <SummaryPanel fill={fill} total={ranked.length} budget={budget} free={freeCovered} />
-          </div>
-        </section>
-        <details className="group rounded-xl border border-border bg-surface">
-          <summary className="flex min-h-12 cursor-pointer items-center justify-between gap-2 px-4 py-3 text-sm font-medium sm:px-5">
-            <span>How risk is weighed {customWeights && <span className="ml-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">changed</span>}</span>
-            <span aria-hidden className="text-muted transition-transform group-open:rotate-180">
-              ▾
-            </span>
-          </summary>
-          <div className="border-t border-border p-4 sm:p-5">
-            <WeightsPanel weights={weights} onWeights={setWeights} presets={data.presets} defaults={data.weights} />
-          </div>
-        </details>
-      </aside>
+    <div className="space-y-14">
+      <Controls budget={budget} onBudget={setBudget} strategy={strategy} onStrategy={setStrategy} defaultBudget={data.defaultBudget} need={data.need} onCopy={copyLink} onCsv={exportCsv} notice={notice} />
 
-      <div className="min-w-0 space-y-8">
-        <div>
-          <p aria-live="polite" className="text-lg leading-snug">
-            With <strong className="num">{inrShort(budget)}</strong>, the planner pays for <strong className="num">{int(fill.funded.size)} of {int(ranked.length)}</strong> open issues and covers{" "}
-            <strong className="num text-accent">{pct(fill.riskCovered)}</strong> of the risk.
-          </p>
-          <div className="mt-4 flex flex-wrap items-center gap-2" role="group" aria-label="Show">
+      <section aria-labelledby="result-h" className="space-y-6">
+        <h2 id="result-h" className="max-w-3xl text-2xl font-bold leading-snug">
+          With <span className="num">{inrShort(budget)}</span>, <span className="num">{int(fill.funded.size)} of {int(ranked.length)}</span> open issues are paid for, covering <span className="num text-accent">{pct(fill.riskCovered)}</span> of the risk.
+        </h2>
+        <p role="status" className="sr-only">
+          {settledSentence}
+        </p>
+        <BudgetLine items={ranked} fill={fill} budget={budget} strategy={strategy} />
+        <Figures fill={fill} total={ranked.length} budget={budget} />
+      </section>
+
+      <details className="group border-y-2 border-foreground">
+        <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-4 py-3">
+          <span>
+            <span className="block text-lg font-bold">Change how risk is weighed</span>
+            <span className="block text-sm text-muted">Now using: {presetName}</span>
+          </span>
+          <span aria-hidden className="text-muted transition-transform duration-150 ease group-open:rotate-90">
+            ▸
+          </span>
+        </summary>
+        <div className="border-t border-rule py-6">
+          <WeightsPanel weights={weights} onWeights={setWeights} presets={data.presets} defaults={data.weights} />
+        </div>
+      </details>
+
+      <section aria-labelledby="ledger-h">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
+          <div>
+            <h2 id="ledger-h" className="text-2xl font-bold">
+              Open issues, riskiest first
+            </h2>
+            <p className="mt-1 max-w-xl text-sm text-muted">Risk is out of 100: how serious it is, how likely it is to get worse, and what is at stake if it fails. Open any issue to see the arithmetic.</p>
+          </div>
+          <div role="group" aria-label="Show" className="flex">
             {(
               [
                 ["all", `All ${ranked.length}`],
-                ["covered", `Covered ${fill.funded.size}`],
-                ["not", `Not covered ${ranked.length - fill.funded.size}`],
+                ["paid", `Paid ${fill.funded.size}`],
+                ["not", `Not paid ${ranked.length - fill.funded.size}`],
               ] as const
-            ).map(([k, label]) => (
-              <button key={k} type="button" aria-pressed={view === k} onClick={() => setView(k)} className={cx("min-h-10 rounded-lg border px-3.5 text-sm transition-colors", view === k ? "border-foreground bg-foreground text-background" : "border-border bg-surface hover:bg-surface-2")}>
+            ).map(([k, label], n) => (
+              <button key={k} type="button" aria-pressed={view === k} onClick={() => setView(k)} className={cx("num min-h-11 border border-line px-4 text-sm font-semibold transition-colors duration-150 ease", n > 0 && "-ml-px", n === 0 && "rounded-l-sm", n === 2 && "rounded-r-sm", view === k ? "border-foreground bg-foreground text-background" : "bg-panel hover:bg-foreground/5")}>
                 {label}
               </button>
             ))}
-            <span className="ml-auto text-xs text-muted">Select an issue to see the working.</span>
           </div>
         </div>
-
         {shown.length === 0 ? (
-          <p className="rounded-xl border border-dashed border-border p-6 text-center text-sm text-muted">{view === "covered" ? "This budget does not cover any issue yet. Raise it, or pick a quick amount." : "Everything is covered."}</p>
+          <p className="border-y border-rule py-8 text-muted">{view === "paid" ? "This budget does not pay for any issue yet. Raise it, or pick a quick amount above." : "Every issue is paid for."}</p>
         ) : (
-          <ol className="space-y-3">
-            {shown.map((i) => (
-              <IssueRow key={i.id} item={i} defaultRank={defaultRank.get(i.id) ?? i.rank} covered={fill.funded.has(i.id)} why={fill.notCovered.get(i.id)} weights={weights} />
-            ))}
-          </ol>
+          <Ledger items={shown} defaultRank={defaultRank} fill={fill} weights={weights} strategy={strategy} cutoffId={cutoffId} />
         )}
+      </section>
 
-        <section aria-labelledby="map-h" className="rounded-xl border border-border bg-surface p-4 sm:p-5">
-          <h2 id="map-h" className="mb-3 font-serif text-xl font-semibold">
-            Where they are
-          </h2>
+      <section aria-labelledby="map-h" className="border-t-2 border-foreground pt-4">
+        <h2 id="map-h" className="mb-4 text-2xl font-bold">
+          Where they are
+        </h2>
+        <div className="max-w-3xl">
           <PlanMap map={data.map} items={ranked} funded={fill.funded} />
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

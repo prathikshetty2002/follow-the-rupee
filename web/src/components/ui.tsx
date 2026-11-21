@@ -1,66 +1,49 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
-import { TONE, type Tone } from "@/lib/format";
 
 export function cx(...parts: (string | false | null | undefined)[]) {
   return parts.filter(Boolean).join(" ");
 }
 
-export function Badge({ tone = "neutral", children, title }: { tone?: Tone; children: ReactNode; title?: string }) {
+/** Page title block: a small label, then the title, then one plain sentence. */
+export function PageTitle({ kicker, title, children }: { kicker?: string; title: string; children?: ReactNode }) {
   return (
-    <span title={title} className={cx("inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium leading-5 whitespace-nowrap", TONE[tone])}>
-      {children}
-    </span>
-  );
-}
-
-export function Card({ children, className, as: Tag = "section" }: { children: ReactNode; className?: string; as?: "section" | "div" | "article" }) {
-  return <Tag className={cx("rounded-xl border border-border bg-surface p-5 sm:p-6", className)}>{children}</Tag>;
-}
-
-export function PageHeader({ eyebrow, title, children }: { eyebrow?: string; title: string; children?: ReactNode }) {
-  return (
-    <header className="mb-8 max-w-3xl">
-      {eyebrow && <p className="mb-2 text-sm font-medium uppercase tracking-wide text-accent">{eyebrow}</p>}
-      <h1 className="font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">{title}</h1>
-      {children && <div className="mt-3 text-base leading-relaxed text-muted sm:text-lg">{children}</div>}
+    <header className="max-w-3xl">
+      {kicker && <p className="label mb-3">{kicker}</p>}
+      <h1 className="text-4xl font-bold leading-[1.05] sm:text-5xl">{title}</h1>
+      {children && <div className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{children}</div>}
     </header>
   );
 }
 
-export function SectionTitle({ children, id, aside }: { children: ReactNode; id?: string; aside?: ReactNode }) {
+/** Section heading with a heavy rule above it, like a ledger section. */
+export function Section({ id, title, aside, children }: { id: string; title: string; aside?: ReactNode; children: ReactNode }) {
   return (
-    <div className="mb-4 flex flex-wrap items-end justify-between gap-2">
-      <h2 id={id} className="font-serif text-2xl font-semibold">
-        {children}
-      </h2>
-      {aside && <div className="text-sm text-muted">{aside}</div>}
-    </div>
+    <section aria-labelledby={id} className="border-t-2 border-foreground pt-4">
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+        <h2 id={id} className="text-2xl font-bold">
+          {title}
+        </h2>
+        {aside && <div className="text-sm text-muted">{aside}</div>}
+      </div>
+      {children}
+    </section>
   );
 }
 
+/** A horizontally scrollable region for wide tables; focusable so keyboard users can scroll it. */
 export function TableWrap({ children, label }: { children: ReactNode; label: string }) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-border bg-surface" role="region" aria-label={label} tabIndex={0}>
+    <div className="overflow-x-auto" role="region" aria-label={label} tabIndex={0}>
       {children}
     </div>
   );
 }
 
-export const th = "px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-muted whitespace-nowrap";
-export const td = "px-4 py-3 align-top text-sm";
-export const link = "text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent";
+export const th = "border-b-2 border-foreground px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-[0.06em] text-muted";
+export const td = "border-b border-rule px-3 py-3 align-top text-sm";
+export const link = "font-semibold text-foreground underline decoration-accent decoration-2 underline-offset-4 hover:bg-foreground/5";
 
-export function ButtonLink({ href, children, variant = "solid" }: { href: string; children: ReactNode; variant?: "solid" | "ghost" }) {
-  return (
-    <Link
-      href={href}
-      className={cx(
-        "inline-flex min-h-11 items-center justify-center rounded-lg px-5 text-sm font-medium transition-colors",
-        variant === "solid" ? "bg-foreground text-background hover:opacity-90" : "border border-border hover:bg-surface-2",
-      )}
-    >
-      {children}
-    </Link>
-  );
-}
+export const field = "min-h-11 w-full rounded-sm border border-line bg-panel px-3";
+export const btn = "inline-flex min-h-11 items-center justify-center gap-2 rounded-sm border px-4 text-sm font-semibold transition-colors duration-150 ease";
+export const btnPrimary = `${btn} border-foreground bg-foreground text-background hover:opacity-90`;
+export const btnQuiet = `${btn} border-line bg-panel text-foreground hover:bg-foreground/5`;

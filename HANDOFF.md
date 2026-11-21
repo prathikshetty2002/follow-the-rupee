@@ -14,6 +14,17 @@ Entry template:
 
 ---
 
+## 2026-11-21 13:24, Prathik, prathik/redesign
+**Changed:** Full visual and UX redesign of the planner ("civic ledger"; direction and tokens in `brand.md`). Replaced the card-and-pill, serif and beige look, which read as generic AI output.
+New: Public Sans + IBM Plex Mono, flat paper with hairline rules, one signal colour (vermilion) reserved for the budget line and short money, 2px corners, no pill badges, no hero tiles.
+**New UX:** the plan is one **budget line** (every issue a segment, as wide as it costs, dark if paid, red line where the money runs out); a four-figure ledger header; a **ranked ledger** with a "Budget runs out here" row, running spend, risk and confidence;
+each issue opens to a real **arithmetic table** (factor, standing, weight, points, total), the facts, the cost range, confidence and why it was not paid. The weighting picker is a table showing each weighting's backtest at the moment of choice.
+New actions: copy a link to the plan, download the plan as CSV. Status is a glyph plus a word, never colour alone.
+**Accessibility (WCAG 2.1 AA target):** all text pairs checked at 4.5:1 or better and control borders at 3:1 or better, in light and dark; visible 3px focus ring; 44px targets; one h1 and no skipped heading levels on any page;
+labelled controls; tables with captions and scoped headers; live result announced after the user pauses; decorative map hidden from assistive tech (the table is the way in); no horizontal scroll at 320px with everything expanded; reduced motion honoured; skip link.
+**Code:** `web/src/components/planner/` now has `controls`, `figures`, `budget-line`, `ledger`, `weights-panel`, `plan-map`, `csv`, `planner`; `lib/planner.ts` gained `cutoff`, `leftAtCutoff`, `fromLeftover`, `runningSpend` (tested). Removed `budget-panel`, `summary-panel`, `issue-row`, `skeletons`. No pipeline or data changes.
+**You need to:** nothing is blocking. Checks: `cd web && npm test && npm run lint && npm run build`.
+
 ## 2026-11-21 13:06, Prathik, prathik/planner
 **Changed:** Revamp. The site is now one tool, the **Next Rupee Planner**, and nothing else. Removed pages: audit, contractors, complaint lookup, work order, the old ward page.
 Pages now: `/` (pick a ward: map and table), `/plan/[slug]` (the planner), `/method` (how it works, the backtest, limits). The pipeline still builds the other data; the site does not show it.
