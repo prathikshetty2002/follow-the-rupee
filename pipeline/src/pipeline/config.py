@@ -68,3 +68,15 @@ LOW_LYING_CUT = 0.6  # ward low_lying_index at or above this counts as low-lying
 CLEAR_DIFFERENCE_Z = 2.0  # a gap smaller than this many standard errors is "in line with expectations"
 NARRATION_MODEL = "claude-sonnet-5-5"
 SCORECARD_MAX_WORDS = 120
+
+# Next-rupee planner: weight presets shown (with their backtest) in the UI, and how confidence is judged
+WEIGHT_PRESETS = {
+    "balanced": {"label": "Balanced (default)", "note": "The weights used for the ranking.", "weights": WEIGHTS},
+    "likelihood": {"label": "Likelihood-led", "note": "Leans on flooding and past trouble.", "weights": {"severity": 0.25, "flood": 0.30, "history": 0.25, "traffic": 0.07, "accidents": 0.07, "facilities": 0.06}},
+    "severity": {"label": "Severity-led", "note": "Fixes the most serious problem types first.", "weights": {"severity": 0.45, "flood": 0.15, "history": 0.10, "traffic": 0.10, "accidents": 0.10, "facilities": 0.10}},
+    "no_impact": {"label": "Likelihood only", "note": "Ignores traffic, accidents, hospitals and schools.", "weights": {"severity": 0.40, "flood": 0.35, "history": 0.25, "traffic": 0.0, "accidents": 0.0, "facilities": 0.0}},
+    "equal": {"label": "Equal weights", "note": "Every factor counts the same.", "weights": {k: 1 / 6 for k in WEIGHTS}},
+    "literal": {"label": "Brief-literal", "note": "Flood, traffic, accidents and facilities equal; no past trouble.", "weights": {"severity": 0.20, "flood": 0.20, "history": 0.0, "traffic": 0.20, "accidents": 0.20, "facilities": 0.20}},
+}
+RANK_RANGE_PCT = (5, 95)  # an issue's plausible rank range under weight changes
+CONFIDENCE_RANGE_TIGHT, CONFIDENCE_RANGE_WIDE = 2, 5  # rank range width that counts as stable / unstable

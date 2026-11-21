@@ -100,23 +100,59 @@ def run_backtest(complaints: pd.DataFrame) -> dict:
     }
 
 
-def weight_stability(issues: pd.DataFrame, factors: pd.DataFrame, roads: pd.DataFrame, severity: pd.Series) -> tuple[pd.Series, float]:
+def weight_stability(issues: pd.DataFrame, factors: pd.DataFrame, roads: pd.DataFrame, severity: pd.Series) -> tuple[pd.DataFrame, float]:
     """Re-score with every weight scaled by U(0.5, 1.5).
 
-    Returns each issue's share of draws in which it stayed in its ward's top 3, and the mean
+    Returns each issue's rank range within its ward (5th to 95th percentile across the draws) and the mean
     Jaccard overlap between the perturbed and base top-3 sets.
     """
     rng = np.random.default_rng(config.RANDOM_SEED)
     base = pd.Series(config.WEIGHTS)
     base_scored = score_issues(issues, factors, roads, severity)
+    column = {iid: j for j, iid in enumerate(base_scored.issue_id)}
     base_top = {w: set(g.nsmallest(config.TOP_K_WARD, "rank_in_ward").issue_id) for w, g in base_scored.groupby("ward_code")}
-    hits = pd.Series(0.0, index=base_scored.issue_id)
+    ranks = np.zeros((config.WEIGHT_PERTURBATIONS, len(base_scored)))
     overlap = []
-    for _ in range(config.WEIGHT_PERTURBATIONS):
+    for d in range(config.WEIGHT_PERTURBATIONS):
         w = base * rng.uniform(0.5, 1.5, len(base))
         s = score_issues(issues, factors, roads, severity, (w / w.sum()).to_dict())
+        ranks[d, s.issue_id.map(column).to_numpy()] = s.rank_in_ward.to_numpy()
         for ward, g in s.groupby("ward_code"):
             top = set(g.nsmallest(config.TOP_K_WARD, "rank_in_ward").issue_id)
-            hits[list(top)] += 1
             overlap.append(len(top & base_top[ward]) / len(top | base_top[ward]))
-    return hits / config.WEIGHT_PERTURBATIONS, float(np.mean(overlap))
+    lo, hi = np.percentile(ranks, config.RANK_RANGE_PCT, axis=0)
+    out = pd.DataFrame({"issue_id": base_scored.issue_id, "rank_low": lo.astype(int), "rank_high": np.ceil(hi).astype(int)})
+    return out.set_index("issue_id"), float(np.mean(overlap))
+
+
+def preset_backtests(complaints: pd.DataFrame, issues: pd.DataFrame, factors: pd.DataFrame, roads: pd.DataFrame, severity: pd.Series) -> list[dict]:
+    """Backtest every weight preset the planner offers, so a user who changes the weights can see what it costs in accuracy.
+
+    The backtest scores roads on everything except severity (it has no complaint category before the fact), so it measures the
+    flood, past-trouble, traffic, accident and facility parts; severity is a stated judgement.
+    """
+    roads_b = road_table(complaints, as_of=config.BACKTEST_CUTOFF)
+    factors_b = road_factors(roads_b)
+    outcomes = _outcomes(roads_b, complaints)
+    ward = roads_b.ward_code
+    base = score_issues(issues, factors, roads, severity, config.WEIGHTS)
+    top = lambda s: {w: set(g.nsmallest(config.TOP_K_WARD, "rank_in_ward").issue_id) for w, g in s.groupby("ward_code")}  # noqa: E731
+    base_top = top(base)
+    out = []
+    for key, preset in config.WEIGHT_PRESETS.items():
+        w = preset["weights"]
+        use = tuple(k for k in ("flood", "history", "traffic", "accidents", "facilities") if w[k] > 0)
+        rs = road_score(factors_b, w, use=use)
+        city, in_ward = _rank_corr(rs, outcomes.wo, ward)
+        t = top(score_issues(issues, factors, roads, severity, w))
+        out.append(
+            {
+                "key": key,
+                "label": preset["label"],
+                "note": preset["note"],
+                "weights": {k: float(v) for k, v in w.items()},
+                "backtest": {"city": round(city, 3), "in_ward": round(in_ward, 3), "precision_at_3": round(_precision_at_k(rs, outcomes.wo, ward), 3)},
+                "top3_overlap_with_default": round(float(np.mean([len(t[k] & base_top[k]) / len(t[k] | base_top[k]) for k in base_top])), 2),
+            }
+        )
+    return out

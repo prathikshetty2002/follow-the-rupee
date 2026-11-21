@@ -4,11 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export const LINKS = [
-  { href: "/", label: "Overview" },
-  { href: "/audit", label: "Audit" },
-  { href: "/contractors", label: "Contractors" },
-  { href: "/complaint", label: "My complaint" },
-  { href: "/method", label: "Method" },
+  { href: "/", label: "Planner" },
+  { href: "/method", label: "How it works" },
 ];
 
 export function Nav() {
@@ -16,7 +13,7 @@ export function Nav() {
   return (
     <nav aria-label="Main" className="-mx-1 flex flex-wrap items-center gap-1 text-sm">
       {LINKS.map((l) => {
-        const active = l.href === "/" ? path === "/" || path.startsWith("/ward") : path.startsWith(l.href);
+        const active = l.href === "/" ? path === "/" || path.startsWith("/plan") : path.startsWith(l.href);
         return (
           <Link
             key={l.href}

@@ -66,6 +66,7 @@ def score_issues(issues: pd.DataFrame, factors: pd.DataFrame, roads: pd.DataFram
     for name in FACTORS:
         out[f"contrib_{name}"] = weights[name] * out[name]
     base = out[[f"contrib_{n}" for n in FACTORS]].sum(axis=1)
-    out["score"] = base + config.UPVOTE_TIEBREAK * minmax(out.upvotes)
+    out["tiebreak"] = config.UPVOTE_TIEBREAK * minmax(out.upvotes)
+    out["score"] = base + out.tiebreak
     out["rank_in_ward"] = out.groupby("ward_code").score.rank(ascending=False, method="first").astype(int)
     return out.sort_values(["ward_code", "rank_in_ward"]).reset_index(drop=True)

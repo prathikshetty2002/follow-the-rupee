@@ -1,144 +1,102 @@
 import Link from "next/link";
-import { ButtonLink, Card, PageHeader, SectionTitle, Stat, Badge, TableWrap, th, td, link } from "@/components/ui";
+import { Badge, Card, PageHeader, SectionTitle, TableWrap, link, td, th } from "@/components/ui";
 import { WardMap, type MapWard } from "@/components/ward-map";
-import { getAuditSummary, getContractors, getIssuesSummary, getNextRupee, getWardGeo, getWards } from "@/lib/data";
-import { inrShort, int, pct, wardSlug } from "@/lib/format";
+import { getNextRupee, getWardGeo, getWards } from "@/lib/data";
+import { inrShort, int, wardSlug } from "@/lib/format";
 import { projectFeatures } from "@/lib/map";
 
 const W = 560;
 const H = 640;
 
 export default async function Home() {
-  const [wards, geo, audit, trail, plan, contractors] = await Promise.all([getWards(), getWardGeo(), getAuditSummary(), getIssuesSummary(), getNextRupee(), getContractors()]);
+  const [plan, wards, geo] = await Promise.all([getNextRupee(), getWards(), getWardGeo()]);
+  const byCode = new Map(plan.wards.map((w) => [w.ward_code, w]));
+  const wardInfo = new Map(wards.map((w) => [w.ward_code, w]));
 
-  const spent = wards.reduce((s, w) => s + w.spend_inr, 0);
-  const budget = wards.reduce((s, w) => s + w.budget_inr, 0);
-  const need = plan.wards.reduce((s, w) => s + w.need_inr, 0);
-  const headroom = wards.reduce((s, w) => s + Math.max(w.remaining_budget_inr ?? 0, 0), 0);
-  const jobs = wards.reduce((s, w) => s + w.work_orders, 0);
-  const overBudget = wards.filter((w) => w.over_budget).length;
-  const openIssues = trail.by_status.never_fixed?.issues ?? 0;
+  const covers = (code: string) => {
+    const p = byCode.get(code)!;
+    if (p.funded_issues >= p.open_issues) return <Badge tone="success">Covers all {p.open_issues}</Badge>;
+    if (p.remaining_budget_inr <= 0) return <Badge tone="danger">Over budget: only free repairs</Badge>;
+    return <Badge tone="warn">Covers {p.funded_issues} of {p.open_issues}</Badge>;
+  };
 
   const { paths, centroids } = projectFeatures(geo.features, W, H);
-  const mapWards: MapWard[] = geo.features.map((f, i) => ({
-    slug: f.properties.slug,
-    code: f.properties.ward_code,
-    name: f.properties.ward_name,
-    d: paths[i],
-    cx: centroids[i][0],
-    cy: centroids[i][1],
-    risk: f.properties.risk_score,
-    budgetUsed: f.properties.budget_used_pct,
-    reopen: f.properties.reopen_rate,
-    openIssues: f.properties.open_issues,
-    over: f.properties.over_budget,
-  }));
-
-  const topNeed = [...wards].sort((a, b) => b.risk_score - a.risk_score).slice(0, 8);
-  const best = contractors[0];
-  const worst = contractors[contractors.length - 1];
+  const mapWards: MapWard[] = geo.features.map((f, i) => {
+    const p = byCode.get(f.properties.ward_code)!;
+    return {
+      slug: f.properties.slug,
+      code: f.properties.ward_code,
+      name: f.properties.ward_name,
+      d: paths[i],
+      cx: centroids[i][0],
+      cy: centroids[i][1],
+      need: p.risk_score,
+      openIssues: p.open_issues,
+      budgetLeft: inrShort(p.remaining_budget_inr),
+      covered: p.funded_issues >= p.open_issues ? "Budget covers all." : p.remaining_budget_inr <= 0 ? "Over budget." : `Budget covers ${p.funded_issues}.`,
+    };
+  });
+  const rows = [...plan.wards].sort((a, b) => b.risk_score - a.risk_score);
 
   return (
     <div className="space-y-14">
       <div className="rise">
-        <PageHeader eyebrow="Mumbai monsoon roads, Jun to Sep 2025" title="Where did the road repair money go, did the fixes hold, and where should the next rupee go?">
-          {inrShort(spent)} was spent on {int(jobs)} repairs across 24 wards. Here is what it bought, who did the work, and what is still broken.
+        <PageHeader eyebrow="Mumbai monsoon roads, Jun to Sep 2025" title="Where should the next rupee go?">
+          Pick a ward. The planner ranks every open road complaint by risk, then shows what the ward&apos;s remaining budget can fix, with the working behind every score.
         </PageHeader>
-        <div className="flex flex-wrap gap-3">
-          <ButtonLink href="#map">See the wards</ButtonLink>
-          <ButtonLink href="/complaint" variant="ghost">
-            Check a complaint
-          </ButtonLink>
-        </div>
+        <ol className="grid max-w-4xl gap-3 sm:grid-cols-3">
+          {[
+            ["1. Rank by risk", "Seriousness, flooding, past trouble, traffic, accidents, hospitals and schools."],
+            ["2. Fit the budget", "Change the budget and see exactly what it pays for, and what it leaves out."],
+            ["3. Check the working", "Each score is broken down, with a confidence note and how it was tested."],
+          ].map(([t, d]) => (
+            <li key={t} className="rounded-xl border border-border bg-surface p-4">
+              <p className="font-medium">{t}</p>
+              <p className="mt-1 text-sm leading-snug text-muted">{d}</p>
+            </li>
+          ))}
+        </ol>
       </div>
 
-      <section aria-label="Key numbers" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <Stat label="Spent against a budget of" value={inrShort(spent)} hint={`${inrShort(budget)} budgeted. ${overBudget} wards are over budget.`} />
-        <Stat label="Repairs that failed within 30 days" value={pct(trail.fixed_issues_that_failed_pct, 1)} tone="danger" hint={`${inrShort(trail.spend_on_failed_inr)} went on fixes that did not last.`} />
-        <Stat label="Jobs listed for billing review" value={int(audit.city.billing_flagged_work_orders)} tone="accent" hint={`${inrShort(audit.city.billing_flagged_cost_inr)} billed on those jobs. Each links to its evidence.`} />
-        <Stat label="Complaints still not fixed" value={int(openIssues)} hint={`About ${inrShort(need)} to fix them, against ${inrShort(headroom)} of budget left.`} />
-      </section>
-
-      <section id="map" aria-labelledby="map-h" className="scroll-mt-20">
-        <SectionTitle id="map-h" aside="Select a ward to open it">
-          The 24 wards
-        </SectionTitle>
-        <Card>
-          <div className="mx-auto max-w-xl">
+      <section aria-labelledby="pick-h" className="grid gap-8 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:items-start">
+        <div className="min-w-0">
+          <SectionTitle id="pick-h">Choose a ward</SectionTitle>
+          <Card>
             <WardMap wards={mapWards} width={W} height={H} />
-          </div>
-        </Card>
-      </section>
-
-      <section aria-labelledby="need-h">
-        <SectionTitle id="need-h" aside="Ranked by how serious the open complaints are">
-          Where the next rupee is needed most
-        </SectionTitle>
-        <TableWrap label="Wards ranked by need">
-          <table className="w-full min-w-[40rem]">
-            <thead className="border-b border-border">
-              <tr>
-                <th className={th}>Ward</th>
-                <th className={`${th} text-right`}>Open issues</th>
-                <th className={`${th} text-right`}>Cost to fix</th>
-                <th className={`${th} text-right`}>Budget left</th>
-                <th className={th}>Position</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {topNeed.map((w) => {
-                const p = plan.wards.find((x) => x.ward_code === w.ward_code)!;
-                return (
-                  <tr key={w.ward_code} className="hover:bg-surface-2">
+          </Card>
+        </div>
+        <div className="min-w-0">
+          <SectionTitle aside="Most serious open issues first">All 24 wards</SectionTitle>
+          <TableWrap label="Wards ranked by how serious their open issues are">
+            <table className="w-full min-w-[36rem]">
+              <thead className="border-b border-border">
+                <tr>
+                  <th className={th}>Ward</th>
+                  <th className={`${th} text-right`}>Open issues</th>
+                  <th className={`${th} text-right`}>Cost to fix all</th>
+                  <th className={`${th} text-right`}>Budget left</th>
+                  <th className={th}>Budget left covers</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {rows.map((p) => (
+                  <tr key={p.ward_code} className="hover:bg-surface-2">
                     <td className={td}>
-                      <Link href={`/ward/${wardSlug(w.ward_code)}`} className={`${link} font-medium`}>
-                        {w.ward_code}
+                      <Link href={`/plan/${wardSlug(p.ward_code)}`} className={`${link} font-medium`}>
+                        {p.ward_code}
                       </Link>
-                      <span className="ml-2 text-muted">{w.ward_name}</span>
+                      <span className="ml-2 text-muted">{wardInfo.get(p.ward_code)?.ward_name}</span>
                     </td>
-                    <td className={`${td} num text-right`}>{w.open_issues}</td>
+                    <td className={`${td} num text-right`}>{int(p.open_issues)}</td>
                     <td className={`${td} num text-right`}>{inrShort(p.need_inr)}</td>
-                    <td className={`${td} num text-right`}>{inrShort(w.remaining_budget_inr ?? 0)}</td>
-                    <td className={td}>{w.over_budget ? <Badge tone="danger">Over budget</Badge> : p.funded_issues >= p.open_issues ? <Badge tone="success">Budget covers all</Badge> : <Badge tone="warn">Covers {p.funded_issues} of {p.open_issues}</Badge>}</td>
+                    <td className={`${td} num text-right`}>{inrShort(p.remaining_budget_inr)}</td>
+                    <td className={td}>{covers(p.ward_code)}</td>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </TableWrap>
-      </section>
-
-      <section aria-labelledby="who-h" className="grid gap-4 md:grid-cols-3">
-        <h2 id="who-h" className="sr-only">
-          Explore
-        </h2>
-        <Card className="flex flex-col">
-          <h3 className="font-serif text-xl font-semibold">Audit</h3>
-          <p className="mt-2 flex-1 text-sm text-muted">
-            {audit.city.by_type.over_billed?.count} jobs were billed far above the rate card, {audit.city.by_type.double_billed?.count} look like repeat bills, and {audit.city.by_type.dlp_paid?.count} repairs were paid for on roads still under warranty.
-          </p>
-          <Link href="/audit" className={`${link} mt-4 text-sm font-medium`}>
-            Open the audit
-          </Link>
-        </Card>
-        <Card className="flex flex-col">
-          <h3 className="font-serif text-xl font-semibold">Contractors</h3>
-          <p className="mt-2 flex-1 text-sm text-muted">
-            Scored against what is expected for the same kind of work. Best this season: {best.contractor_name.replace(" (synthetic)", "")} (grade {best.grade}). Lowest: {worst.contractor_name.replace(" (synthetic)", "")} (grade {worst.grade}).
-          </p>
-          <Link href="/contractors" className={`${link} mt-4 text-sm font-medium`}>
-            See the scorecards
-          </Link>
-        </Card>
-        <Card className="flex flex-col">
-          <h3 className="font-serif text-xl font-semibold">What happened to my complaint?</h3>
-          <p className="mt-2 flex-1 text-sm text-muted">
-            Look up a complaint number to see the repair it led to, who did it, what it cost and whether it held.
-          </p>
-          <Link href="/complaint" className={`${link} mt-4 text-sm font-medium`}>
-            Look up a complaint
-          </Link>
-        </Card>
+                ))}
+              </tbody>
+            </table>
+          </TableWrap>
+        </div>
       </section>
     </div>
   );

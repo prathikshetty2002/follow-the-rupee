@@ -1,5 +1,7 @@
 # Follow the Rupee: Mumbai Monsoon Roads
 
+**Scope (decided 2026-11-21): the site is one tool, the Next Rupee Planner** (use case 4): given a ward's remaining budget, recommend what to fix first, ranked by risk, with precision and transparency. Do not add pages for audit, contractors or complaint lookup; the pipeline still produces that data, but the site does not show it. UI direction comes from Prathik, so keep components small and easy to restyle.
+
 Claude Impact Lab Mumbai hackathon, 21 Nov 2026. Two-person team. Full brief: `docs/CHALLENGE.md`,
 columns: `docs/DATA_DICTIONARY.md`, ideas and **judging rubric**: `docs/STARTER_IDEAS.md`.
 All data in `data/` is synthetic; contractors are fictional.
