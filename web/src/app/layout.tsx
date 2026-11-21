@@ -3,6 +3,7 @@ import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Nav, NavFallback } from "@/components/nav";
+import { ThemeToggle } from "@/components/theme-toggle";
 import "./globals.css";
 
 const sans = Instrument_Sans({ variable: "--font-instrument-sans", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
@@ -27,7 +28,11 @@ function Mark() {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sans.variable} ${serif.variable} h-full`}>
+    <html lang="en" className={`${sans.variable} ${serif.variable} h-full`} suppressHydrationWarning>
+      <head>
+        {/* Apply the saved theme before the first paint, so there is no flash. */}
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}` }} />
+      </head>
       <body className="flex min-h-full flex-col">
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-foreground focus:px-5 focus:py-3 focus:text-background">
           Skip to the main content
@@ -40,9 +45,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 Next Rupee <span className="text-muted">Planner</span>
               </span>
             </Link>
-            <Suspense fallback={<NavFallback />}>
-              <Nav />
-            </Suspense>
+            <div className="flex items-center gap-2">
+              <Suspense fallback={<NavFallback />}>
+                <Nav />
+              </Suspense>
+              <ThemeToggle />
+            </div>
           </div>
         </header>
         <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-4 pb-16 pt-4 sm:px-6 sm:pt-8">

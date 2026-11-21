@@ -19,7 +19,7 @@ Team: Prathik (owns pipeline and now the web app). Noel (`technoelogy`) was bloc
 ## 3. Where things stand
 - Repo: `https://github.com/prathikshetty2002/follow-the-rupee` (public). Branches: `main` (what judges see), `dev` (integration), `prathik/*` feature branches, `noel/dashboard` (empty).
 - **`dev` has everything and is the branch to continue from.** `main` is about 10 commits behind: it has the data, audit flags and scorecards but **not the planner, the redesign or the Mumbai theme**. Merging `dev` into `main` is pending Prathik's say-so (`git switch main && git merge --no-ff dev && git push`, after the checks below).
-- Latest work: the planner revamp, a "civic ledger" redesign (kept in git history), the **Mumbai dawn theme** (Axion Dribbble shot), then the **map dashboard** home page (Raktor Dribbble shot: click a ward to fly to it and open its summary and planner link), then restyled back into Mumbai dawn with a Churchgate station hero illustration and a 3D mode (branch `prathik/map-3d`), then map search, tighter auto-fit and a rebuilt 3D (branch `prathik/map-search`). All checks pass: web 13 tests, pipeline 49 tests, lint, build.
+- Latest work: the planner revamp, a "civic ledger" redesign (kept in git history), the **Mumbai dawn theme** (Axion Dribbble shot), then the **map dashboard** home page (Raktor Dribbble shot: click a ward to fly to it and open its summary and planner link), then restyled back into Mumbai dawn with a Churchgate station hero illustration and a 3D mode (branch `prathik/map-3d`), then map search, tighter auto-fit and a rebuilt 3D (branch `prathik/map-search`), then a light/dark toggle and the BMC head office hero (branch `prathik/theme-toggle`). All checks pass: web 13 tests, pipeline 49 tests, lint, build.
 - Not done: the **demo script and 3-minute walkthrough and submission text** (10% of the score), a Vercel deploy, a visual check at full desktop width (the browser pane here is small).
 - `docs/PLAN.md` is an early hour-by-hour plan, untracked and out of date. Ignore or delete it. `SYNC_REPORT.md` is generated and git-ignored.
 
@@ -32,8 +32,8 @@ pipeline/        Python (uv). `uv run pipeline all` rebuilds every output; steps
                  nextrupee.py (writes next_rupee.json), audit.py, scorecard.py, narrate.py (guarded Claude text), trail.py, wards.py, export.py
   tests/         49 tests, including integrity checks on the JSON the web app reads
 web/             Next.js 16 (Cache Components), Tailwind v4. Reads web/public/data/*.json on the server
-  src/app/       page.tsx (home: Churchgate hero, interactive map, stats, ward table), plan/[slug]/page.tsx (the planner), method/page.tsx, layout.tsx, globals.css (all tokens)
-  src/components/stage/    ward-stage.tsx (the map: flat or 3D, camera, ward cards, summary card), types.ts; lib/view.ts is its tested camera maths; components/churchgate.tsx is the hero illustration
+  src/app/       page.tsx (home: BMC head office hero, interactive map, stats, ward table), plan/[slug]/page.tsx (the planner), method/page.tsx, layout.tsx, globals.css (all tokens)
+  src/components/stage/    ward-stage.tsx (the map: flat or 3D, camera, ward cards, summary card), types.ts; lib/view.ts is its tested camera maths; components/bmc-office.tsx is the hero illustration, components/theme-toggle.tsx the light/dark button
   src/components/planner/  planner.tsx (state in the URL), controls, figures, budget-line, ledger (rows + score arithmetic), weights-panel, plan-map, csv
   src/lib/       planner.ts (re-score, fill, exact knapsack: pure, tested), data.ts (server JSON readers), types.ts, format.ts, factors.ts, map.ts
   tests/planner.test.mjs   run with `npm test` (Node's test runner)
@@ -68,7 +68,7 @@ Git: work on a `prathik/<topic>` branch, merge into `dev` with `--no-ff`, push. 
 - Never commit `pipeline/.env`, never print keys. Check the staged diff for key-like strings before each commit (grep for the key prefix); none has ever been committed.
 
 ## 8. Suggested next steps (in order)
-1. Prathik reviews the site (`npm run dev`: the map at `/`, `/?ward=F-N`, then `/plan/F-N`, `/plan/L?budget=500000`); adjust the look or copy. Map ideas not done: a real photo of Churchgate (the user chose an illustration; a CC-licensed Wikimedia photo would need their OK to download), a check on a real phone. For screenshots the in-app browser pane is small; headless Chrome driven over the DevTools protocol works well (see how the pane was used in this session: `google-chrome-stable --headless=new --remote-debugging-port=...`).
+1. Prathik reviews the site (`npm run dev`: the map at `/`, `/?ward=F-N`, then `/plan/F-N`, `/plan/L?budget=500000`); adjust the look or copy. Map ideas not done: a real photo for the hero (the user chose an illustration; a CC-licensed Wikimedia photo would need their OK to download), a check on a real phone. For screenshots the in-app browser pane is small; headless Chrome driven over the DevTools protocol works well (see how the pane was used in this session: `google-chrome-stable --headless=new --remote-debugging-port=...`).
 2. Merge `dev` into `main` once happy, so judges see the planner. Deploy `web/` to Vercel from `main`.
 3. Write the **3-minute demo script** and submission text (write it to `docs/DEMO.md`): problem, the budget line, riskiest-first vs most-risk, open an issue to show the arithmetic, change the weights and show the backtest, confidence and limits, how Claude is used (guarded text, research).
 4. Precision ideas if time allows: improve road placement for non-GPS complaints; revisit the paver severity (1.4/5 pushes all paver issues to the bottom); tune presets; add a per-ward "what changed if budget +10%" note.
