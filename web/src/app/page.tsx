@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge, Card, PageHeader, SectionTitle, TableWrap, link, td, th } from "@/components/ui";
+import { PageTitle, TableWrap, td, th } from "@/components/ui";
 import { WardMap, type MapWard } from "@/components/ward-map";
 import { getNextRupee, getWardGeo, getWards } from "@/lib/data";
 import { inrShort, int, wardSlug } from "@/lib/format";
@@ -11,14 +11,12 @@ const H = 640;
 export default async function Home() {
   const [plan, wards, geo] = await Promise.all([getNextRupee(), getWards(), getWardGeo()]);
   const byCode = new Map(plan.wards.map((w) => [w.ward_code, w]));
-  const wardInfo = new Map(wards.map((w) => [w.ward_code, w]));
+  const name = new Map(wards.map((w) => [w.ward_code, w.ward_name]));
 
-  const covers = (code: string) => {
-    const p = byCode.get(code)!;
-    if (p.funded_issues >= p.open_issues) return <Badge tone="success">Covers all {p.open_issues}</Badge>;
-    if (p.remaining_budget_inr <= 0) return <Badge tone="danger">Over budget: only free repairs</Badge>;
-    return <Badge tone="warn">Covers {p.funded_issues} of {p.open_issues}</Badge>;
-  };
+  const openIssues = plan.wards.reduce((s, w) => s + w.open_issues, 0);
+  const need = plan.wards.reduce((s, w) => s + w.need_inr, 0);
+  const left = plan.wards.reduce((s, w) => s + Math.max(w.remaining_budget_inr, 0), 0);
+  const over = plan.wards.filter((w) => w.over_budget).length;
 
   const { paths, centroids } = projectFeatures(geo.features, W, H);
   const mapWards: MapWard[] = geo.features.map((f, i) => {
@@ -33,71 +31,72 @@ export default async function Home() {
       need: p.risk_score,
       openIssues: p.open_issues,
       budgetLeft: inrShort(p.remaining_budget_inr),
-      covered: p.funded_issues >= p.open_issues ? "Budget covers all." : p.remaining_budget_inr <= 0 ? "Over budget." : `Budget covers ${p.funded_issues}.`,
+      covered: "",
     };
   });
   const rows = [...plan.wards].sort((a, b) => b.risk_score - a.risk_score);
 
   return (
     <div className="space-y-14">
-      <div className="rise">
-        <PageHeader eyebrow="Mumbai monsoon roads, Jun to Sep 2025" title="Where should the next rupee go?">
-          Pick a ward. The planner ranks every open road complaint by risk, then shows what the ward&apos;s remaining budget can fix, with the working behind every score.
-        </PageHeader>
-        <ol className="grid max-w-4xl gap-3 sm:grid-cols-3">
-          {[
-            ["1. Rank by risk", "Seriousness, flooding, past trouble, traffic, accidents, hospitals and schools."],
-            ["2. Fit the budget", "Change the budget and see exactly what it pays for, and what it leaves out."],
-            ["3. Check the working", "Each score is broken down, with a confidence note and how it was tested."],
-          ].map(([t, d]) => (
-            <li key={t} className="rounded-xl border border-border bg-surface p-4">
-              <p className="font-medium">{t}</p>
-              <p className="mt-1 text-sm leading-snug text-muted">{d}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <PageTitle kicker="Mumbai monsoon roads, June to September 2025" title="Where should the next rupee go?">
+        <p>
+          <span className="num text-foreground">{int(openIssues)}</span> open road issues need about <span className="num text-foreground">{inrShort(need)}</span> to fix. The wards have <span className="num text-foreground">{inrShort(left)}</span> left between them, and {over} are already over budget. Choose a ward to see what its budget should fix first.
+        </p>
+      </PageTitle>
 
-      <section aria-labelledby="pick-h" className="grid gap-8 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:items-start">
-        <div className="min-w-0">
-          <SectionTitle id="pick-h">Choose a ward</SectionTitle>
-          <Card>
-            <WardMap wards={mapWards} width={W} height={H} />
-          </Card>
-        </div>
-        <div className="min-w-0">
-          <SectionTitle aside="Most serious open issues first">All 24 wards</SectionTitle>
+      <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,1fr)_21rem]">
+        <section aria-labelledby="wards-h" className="min-w-0 border-t-2 border-foreground pt-4">
+          <h2 id="wards-h" className="mb-1 text-2xl font-bold">
+            All 24 wards
+          </h2>
+          <p className="mb-5 text-sm text-muted">Most serious open issues first. The bar shows how much of the ward&apos;s open issues its remaining budget pays for.</p>
           <TableWrap label="Wards ranked by how serious their open issues are">
-            <table className="w-full min-w-[36rem]">
-              <thead className="border-b border-border">
+            <table className="w-full min-w-[40rem]">
+              <caption className="sr-only">Wards, their open issues, the cost to fix them all, and what the remaining budget covers</caption>
+              <thead>
                 <tr>
-                  <th className={th}>Ward</th>
-                  <th className={`${th} text-right`}>Open issues</th>
-                  <th className={`${th} text-right`}>Cost to fix all</th>
-                  <th className={`${th} text-right`}>Budget left</th>
-                  <th className={th}>Budget left covers</th>
+                  <th scope="col" className={th}>Ward</th>
+                  <th scope="col" className={`${th} text-right`}>Open</th>
+                  <th scope="col" className={`${th} text-right`}>Cost to fix all</th>
+                  <th scope="col" className={`${th} text-right`}>Budget left</th>
+                  <th scope="col" className={th}>Paid for with budget left</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border">
-                {rows.map((p) => (
-                  <tr key={p.ward_code} className="hover:bg-surface-2">
-                    <td className={td}>
-                      <Link href={`/plan/${wardSlug(p.ward_code)}`} className={`${link} font-medium`}>
-                        {p.ward_code}
-                      </Link>
-                      <span className="ml-2 text-muted">{wardInfo.get(p.ward_code)?.ward_name}</span>
-                    </td>
-                    <td className={`${td} num text-right`}>{int(p.open_issues)}</td>
-                    <td className={`${td} num text-right`}>{inrShort(p.need_inr)}</td>
-                    <td className={`${td} num text-right`}>{inrShort(p.remaining_budget_inr)}</td>
-                    <td className={td}>{covers(p.ward_code)}</td>
-                  </tr>
-                ))}
+              <tbody>
+                {rows.map((p) => {
+                  const share = p.open_issues ? p.funded_issues / p.open_issues : 0;
+                  return (
+                    <tr key={p.ward_code} className="hover:bg-foreground/5">
+                      <th scope="row" className={`${td} text-left font-normal`}>
+                        <Link href={`/plan/${wardSlug(p.ward_code)}`} className="-my-3 inline-flex min-h-11 items-center gap-3 py-3 hover:underline hover:decoration-accent hover:decoration-2 hover:underline-offset-4">
+                          <span className="num font-semibold">{p.ward_code}</span>
+                          <span>{name.get(p.ward_code)}</span>
+                        </Link>
+                      </th>
+                      <td className={`${td} num text-right`}>{int(p.open_issues)}</td>
+                      <td className={`${td} num text-right`}>{inrShort(p.need_inr)}</td>
+                      <td className={`${td} num text-right ${p.over_budget ? "font-semibold text-accent" : ""}`}>{inrShort(p.remaining_budget_inr)}</td>
+                      <td className={td}>
+                        <span className="num block text-sm">
+                          {p.funded_issues >= p.open_issues ? `All ${p.open_issues}` : `${p.funded_issues} of ${p.open_issues}`}
+                          {p.over_budget && <span className="text-accent"> · over budget</span>}
+                        </span>
+                        <span aria-hidden className="mt-1.5 block h-1.5 w-32 bg-rule">
+                          <span className="block h-1.5 bg-foreground" style={{ width: `${share * 100}%` }} />
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </TableWrap>
-        </div>
-      </section>
+        </section>
+
+        <aside aria-label="Map of wards" className="lg:sticky lg:top-6 lg:self-start">
+          <WardMap wards={mapWards} width={W} height={H} />
+        </aside>
+      </div>
     </div>
   );
 }

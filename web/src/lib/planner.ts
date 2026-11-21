@@ -71,6 +71,17 @@ export type Fill = {
   riskLeft: number; // total score not paid for, on the 0-100 scale
   /** For each unpaid issue: why it is not covered. */
   notCovered: Map<string, { needs: number; short: number; cheaperFundedAbove: boolean }>;
+  /**
+   * Riskiest-first only. Going down the ranking, the first issue that did not fit (its index), or null when everything fits.
+   * Issues above it are paid in plain risk order; funded issues below it are paid from the money left over.
+   */
+  cutoff: number | null;
+  /** Money left at the moment the cutoff issue came up. */
+  leftAtCutoff: number;
+  /** Funded issues below the cutoff: paid from what was left. */
+  fromLeftover: Set<string>;
+  /** Running spend after each issue, in ranking order (only grows at funded issues). */
+  runningSpend: number[];
 };
 
 const UNIT = 100; // rupees per step in the exact solver
@@ -106,18 +117,27 @@ export function bestSet<T extends PlanItem>(ranked: Scored<T>[], budget: number)
 
 export function fillBudget<T extends PlanItem>(ranked: Scored<T>[], budget: number, strategy: Strategy): Fill {
   let funded: Set<string>;
+  let cutoff: number | null = null;
+  let leftAtCutoff = budget;
+  const fromLeftover = new Set<string>();
   if (strategy === "most_risk") {
     funded = bestSet(ranked, budget);
   } else {
     funded = new Set();
     let left = budget;
-    for (const i of ranked) {
+    ranked.forEach((i, k) => {
       if (i.cost <= left) {
         funded.add(i.id);
         left -= i.cost;
+        if (cutoff !== null) fromLeftover.add(i.id);
+      } else if (cutoff === null) {
+        cutoff = k;
+        leftAtCutoff = left;
       }
-    }
+    });
   }
+  let running = 0;
+  const runningSpend = ranked.map((i) => (running += funded.has(i.id) ? i.cost : 0));
   const sum = (key: "cost" | "costLow" | "costHigh") => ranked.filter((i) => funded.has(i.id)).reduce((s, i) => s + i[key], 0);
   const spend = sum("cost");
   const total = ranked.reduce((s, i) => s + i.score, 0);
@@ -128,7 +148,7 @@ export function fillBudget<T extends PlanItem>(ranked: Scored<T>[], budget: numb
     if (funded.has(i.id)) return;
     notCovered.set(i.id, { needs: i.cost, short: Math.max(i.cost - left, 0), cheaperFundedAbove: ranked.slice(k + 1).some((j) => funded.has(j.id)) });
   });
-  return { funded, spend, spendLow: sum("costLow"), spendHigh: sum("costHigh"), left, riskCovered: total ? covered / total : 0, riskLeft: (total - covered) * 100, notCovered };
+  return { funded, spend, spendLow: sum("costLow"), spendHigh: sum("costHigh"), left, riskCovered: total ? covered / total : 0, riskLeft: (total - covered) * 100, notCovered, cutoff, leftAtCutoff, fromLeftover, runningSpend };
 }
 
 /** Plain-English check that the weights are what the planner was tested with. */

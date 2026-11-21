@@ -1,69 +1,51 @@
 @import "tailwindcss";
 
-/* Civic ledger palette: see brand.md. All colours come from these tokens. */
+/* Civic ledger: see brand.md. Every colour in the UI comes from these tokens. */
 :root {
-  --background: #faf8f3;
-  --surface: #ffffff;
-  --surface-2: #f3f0e8;
-  --foreground: #1b1a17;
-  --muted: #5e5a52;
-  --border: #e4dfd3;
-  --accent: #b45309;
-  --accent-soft: #fdf0dc;
-  --danger: #b42318;
-  --danger-soft: #fdecea;
-  --success: #1e7b4f;
-  --success-soft: #e4f4ec;
-  --warn: #9a6700;
-  --warn-soft: #fbf1d4;
-  --info: #2b5fa5;
-  --info-soft: #e6eefa;
-  --ring: #1d4ed8;
+  --background: #efefea;
+  --panel: #fafaf7;
+  --foreground: #12161b;
+  --muted: #4f5660;
+  --rule: #c3c6bd;
+  --line: #767c84;
+  --accent: #b52a0b;
+  --accent-soft: #f6ddd6;
+  --ok: #14684f;
+  --warn: #8a5a00;
+  --focus: #12161b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #14130f;
-    --surface: #1c1b17;
-    --surface-2: #242219;
-    --foreground: #f2efe6;
-    --muted: #a8a395;
-    --border: #2e2c25;
-    --accent: #f59e0b;
-    --accent-soft: #3a2a0c;
-    --danger: #f97066;
-    --danger-soft: #3b1714;
-    --success: #4cc38a;
-    --success-soft: #11291f;
+    --background: #101418;
+    --panel: #171c21;
+    --foreground: #ecede8;
+    --muted: #9ba2ab;
+    --rule: #3a424b;
+    --line: #7a838d;
+    --accent: #ff7a59;
+    --accent-soft: #3a1d15;
+    --ok: #5cc8a4;
     --warn: #e3b341;
-    --warn-soft: #33290e;
-    --info: #7aa7e6;
-    --info-soft: #14233a;
-    --ring: #93b4ff;
+    --focus: #ecede8;
   }
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
+  --color-panel: var(--panel);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-border: var(--border);
+  --color-rule: var(--rule);
+  --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
-  --color-danger: var(--danger);
-  --color-danger-soft: var(--danger-soft);
-  --color-success: var(--success);
-  --color-success-soft: var(--success-soft);
+  --color-ok: var(--ok);
   --color-warn: var(--warn);
-  --color-warn-soft: var(--warn-soft);
-  --color-info: var(--info);
-  --color-info-soft: var(--info-soft);
-  --color-ring: var(--ring);
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), Georgia, serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans: var(--font-public-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --radius-sm: 2px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 html {
@@ -75,37 +57,71 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Numbers line up in tables and stat tiles. */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Figures, amounts and IDs: one face, aligned digits. */
 .num {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Small uppercase label above a block. */
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 :focus-visible {
-  outline: 2px solid var(--ring);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .rise {
-    animation: rise 0.4s ease-out both;
-  }
-  @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(6px);
-    }
-  }
+a {
+  text-underline-offset: 3px;
+}
+
+/* Browsers give fieldsets min-width: min-content, which stops wide tables inside them from scrolling. */
+fieldset {
+  min-width: 0;
+  min-inline-size: 0;
 }
 
 details > summary {
-  cursor: pointer;
   list-style: none;
 }
 details > summary::-webkit-details-marker {
   display: none;
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+.ease {
+  transition-timing-function: var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

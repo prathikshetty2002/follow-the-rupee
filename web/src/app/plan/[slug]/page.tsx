@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Planner } from "@/components/planner/planner";
 import type { PlannerData, PlannerIssue } from "@/components/planner/types";
-import { PageSkeleton } from "@/components/skeletons";
-import { PageHeader, link } from "@/components/ui";
+import { PlanSkeleton } from "@/components/skeleton";
+import { PageTitle, link } from "@/components/ui";
 import { getContractors, getNextRupee, getOpenIssuePoints, getRoadGeo, getWardGeo, getWards } from "@/lib/data";
 import { inrShort, slugToWard, wardSlug } from "@/lib/format";
 import { projectFeatures } from "@/lib/map";
@@ -22,7 +22,7 @@ export async function generateMetadata(props: PageProps<"/plan/[slug]">): Promis
 
 export default function PlanPage(props: PageProps<"/plan/[slug]">) {
   return (
-    <Suspense fallback={<PageSkeleton />}>
+    <Suspense fallback={<PlanSkeleton />}>
       <Content params={props.params} />
     </Suspense>
   );
@@ -85,18 +85,25 @@ async function Content({ params }: { params: Promise<{ slug: string }> }) {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="rise">
-        <p className="mb-3 text-sm">
-          <Link href="/" className={link}>
+    <div className="space-y-12">
+      <div>
+        <p className="mb-4">
+          <Link href="/" className={`${link} inline-flex min-h-11 items-center`}>
             All wards
           </Link>
         </p>
-        <PageHeader eyebrow={`Ward ${code}`} title={`What should ${ward.ward_name} fix first?`}>
+        <PageTitle kicker={`Ward ${code}`} title={`What should ${ward.ward_name} fix first?`}>
           <p>
-            This season the ward had {inrShort(ward.budget_inr)} for monsoon road repairs and has spent {inrShort(ward.spend_inr)}. {plan.over_budget ? "It is already over budget, so only repairs that cost BMC nothing are covered until you change the budget below." : `${inrShort(plan.remaining_budget_inr)} is left.`} Change the budget to see what it buys.
+            Season budget <span className="num text-foreground">{inrShort(ward.budget_inr)}</span>, spent <span className="num text-foreground">{inrShort(ward.spend_inr)}</span>
+            {plan.over_budget ? (
+              <>. The ward is already over budget, so only repairs that cost BMC nothing are paid for until you raise the budget below.</>
+            ) : (
+              <>
+                , left <span className="num text-foreground">{inrShort(plan.remaining_budget_inr)}</span>. Change the budget to see what it buys.
+              </>
+            )}
           </p>
-        </PageHeader>
+        </PageTitle>
       </div>
       <Planner data={data} />
     </div>
