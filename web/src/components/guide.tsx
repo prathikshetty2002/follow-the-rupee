@@ -2,7 +2,7 @@
 
 import { ArrowRight, TrainFront, X } from "lucide-react";
 import Link from "next/link";
-import { useRef, useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 type Stop = { station: string; title: string; tag: string; body: string; go?: { label: string; href: string } };
 
@@ -82,6 +82,16 @@ export function Guide() {
   const known = useSyncExternalStore(seen.subscribe, seen.get, () => true);
   const close = () => dialog.current?.close();
 
+  // First-time visitors to the home page get the guide opened for them, once, after the hero has had a moment to show.
+  useEffect(() => {
+    if (seen.get() || window.location.pathname !== "/" || window.location.search) return;
+    const timer = setTimeout(() => {
+      seen.mark();
+      if (dialog.current && !dialog.current.open) dialog.current.showModal();
+    }, 1400);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2 sm:bottom-6 sm:right-6">
@@ -147,6 +157,9 @@ export function Guide() {
               ))}
             </ol>
             <p className="mt-9 rounded-2xl bg-mist px-5 py-4 text-center font-medium">Station aa gaya. Utro aur ward chuno, bhidu.</p>
+            <button type="button" onClick={close} className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-foreground px-6 font-semibold text-background hover:bg-foreground/85">
+              Chalo, shuru karein
+            </button>
           </div>
         </div>
       </dialog>

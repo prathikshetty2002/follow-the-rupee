@@ -344,3 +344,17 @@ input[type="range"] {
 .stage-cta:hover {
   transform: translateY(-1px);
 }
+
+/* The hero picture keeps moving even when the system asks for reduced motion: it is gentle, decorative and has a pause button. */
+@media (prefers-reduced-motion: reduce) {
+  [data-hero] .ch-drift { animation: ch-drift 9s ease-in-out infinite alternate !important; }
+  [data-hero] .ch-pulse { animation: ch-pulse 3s ease-in-out infinite alternate !important; }
+  [data-hero] .ch-drive { animation: ch-drive 16s linear infinite !important; }
+  [data-hero] .ch-drive-slow { animation: ch-drive 24s linear infinite !important; }
+  [data-hero] .ch-fly { animation: ch-fly 18s linear infinite !important; }
+  [data-hero] .ch-flag { animation: ch-flag 0.9s ease-in-out infinite alternate !important; }
+  [data-hero] .ch-flicker { animation: ch-flicker 1.6s ease-in-out infinite alternate !important; }
+}
+[data-hero][data-paused="true"] * {
+  animation-play-state: paused !important;
+}
