@@ -1,0 +1,249 @@
+{
+  "generated_at": "2026-11-21T12:17:35+05:30",
+  "note": "All files are real pipeline output. Server-side: read with web/src/lib/data.ts. Do not edit by hand; rerun `uv run pipeline all`.",
+  "files": [
+    {
+      "path": "audit_summary.json",
+      "bytes": 22899
+    },
+    {
+      "path": "complaint_to_issue.json",
+      "bytes": 169027
+    },
+    {
+      "path": "contractors.json",
+      "bytes": 21671
+    },
+    {
+      "path": "flags.json",
+      "bytes": 1073610
+    },
+    {
+      "path": "geo/open_issues.geojson",
+      "bytes": 195902
+    },
+    {
+      "path": "geo/roads.geojson",
+      "bytes": 85246
+    },
+    {
+      "path": "geo/wards.geojson",
+      "bytes": 12045
+    },
+    {
+      "path": "issues.json",
+      "bytes": 3158589
+    },
+    {
+      "path": "issues_summary.json",
+      "bytes": 907
+    },
+    {
+      "path": "meta.json",
+      "bytes": 406
+    },
+    {
+      "path": "next_rupee.json",
+      "bytes": 545301
+    },
+    {
+      "path": "validation.json",
+      "bytes": 2352
+    },
+    {
+      "path": "wards.json",
+      "bytes": 223676
+    },
+    {
+      "path": "work_orders.json",
+      "bytes": 1583028
+    }
+  ],
+  "descriptions": {
+    "meta.json": "Run info: when generated, season, row counts, whether Claude or a template wrote the text.",
+    "wards.json": "24 wards: budget, spend, re-open and on-time rates, summary, top-10 next rupee. Read this for the city view.",
+    "contractors.json": "8 contractor scorecards, best first.",
+    "flags.json": "Audit flags with evidence work-order ids. Large: prefer by_ward/*.json for a ward page.",
+    "audit_summary.json": "Flag totals for the city, each ward and each contractor.",
+    "next_rupee.json": "Full ranked plan for every ward with factor breakdowns, methods and contractor tiers. Large.",
+    "validation.json": "Backtest of the ranking: for a methods slide.",
+    "issues.json": "3,529 issues: every complaint in one issue, with its work order and a trail sentence. Large: prefer by_ward/*.json.",
+    "issues_summary.json": "Totals for the trail: status counts, failed-fix money, social post coverage.",
+    "work_orders.json": "All 2,499 work orders. Look up evidence_work_order_ids and work_order_ids here.",
+    "complaint_to_issue.json": "complaint id -> issue id, for a 'what happened to my complaint?' search.",
+    "by_ward/<slug>.json": "One file per ward (slug F-S for F/S): ward record, plan, audit, flags, issues, contractors. Best for a ward page.",
+    "geo/wards.geojson": "Ward polygons with risk, budget used and re-open rate as properties: ready for a choropleth.",
+    "geo/roads.geojson": "Road lines with open issue count and priority score.",
+    "geo/open_issues.geojson": "Ranked open issues as points with priority, method and cost."
+  },
+  "wards": [
+    {
+      "ward_code": "A",
+      "slug": "A",
+      "ward_name": "Colaba, Fort, Churchgate",
+      "bundle": "by_ward/A.json",
+      "bytes": 64010
+    },
+    {
+      "ward_code": "B",
+      "slug": "B",
+      "ward_name": "Dongri, Masjid Bunder",
+      "bundle": "by_ward/B.json",
+      "bytes": 91659
+    },
+    {
+      "ward_code": "C",
+      "slug": "C",
+      "ward_name": "Kalbadevi, Bhuleshwar, Marine Lines",
+      "bundle": "by_ward/C.json",
+      "bytes": 57801
+    },
+    {
+      "ward_code": "D",
+      "slug": "D",
+      "ward_name": "Grant Road, Malabar Hill, Tardeo",
+      "bundle": "by_ward/D.json",
+      "bytes": 79263
+    },
+    {
+      "ward_code": "E",
+      "slug": "E",
+      "ward_name": "Byculla, Agripada, Mumbai Central",
+      "bundle": "by_ward/E.json",
+      "bytes": 241300
+    },
+    {
+      "ward_code": "F/S",
+      "slug": "F-S",
+      "ward_name": "Parel, Lalbaug, Sewri",
+      "bundle": "by_ward/F-S.json",
+      "bytes": 275675
+    },
+    {
+      "ward_code": "F/N",
+      "slug": "F-N",
+      "ward_name": "Matunga, Sion, Wadala",
+      "bundle": "by_ward/F-N.json",
+      "bytes": 321713
+    },
+    {
+      "ward_code": "G/S",
+      "slug": "G-S",
+      "ward_name": "Worli, Lower Parel, Prabhadevi",
+      "bundle": "by_ward/G-S.json",
+      "bytes": 158838
+    },
+    {
+      "ward_code": "G/N",
+      "slug": "G-N",
+      "ward_name": "Dadar West, Mahim, Dharavi",
+      "bundle": "by_ward/G-N.json",
+      "bytes": 297282
+    },
+    {
+      "ward_code": "H/E",
+      "slug": "H-E",
+      "ward_name": "Bandra East, Santacruz East, Khar East",
+      "bundle": "by_ward/H-E.json",
+      "bytes": 234011
+    },
+    {
+      "ward_code": "H/W",
+      "slug": "H-W",
+      "ward_name": "Bandra West, Khar West, Santacruz West",
+      "bundle": "by_ward/H-W.json",
+      "bytes": 135142
+    },
+    {
+      "ward_code": "K/E",
+      "slug": "K-E",
+      "ward_name": "Andheri East, Vile Parle East, Jogeshwari East",
+      "bundle": "by_ward/K-E.json",
+      "bytes": 301940
+    },
+    {
+      "ward_code": "K/W",
+      "slug": "K-W",
+      "ward_name": "Andheri West, Juhu, Vile Parle West",
+      "bundle": "by_ward/K-W.json",
+      "bytes": 297567
+    },
+    {
+      "ward_code": "P/S",
+      "slug": "P-S",
+      "ward_name": "Goregaon",
+      "bundle": "by_ward/P-S.json",
+      "bytes": 162131
+    },
+    {
+      "ward_code": "P/N",
+      "slug": "P-N",
+      "ward_name": "Malad",
+      "bundle": "by_ward/P-N.json",
+      "bytes": 293214
+    },
+    {
+      "ward_code": "R/S",
+      "slug": "R-S",
+      "ward_name": "Kandivali",
+      "bundle": "by_ward/R-S.json",
+      "bytes": 229877
+    },
+    {
+      "ward_code": "R/C",
+      "slug": "R-C",
+      "ward_name": "Borivali",
+      "bundle": "by_ward/R-C.json",
+      "bytes": 186757
+    },
+    {
+      "ward_code": "R/N",
+      "slug": "R-N",
+      "ward_name": "Dahisar",
+      "bundle": "by_ward/R-N.json",
+      "bytes": 166478
+    },
+    {
+      "ward_code": "L",
+      "slug": "L",
+      "ward_name": "Kurla",
+      "bundle": "by_ward/L.json",
+      "bytes": 472694
+    },
+    {
+      "ward_code": "M/E",
+      "slug": "M-E",
+      "ward_name": "Govandi, Mankhurd, Deonar",
+      "bundle": "by_ward/M-E.json",
+      "bytes": 293572
+    },
+    {
+      "ward_code": "M/W",
+      "slug": "M-W",
+      "ward_name": "Chembur",
+      "bundle": "by_ward/M-W.json",
+      "bytes": 196376
+    },
+    {
+      "ward_code": "N",
+      "slug": "N",
+      "ward_name": "Ghatkopar, Vikhroli",
+      "bundle": "by_ward/N.json",
+      "bytes": 219001
+    },
+    {
+      "ward_code": "S",
+      "slug": "S",
+      "ward_name": "Bhandup, Powai, Kanjurmarg",
+      "bundle": "by_ward/S.json",
+      "bytes": 262287
+    },
+    {
+      "ward_code": "T",
+      "slug": "T",
+      "ward_name": "Mulund",
+      "bundle": "by_ward/T.json",
+      "bytes": 165830
+    }
+  ]
+}

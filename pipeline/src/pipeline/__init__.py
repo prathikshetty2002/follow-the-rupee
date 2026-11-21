@@ -26,7 +26,7 @@ def cmd_next_rupee() -> None:
     for r in result["backtest"]["results"]:
         print(f"  {r['score']:<45} {r['work_orders_city']:.3f} / {r['work_orders_in_ward']:.3f}   precision@3 {r['precision_at_3_work_orders']:.2f}")
     print(f"Top-3 stability under ±50% weight changes: Jaccard {result['stability']['mean_top3_jaccard']}")
-    print("Wrote web/public/data/{next_rupee,validation,wards}.json")
+    print("Wrote web/public/data/{next_rupee,validation}.json (run `pipeline wards` and `pipeline export` to refresh the files built from them)")
 
 
 def cmd_audit() -> None:
@@ -74,6 +74,14 @@ def cmd_trail() -> None:
     print("Wrote web/public/data/{issues,issues_summary}.json")
 
 
+def cmd_export() -> None:
+    from pipeline.export import write_all
+
+    r = write_all()
+    print(f"{r['work_orders']} work orders, {r['bundles']} ward bundles, {r['map_points']} map points. Text written by: {r['text_sources']}")
+    print("Wrote work_orders, by_ward/*, geo/*, complaint_to_issue, meta, manifest in web/public/data/")
+
+
 def cmd_wards() -> None:
     from pipeline.narrate import Writer
     from pipeline.wards import build_wards, write
@@ -87,7 +95,7 @@ def cmd_wards() -> None:
 
 def cmd_run_all() -> None:
     """Rebuild every output in dependency order."""
-    for step in (cmd_audit, cmd_next_rupee, cmd_scorecards, cmd_trail, cmd_wards):
+    for step in (cmd_audit, cmd_next_rupee, cmd_scorecards, cmd_trail, cmd_wards, cmd_export):
         print(f"\n=== {step.__name__} ===")
         step()
 
@@ -95,10 +103,10 @@ def cmd_run_all() -> None:
 def _args():
     parser = argparse.ArgumentParser(prog="pipeline")
     parser.add_argument("--no-claude", action="store_true", help="use template text, never call the API")
-    parser.add_argument("command", nargs="?", default="summary", choices=["summary", "next-rupee", "audit", "scorecards", "trail", "wards", "all"])
+    parser.add_argument("command", nargs="?", default="summary", choices=["summary", "next-rupee", "audit", "scorecards", "trail", "wards", "export", "all"])
     return parser.parse_args()
 
 
 def main() -> None:
-    steps = {"summary": cmd_summary, "next-rupee": cmd_next_rupee, "audit": cmd_audit, "scorecards": cmd_scorecards, "trail": cmd_trail, "wards": cmd_wards, "all": cmd_run_all}
+    steps = {"summary": cmd_summary, "next-rupee": cmd_next_rupee, "audit": cmd_audit, "scorecards": cmd_scorecards, "trail": cmd_trail, "wards": cmd_wards, "export": cmd_export, "all": cmd_run_all}
     steps[_args().command]()

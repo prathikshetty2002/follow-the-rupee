@@ -88,6 +88,8 @@ def unfixed_issues(c: pd.DataFrame, roads: pd.DataFrame, statuses: tuple[str, ..
     iss = open_issues(c, statuses=statuses, prefix=prefix, drop_no_ward=False)
     iss = iss.rename(columns={"work_type": "category"})
     iss["locality"] = iss.canonical_locality
+    iss["lat"], iss["lon"] = iss.lat.fillna(iss.loc_lat), iss.lon.fillna(iss.loc_lon)  # locality centre when no complaint had GPS
+    iss["plan_issue_id"] = iss.issue_id if status == "never_fixed" else None  # the id the next-rupee plan uses for this issue
     iss["status"], iss["disposition"] = status, iss.pop("status")
     iss["road_name"] = iss.road_id.map(roads.road_name)
     iss["work_order_ids"] = [[] for _ in range(len(iss))]
@@ -218,6 +220,7 @@ def write(iss: pd.DataFrame, summary: dict) -> None:
                 "first_reported_at": ts(r.first_reported_at),
                 "status": r.status,
                 "work_order_ids": r.work_order_ids,
+                "plan_issue_id": r.plan_issue_id if isinstance(r.plan_issue_id, str) else None,
                 "trail": r.trail,
                 "road_id": r.road_id if isinstance(r.road_id, str) else None,
                 "road_name": r.road_name if isinstance(r.road_name, str) else None,
@@ -243,5 +246,5 @@ def write(iss: pd.DataFrame, summary: dict) -> None:
                 },
             }
         )
-    write_json("issues", records)
+    write_json("issues", records, compact=True)
     write_json("issues_summary", summary)

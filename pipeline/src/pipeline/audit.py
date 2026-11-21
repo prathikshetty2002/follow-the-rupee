@@ -218,5 +218,5 @@ def write(flags: pd.DataFrame, summary: dict) -> None:
         "work_order_id", "ward_code", "road_id", "contractor_id", "flag_type", "severity", "amount_at_risk_inr", "reason", "evidence_work_order_ids",
         "kind", "contractor_name", "work_type", "repair_method", "cost_inr", "details",
     ]
-    write_json("flags", json.loads(flags[cols].to_json(orient="records")))
+    write_json("flags", json.loads(flags[cols].to_json(orient="records")), compact=True)
     write_json("audit_summary", summary)
