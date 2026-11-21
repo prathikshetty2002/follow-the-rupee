@@ -13,7 +13,7 @@ export function WeightsPanel({ weights, onWeights, presets, defaults }: { weight
   return (
     <div className="space-y-8">
       <fieldset className="min-w-0">
-        <legend className="mb-1 text-base font-bold">Pick a weighting, and see how it held up</legend>
+        <legend className="mb-1 font-serif text-2xl">Pick a weighting, and see how it held up</legend>
         <p className="mb-3 max-w-3xl text-sm text-muted">
           We tested each one against what happened after 1 August: roads it ranked high on flooding, past trouble, traffic, accidents and facilities were compared with the roads that needed the most repairs. Seriousness cannot be tested, so it is a stated judgement.
         </p>
@@ -30,7 +30,7 @@ export function WeightsPanel({ weights, onWeights, presets, defaults }: { weight
             </thead>
             <tbody>
               {presets.map((p) => (
-                <tr key={p.key} className={cx("hover:bg-foreground/5", current?.key === p.key && "bg-panel")}>
+                <tr key={p.key} className={cx("transition-colors duration-150 ease hover:bg-mist/60", current?.key === p.key && "bg-sea-soft")}>
                   <td className={td}>
                     <label className="flex min-h-11 cursor-pointer items-start gap-3">
                       <input type="radio" name="weighting" checked={current?.key === p.key} onChange={() => onWeights(p.weights)} className="mt-1 size-5 shrink-0" />
@@ -46,7 +46,7 @@ export function WeightsPanel({ weights, onWeights, presets, defaults }: { weight
                 </tr>
               ))}
               {!current && (
-                <tr className="bg-panel">
+                <tr className="bg-peach">
                   <td className={td} colSpan={4}>
                     <strong>Custom weights.</strong> These have not been tested. Picking three roads at random would be right about 25% of the time.
                   </td>
@@ -58,12 +58,12 @@ export function WeightsPanel({ weights, onWeights, presets, defaults }: { weight
       </fieldset>
 
       <div>
-        <h3 className="mb-1 text-base font-bold">Or set your own</h3>
+        <h3 className="mb-1 font-serif text-2xl">Or set your own</h3>
         <p className="mb-4 max-w-3xl text-sm text-muted">Each slider is that factor&apos;s share of the score. The shares always add up to 100%.</p>
         <div className="grid gap-x-12 gap-y-6 md:grid-cols-3">
           {FAMILIES.map((fam) => (
             <div key={fam.key}>
-              <p className="label mb-2 border-b border-rule pb-1">{fam.label}</p>
+              <p className="label mb-3 border-b border-rule pb-2">{fam.label}</p>
               <ul className="space-y-4">
                 {fam.factors.map((f: Factor) => (
                   <li key={f}>

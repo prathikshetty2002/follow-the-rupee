@@ -85,21 +85,21 @@ async function Content({ params }: { params: Promise<{ slug: string }> }) {
   };
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-10">
       <div>
-        <p className="mb-4">
+        <p className="mb-5">
           <Link href="/" className={`${link} inline-flex min-h-11 items-center`}>
-            All wards
+            ← All wards
           </Link>
         </p>
-        <PageTitle kicker={`Ward ${code}`} title={`What should ${ward.ward_name} fix first?`}>
+        <PageTitle kicker={`Ward ${code}`} title={`What should ${ward.ward_name} fix first?`} accent={ward.ward_name}>
           <p>
-            Season budget <span className="num text-foreground">{inrShort(ward.budget_inr)}</span>, spent <span className="num text-foreground">{inrShort(ward.spend_inr)}</span>
+            Season budget <span className="num font-medium text-foreground">{inrShort(ward.budget_inr)}</span>, spent <span className="num font-medium text-foreground">{inrShort(ward.spend_inr)}</span>
             {plan.over_budget ? (
               <>. The ward is already over budget, so only repairs that cost BMC nothing are paid for until you raise the budget below.</>
             ) : (
               <>
-                , left <span className="num text-foreground">{inrShort(plan.remaining_budget_inr)}</span>. Change the budget to see what it buys.
+                , left <span className="num font-medium text-foreground">{inrShort(plan.remaining_budget_inr)}</span>. Change the budget to see what it buys.
               </>
             )}
           </p>
