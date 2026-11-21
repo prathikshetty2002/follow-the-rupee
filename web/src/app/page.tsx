@@ -55,7 +55,7 @@ export default async function Home() {
         top: p.issues.slice(0, 3).map((i) => ({ rank: i.rank, road: i.road_name, type: i.work_type, costInr: i.cost_to_bmc_inr, funded: i.funded })),
       };
     }),
-    roads: roadGeo.features.map((f) => ({ d: proj.path(f), ward: f.properties.ward_code, hot: f.properties.open_issues > 0 })),
+    roads: roadGeo.features.map((f) => ({ d: proj.path(f), ward: f.properties.ward_code, hot: f.properties.open_issues > 0, name: f.properties.road_name })),
     dots: points.features.map((f) => {
       const [x, y] = proj.point(...(f.geometry.coordinates as [number, number]));
       return { x, y, ward: f.properties.ward_code, rank: f.properties.rank, funded: f.properties.funded };

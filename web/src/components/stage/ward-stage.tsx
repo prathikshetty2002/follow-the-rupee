@@ -1,14 +1,15 @@
 "use client";
 
-import { ArrowRight, Box, ChevronLeft, ChevronRight, LocateFixed, Minus, Plus, RotateCcw, RotateCw, Route, TriangleAlert, X } from "lucide-react";
+import { ArrowRight, Box, ChevronLeft, ChevronRight, LocateFixed, Minus, Plus, RotateCcw, RotateCw, Route, Search, TriangleAlert, X } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { inrShort, int } from "@/lib/format";
 import { easeOut, fitView, lerpView, scaleOf, screenToPlane, zoomView, type Box as BBox, type View } from "@/lib/view";
 import type { StageData, StageWard } from "./types";
 
 type Mode = "risk" | "gap" | "open";
+type Hit = { key: string; label: string; sub: string; ward: StageWard; road?: string };
 
 const MODES: { key: Mode; label: string; low: string; high: string; about: string }[] = [
   { key: "risk", label: "Risk", low: "Lower risk", high: "Higher risk", about: "How serious each ward's open issues are. The worst ward is 100." },
@@ -16,8 +17,9 @@ const MODES: { key: Mode; label: string; low: string; high: string; about: strin
   { key: "open", label: "Open issues", low: "Fewer", high: "More", about: "How many complaints still have no repair ordered." },
 ];
 
-const LEVELS = 6; // how many steps tall a ward can stand in 3D
-const STEP = 9; // pixels per step
+const LEVELS = 10; // how many steps tall a ward can stand in 3D
+const STEP = 4.5; // pixels per step, small so the sides look smooth
+const EDGE = 0.12; // each layer reaches this share of the stage beyond every edge, so panning and the 3D tip never show its border
 const PITCH = 58; // how far the 3D map is tipped back, in degrees
 const union = (boxes: BBox[]): BBox => [Math.min(...boxes.map((b) => b[0])), Math.min(...boxes.map((b) => b[1])), Math.max(...boxes.map((b) => b[2])), Math.max(...boxes.map((b) => b[3]))];
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -34,10 +36,22 @@ export function WardStage({ data }: { data: StageData }) {
   const [mode, setMode] = useState<Mode>("risk");
   const [layers, setLayers] = useState({ roads: true, issues: true });
   const [tilt, setTilt] = useState(false);
-  const [bearing, setBearing] = useState(-18);
+  const [bearing, setBearing] = useState(-12);
+  const [q, setQ] = useState("");
+  const [listOpen, setListOpen] = useState(false);
+  const [act, setAct] = useState(0);
+  const [pinRoad, setPinRoad] = useState<string | null>(null);
   const [hover, setHover] = useState<{ ward: StageWard; x: number; y: number } | null>(null);
   const [size, setSize] = useState({ w: 1100, h: 720 });
   const [camera, setCamera] = useState<View | null>(null); // null: follow the selected ward
+
+  const byWard = useMemo(() => {
+    const roads = new Map<string, StageData["roads"]>();
+    const dots = new Map<string, StageData["dots"]>();
+    data.roads.forEach((r) => roads.set(r.ward, [...(roads.get(r.ward) ?? []), r]));
+    data.dots.forEach((d) => dots.set(d.ward, [...(dots.get(d.ward) ?? []), d]));
+    return { roads, dots };
+  }, [data]);
 
   const stageRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -66,14 +80,15 @@ export function WardStage({ data }: { data: StageData }) {
   const freeArea = (open: boolean) => {
     const left = 16;
     const right = wide && open ? 392 : 16;
-    const top = wide ? 84 : 150;
+    const top = wide ? 84 : 206;
     const bottom = (wide ? 214 : open ? 56 : 196) + (!wide && open ? 290 : 0);
     const w = Math.max(size.w - left - right, 200);
     const h = Math.max(size.h - top - bottom, 160);
     return { w, h, dx: left + w / 2 - size.w / 2, dy: top + h / 2 - size.h / 2 };
   };
-  const homeFor = (t: boolean) => fitView(homeBox, size, freeArea(false), t);
-  const targetFor = (w: StageWard | null, t = tilt): View => (w ? fitView(w.box, size, freeArea(true), t, scaleOf(homeFor(t), size) / 9) : homeFor(t));
+  const turnOf = (t: boolean) => (t ? { bearing, pitch: PITCH } : undefined);
+  const homeFor = (t: boolean) => fitView(homeBox, size, freeArea(false), turnOf(t), 0, 1.1);
+  const targetFor = (w: StageWard | null, t = tilt): View => (w ? fitView(w.box, size, freeArea(true), turnOf(t), scaleOf(homeFor(t), size) / 9, 1.08) : homeFor(t));
   const view = camera ?? targetFor(selected);
   const home = homeFor(tilt);
   const limits = { minW: home.w / 14, maxW: home.w * 1.6 };
@@ -101,7 +116,8 @@ export function WardStage({ data }: { data: StageData }) {
     raf.current = requestAnimationFrame(step);
   };
 
-  const select = (w: StageWard | null, fromKeyboard = false) => {
+  const select = (w: StageWard | null, fromKeyboard = false, road: string | null = null) => {
+    setPinRoad(w ? road : null);
     const url = new URL(window.location.href);
     if (w) url.searchParams.set("ward", w.slug);
     else url.searchParams.delete("ward");
@@ -160,17 +176,41 @@ export function WardStage({ data }: { data: StageData }) {
   const headline = (w: StageWard) => (mode === "risk" ? { big: String(w.risk), unit: "risk" } : mode === "gap" ? { big: `${Math.round(valueOf(w, "gap") * 100)}%`, unit: "unpaid" } : { big: String(w.open), unit: "open" });
   const ordered = [...wards].sort((a, b) => valueOf(b, mode) - valueOf(a, mode) || b.risk - a.risk);
   const at = selected ? ordered.findIndex((w) => w.code === selected.code) : -1;
-  const level = (w: StageWard) => 1 + Math.round(valueOf(w, mode) * (LEVELS - 1));
+  const level = (w: StageWard) => 1 + Math.round(valueOf(w, mode) * (LEVELS - 3)) + (selected?.code === w.code ? 2 : 0);
   const top = (w: StageWard) => {
     const fill = `color-mix(in oklab, var(--sea-fill) ${Math.round(8 + valueOf(w, mode) * 84)}%, var(--sea-soft))`;
     return selected && selected.code !== w.code && hover?.ward.code !== w.code ? `color-mix(in oklab, ${fill} 48%, var(--mist))` : fill;
   };
-  const side = (w: StageWard) => `color-mix(in oklab, ${top(w)} 58%, var(--foreground))`;
+  const side = (w: StageWard, j: number, l: number) => `color-mix(in oklab, ${top(w)} ${Math.round(70 - 28 * (1 - j / l))}%, var(--foreground))`;
+  const term = q.trim().toLowerCase();
+  const hits: Hit[] = term
+    ? [
+        ...wards
+          .filter((w) => w.code.toLowerCase() === term || w.code.toLowerCase().startsWith(term) || w.name.toLowerCase().includes(term) || w.zone.toLowerCase().includes(term))
+          .sort((a, b) => Number(b.code.toLowerCase() === term) - Number(a.code.toLowerCase() === term))
+          .slice(0, 6)
+          .map((w) => ({ key: `w-${w.code}`, label: `Ward ${w.code}, ${w.name}`, sub: `${w.zone} · ${w.open} open issues`, ward: w })),
+        ...[...new Map(data.roads.filter((r) => r.name.toLowerCase().includes(term)).map((r) => [`${r.name}|${r.ward}`, r])).values()]
+          .slice(0, 6)
+          .map((r) => {
+            const w = wards.find((x) => x.code === r.ward)!;
+            return { key: `r-${r.name}-${r.ward}`, label: r.name, sub: `Road in ward ${w.code}, ${w.name}`, ward: w, road: r.name };
+          }),
+      ]
+    : [];
+  const choose = (h: Hit, kb: boolean) => {
+    setQ("");
+    setListOpen(false);
+    select(h.ward, kb, h.road ?? null);
+  };
+  const flat = 1 / Math.cos((PITCH * Math.PI) / 180);
+  /** Keeps a label or marker upright and round on the tipped, turned map. */
+  const upright = (x: number, y: number) => (tilt ? `translate(${x} ${y}) rotate(${-bearing}) scale(1 ${flat}) translate(${-x} ${-y})` : undefined);
   const modeInfo = MODES.find((m) => m.key === mode)!;
   const stack = Array.from({ length: LEVELS + 1 }, (_, j) => j);
   const lift = (j: number) => (tilt ? j * STEP : 0);
-  const viewBox = `${view.x} ${view.y} ${view.w} ${view.h}`;
-  const layerStyle = (z: number) => ({ transform: `translateZ(${z}px)`, transition: "transform 0.8s var(--ease-out)", pointerEvents: "none" as const });
+  const viewBox = `${view.x - EDGE * view.w} ${view.y - EDGE * view.h} ${view.w * (1 + 2 * EDGE)} ${view.h * (1 + 2 * EDGE)}`;
+  const layerStyle = (z: number) => ({ left: `${-EDGE * 100}%`, top: `${-EDGE * 100}%`, width: `${(1 + 2 * EDGE) * 100}%`, height: `${(1 + 2 * EDGE) * 100}%`, transform: `translateZ(${z}px)`, transition: "transform 0.8s var(--ease-out)", pointerEvents: "none" as const });
 
   return (
     <section
@@ -255,7 +295,7 @@ export function WardStage({ data }: { data: StageData }) {
       >
         <div className="absolute inset-0" style={{ transformStyle: "preserve-3d", transform: tilt ? `rotateX(${PITCH}deg) rotateZ(${bearing}deg)` : "none", transition: "transform 0.8s var(--ease-out)" }}>
           {stack.map((j) => (
-            <svg key={j} viewBox={viewBox} aria-hidden="true" focusable="false" className="absolute inset-0 size-full overflow-visible" style={layerStyle(lift(j))}>
+            <svg key={j} viewBox={viewBox} aria-hidden="true" focusable="false" className="absolute" style={layerStyle(lift(j))}>
               {j === 0 && (
                 <defs>
                   <filter id="stage-glow" x="-20%" y="-20%" width="140%" height="140%">
@@ -266,7 +306,8 @@ export function WardStage({ data }: { data: StageData }) {
               {wards.map((w) => {
                 const l = level(w);
                 if (l < j) return null;
-                if (l > j) return <path key={w.code} d={w.d} fill={side(w)} stroke="none" />;
+                if (l > j) return <path key={w.code} d={w.d} fill={side(w, j, l)} stroke="none" />;
+                const on = selected?.code === w.code;
                 return (
                   <g key={w.code}>
                     <path
@@ -283,74 +324,66 @@ export function WardStage({ data }: { data: StageData }) {
                       onPointerLeave={() => setHover(null)}
                       onClick={() => select(w)}
                     />
-                    {selected?.code === w.code && (
+                    {on && (
                       <>
-                        <path d={w.d} fill="none" stroke="var(--glow)" strokeWidth={6} vectorEffect="non-scaling-stroke" filter="url(#stage-glow)" opacity={0.95} />
-                        <path d={w.d} fill="none" stroke="var(--accent)" strokeWidth={3} vectorEffect="non-scaling-stroke" strokeLinejoin="round" />
+                        <path d={w.d} fill="none" stroke="var(--glow)" strokeWidth={6} vectorEffect="non-scaling-stroke" filter="url(#stage-glow)" opacity={0.95} pointerEvents="none" />
+                        <path d={w.d} fill="none" stroke="var(--accent)" strokeWidth={3} vectorEffect="non-scaling-stroke" strokeLinejoin="round" pointerEvents="none" />
                       </>
                     )}
+                    {/* roads, open issues and the label sit on the ward's own top, so they rise with it in 3D */}
+                    <g pointerEvents="none">
+                      {layers.roads && (
+                        <g fill="none" strokeLinecap="round">
+                          {(byWard.roads.get(w.code) ?? []).map((r, i) => {
+                            const pinned = pinRoad === r.name;
+                            return <path key={i} d={r.d} vectorEffect="non-scaling-stroke" strokeWidth={pinned ? 5 : r.hot ? 1.5 : 0.8} stroke={pinned || r.hot ? "var(--accent)" : "var(--foreground)"} opacity={pinned ? 1 : selected && !on ? 0.1 : on ? 0.9 : r.hot ? 0.6 : 0.22} />;
+                          })}
+                        </g>
+                      )}
+                      {layers.issues &&
+                        (byWard.dots.get(w.code) ?? []).map((d, i) =>
+                          on ? (
+                            <g key={i} transform={upright(d.x, d.y)}>
+                              <circle cx={d.x} cy={d.y} r={8.5 * s} fill={d.funded ? "var(--sea-fill)" : "var(--card)"} stroke={d.funded ? "var(--card)" : "var(--accent-ink)"} strokeWidth={(d.funded ? 1.6 : 2.2) * s} />
+                              <text x={d.x} y={d.y} textAnchor="middle" dominantBaseline="central" fontSize={9.5 * s} fontWeight={700} fill={d.funded ? "var(--card)" : "var(--accent-ink)"}>
+                                {d.rank}
+                              </text>
+                            </g>
+                          ) : (
+                            <g key={i} transform={upright(d.x, d.y)} opacity={selected ? 0.4 : 1}>
+                              <circle cx={d.x} cy={d.y} r={2.8 * s} fill={d.funded ? "var(--sea-fill)" : "var(--card)"} stroke={d.funded ? "var(--card)" : "var(--accent-ink)"} strokeWidth={1.2 * s} />
+                            </g>
+                          ),
+                        )}
+                      {!(on && layers.issues) && (
+                        <text x={w.cx} y={w.cy} transform={upright(w.cx, w.cy)} textAnchor="middle" dominantBaseline="central" fontWeight={700} fontSize={(on ? 14 : 11) * s} fill="var(--foreground)" stroke="var(--card)" strokeWidth={3.5 * s} paintOrder="stroke">
+                          {w.code}
+                        </text>
+                      )}
+                    </g>
                   </g>
                 );
               })}
             </svg>
           ))}
-
-          {/* roads, open issues and labels float just above the tallest ward */}
-          <svg viewBox={viewBox} aria-hidden="true" focusable="false" className="absolute inset-0 size-full overflow-visible" style={layerStyle(lift(LEVELS) + (tilt ? 4 : 0))}>
-            {layers.roads && (
-              <g fill="none" strokeLinecap="round">
-                {data.roads.map((r, i) => (
-                  <path key={i} d={r.d} vectorEffect="non-scaling-stroke" strokeWidth={r.hot ? 1.5 : 0.8} stroke={r.hot ? "var(--accent)" : "var(--foreground)"} opacity={selected ? (r.ward === selected.code ? 0.9 : 0.1) : r.hot ? 0.6 : 0.22} />
-                ))}
-              </g>
-            )}
-            {layers.issues && (
-              <g>
-                {data.dots
-                  .filter((d) => !selected || d.ward !== selected.code)
-                  .map((d, i) => (
-                    <circle key={i} cx={d.x} cy={d.y} r={2.8 * s} fill={d.funded ? "var(--sea-fill)" : "var(--card)"} stroke={d.funded ? "var(--card)" : "var(--accent-ink)"} strokeWidth={1.2 * s} opacity={selected ? 0.4 : 1} />
-                  ))}
-                {selected &&
-                  data.dots
-                    .filter((d) => d.ward === selected.code)
-                    .map((d, i) => (
-                      <g key={i}>
-                        <circle cx={d.x} cy={d.y} r={8.5 * s} fill={d.funded ? "var(--sea-fill)" : "var(--card)"} stroke={d.funded ? "var(--card)" : "var(--accent-ink)"} strokeWidth={(d.funded ? 1.6 : 2.2) * s} />
-                        <text x={d.x} y={d.y} textAnchor="middle" dominantBaseline="central" fontSize={9.5 * s} fontWeight={700} fill={d.funded ? "var(--card)" : "var(--accent-ink)"}>
-                          {d.rank}
-                        </text>
-                      </g>
-                    ))}
-              </g>
-            )}
-            <g fontWeight={700} textAnchor="middle" dominantBaseline="central">
-              {wards.map((w) => (
-                <text key={w.code} x={w.cx} y={w.cy} fontSize={(selected?.code === w.code ? 14 : 11) * s} fill="var(--foreground)" stroke="var(--card)" strokeWidth={3.5 * s} paintOrder="stroke" style={{ display: selected?.code === w.code && layers.issues ? "none" : undefined }}>
-                  {w.code}
-                </text>
-              ))}
-            </g>
-          </svg>
         </div>
       </div>
 
-      {/* top: title, what to colour by, layers */}
+      {/* top: title and search, what to colour by, layers */}
       <div className="pointer-events-none absolute inset-x-0 top-0 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-3 p-4 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:p-5">
         <div className="min-w-0 max-w-[17rem]">
           <h2 id="stage-h" className="display text-3xl leading-none sm:text-4xl">
             Pick a <em>ward</em>
           </h2>
-          <p className="mt-2 hidden text-sm text-muted sm:block">Click one to see what its remaining road budget should fix first.</p>
         </div>
-        <div role="group" aria-label="Colour the map by" className="stage-panel pointer-events-auto order-3 col-span-2 flex gap-1 rounded-full p-1 sm:order-none sm:col-span-1">
+        <div role="group" aria-label="Colour the map by" className="stage-panel pointer-events-auto col-span-2 row-start-2 flex gap-1 rounded-full p-1 sm:col-span-1 sm:col-start-2 sm:row-start-1">
           {MODES.map((m) => (
             <button key={m.key} type="button" aria-pressed={mode === m.key} onClick={() => setMode(m.key)} className="stage-pill">
               {m.label}
             </button>
           ))}
         </div>
-        <div role="group" aria-label="Map layers and view" className="stage-panel pointer-events-auto flex justify-self-end gap-1 rounded-full p-1">
+        <div role="group" aria-label="Map layers and view" className="stage-panel pointer-events-auto col-start-2 row-start-1 flex justify-self-end gap-1 rounded-full p-1 sm:col-start-3">
           <button type="button" aria-pressed={tilt} onClick={toggle3d} className="stage-pill gap-2">
             <Box aria-hidden className="size-4" /> <span>3D</span>
           </button>
@@ -361,10 +394,84 @@ export function WardStage({ data }: { data: StageData }) {
             <span aria-hidden className="size-3 rounded-full border-2 border-current" /> <span className="max-sm:sr-only">Open issues</span>
           </button>
         </div>
+        <div
+          className="pointer-events-auto relative col-span-2 row-start-3 sm:col-span-1 sm:col-start-1 sm:row-start-2 sm:max-w-[18rem]"
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget)) setListOpen(false);
+          }}
+        >
+          <label htmlFor="stage-search" className="sr-only">
+            Search wards, areas and roads
+          </label>
+          <input
+            id="stage-search"
+            type="search"
+            role="combobox"
+            aria-expanded={listOpen && hits.length > 0}
+            aria-controls="stage-hits"
+            aria-autocomplete="list"
+            aria-activedescendant={listOpen && hits[act] ? `hit-${hits[act].key}` : undefined}
+            autoComplete="off"
+            placeholder="Search ward, area or road"
+            value={q}
+            onChange={(e) => {
+              setQ(e.target.value);
+              setListOpen(true);
+              setAct(0);
+            }}
+            onFocus={() => setListOpen(true)}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowDown" && hits.length) {
+                e.preventDefault();
+                setListOpen(true);
+                setAct((a) => Math.min(a + 1, hits.length - 1));
+              } else if (e.key === "ArrowUp" && hits.length) {
+                e.preventDefault();
+                setAct((a) => Math.max(a - 1, 0));
+              } else if (e.key === "Enter" && listOpen && hits[act]) {
+                e.preventDefault();
+                choose(hits[act], true);
+              } else if (e.key === "Escape" && (q || listOpen)) {
+                e.stopPropagation();
+                setQ("");
+                setListOpen(false);
+              }
+            }}
+            className="stage-panel h-11 w-full rounded-full pl-10 pr-4 text-sm text-foreground outline-offset-2 placeholder:text-muted"
+          />
+          <Search aria-hidden className="pointer-events-none absolute left-4 top-[1.375rem] size-4 -translate-y-1/2 text-muted" />
+          {listOpen && term && (
+            <ul id="stage-hits" role="listbox" aria-label="Search results" className="stage-panel absolute inset-x-0 top-12 z-30 max-h-72 overflow-y-auto rounded-3xl p-1.5">
+              {hits.length === 0 && (
+                <li role="presentation" className="px-3 py-2.5 text-sm text-muted">
+                  No ward, area or road matches &ldquo;{q.trim()}&rdquo;.
+                </li>
+              )}
+              {hits.map((h, i) => (
+                <li
+                  key={h.key}
+                  id={`hit-${h.key}`}
+                  role="option"
+                  aria-selected={i === act}
+                  onMouseDown={(e) => e.preventDefault()}
+                  onMouseMove={() => setAct(i)}
+                  onClick={(e) => choose(h, e.detail === 0)}
+                  className={`min-h-11 cursor-pointer rounded-2xl px-3 py-1.5 ${i === act ? "bg-mist" : ""}`}
+                >
+                  <span className="block truncate text-sm font-medium">{h.label}</span>
+                  <span className="block truncate text-xs text-muted">{h.sub}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          <p className="sr-only" aria-live="polite">
+            {listOpen && term ? (hits.length ? `${hits.length} results. Use the up and down arrows, then Enter.` : "No results.") : ""}
+          </p>
+        </div>
       </div>
 
       {/* zoom and turn */}
-      <div role="group" aria-label="Zoom and turn" className="stage-panel absolute right-4 top-[10rem] flex flex-col gap-1 rounded-full p-1 sm:right-5 sm:top-24" style={{ right: wide && selected ? 392 : undefined }}>
+      <div role="group" aria-label="Zoom and turn" className="stage-panel absolute right-4 top-[14rem] flex flex-col gap-1 rounded-full p-1 sm:right-5 sm:top-24" style={{ right: wide && selected ? 392 : undefined }}>
         <button type="button" onClick={() => zoom(1.6)} aria-label="Zoom in" className="stage-icon">
           <Plus aria-hidden className="size-5" />
         </button>
@@ -409,6 +516,7 @@ export function WardStage({ data }: { data: StageData }) {
               <h3 ref={titleRef} tabIndex={-1} className="display mt-1 text-[1.7rem] outline-offset-4">
                 {selected.name}
               </h3>
+              {pinRoad && <p className="mt-1 text-sm text-accent-ink">Showing {pinRoad} on the map</p>}
             </div>
             <div className="flex shrink-0 gap-1">
               <button type="button" aria-label="Previous ward" disabled={at <= 0} onClick={() => select(ordered[at - 1], true)} className="stage-icon">
