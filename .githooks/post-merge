@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# After every pull or merge, write SYNC_REPORT.md with the incoming diffs and context.
+exec "$(git rev-parse --show-toplevel)/scripts/sync.sh" --after-pull

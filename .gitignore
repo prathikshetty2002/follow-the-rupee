@@ -10,3 +10,4 @@ node_modules/
 .DS_Store
 .claude/settings.local.json
 pipeline/cache/
+SYNC_REPORT.md

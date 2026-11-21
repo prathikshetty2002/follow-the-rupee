@@ -39,6 +39,26 @@ Don't edit files owned by the other person. If you need a change there, say what
 - `ANTHROPIC_API_KEY` goes in `pipeline/.env` (see `.env.example`). Never commit keys.
 
 ## Git workflow
-- `main` must always run. Pull before starting: `git pull --rebase origin main`.
-- Short branches: `prathik/<feature>` and `partner/<feature>`. Merge to `main` every 1–2 hours.
-- Small commits with clear messages. Run lint/build (web) or the pipeline before pushing.
+Branches (all on GitHub):
+| Branch | Who | Purpose |
+|---|---|---|
+| `prathik/data-models` | Prathik | Pipeline, models, generated data. Work and commit here |
+| `noel/dashboard` | Noel | Dashboard UI. Work and commit here |
+| `dev` | Both | Integration. Both merge their branch into it; it must build |
+| `main` | Both | Demo and judging branch. Only receives `dev` at sync points (12:30, 14:30, 15:30) |
+
+Rules:
+- One-time per clone: `bash scripts/setup-collab.sh` (turns on the sync report, uses merges not rebases).
+- **Start of every work block:** `git fetch`, then `scripts/sync.sh`. It prints what is on `origin/dev` that you do not have,
+  who owns each changed area, contract/dependency/overlap warnings, and the commands to keep or discard parts of it.
+  Read `SYNC_REPORT.md`, then merge: `git merge origin/dev` (or `git merge --no-commit --no-ff origin/dev` and
+  `git checkout HEAD -- <file>` for any file you want to discard). Pulls also write `SYNC_REPORT.md` automatically.
+- **Ship to dev:** commit, `git merge origin/dev` into your branch, run the checks (pipeline: `uv run pytest`;
+  web: `npm run lint && npm run build`), then `git push origin <your-branch>` and merge into `dev`
+  (`gh pr create --base dev --fill` then `gh pr merge --merge`, or `git switch dev && git merge --no-ff <your-branch> && git push`).
+- **Leave a note:** add an entry at the top of `HANDOFF.md` whenever you push something the other person should know about
+  (contract change, new data file, a changed number, something they must do). Keep it short and factual.
+- **Ship to main:** only from `dev`, only when `dev` builds: `git switch main && git merge --no-ff dev && git push`.
+- Never force-push `dev` or `main`. Never commit directly to them except merges.
+- Stay in your own folders (see Ownership). If you must touch the other person's files or the contract, say so in `HANDOFF.md`.
+- Small commits with clear messages.
