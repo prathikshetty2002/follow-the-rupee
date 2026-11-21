@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-11-21T11:26:41+05:30",
+  "train": "before 2025-08-01",
+  "test": "2025-08-01 to 2025-09-30",
+  "roads": 291,
+  "random_precision_at_3": 0.25,
+  "results": [
+    {
+      "score": "index (flood + history + impact terms)",
+      "work_orders_city": 0.547,
+      "work_orders_in_ward": 0.352,
+      "complaints_city": 0.54,
+      "complaints_in_ward": 0.321,
+      "reopens_city": 0.377,
+      "reopens_in_ward": 0.2,
+      "spend_city": 0.537,
+      "spend_in_ward": 0.379,
+      "precision_at_3_work_orders": 0.458,
+      "work_orders_city_ci95": [
+        0.463,
+        0.632
+      ]
+    },
+    {
+      "score": "index likelihood only (flood + history)",
+      "work_orders_city": 0.585,
+      "work_orders_in_ward": 0.323,
+      "complaints_city": 0.587,
+      "complaints_in_ward": 0.272,
+      "reopens_city": 0.409,
+      "reopens_in_ward": 0.335,
+      "spend_city": 0.572,
+      "spend_in_ward": 0.409,
+      "precision_at_3_work_orders": 0.472,
+      "work_orders_city_ci95": [
+        0.504,
+        0.659
+      ]
+    },
+    {
+      "score": "baseline: past work-order count",
+      "work_orders_city": 0.602,
+      "work_orders_in_ward": 0.309,
+      "complaints_city": 0.612,
+      "complaints_in_ward": 0.309,
+      "reopens_city": 0.431,
+      "reopens_in_ward": 0.218,
+      "spend_city": 0.562,
+      "spend_in_ward": 0.358,
+      "precision_at_3_work_orders": 0.486,
+      "work_orders_city_ci95": [
+        0.52,
+        0.677
+      ]
+    },
+    {
+      "score": "baseline: past complaint count",
+      "work_orders_city": 0.603,
+      "work_orders_in_ward": 0.303,
+      "complaints_city": 0.636,
+      "complaints_in_ward": 0.326,
+      "reopens_city": 0.446,
+      "reopens_in_ward": 0.249,
+      "spend_city": 0.564,
+      "spend_in_ward": 0.346,
+      "precision_at_3_work_orders": 0.542,
+      "work_orders_city_ci95": [
+        0.523,
+        0.675
+      ]
+    },
+    {
+      "score": "baseline: equal-weight static factors",
+      "work_orders_city": 0.375,
+      "work_orders_in_ward": 0.215,
+      "complaints_city": 0.351,
+      "complaints_in_ward": 0.151,
+      "reopens_city": 0.266,
+      "reopens_in_ward": 0.098,
+      "spend_city": 0.386,
+      "spend_in_ward": 0.247,
+      "precision_at_3_work_orders": 0.361,
+      "work_orders_city_ci95": [
+        0.27,
+        0.467
+      ]
+    }
+  ]
+}

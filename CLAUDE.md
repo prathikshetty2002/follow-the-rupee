@@ -20,7 +20,9 @@ budget recommendation 20%, connecting the trail 15%, usability 10%, demo 10%.
 Don't edit files owned by the other person. If you need a change there, say what and why.
 
 ## Commands
-- Pipeline: `cd pipeline && uv run pipeline` (add deps with `uv add <pkg>`)
+- Pipeline: `cd pipeline && uv run pipeline next-rupee` builds the next-rupee plan, backtest and `web/public/data/*.json`
+  (~40 s). `uv run pipeline` prints a data summary, `uv run pytest` runs tests, `uv add <pkg>` adds deps.
+- Tunable weights and thresholds for the index: `pipeline/src/pipeline/config.py` only.
 - Web: `cd web && npm install && npm run dev` → http://localhost:3000
 - Web checks: `cd web && npm run lint && npm run build`
 - Next.js here is v16; read `web/AGENTS.md` and `web/node_modules/next/dist/docs/` before using APIs.

@@ -9,7 +9,7 @@
     "sla_met_rate": 0.66,
     "reopen_rate": 0.38,
     "low_lying_index": 0.35,
-    "risk_score": 35,
+    "risk_score": 7,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -86,33 +86,106 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0011",
-        "road_name": "Colaba Causeway",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0005",
+        "road_name": "Veer Nariman Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Congestion 9.8/10, 4,776 vehicles in the peak hour, BEST bus route",
+          "9 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0326",
+        "work_type": "Pothole",
+        "priority_score": 37.6,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0007",
-        "road_name": "Veer Nariman Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0009",
+        "road_name": "Colaba Causeway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "10 complaints and 1 failed repairs already logged on this road",
+          "Congestion 8.4/10, 1,225 vehicles in the peak hour"
+        ],
+        "issue_id": "OI-0128",
+        "work_type": "Pothole",
+        "priority_score": 37.0,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0001",
-        "road_name": "Shahid Bhagat Singh Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0011",
+        "road_name": "Colaba Causeway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "14 complaints and 0 failed repairs already logged on this road",
+          "Access road for 1 municipal school(s)"
+        ],
+        "issue_id": "OI-0554",
+        "work_type": "Pothole",
+        "priority_score": 31.4,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0010",
+        "road_name": "Colaba Causeway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "9 complaints and 1 failed repairs already logged on this road",
+          "Congestion 8.5/10, 824 vehicles in the peak hour",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0129",
+        "work_type": "Pothole",
+        "priority_score": 29.9,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0003",
+        "road_name": "Shahid Bhagat Singh Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Congestion 4.8/10, 2,271 vehicles in the peak hour, BEST bus route",
+          "Access road for 1 municipal school(s)"
+        ],
+        "issue_id": "OI-0269",
+        "work_type": "Pothole",
+        "priority_score": 28.9,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0008",
+        "road_name": "Veer Nariman Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Congestion 4.4/10, 3,793 vehicles in the peak hour, BEST bus route",
+          "Access road for 1 municipal school(s)"
+        ],
+        "issue_id": "OI-0568",
+        "work_type": "Pothole",
+        "priority_score": 27.7,
+        "funded": false,
+        "dlp": false
       }
     ]
   },
@@ -126,7 +199,7 @@
     "sla_met_rate": 0.57,
     "reopen_rate": 0.2,
     "low_lying_index": 0.55,
-    "risk_score": 55,
+    "risk_score": 15,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -207,33 +280,158 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0016",
-        "road_name": "P D'Mello Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0012",
+        "road_name": "Mohammed Ali Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "Ambulance access road for Sir JJ Hospital",
+          "640 m from Masjid Bunder East flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.55"
+        ],
+        "issue_id": "OI-0570",
+        "work_type": "Open or broken manhole",
+        "priority_score": 58.5,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0020",
-        "road_name": "Nishanpada Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0016",
+        "road_name": "P D'Mello Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "270 m from Masjid Bunder East flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "37 complaints and 4 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0505",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 55.3,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0021",
+        "road_id": "RD0020",
         "road_name": "Nishanpada Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "160 m from Masjid Bunder East flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "22 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0105",
+        "work_type": "Waterlogging",
+        "priority_score": 51.2,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0014",
+        "road_name": "Mohammed Ali Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "Congestion 8.6/10, 2,554 vehicles in the peak hour, BEST bus route",
+          "4 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0470",
+        "work_type": "Open or broken manhole",
+        "priority_score": 49.4,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0020",
+        "road_name": "Nishanpada Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "160 m from Masjid Bunder East flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "22 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0550",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 48.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0020",
+        "road_name": "Nishanpada Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "160 m from Masjid Bunder East flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "22 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0101",
+        "work_type": "Pothole",
+        "priority_score": 45.9,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0026",
+        "road_name": "Jagannath Shankarseth Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "630 m from Masjid Bunder East flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "4 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0518",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 39.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0027",
+        "road_name": "Jagannath Shankarseth Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "860 m from Masjid Bunder East flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "4 complaints and 0 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0497",
+        "work_type": "Pothole",
+        "priority_score": 35.5,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0019",
+        "road_name": "P D'Mello Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "870 m from Masjid Bunder East flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "Congestion 6.2/10, 3,273 vehicles in the peak hour, BEST bus route",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0060",
+        "work_type": "Pothole",
+        "priority_score": 34.6,
+        "funded": true,
+        "dlp": true
       }
     ]
   },
@@ -247,7 +445,7 @@
     "sla_met_rate": 0.65,
     "reopen_rate": 0.4,
     "low_lying_index": 0.45,
-    "risk_score": 45,
+    "risk_score": 11,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -312,33 +510,157 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0032",
-        "road_name": "Nepean Sea Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0023",
+        "road_name": "Kalbadevi Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "9 complaints and 2 failed repairs already logged on this road",
+          "Access road for 1 municipal school(s)",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0469",
+        "work_type": "Open or broken manhole",
+        "priority_score": 46.8,
+        "funded": true,
+        "dlp": true
       },
       {
         "rank": 2,
-        "road_id": "RD0023",
-        "road_name": "Kalbadevi Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0029",
+        "road_name": "Princess Street",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "8 complaints and 0 failed repairs already logged on this road",
+          "Congestion 6.9/10, 572 vehicles in the peak hour"
+        ],
+        "issue_id": "OI-0365",
+        "work_type": "Open or broken manhole",
+        "priority_score": 41.5,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0033",
-        "road_name": "Nepean Sea Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0030",
+        "road_name": "Princess Street",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "Access road for 2 municipal school(s)",
+          "5 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0136",
+        "work_type": "Waterlogging",
+        "priority_score": 38.3,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": null,
+        "road_name": "Marine",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "Repeat problem area",
+          "Near hospitals or schools"
+        ],
+        "issue_id": "OI-0015",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 36.4,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0030",
+        "road_name": "Princess Street",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Access road for 2 municipal school(s)",
+          "5 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0147",
+        "work_type": "Pothole",
+        "priority_score": 32.0,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0029",
+        "road_name": "Princess Street",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "8 complaints and 0 failed repairs already logged on this road",
+          "Congestion 6.9/10, 572 vehicles in the peak hour"
+        ],
+        "issue_id": "OI-0038",
+        "work_type": "Pothole",
+        "priority_score": 30.6,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0022",
+        "road_name": "Kalbadevi Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Congestion 9.2/10, 1,178 vehicles in the peak hour",
+          "2 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0096",
+        "work_type": "Pothole",
+        "priority_score": 29.0,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0028",
+        "road_name": "Princess Street",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "5 complaints and 1 failed repairs already logged on this road",
+          "Low-lying ward (index 0.45)"
+        ],
+        "issue_id": "OI-0041",
+        "work_type": "Pothole",
+        "priority_score": 28.8,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0028",
+        "road_name": "Princess Street",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "5 complaints and 1 failed repairs already logged on this road",
+          "Low-lying ward (index 0.45)"
+        ],
+        "issue_id": "OI-0435",
+        "work_type": "Pothole",
+        "priority_score": 28.4,
+        "funded": false,
+        "dlp": false
       }
     ]
   },
@@ -352,7 +674,7 @@
     "sla_met_rate": 0.55,
     "reopen_rate": 0.2,
     "low_lying_index": 0.4,
-    "risk_score": 40,
+    "risk_score": 9,
     "spend_by_method": [
       {
         "repair_method": "Desilting and garbage removal",
@@ -425,33 +747,124 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0039",
-        "road_name": "Tardeo Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0041",
+        "road_name": "Peddar Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Congestion 9.4/10, 5,210 vehicles in the peak hour, BEST bus route",
+          "6 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0122",
+        "work_type": "Pothole",
+        "priority_score": 41.2,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
         "road_id": "RD0037",
         "road_name": "Tardeo Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "14 complaints and 1 failed repairs already logged on this road",
+          "Access road for 2 municipal school(s)"
+        ],
+        "issue_id": "OI-0311",
+        "work_type": "Pothole",
+        "priority_score": 37.9,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0034",
+        "road_id": "RD0036",
         "road_name": "Pandita Ramabai Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "6 complaints and 0 failed repairs already logged on this road",
+          "Access road for 1 municipal school(s)",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0420",
+        "work_type": "Waterlogging",
+        "priority_score": 37.4,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0037",
+        "road_name": "Tardeo Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "14 complaints and 1 failed repairs already logged on this road",
+          "Access road for 2 municipal school(s)"
+        ],
+        "issue_id": "OI-0003",
+        "work_type": "Pothole",
+        "priority_score": 37.2,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0044",
+        "road_name": "Peddar Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Congestion 7.0/10, 3,975 vehicles in the peak hour, BEST bus route",
+          "6 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0176",
+        "work_type": "Pothole",
+        "priority_score": 34.4,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": null,
+        "road_name": "Nana",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "Repeat problem area",
+          "Busy road area"
+        ],
+        "issue_id": "OI-0380",
+        "work_type": "Waterlogging",
+        "priority_score": 34.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0036",
+        "road_name": "Pandita Ramabai Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "6 complaints and 0 failed repairs already logged on this road",
+          "Access road for 1 municipal school(s)",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0569",
+        "work_type": "Pothole",
+        "priority_score": 31.7,
+        "funded": true,
+        "dlp": true
       }
     ]
   },
@@ -465,7 +878,7 @@
     "sla_met_rate": 0.63,
     "reopen_rate": 0.31,
     "low_lying_index": 0.7,
-    "risk_score": 70,
+    "risk_score": 40,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -546,33 +959,178 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0055",
+        "road_id": "RD0057",
         "road_name": "Bellasis Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "460 m from Byculla Station West flood hotspot (floods above 100 mm/day); ward low-lying index 0.70",
+          "17 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0161",
+        "work_type": "Road cave-in",
+        "priority_score": 72.2,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0052",
-        "road_name": "Clare Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0055",
+        "road_name": "Bellasis Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "290 m from Byculla Station West flood hotspot (floods above 100 mm/day); ward low-lying index 0.70",
+          "68 complaints and 9 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0332",
+        "work_type": "Open or broken manhole",
+        "priority_score": 64.3,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0049",
-        "road_name": "Maulana Azad Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0056",
+        "road_name": "Bellasis Road",
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "300 m from Byculla Station West flood hotspot (floods above 100 mm/day); ward low-lying index 0.70",
+          "12 complaints and 1 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0494",
+        "work_type": "Road cave-in",
+        "priority_score": 62.5,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0052",
+        "road_name": "Clare Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "120 m from Byculla Station West flood hotspot (floods above 100 mm/day); ward low-lying index 0.70",
+          "44 complaints and 3 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0260",
+        "work_type": "Waterlogging",
+        "priority_score": 61.7,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0055",
+        "road_name": "Bellasis Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "290 m from Byculla Station West flood hotspot (floods above 100 mm/day); ward low-lying index 0.70",
+          "68 complaints and 9 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0511",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 58.7,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0052",
+        "road_name": "Clare Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "120 m from Byculla Station West flood hotspot (floods above 100 mm/day); ward low-lying index 0.70",
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "44 complaints and 3 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0226",
+        "work_type": "Pothole",
+        "priority_score": 55.3,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0052",
+        "road_name": "Clare Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "120 m from Byculla Station West flood hotspot (floods above 100 mm/day); ward low-lying index 0.70",
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "44 complaints and 3 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0368",
+        "work_type": "Pothole",
+        "priority_score": 55.3,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0055",
+        "road_name": "Bellasis Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "290 m from Byculla Station West flood hotspot (floods above 100 mm/day); ward low-lying index 0.70",
+          "68 complaints and 9 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0306",
+        "work_type": "Pothole",
+        "priority_score": 54.8,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0046",
+        "road_name": "Dr Babasaheb Ambedkar Road",
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
+        "reasons": [
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "15 complaints and 2 failed repairs already logged on this road",
+          "Congestion 9.0/10, 2,673 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0504",
+        "work_type": "Road cave-in",
+        "priority_score": 54.8,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0056",
+        "road_name": "Bellasis Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "300 m from Byculla Station West flood hotspot (floods above 100 mm/day); ward low-lying index 0.70",
+          "12 complaints and 1 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0528",
+        "work_type": "Pothole",
+        "priority_score": 50.3,
+        "funded": true,
+        "dlp": true
       }
     ]
   },
@@ -586,7 +1144,7 @@
     "sla_met_rate": 0.27,
     "reopen_rate": 0.16,
     "low_lying_index": 0.85,
-    "risk_score": 85,
+    "risk_score": 70,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -669,31 +1227,171 @@
         "rank": 1,
         "road_id": "RD0058",
         "road_name": "Dr Babasaheb Ambedkar Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "280 m from Hindmata Junction flood hotspot (floods above 60 mm/day); ward low-lying index 0.85",
+          "87 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0200",
+        "work_type": "Road cave-in",
+        "priority_score": 80.5,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0093",
-        "road_name": "Ganpatrao Kadam Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0058",
+        "road_name": "Dr Babasaheb Ambedkar Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "280 m from Hindmata Junction flood hotspot (floods above 60 mm/day); ward low-lying index 0.85",
+          "87 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0182",
+        "work_type": "Open or broken manhole",
+        "priority_score": 78.5,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0063",
-        "road_name": "Dr E Moses Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0058",
+        "road_name": "Dr Babasaheb Ambedkar Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "280 m from Hindmata Junction flood hotspot (floods above 60 mm/day); ward low-lying index 0.85",
+          "87 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0251",
+        "work_type": "Waterlogging",
+        "priority_score": 74.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0058",
+        "road_name": "Dr Babasaheb Ambedkar Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "280 m from Hindmata Junction flood hotspot (floods above 60 mm/day); ward low-lying index 0.85",
+          "87 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0053",
+        "work_type": "Waterlogging",
+        "priority_score": 73.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0058",
+        "road_name": "Dr Babasaheb Ambedkar Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "280 m from Hindmata Junction flood hotspot (floods above 60 mm/day); ward low-lying index 0.85",
+          "87 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0125",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 72.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0058",
+        "road_name": "Dr Babasaheb Ambedkar Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "280 m from Hindmata Junction flood hotspot (floods above 60 mm/day); ward low-lying index 0.85",
+          "87 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0090",
+        "work_type": "Pothole",
+        "priority_score": 68.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0058",
+        "road_name": "Dr Babasaheb Ambedkar Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "280 m from Hindmata Junction flood hotspot (floods above 60 mm/day); ward low-lying index 0.85",
+          "87 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0508",
+        "work_type": "Pothole",
+        "priority_score": 67.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0068",
+        "road_name": "Acharya Donde Marg",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "450 m from Hindmata Junction flood hotspot (floods above 60 mm/day); ward low-lying index 0.85",
+          "14 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0245",
+        "work_type": "Open or broken manhole",
+        "priority_score": 65.0,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0065",
+        "road_name": "G D Ambekar Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "430 m from Lalbaug Flyover underpass flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.85",
+          "13 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0425",
+        "work_type": "Waterlogging",
+        "priority_score": 61.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0066",
+        "road_name": "G D Ambekar Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "370 m from Lalbaug Flyover underpass flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.85",
+          "17 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0059",
+        "work_type": "Waterlogging",
+        "priority_score": 61.5,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -707,7 +1405,7 @@
     "sla_met_rate": 0.43,
     "reopen_rate": 0.25,
     "low_lying_index": 0.9,
-    "risk_score": 90,
+    "risk_score": 79,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -788,33 +1486,173 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0078",
-        "road_name": "Road No 24 Sion",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0077",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "30 m from Sion Road No 24 flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.90",
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "45 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0293",
+        "work_type": "Waterlogging",
+        "priority_score": 73.1,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0071",
-        "road_name": "Sion Trombay Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0077",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "30 m from Sion Road No 24 flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.90",
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "45 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0033",
+        "work_type": "Waterlogging",
+        "priority_score": 72.9,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
+        "road_id": "RD0077",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "30 m from Sion Road No 24 flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.90",
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "45 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0076",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 70.6,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0077",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "30 m from Sion Road No 24 flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.90",
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "45 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0144",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 70.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0077",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "30 m from Sion Road No 24 flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.90",
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "45 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0042",
+        "work_type": "Pothole",
+        "priority_score": 66.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0077",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "30 m from Sion Road No 24 flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.90",
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "45 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0146",
+        "work_type": "Pothole",
+        "priority_score": 66.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0071",
+        "road_name": "Sion Trombay Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "260 m from Gandhi Market, Kings Circle flood hotspot (floods above 100 mm/day); ward low-lying index 0.90",
+          "45 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0458",
+        "work_type": "Waterlogging",
+        "priority_score": 61.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
         "road_id": "RD0074",
         "road_name": "Sion Trombay Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "340 m from Wadala Bridge Bhakti Park flood hotspot (floods above 90 mm/day); ward low-lying index 0.90",
+          "47 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0457",
+        "work_type": "Waterlogging",
+        "priority_score": 61.2,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0071",
+        "road_name": "Sion Trombay Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "260 m from Gandhi Market, Kings Circle flood hotspot (floods above 100 mm/day); ward low-lying index 0.90",
+          "45 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0181",
+        "work_type": "Waterlogging",
+        "priority_score": 61.1,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0074",
+        "road_name": "Sion Trombay Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "340 m from Wadala Bridge Bhakti Park flood hotspot (floods above 90 mm/day); ward low-lying index 0.90",
+          "47 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0106",
+        "work_type": "Waterlogging",
+        "priority_score": 60.9,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -828,7 +1666,7 @@
     "sla_met_rate": 0.56,
     "reopen_rate": 0.33,
     "low_lying_index": 0.6,
-    "risk_score": 60,
+    "risk_score": 40,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -905,33 +1743,176 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0083",
+        "road_id": "RD0084",
         "road_name": "Senapati Bapat Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "260 m from Worli Naka flood hotspot (floods above 90 mm/day); ward low-lying index 0.60",
+          "34 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0206",
+        "work_type": "Waterlogging",
+        "priority_score": 62.1,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0084",
+        "road_id": "RD0083",
         "road_name": "Senapati Bapat Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "260 m from Worli Naka flood hotspot (floods above 90 mm/day); ward low-lying index 0.60",
+          "35 complaints and 3 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0213",
+        "work_type": "Waterlogging",
+        "priority_score": 57.6,
+        "funded": true,
+        "dlp": true
       },
       {
         "rank": 3,
         "road_id": "RD0088",
         "road_name": "Dr Annie Besant Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "21 complaints and 2 failed repairs already logged on this road",
+          "Congestion 9.6/10, 4,132 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0016",
+        "work_type": "Waterlogging",
+        "priority_score": 57.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0083",
+        "road_name": "Senapati Bapat Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "260 m from Worli Naka flood hotspot (floods above 90 mm/day); ward low-lying index 0.60",
+          "35 complaints and 3 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0339",
+        "work_type": "Waterlogging",
+        "priority_score": 57.2,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0084",
+        "road_name": "Senapati Bapat Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "260 m from Worli Naka flood hotspot (floods above 90 mm/day); ward low-lying index 0.60",
+          "34 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0043",
+        "work_type": "Pothole",
+        "priority_score": 56.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0084",
+        "road_name": "Senapati Bapat Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "260 m from Worli Naka flood hotspot (floods above 90 mm/day); ward low-lying index 0.60",
+          "34 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0242",
+        "work_type": "Pothole",
+        "priority_score": 56.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0088",
+        "road_name": "Dr Annie Besant Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "21 complaints and 2 failed repairs already logged on this road",
+          "Congestion 9.6/10, 4,132 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0367",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 55.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0088",
+        "road_name": "Dr Annie Besant Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "21 complaints and 2 failed repairs already logged on this road",
+          "Congestion 9.6/10, 4,132 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0158",
+        "work_type": "Pothole",
+        "priority_score": 52.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0083",
+        "road_name": "Senapati Bapat Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "260 m from Worli Naka flood hotspot (floods above 90 mm/day); ward low-lying index 0.60",
+          "35 complaints and 3 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0214",
+        "work_type": "Pothole",
+        "priority_score": 51.7,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0088",
+        "road_name": "Dr Annie Besant Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "21 complaints and 2 failed repairs already logged on this road",
+          "Congestion 9.6/10, 4,132 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0523",
+        "work_type": "Pothole",
+        "priority_score": 51.5,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -945,7 +1926,7 @@
     "sla_met_rate": 0.37,
     "reopen_rate": 0.29,
     "low_lying_index": 0.8,
-    "risk_score": 80,
+    "risk_score": 66,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -1026,33 +2007,181 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0102",
+        "road_id": "RD0101",
         "road_name": "90 Feet Road Dharavi",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "56 complaints and 7 failed repairs already logged on this road",
+          "570 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0222",
+        "work_type": "Open or broken manhole",
+        "priority_score": 69.0,
+        "funded": true,
+        "dlp": true
       },
       {
         "rank": 2,
-        "road_id": "RD0096",
-        "road_name": "Senapati Bapat Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0101",
+        "road_name": "90 Feet Road Dharavi",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "56 complaints and 7 failed repairs already logged on this road",
+          "570 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0353",
+        "work_type": "Waterlogging",
+        "priority_score": 64.0,
+        "funded": true,
+        "dlp": true
       },
       {
         "rank": 3,
         "road_id": "RD0101",
         "road_name": "90 Feet Road Dharavi",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "56 complaints and 7 failed repairs already logged on this road",
+          "570 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0196",
+        "work_type": "Waterlogging",
+        "priority_score": 63.8,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0101",
+        "road_name": "90 Feet Road Dharavi",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "56 complaints and 7 failed repairs already logged on this road",
+          "570 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0531",
+        "work_type": "Waterlogging",
+        "priority_score": 63.6,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0101",
+        "road_name": "90 Feet Road Dharavi",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "56 complaints and 7 failed repairs already logged on this road",
+          "570 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0212",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 62.0,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0102",
+        "road_name": "90 Feet Road Dharavi",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "52 complaints and 5 failed repairs already logged on this road",
+          "560 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80"
+        ],
+        "issue_id": "OI-0355",
+        "work_type": "Waterlogging",
+        "priority_score": 58.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0101",
+        "road_name": "90 Feet Road Dharavi",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "56 complaints and 7 failed repairs already logged on this road",
+          "570 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0576",
+        "work_type": "Pothole",
+        "priority_score": 58.3,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0101",
+        "road_name": "90 Feet Road Dharavi",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "56 complaints and 7 failed repairs already logged on this road",
+          "570 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0049",
+        "work_type": "Pothole",
+        "priority_score": 58.0,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0101",
+        "road_name": "90 Feet Road Dharavi",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "56 complaints and 7 failed repairs already logged on this road",
+          "570 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0201",
+        "work_type": "Pothole",
+        "priority_score": 57.6,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0105",
+        "road_name": "Gokhale Road",
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
+        "reasons": [
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "770 m from Dharavi 90 Feet Road flood hotspot (floods above 120 mm/day); ward low-lying index 0.80",
+          "20 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0558",
+        "work_type": "Road cave-in",
+        "priority_score": 55.6,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -1066,7 +2195,7 @@
     "sla_met_rate": 0.49,
     "reopen_rate": 0.26,
     "low_lying_index": 0.75,
-    "risk_score": 75,
+    "risk_score": 55,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -1149,31 +2278,171 @@
         "rank": 1,
         "road_id": "RD0110",
         "road_name": "Kalanagar Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "82 complaints and 10 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0478",
+        "work_type": "Open or broken manhole",
+        "priority_score": 64.9,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0108",
-        "road_name": "Western Express Highway",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0110",
+        "road_name": "Kalanagar Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "82 complaints and 10 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0446",
+        "work_type": "Waterlogging",
+        "priority_score": 60.4,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
+        "road_id": "RD0110",
+        "road_name": "Kalanagar Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "82 complaints and 10 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0001",
+        "work_type": "Waterlogging",
+        "priority_score": 60.0,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
         "road_id": "RD0115",
         "road_name": "Vakola Bridge Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "45 complaints and 4 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0040",
+        "work_type": "Waterlogging",
+        "priority_score": 58.9,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0115",
+        "road_name": "Vakola Bridge Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "45 complaints and 4 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0333",
+        "work_type": "Waterlogging",
+        "priority_score": 58.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0110",
+        "road_name": "Kalanagar Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "82 complaints and 10 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0487",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 57.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0110",
+        "road_name": "Kalanagar Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "82 complaints and 10 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0308",
+        "work_type": "Pothole",
+        "priority_score": 54.6,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0110",
+        "road_name": "Kalanagar Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "82 complaints and 10 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0002",
+        "work_type": "Pothole",
+        "priority_score": 54.6,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0110",
+        "road_name": "Kalanagar Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "82 complaints and 10 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0567",
+        "work_type": "Pothole",
+        "priority_score": 54.0,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0113",
+        "road_name": "Vakola Bridge Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "26 complaints and 2 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0008",
+        "work_type": "Waterlogging",
+        "priority_score": 52.8,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -1187,7 +2456,7 @@
     "sla_met_rate": 0.45,
     "reopen_rate": 0.26,
     "low_lying_index": 0.55,
-    "risk_score": 55,
+    "risk_score": 13,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -1268,33 +2537,158 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0119",
-        "road_name": "SV Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0120",
+        "road_name": "Linking Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "17 complaints and 2 failed repairs already logged on this road",
+          "2 accidents caused by road defects on this road (1 fatal)"
+        ],
+        "issue_id": "OI-0423",
+        "work_type": "Open or broken manhole",
+        "priority_score": 57.0,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0124",
-        "road_name": "Hill Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0121",
+        "road_name": "Linking Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Congestion 7.2/10, 4,655 vehicles in the peak hour, BEST bus route",
+          "1 accidents caused by road defects on this road (1 fatal)"
+        ],
+        "issue_id": "OI-0039",
+        "work_type": "Pothole",
+        "priority_score": 48.0,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 3,
+        "road_id": "RD0119",
+        "road_name": "SV Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "54 complaints and 4 failed repairs already logged on this road",
+          "740 m from Khar Subway flood hotspot (floods above 70 mm/day); ward low-lying index 0.55",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0035",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 47.0,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0118",
+        "road_name": "SV Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "12 complaints and 1 failed repairs already logged on this road",
+          "980 m from Khar Subway flood hotspot (floods above 70 mm/day); ward low-lying index 0.55"
+        ],
+        "issue_id": "OI-0141",
+        "work_type": "Waterlogging",
+        "priority_score": 41.6,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0126",
+        "road_name": "Hill Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "400 m from Kalanagar Junction flood hotspot (floods above 80 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "15 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0485",
+        "work_type": "Pothole",
+        "priority_score": 40.2,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0118",
+        "road_name": "SV Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "12 complaints and 1 failed repairs already logged on this road",
+          "980 m from Khar Subway flood hotspot (floods above 70 mm/day); ward low-lying index 0.55"
+        ],
+        "issue_id": "OI-0069",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 39.3,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 7,
         "road_id": "RD0120",
         "road_name": "Linking Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Paver blocks relaid",
+        "est_cost_inr": 64400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "17 complaints and 2 failed repairs already logged on this road",
+          "Broken paver blocks is a severity 1.4/5 problem (BMC normally allows ~154 h to fix it)",
+          "2 accidents caused by road defects on this road (1 fatal)"
+        ],
+        "issue_id": "OI-0402",
+        "work_type": "Broken paver blocks",
+        "priority_score": 36.8,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0117",
+        "road_name": "SV Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "7 complaints and 1 failed repairs already logged on this road",
+          "Low-lying ward (index 0.55)",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0335",
+        "work_type": "Pothole",
+        "priority_score": 33.2,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0129",
+        "road_name": "Milan Subway Road",
+        "recommended_method": "Paver blocks relaid",
+        "est_cost_inr": 64400,
+        "reasons": [
+          "Broken paver blocks is a severity 1.4/5 problem (BMC normally allows ~154 h to fix it)",
+          "Low-lying ward (index 0.55)",
+          "4 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0447",
+        "work_type": "Broken paver blocks",
+        "priority_score": 18.7,
+        "funded": false,
+        "dlp": false
       }
     ]
   },
@@ -1308,7 +2702,7 @@
     "sla_met_rate": 0.61,
     "reopen_rate": 0.24,
     "low_lying_index": 0.65,
-    "risk_score": 65,
+    "risk_score": 63,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -1391,31 +2785,171 @@
         "rank": 1,
         "road_id": "RD0136",
         "road_name": "Western Express Highway",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "80 complaints and 7 failed repairs already logged on this road",
+          "530 m from Marol Naka flood hotspot (floods above 120 mm/day); ward low-lying index 0.65"
+        ],
+        "issue_id": "OI-0284",
+        "work_type": "Open or broken manhole",
+        "priority_score": 66.8,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0133",
-        "road_name": "Andheri Kurla Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0146",
+        "road_name": "SV Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "450 m from Andheri Subway flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "18 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0527",
+        "work_type": "Waterlogging",
+        "priority_score": 63.6,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0137",
-        "road_name": "Mahakali Caves Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0136",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "80 complaints and 7 failed repairs already logged on this road",
+          "530 m from Marol Naka flood hotspot (floods above 120 mm/day); ward low-lying index 0.65"
+        ],
+        "issue_id": "OI-0288",
+        "work_type": "Waterlogging",
+        "priority_score": 62.0,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0136",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "80 complaints and 7 failed repairs already logged on this road",
+          "530 m from Marol Naka flood hotspot (floods above 120 mm/day); ward low-lying index 0.65"
+        ],
+        "issue_id": "OI-0465",
+        "work_type": "Waterlogging",
+        "priority_score": 61.4,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0136",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "80 complaints and 7 failed repairs already logged on this road",
+          "530 m from Marol Naka flood hotspot (floods above 120 mm/day); ward low-lying index 0.65"
+        ],
+        "issue_id": "OI-0202",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 59.4,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0136",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "80 complaints and 7 failed repairs already logged on this road",
+          "530 m from Marol Naka flood hotspot (floods above 120 mm/day); ward low-lying index 0.65"
+        ],
+        "issue_id": "OI-0044",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 59.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0146",
+        "road_name": "SV Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "450 m from Andheri Subway flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "18 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0534",
+        "work_type": "Pothole",
+        "priority_score": 58.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0146",
+        "road_name": "SV Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "450 m from Andheri Subway flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "18 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0441",
+        "work_type": "Pothole",
+        "priority_score": 57.9,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0139",
+        "road_name": "Mahakali Caves Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "28 complaints and 5 failed repairs already logged on this road",
+          "3 accidents caused by road defects on this road"
+        ],
+        "issue_id": "OI-0083",
+        "work_type": "Open or broken manhole",
+        "priority_score": 56.9,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0136",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "80 complaints and 7 failed repairs already logged on this road",
+          "530 m from Marol Naka flood hotspot (floods above 120 mm/day); ward low-lying index 0.65"
+        ],
+        "issue_id": "OI-0340",
+        "work_type": "Pothole",
+        "priority_score": 56.0,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -1429,7 +2963,7 @@
     "sla_met_rate": 0.56,
     "reopen_rate": 0.26,
     "low_lying_index": 0.7,
-    "risk_score": 70,
+    "risk_score": 63,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -1512,31 +3046,172 @@
         "rank": 1,
         "road_id": "RD0148",
         "road_name": "Juhu Tara Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "260 m from Andheri Subway flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.70",
+          "52 complaints and 7 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0266",
+        "work_type": "Open or broken manhole",
+        "priority_score": 63.4,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0156",
-        "road_name": "Link Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0153",
+        "road_name": "Andheri Subway",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "21 complaints and 2 failed repairs already logged on this road",
+          "Low-lying ward (index 0.70)"
+        ],
+        "issue_id": "OI-0410",
+        "work_type": "Open or broken manhole",
+        "priority_score": 58.5,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0149",
-        "road_name": "Juhu Tara Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0144",
+        "road_name": "SV Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "590 m from Andheri Subway flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.70",
+          "33 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0323",
+        "work_type": "Open or broken manhole",
+        "priority_score": 58.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0156",
+        "road_name": "Link Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "33 complaints and 5 failed repairs already logged on this road",
+          "Low-lying ward (index 0.70)"
+        ],
+        "issue_id": "OI-0411",
+        "work_type": "Open or broken manhole",
+        "priority_score": 57.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0155",
+        "road_name": "Link Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "32 complaints and 4 failed repairs already logged on this road",
+          "750 m from Andheri Subway flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.70",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0483",
+        "work_type": "Open or broken manhole",
+        "priority_score": 57.0,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0148",
+        "road_name": "Juhu Tara Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "260 m from Andheri Subway flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.70",
+          "52 complaints and 7 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0097",
+        "work_type": "Waterlogging",
+        "priority_score": 56.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0147",
+        "road_name": "Juhu Tara Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "430 m from Andheri Subway flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.70",
+          "30 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0265",
+        "work_type": "Open or broken manhole",
+        "priority_score": 56.2,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0153",
+        "road_name": "Andheri Subway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "21 complaints and 2 failed repairs already logged on this road",
+          "Low-lying ward (index 0.70)"
+        ],
+        "issue_id": "OI-0243",
+        "work_type": "Waterlogging",
+        "priority_score": 53.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0147",
+        "road_name": "Juhu Tara Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "430 m from Andheri Subway flood hotspot (floods above 60 mm/day, tide-sensitive); ward low-lying index 0.70",
+          "30 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0280",
+        "work_type": "Waterlogging",
+        "priority_score": 51.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0156",
+        "road_name": "Link Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "33 complaints and 5 failed repairs already logged on this road",
+          "Low-lying ward (index 0.70)"
+        ],
+        "issue_id": "OI-0217",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 51.2,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -1550,7 +3225,7 @@
     "sla_met_rate": 0.61,
     "reopen_rate": 0.21,
     "low_lying_index": 0.5,
-    "risk_score": 50,
+    "risk_score": 30,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -1631,33 +3306,178 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0166",
-        "road_name": "MG Road Goregaon",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0169",
+        "road_name": "Link Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "27 complaints and 2 failed repairs already logged on this road",
+          "790 m from Goregaon MG Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.50"
+        ],
+        "issue_id": "OI-0191",
+        "work_type": "Waterlogging",
+        "priority_score": 55.9,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0165",
-        "road_name": "Aarey Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0166",
+        "road_name": "MG Road Goregaon",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "460 m from Goregaon MG Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.50",
+          "37 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0268",
+        "work_type": "Waterlogging",
+        "priority_score": 55.6,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
+        "road_id": "RD0166",
+        "road_name": "MG Road Goregaon",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "460 m from Goregaon MG Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.50",
+          "37 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0262",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 53.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0167",
+        "road_name": "MG Road Goregaon",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "660 m from Goregaon MG Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.50",
+          "8 complaints and 0 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0555",
+        "work_type": "Open or broken manhole",
+        "priority_score": 51.9,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0162",
+        "road_name": "SV Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "16 complaints and 1 failed repairs already logged on this road",
+          "Congestion 8.0/10, 2,454 vehicles in the peak hour, BEST bus route",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0068",
+        "work_type": "Open or broken manhole",
+        "priority_score": 51.7,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0163",
+        "road_name": "Aarey Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "16 complaints and 3 failed repairs already logged on this road",
+          "Congestion 8.9/10, 1,932 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0277",
+        "work_type": "Open or broken manhole",
+        "priority_score": 51.2,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
         "road_id": "RD0169",
         "road_name": "Link Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "27 complaints and 2 failed repairs already logged on this road",
+          "790 m from Goregaon MG Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.50"
+        ],
+        "issue_id": "OI-0057",
+        "work_type": "Pothole",
+        "priority_score": 49.4,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0159",
+        "road_name": "SV Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "9 complaints and 1 failed repairs already logged on this road",
+          "Congestion 6.3/10, 3,964 vehicles in the peak hour, BEST bus route",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0066",
+        "work_type": "Open or broken manhole",
+        "priority_score": 47.0,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0167",
+        "road_name": "MG Road Goregaon",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "660 m from Goregaon MG Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.50",
+          "8 complaints and 0 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0551",
+        "work_type": "Pothole",
+        "priority_score": 41.3,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0162",
+        "road_name": "SV Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "16 complaints and 1 failed repairs already logged on this road",
+          "Congestion 8.0/10, 2,454 vehicles in the peak hour, BEST bus route",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0387",
+        "work_type": "Pothole",
+        "priority_score": 41.0,
+        "funded": true,
+        "dlp": true
       }
     ]
   },
@@ -1671,7 +3491,7 @@
     "sla_met_rate": 0.6,
     "reopen_rate": 0.25,
     "low_lying_index": 0.6,
-    "risk_score": 60,
+    "risk_score": 76,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -1752,33 +3572,174 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0180",
-        "road_name": "Malad Subway",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0174",
+        "road_name": "Marve Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "470 m from Malad Subway flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "42 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0338",
+        "work_type": "Waterlogging",
+        "priority_score": 68.5,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0175",
-        "road_name": "Marve Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0176",
+        "road_name": "SV Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "61 complaints and 8 failed repairs already logged on this road",
+          "680 m from Malad Subway flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0398",
+        "work_type": "Open or broken manhole",
+        "priority_score": 67.0,
+        "funded": true,
+        "dlp": true
       },
       {
         "rank": 3,
+        "road_id": "RD0180",
+        "road_name": "Malad Subway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "250 m from Malad Subway flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "90 complaints and 8 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0078",
+        "work_type": "Waterlogging",
+        "priority_score": 64.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0180",
+        "road_name": "Malad Subway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "250 m from Malad Subway flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "90 complaints and 8 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0439",
+        "work_type": "Waterlogging",
+        "priority_score": 64.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0175",
+        "road_name": "Marve Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "150 m from Malad Subway flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "86 complaints and 4 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0157",
+        "work_type": "Waterlogging",
+        "priority_score": 64.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0175",
+        "road_name": "Marve Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "150 m from Malad Subway flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "86 complaints and 4 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0029",
+        "work_type": "Waterlogging",
+        "priority_score": 64.4,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
         "road_id": "RD0173",
         "road_name": "Marve Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "59 complaints and 8 failed repairs already logged on this road",
+          "6 accidents caused by road defects on this road"
+        ],
+        "issue_id": "OI-0433",
+        "work_type": "Waterlogging",
+        "priority_score": 64.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0173",
+        "road_name": "Marve Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "59 complaints and 8 failed repairs already logged on this road",
+          "6 accidents caused by road defects on this road"
+        ],
+        "issue_id": "OI-0163",
+        "work_type": "Waterlogging",
+        "priority_score": 63.2,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0174",
+        "road_name": "Marve Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "470 m from Malad Subway flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "42 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0318",
+        "work_type": "Pothole",
+        "priority_score": 63.0,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0180",
+        "road_name": "Malad Subway",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "250 m from Malad Subway flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "90 complaints and 8 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0495",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 62.3,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -1792,7 +3753,7 @@
     "sla_met_rate": 0.56,
     "reopen_rate": 0.21,
     "low_lying_index": 0.5,
-    "risk_score": 50,
+    "risk_score": 38,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -1873,33 +3834,173 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0183",
+        "road_id": "RD0184",
         "road_name": "Link Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "23 complaints and 2 failed repairs already logged on this road",
+          "Congestion 9.7/10, 6,197 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0309",
+        "work_type": "Waterlogging",
+        "priority_score": 53.0,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0195",
-        "road_name": "Thakur Village Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0189",
+        "road_name": "SV Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "Congestion 9.1/10, 4,670 vehicles in the peak hour, BEST bus route",
+          "9 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0264",
+        "work_type": "Open or broken manhole",
+        "priority_score": 50.5,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0193",
-        "road_name": "Thakur Village Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0182",
+        "road_name": "Link Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "38 complaints and 2 failed repairs already logged on this road",
+          "Low-lying ward (index 0.60)"
+        ],
+        "issue_id": "OI-0047",
+        "work_type": "Waterlogging",
+        "priority_score": 48.0,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0184",
+        "road_name": "Link Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "23 complaints and 2 failed repairs already logged on this road",
+          "Congestion 9.7/10, 6,197 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0272",
+        "work_type": "Pothole",
+        "priority_score": 47.7,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0183",
+        "road_name": "Link Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "54 complaints and 3 failed repairs already logged on this road",
+          "Congestion 8.5/10, 2,341 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0061",
+        "work_type": "Waterlogging",
+        "priority_score": 47.3,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0186",
+        "road_name": "SV Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "29 complaints and 4 failed repairs already logged on this road",
+          "Congestion 6.3/10, 2,811 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0220",
+        "work_type": "Waterlogging",
+        "priority_score": 46.4,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0190",
+        "road_name": "Charkop Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Ambulance access road for Shatabdi Hospital Kandivali",
+          "19 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0548",
+        "work_type": "Pothole",
+        "priority_score": 44.1,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0190",
+        "road_name": "Charkop Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "Ambulance access road for Shatabdi Hospital Kandivali",
+          "19 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0388",
+        "work_type": "Pothole",
+        "priority_score": 44.1,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0195",
+        "road_name": "Thakur Village Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "35 complaints and 2 failed repairs already logged on this road",
+          "2 accidents caused by road defects on this road"
+        ],
+        "issue_id": "OI-0565",
+        "work_type": "Pothole",
+        "priority_score": 42.8,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0195",
+        "road_name": "Thakur Village Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "35 complaints and 2 failed repairs already logged on this road",
+          "2 accidents caused by road defects on this road"
+        ],
+        "issue_id": "OI-0190",
+        "work_type": "Pothole",
+        "priority_score": 41.8,
+        "funded": false,
+        "dlp": false
       }
     ]
   },
@@ -1913,7 +4014,7 @@
     "sla_met_rate": 0.59,
     "reopen_rate": 0.14,
     "low_lying_index": 0.4,
-    "risk_score": 40,
+    "risk_score": 35,
     "spend_by_method": [
       {
         "repair_method": "Manhole cover replaced + grating",
@@ -1994,33 +4095,177 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0199",
-        "road_name": "SV Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0204",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "25 complaints and 1 failed repairs already logged on this road",
+          "Congestion 4.8/10, 12,943 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0391",
+        "work_type": "Road cave-in",
+        "priority_score": 55.0,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0200",
-        "road_name": "LT Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0206",
+        "road_name": "Gorai Road",
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "23 complaints and 1 failed repairs already logged on this road",
+          "Congestion 8.5/10, 863 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0099",
+        "work_type": "Road cave-in",
+        "priority_score": 54.8,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0208",
-        "road_name": "Gorai Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0204",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "25 complaints and 1 failed repairs already logged on this road",
+          "Congestion 4.8/10, 12,943 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0450",
+        "work_type": "Open or broken manhole",
+        "priority_score": 53.4,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0205",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
+        "reasons": [
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "21 complaints and 0 failed repairs already logged on this road",
+          "Congestion 4.4/10, 15,545 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0393",
+        "work_type": "Road cave-in",
+        "priority_score": 50.3,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0204",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "25 complaints and 1 failed repairs already logged on this road",
+          "Congestion 4.8/10, 12,943 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0392",
+        "work_type": "Waterlogging",
+        "priority_score": 48.7,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0204",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "25 complaints and 1 failed repairs already logged on this road",
+          "Congestion 4.8/10, 12,943 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0017",
+        "work_type": "Waterlogging",
+        "priority_score": 48.1,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0197",
+        "road_name": "SV Road",
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
+        "reasons": [
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "29 complaints and 1 failed repairs already logged on this road",
+          "1 accidents caused by road defects on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0184",
+        "work_type": "Road cave-in",
+        "priority_score": 47.8,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0196",
+        "road_name": "SV Road",
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
+        "reasons": [
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "18 complaints and 1 failed repairs already logged on this road",
+          "Congestion 7.7/10, 3,409 vehicles in the peak hour, BEST bus route",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0250",
+        "work_type": "Road cave-in",
+        "priority_score": 46.7,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0197",
+        "road_name": "SV Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "29 complaints and 1 failed repairs already logged on this road",
+          "1 accidents caused by road defects on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0488",
+        "work_type": "Open or broken manhole",
+        "priority_score": 46.0,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0197",
+        "road_name": "SV Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "29 complaints and 1 failed repairs already logged on this road",
+          "1 accidents caused by road defects on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0529",
+        "work_type": "Open or broken manhole",
+        "priority_score": 46.0,
+        "funded": true,
+        "dlp": true
       }
     ]
   },
@@ -2034,7 +4279,7 @@
     "sla_met_rate": 0.55,
     "reopen_rate": 0.27,
     "low_lying_index": 0.65,
-    "risk_score": 65,
+    "risk_score": 27,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -2113,31 +4358,174 @@
         "rank": 1,
         "road_id": "RD0212",
         "road_name": "Western Express Highway",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "110 m from Dahisar Subway flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "37 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0142",
+        "work_type": "Road cave-in",
+        "priority_score": 73.8,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0211",
+        "road_id": "RD0212",
         "road_name": "Western Express Highway",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "110 m from Dahisar Subway flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "37 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0386",
+        "work_type": "Open or broken manhole",
+        "priority_score": 72.5,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
         "road_id": "RD0213",
         "road_name": "Western Express Highway",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "110 m from Dahisar Subway flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "33 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0512",
+        "work_type": "Pothole",
+        "priority_score": 63.9,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0211",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "250 m from Dahisar Subway flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "32 complaints and 4 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0086",
+        "work_type": "Pothole",
+        "priority_score": 56.3,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0211",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "250 m from Dahisar Subway flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "32 complaints and 4 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0519",
+        "work_type": "Pothole",
+        "priority_score": 56.1,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0213",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Paver blocks relaid",
+        "est_cost_inr": 64400,
+        "reasons": [
+          "110 m from Dahisar Subway flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "33 complaints and 5 failed repairs already logged on this road",
+          "Broken paver blocks is a severity 1.4/5 problem (BMC normally allows ~154 h to fix it)"
+        ],
+        "issue_id": "OI-0300",
+        "work_type": "Broken paver blocks",
+        "priority_score": 53.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0212",
+        "road_name": "Western Express Highway",
+        "recommended_method": "Paver blocks relaid",
+        "est_cost_inr": 64400,
+        "reasons": [
+          "110 m from Dahisar Subway flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "37 complaints and 5 failed repairs already logged on this road",
+          "Broken paver blocks is a severity 1.4/5 problem (BMC normally allows ~154 h to fix it)"
+        ],
+        "issue_id": "OI-0233",
+        "work_type": "Broken paver blocks",
+        "priority_score": 52.1,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0202",
+        "road_name": "LT Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "22 complaints and 5 failed repairs already logged on this road",
+          "700 m from Dahisar Subway flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.65"
+        ],
+        "issue_id": "OI-0221",
+        "work_type": "Waterlogging",
+        "priority_score": 49.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0214",
+        "road_name": "Anand Nagar Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "940 m from Dahisar Subway flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.65",
+          "16 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0118",
+        "work_type": "Pothole",
+        "priority_score": 48.1,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0210",
+        "road_name": "Dahisar Subway Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "26 complaints and 3 failed repairs already logged on this road",
+          "Low-lying ward (index 0.65)",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0559",
+        "work_type": "Pothole",
+        "priority_score": 44.4,
+        "funded": true,
+        "dlp": true
       }
     ]
   },
@@ -2151,7 +4539,7 @@
     "sla_met_rate": 0.32,
     "reopen_rate": 0.18,
     "low_lying_index": 0.85,
-    "risk_score": 85,
+    "risk_score": 100,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -2232,33 +4620,179 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0216",
-        "road_name": "LBS Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0220",
+        "road_name": "Kurla Andheri Road",
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "350 m from Kurla LBS Marg, Kamani Junction flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.85",
+          "115 complaints and 6 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0397",
+        "work_type": "Road cave-in",
+        "priority_score": 80.7,
+        "funded": true,
+        "dlp": true
       },
       {
         "rank": 2,
         "road_id": "RD0220",
         "road_name": "Kurla Andheri Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Excavation, pipeline repair, PQC patch",
+        "est_cost_inr": 189000,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Road cave-in is a severity 5.0/5 problem (BMC normally allows ~24 h to fix it)",
+          "350 m from Kurla LBS Marg, Kamani Junction flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.85",
+          "115 complaints and 6 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0137",
+        "work_type": "Road cave-in",
+        "priority_score": 80.4,
+        "funded": true,
+        "dlp": true
       },
       {
         "rank": 3,
-        "road_id": "RD0224",
-        "road_name": "CST Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0220",
+        "road_name": "Kurla Andheri Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "350 m from Kurla LBS Marg, Kamani Junction flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.85",
+          "115 complaints and 6 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0356",
+        "work_type": "Open or broken manhole",
+        "priority_score": 78.8,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0220",
+        "road_name": "Kurla Andheri Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "350 m from Kurla LBS Marg, Kamani Junction flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.85",
+          "115 complaints and 6 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0209",
+        "work_type": "Pothole",
+        "priority_score": 68.6,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0220",
+        "road_name": "Kurla Andheri Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "350 m from Kurla LBS Marg, Kamani Junction flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.85",
+          "115 complaints and 6 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0406",
+        "work_type": "Pothole",
+        "priority_score": 68.1,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0220",
+        "road_name": "Kurla Andheri Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "350 m from Kurla LBS Marg, Kamani Junction flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.85",
+          "115 complaints and 6 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0553",
+        "work_type": "Pothole",
+        "priority_score": 67.9,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0216",
+        "road_name": "LBS Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "85 complaints and 5 failed repairs already logged on this road",
+          "630 m from Kurla Station West flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.85"
+        ],
+        "issue_id": "OI-0219",
+        "work_type": "Waterlogging",
+        "priority_score": 67.1,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0216",
+        "road_name": "LBS Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "85 complaints and 5 failed repairs already logged on this road",
+          "630 m from Kurla Station West flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.85"
+        ],
+        "issue_id": "OI-0474",
+        "work_type": "Waterlogging",
+        "priority_score": 67.1,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0216",
+        "road_name": "LBS Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "85 complaints and 5 failed repairs already logged on this road",
+          "630 m from Kurla Station West flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.85"
+        ],
+        "issue_id": "OI-0583",
+        "work_type": "Waterlogging",
+        "priority_score": 67.1,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0216",
+        "road_name": "LBS Marg",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "85 complaints and 5 failed repairs already logged on this road",
+          "630 m from Kurla Station West flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.85"
+        ],
+        "issue_id": "OI-0307",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 65.0,
+        "funded": false,
+        "dlp": false
       }
     ]
   },
@@ -2272,7 +4806,7 @@
     "sla_met_rate": 0.41,
     "reopen_rate": 0.26,
     "low_lying_index": 0.75,
-    "risk_score": 75,
+    "risk_score": 48,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -2353,33 +4887,174 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0237",
-        "road_name": "Deonar Village Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0231",
+        "road_name": "Ghatkopar Mankhurd Link Road",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "30 complaints and 1 failed repairs already logged on this road",
+          "5 accidents caused by road defects on this road (1 fatal)"
+        ],
+        "issue_id": "OI-0405",
+        "work_type": "Open or broken manhole",
+        "priority_score": 67.1,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0230",
+        "road_id": "RD0231",
         "road_name": "Ghatkopar Mankhurd Link Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "30 complaints and 1 failed repairs already logged on this road",
+          "5 accidents caused by road defects on this road (1 fatal)"
+        ],
+        "issue_id": "OI-0193",
+        "work_type": "Waterlogging",
+        "priority_score": 62.1,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
+        "road_id": "RD0231",
+        "road_name": "Ghatkopar Mankhurd Link Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "30 complaints and 1 failed repairs already logged on this road",
+          "5 accidents caused by road defects on this road (1 fatal)"
+        ],
+        "issue_id": "OI-0383",
+        "work_type": "Pothole",
+        "priority_score": 57.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0229",
+        "road_name": "Ghatkopar Mankhurd Link Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "43 complaints and 3 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0224",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 56.2,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0232",
+        "road_name": "Ghatkopar Mankhurd Link Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "45 complaints and 9 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0347",
+        "work_type": "Waterlogging",
+        "priority_score": 54.9,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0237",
+        "road_name": "Deonar Village Road",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "62 complaints and 5 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0577",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 52.9,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
         "road_id": "RD0235",
         "road_name": "Sion Trombay Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "36 complaints and 3 failed repairs already logged on this road",
+          "5 accidents caused by road defects on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0208",
+        "work_type": "Pothole",
+        "priority_score": 52.7,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0229",
+        "road_name": "Ghatkopar Mankhurd Link Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "43 complaints and 3 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0091",
+        "work_type": "Pothole",
+        "priority_score": 52.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0238",
+        "road_name": "Deonar Village Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "29 complaints and 3 failed repairs already logged on this road",
+          "4 accidents caused by road defects on this road (1 fatal)"
+        ],
+        "issue_id": "OI-0025",
+        "work_type": "Pothole",
+        "priority_score": 51.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0237",
+        "road_name": "Deonar Village Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "62 complaints and 5 failed repairs already logged on this road",
+          "Low-lying ward (index 0.75)"
+        ],
+        "issue_id": "OI-0098",
+        "work_type": "Pothole",
+        "priority_score": 50.6,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -2393,7 +5068,7 @@
     "sla_met_rate": 0.56,
     "reopen_rate": 0.28,
     "low_lying_index": 0.6,
-    "risk_score": 60,
+    "risk_score": 45,
     "spend_by_method": [
       {
         "repair_method": "Desilting and garbage removal",
@@ -2474,33 +5149,177 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0244",
+        "road_id": "RD0243",
         "road_name": "RC Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "240 m from Chembur Shell Colony flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "40 complaints and 4 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0247",
+        "work_type": "Waterlogging",
+        "priority_score": 55.5,
+        "funded": true,
+        "dlp": true
       },
       {
         "rank": 2,
-        "road_id": "RD0243",
+        "road_id": "RD0245",
         "road_name": "RC Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "320 m from Chembur Shell Colony flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "20 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0034",
+        "work_type": "Waterlogging",
+        "priority_score": 54.4,
+        "funded": false,
+        "dlp": false
       },
       {
         "rank": 3,
         "road_id": "RD0245",
         "road_name": "RC Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "320 m from Chembur Shell Colony flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "20 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0169",
+        "work_type": "Waterlogging",
+        "priority_score": 54.4,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0244",
+        "road_name": "RC Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "240 m from Chembur Shell Colony flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "38 complaints and 5 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0496",
+        "work_type": "Waterlogging",
+        "priority_score": 54.4,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0243",
+        "road_name": "RC Marg",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "240 m from Chembur Shell Colony flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "40 complaints and 4 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0056",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 53.4,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0248",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "390 m from Govandi Station Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "16 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0552",
+        "work_type": "Pothole",
+        "priority_score": 51.7,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0248",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "390 m from Govandi Station Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "16 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0093",
+        "work_type": "Pothole",
+        "priority_score": 51.1,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0243",
+        "road_name": "RC Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "240 m from Chembur Shell Colony flood hotspot (floods above 100 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "40 complaints and 4 failed repairs already logged on this road",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0067",
+        "work_type": "Pothole",
+        "priority_score": 50.4,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0240",
+        "road_name": "Sion Trombay Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "Congestion 9.6/10, 4,331 vehicles in the peak hour, BEST bus route",
+          "840 m from Govandi Station Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.60",
+          "Road is under its defect liability period: the original contractor should repair it at no cost to BMC"
+        ],
+        "issue_id": "OI-0054",
+        "work_type": "Waterlogging",
+        "priority_score": 50.3,
+        "funded": true,
+        "dlp": true
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0246",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "Congestion 8.5/10, 10,459 vehicles in the peak hour, BEST bus route",
+          "760 m from Govandi Station Road flood hotspot (floods above 120 mm/day, tide-sensitive); ward low-lying index 0.60"
+        ],
+        "issue_id": "OI-0199",
+        "work_type": "Waterlogging",
+        "priority_score": 50.0,
+        "funded": false,
+        "dlp": false
       }
     ]
   },
@@ -2514,7 +5333,7 @@
     "sla_met_rate": 0.54,
     "reopen_rate": 0.2,
     "low_lying_index": 0.55,
-    "risk_score": 55,
+    "risk_score": 43,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -2595,33 +5414,173 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0252",
+        "road_id": "RD0251",
         "road_name": "LBS Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "160 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "35 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0409",
+        "work_type": "Waterlogging",
+        "priority_score": 69.3,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
         "road_id": "RD0251",
         "road_name": "LBS Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "160 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "35 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0064",
+        "work_type": "Waterlogging",
+        "priority_score": 69.0,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0259",
-        "road_name": "Eastern Express Highway",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0251",
+        "road_name": "LBS Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "160 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "35 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0189",
+        "work_type": "Waterlogging",
+        "priority_score": 68.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0251",
+        "road_name": "LBS Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "160 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "35 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0372",
+        "work_type": "Pothole",
+        "priority_score": 63.1,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0252",
+        "road_name": "LBS Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "110 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "31 complaints and 1 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0526",
+        "work_type": "Waterlogging",
+        "priority_score": 55.8,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0251",
+        "road_name": "LBS Marg",
+        "recommended_method": "Paver blocks relaid",
+        "est_cost_inr": 64400,
+        "reasons": [
+          "160 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "35 complaints and 1 failed repairs already logged on this road",
+          "Ambulance access road for Rajawadi Hospital"
+        ],
+        "issue_id": "OI-0486",
+        "work_type": "Broken paver blocks",
+        "priority_score": 53.6,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0261",
+        "road_name": "Andheri Ghatkopar Link Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "690 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "15 complaints and 0 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0501",
+        "work_type": "Waterlogging",
+        "priority_score": 49.5,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0254",
+        "road_name": "LBS Marg",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "24 complaints and 3 failed repairs already logged on this road",
+          "600 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55"
+        ],
+        "issue_id": "OI-0028",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 49.5,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0255",
+        "road_name": "MG Road Ghatkopar",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "29 complaints and 2 failed repairs already logged on this road",
+          "880 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55"
+        ],
+        "issue_id": "OI-0170",
+        "work_type": "Waterlogging",
+        "priority_score": 48.4,
+        "funded": false,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0254",
+        "road_name": "LBS Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "24 complaints and 3 failed repairs already logged on this road",
+          "600 m from Ghatkopar Andheri Link Road dip flood hotspot (floods above 90 mm/day, tide-sensitive); ward low-lying index 0.55"
+        ],
+        "issue_id": "OI-0112",
+        "work_type": "Pothole",
+        "priority_score": 46.5,
+        "funded": false,
+        "dlp": false
       }
     ]
   },
@@ -2635,7 +5594,7 @@
     "sla_met_rate": 0.5,
     "reopen_rate": 0.33,
     "low_lying_index": 0.55,
-    "risk_score": 55,
+    "risk_score": 58,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -2718,31 +5677,171 @@
         "rank": 1,
         "road_id": "RD0273",
         "road_name": "Powai Adi Shankaracharya Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "90 m from Bhandup Village Road flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "59 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0290",
+        "work_type": "Open or broken manhole",
+        "priority_score": 72.0,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0268",
-        "road_name": "LBS Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0273",
+        "road_name": "Powai Adi Shankaracharya Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "90 m from Bhandup Village Road flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "59 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0562",
+        "work_type": "Waterlogging",
+        "priority_score": 66.3,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
-        "road_id": "RD0267",
-        "road_name": "LBS Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0273",
+        "road_name": "Powai Adi Shankaracharya Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "90 m from Bhandup Village Road flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "59 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0252",
+        "work_type": "Pothole",
+        "priority_score": 60.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0273",
+        "road_name": "Powai Adi Shankaracharya Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "90 m from Bhandup Village Road flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "59 complaints and 6 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0432",
+        "work_type": "Pothole",
+        "priority_score": 60.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
+        "road_id": "RD0274",
+        "road_name": "Powai Adi Shankaracharya Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "100 m from Bhandup Village Road flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "13 complaints and 2 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0578",
+        "work_type": "Waterlogging",
+        "priority_score": 59.3,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0268",
+        "road_name": "LBS Marg",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "100 m from Bhandup Village Road flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "29 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0560",
+        "work_type": "Waterlogging",
+        "priority_score": 57.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0265",
+        "road_name": "LBS Marg",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "19 complaints and 2 failed repairs already logged on this road",
+          "Access road for 3 municipal school(s)"
+        ],
+        "issue_id": "OI-0316",
+        "work_type": "Open or broken manhole",
+        "priority_score": 56.4,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0268",
+        "road_name": "LBS Marg",
+        "recommended_method": "Desilting and garbage removal",
+        "est_cost_inr": 72000,
+        "reasons": [
+          "Choked drain / nullah overflow is a severity 3.6/5 problem (BMC normally allows ~75 h to fix it)",
+          "100 m from Bhandup Village Road flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "29 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0461",
+        "work_type": "Choked drain / nullah overflow",
+        "priority_score": 55.9,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0266",
+        "road_name": "LBS Marg",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
+        "reasons": [
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "29 complaints and 2 failed repairs already logged on this road",
+          "760 m from Bhandup Village Road flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.55"
+        ],
+        "issue_id": "OI-0289",
+        "work_type": "Open or broken manhole",
+        "priority_score": 55.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0268",
+        "road_name": "LBS Marg",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "100 m from Bhandup Village Road flood hotspot (floods above 70 mm/day, tide-sensitive); ward low-lying index 0.55",
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "29 complaints and 3 failed repairs already logged on this road"
+        ],
+        "issue_id": "OI-0451",
+        "work_type": "Pothole",
+        "priority_score": 51.7,
+        "funded": true,
+        "dlp": false
       }
     ]
   },
@@ -2756,7 +5855,7 @@
     "sla_met_rate": 0.49,
     "reopen_rate": 0.32,
     "low_lying_index": 0.45,
-    "risk_score": 45,
+    "risk_score": 40,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -2837,33 +5936,173 @@
     "next_rupee": [
       {
         "rank": 1,
-        "road_id": "RD0291",
-        "road_name": "Devidayal Road",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0276",
+        "road_name": "Powai Adi Shankaracharya Marg",
+        "recommended_method": "Manhole cover replaced + grating",
+        "est_cost_inr": 46400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Open or broken manhole is a severity 4.8/5 problem (BMC normally allows ~32 h to fix it)",
+          "24 complaints and 4 failed repairs already logged on this road",
+          "Congestion 8.5/10, 4,575 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0369",
+        "work_type": "Open or broken manhole",
+        "priority_score": 56.5,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 2,
-        "road_id": "RD0280",
-        "road_name": "LBS Marg",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "road_id": "RD0291",
+        "road_name": "Devidayal Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "61 complaints and 9 failed repairs already logged on this road",
+          "Ambulance access road for MT Agarwal Hospital Mulund"
+        ],
+        "issue_id": "OI-0414",
+        "work_type": "Waterlogging",
+        "priority_score": 56.4,
+        "funded": true,
+        "dlp": false
       },
       {
         "rank": 3,
+        "road_id": "RD0291",
+        "road_name": "Devidayal Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "61 complaints and 9 failed repairs already logged on this road",
+          "Ambulance access road for MT Agarwal Hospital Mulund"
+        ],
+        "issue_id": "OI-0276",
+        "work_type": "Waterlogging",
+        "priority_score": 55.6,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 4,
+        "road_id": "RD0291",
+        "road_name": "Devidayal Road",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "61 complaints and 9 failed repairs already logged on this road",
+          "Ambulance access road for MT Agarwal Hospital Mulund"
+        ],
+        "issue_id": "OI-0111",
+        "work_type": "Waterlogging",
+        "priority_score": 55.5,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 5,
         "road_id": "RD0283",
         "road_name": "Eastern Express Highway",
-        "recommended_method": "Mastic asphalt",
-        "est_cost_inr": 150000,
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
         "reasons": [
-          "[STUB] reason"
-        ]
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "26 complaints and 1 failed repairs already logged on this road",
+          "Congestion 8.0/10, 9,410 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0088",
+        "work_type": "Waterlogging",
+        "priority_score": 54.7,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 6,
+        "road_id": "RD0283",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Dewatering pump deployed",
+        "est_cost_inr": 62400,
+        "reasons": [
+          "Waterlogging is a severity 3.9/5 problem (BMC normally allows ~63 h to fix it)",
+          "26 complaints and 1 failed repairs already logged on this road",
+          "Congestion 8.0/10, 9,410 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0436",
+        "work_type": "Waterlogging",
+        "priority_score": 53.6,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 7,
+        "road_id": "RD0291",
+        "road_name": "Devidayal Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "61 complaints and 9 failed repairs already logged on this road",
+          "Ambulance access road for MT Agarwal Hospital Mulund"
+        ],
+        "issue_id": "OI-0074",
+        "work_type": "Pothole",
+        "priority_score": 49.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 8,
+        "road_id": "RD0291",
+        "road_name": "Devidayal Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "61 complaints and 9 failed repairs already logged on this road",
+          "Ambulance access road for MT Agarwal Hospital Mulund"
+        ],
+        "issue_id": "OI-0317",
+        "work_type": "Pothole",
+        "priority_score": 49.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 9,
+        "road_id": "RD0291",
+        "road_name": "Devidayal Road",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "61 complaints and 9 failed repairs already logged on this road",
+          "Ambulance access road for MT Agarwal Hospital Mulund"
+        ],
+        "issue_id": "OI-0537",
+        "work_type": "Pothole",
+        "priority_score": 49.8,
+        "funded": true,
+        "dlp": false
+      },
+      {
+        "rank": 10,
+        "road_id": "RD0283",
+        "road_name": "Eastern Express Highway",
+        "recommended_method": "Hot mix patch",
+        "est_cost_inr": 16100,
+        "reasons": [
+          "Pothole is a severity 3.0/5 problem (BMC normally allows ~97 h to fix it)",
+          "26 complaints and 1 failed repairs already logged on this road",
+          "Congestion 8.0/10, 9,410 vehicles in the peak hour, BEST bus route"
+        ],
+        "issue_id": "OI-0229",
+        "work_type": "Pothole",
+        "priority_score": 47.8,
+        "funded": true,
+        "dlp": false
       }
     ]
   }
