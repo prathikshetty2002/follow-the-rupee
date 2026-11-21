@@ -6,10 +6,9 @@
     "spend_inr": 1655330,
     "spend_on_failed_inr": 582099,
     "work_orders": 29,
-    "sla_met_rate": 0.66,
-    "reopen_rate": 0.38,
+    "sla_met_rate": 0.655,
+    "reopen_rate": 0.379,
     "low_lying_index": 0.35,
-    "risk_score": 7,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -82,7 +81,8 @@
         "spend_inr": 17833
       }
     ],
-    "summary": "[STUB] Colaba, Fort, Churchgate: placeholder summary. Claude will write this.",
+    "risk_score": 7,
+    "summary": "Colaba, Fort and Churchgate (ward A) spent ₹16.6 lakh against a ₹16.0 lakh budget, or 103%, so it is over budget. Of 29 jobs, 38% were redone within 30 days, against 26% expected, which is in line with expectations; ₹5.8 lakh went on repairs that failed. Two jobs are listed for review. Nine jobs, costing ₹3.6 lakh, were paid on roads under warranty. Six issues remain open, costing ₹0.8 lakh to fix, starting with potholes on Veer Nariman Road and Colaba Causeway. With ₹0 left, the budget covers none of them, so money must be reallocated or warranty payments recovered.",
     "next_rupee": [
       {
         "rank": 1,
@@ -187,7 +187,20 @@
         "funded": false,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 0,
+    "over_budget": true,
+    "open_issues": 6,
+    "billing_flagged_inr": 523680,
+    "billing_flagged_work_orders": 11,
+    "adjusted": {
+      "sla_expected_rate": 0.603,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.256,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "d195ad450a0053be"
   },
   {
     "ward_code": "B",
@@ -196,10 +209,9 @@
     "spend_inr": 3507952,
     "spend_on_failed_inr": 578915,
     "work_orders": 44,
-    "sla_met_rate": 0.57,
-    "reopen_rate": 0.2,
+    "sla_met_rate": 0.568,
+    "reopen_rate": 0.205,
     "low_lying_index": 0.55,
-    "risk_score": 15,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -276,7 +288,8 @@
         "spend_inr": 116292
       }
     ],
-    "summary": "[STUB] Dongri, Masjid Bunder: placeholder summary. Claude will write this.",
+    "risk_score": 15,
+    "summary": "Dongri, Masjid Bunder (ward B) used ₹35.1 lakh of its ₹43.0 lakh budget, or 82%, and stayed within budget. Of 44 jobs, 20% were redone within 30 days, in line with the 22% expected for similar work, though ₹5.8 lakh went on repairs that failed. On-time completion was 57% against 47% expected. Five jobs are listed for review, and three jobs, worth ₹1.7 lakh, were paid on roads under warranty. Next, the ward should fund its 9 open issues, costing ₹3.9 lakh, starting with Mohammed Ali Road, P D'Mello Road and Nishanpada Road. The remaining ₹7.9 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -433,7 +446,20 @@
         "funded": true,
         "dlp": true
       }
-    ]
+    ],
+    "remaining_budget_inr": 792048,
+    "over_budget": false,
+    "open_issues": 9,
+    "billing_flagged_inr": 1211135,
+    "billing_flagged_work_orders": 8,
+    "adjusted": {
+      "sla_expected_rate": 0.468,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.217,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "dd1697fc89dc4557"
   },
   {
     "ward_code": "C",
@@ -445,7 +471,6 @@
     "sla_met_rate": 0.65,
     "reopen_rate": 0.4,
     "low_lying_index": 0.45,
-    "risk_score": 11,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -506,7 +531,8 @@
         "spend_inr": 21274
       }
     ],
-    "summary": "[STUB] Kalbadevi, Bhuleshwar, Marine Lines: placeholder summary. Claude will write this.",
+    "risk_score": 11,
+    "summary": "Ward C used ₹8.0 lakh of its ₹9.0 lakh budget, 89%, staying within budget across 20 jobs. Repairs redone within 30 days were 40%, against 29% expected for similar work, which the data places in line with expectations; ₹2.5 lakh went to repairs that failed. On-time completion was 65% versus 62% expected. Two jobs are listed for review, and five jobs worth ₹1.8 lakh were paid on roads under warranty. Nine open issues would cost ₹2.6 lakh, led by manhole covers on Kalbadevi Road and Princess Street and waterlogging on Princess Street. The remaining ₹1.0 lakh covers only five of the nine.",
     "next_rupee": [
       {
         "rank": 1,
@@ -662,7 +688,20 @@
         "funded": false,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 103197,
+    "over_budget": false,
+    "open_issues": 9,
+    "billing_flagged_inr": 199067,
+    "billing_flagged_work_orders": 6,
+    "adjusted": {
+      "sla_expected_rate": 0.622,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.287,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "6a51eda59a38787f"
   },
   {
     "ward_code": "D",
@@ -674,7 +713,6 @@
     "sla_met_rate": 0.55,
     "reopen_rate": 0.2,
     "low_lying_index": 0.4,
-    "risk_score": 9,
     "spend_by_method": [
       {
         "repair_method": "Desilting and garbage removal",
@@ -743,7 +781,8 @@
         "spend_inr": 15257
       }
     ],
-    "summary": "[STUB] Grant Road, Malabar Hill, Tardeo: placeholder summary. Claude will write this.",
+    "risk_score": 9,
+    "summary": "Grant Road, Malabar Hill, Tardeo (ward D) used ₹12.7 lakh of its ₹16.0 lakh budget, or 80%, staying within budget across 40 jobs. About 20% of repairs were redone within 30 days, against 23% expected for similar work, so durability is in line with expectations. The ₹2.4 lakh spent on repairs that failed is part of that picture. Two jobs are listed for review in billing. Next, the ward should fund 7 open issues costing ₹1.3 lakh, starting with potholes on Peddar Road and Tardeo Road and waterlogging at Pandita Ramabai Road. The remaining ₹3.3 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -866,7 +905,20 @@
         "funded": true,
         "dlp": true
       }
-    ]
+    ],
+    "remaining_budget_inr": 327700,
+    "over_budget": false,
+    "open_issues": 7,
+    "billing_flagged_inr": 564236,
+    "billing_flagged_work_orders": 12,
+    "adjusted": {
+      "sla_expected_rate": 0.605,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.233,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "e09fb9b2f6425b60"
   },
   {
     "ward_code": "E",
@@ -875,10 +927,9 @@
     "spend_inr": 6322991,
     "spend_on_failed_inr": 2011624,
     "work_orders": 118,
-    "sla_met_rate": 0.63,
-    "reopen_rate": 0.31,
+    "sla_met_rate": 0.627,
+    "reopen_rate": 0.305,
     "low_lying_index": 0.7,
-    "risk_score": 40,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -955,7 +1006,8 @@
         "spend_inr": 451812
       }
     ],
-    "summary": "[STUB] Byculla, Agripada, Mumbai Central: placeholder summary. Claude will write this.",
+    "risk_score": 40,
+    "summary": "Byculla, Agripada and Mumbai Central (ward E) spent ₹63.2 lakh against a ₹53.0 lakh budget, so it is over budget at 119%. Of 118 jobs, 30% were redone within 30 days, in line with the 25% expected, though ₹20.1 lakh went on repairs that failed. The ward is flood-prone (flood index 0.70), which makes repairs harder to keep in place. Eleven jobs are listed for review. Next, the ward should fund 21 open issues costing ₹8.2 lakh, starting with Bellasis Road. With ₹0 left, none are covered, so money must be reallocated or recovered on roads under warranty.",
     "next_rupee": [
       {
         "rank": 1,
@@ -1132,7 +1184,20 @@
         "funded": true,
         "dlp": true
       }
-    ]
+    ],
+    "remaining_budget_inr": 0,
+    "over_budget": true,
+    "open_issues": 21,
+    "billing_flagged_inr": 3017584,
+    "billing_flagged_work_orders": 49,
+    "adjusted": {
+      "sla_expected_rate": 0.511,
+      "sla_verdict": "better than expected",
+      "reopen_expected_rate": 0.248,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "83cdecf03d22ee69"
   },
   {
     "ward_code": "F/S",
@@ -1141,10 +1206,9 @@
     "spend_inr": 8026151,
     "spend_on_failed_inr": 1335554,
     "work_orders": 135,
-    "sla_met_rate": 0.27,
-    "reopen_rate": 0.16,
+    "sla_met_rate": 0.267,
+    "reopen_rate": 0.156,
     "low_lying_index": 0.85,
-    "risk_score": 70,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -1221,7 +1285,8 @@
         "spend_inr": 801358
       }
     ],
-    "summary": "[STUB] Parel, Lalbaug, Sewri: placeholder summary. Claude will write this.",
+    "risk_score": 70,
+    "summary": "Parel, Lalbaug and Sewri (ward F/S) used ₹80.3 lakh of its ₹98.0 lakh budget, or 82%, staying within budget across 135 jobs. Sixteen percent of repairs were redone within 30 days, in line with the 22% expected, though those failed repairs account for ₹13.4 lakh. Only 27% of jobs finished on time, worse than the expected 42%. Nine jobs are listed for review, and 14 jobs worth ₹6.8 lakh were paid on roads under warranty. Given the ward's flood index of 0.85, repairs are harder to keep in place. Next, the ward should fund 33 open issues costing ₹16.2 lakh, starting with Dr Babasaheb Ambedkar Road; the remaining ₹17.7 lakh covers them all.",
     "next_rupee": [
       {
         "rank": 1,
@@ -1393,7 +1458,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 1773849,
+    "over_budget": false,
+    "open_issues": 33,
+    "billing_flagged_inr": 1531115,
+    "billing_flagged_work_orders": 22,
+    "adjusted": {
+      "sla_expected_rate": 0.42,
+      "sla_verdict": "worse than expected",
+      "reopen_expected_rate": 0.224,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "1a0527b63a7bfc08"
   },
   {
     "ward_code": "F/N",
@@ -1402,10 +1480,9 @@
     "spend_inr": 9412574,
     "spend_on_failed_inr": 2134363,
     "work_orders": 150,
-    "sla_met_rate": 0.43,
-    "reopen_rate": 0.25,
+    "sla_met_rate": 0.427,
+    "reopen_rate": 0.247,
     "low_lying_index": 0.9,
-    "risk_score": 79,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -1482,7 +1559,8 @@
         "spend_inr": 598857
       }
     ],
-    "summary": "[STUB] Matunga, Sion, Wadala: placeholder summary. Claude will write this.",
+    "risk_score": 79,
+    "summary": "Matunga, Sion, Wadala (ward F/N) used ₹94.1 lakh of its ₹1.05 crore budget, or 90%, staying within budget across 150 jobs. Repairs that failed within 30 days came to ₹21.3 lakh; the redo rate of 25% is in line with the expected 24%, and completing 43% of jobs on time is in line with the expected 46%. Given the ward's flood index of 0.90, keeping repairs in place is harder. Nine jobs are listed for review, and 37 jobs, worth ₹22.2 lakh, were paid on roads under warranty. Of 39 open issues costing ₹14.0 lakh, the remaining ₹10.9 lakh covers 25, so it falls short. Eastern Express Highway waterlogging and drain overflow should be funded first.",
     "next_rupee": [
       {
         "rank": 1,
@@ -1654,7 +1732,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 1087426,
+    "over_budget": false,
+    "open_issues": 39,
+    "billing_flagged_inr": 3243782,
+    "billing_flagged_work_orders": 44,
+    "adjusted": {
+      "sla_expected_rate": 0.463,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.238,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "a32e22f0ea0418d3"
   },
   {
     "ward_code": "G/S",
@@ -1663,10 +1754,9 @@
     "spend_inr": 2821986,
     "spend_on_failed_inr": 1057467,
     "work_orders": 64,
-    "sla_met_rate": 0.56,
-    "reopen_rate": 0.33,
+    "sla_met_rate": 0.562,
+    "reopen_rate": 0.328,
     "low_lying_index": 0.6,
-    "risk_score": 40,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -1739,7 +1829,8 @@
         "spend_inr": 201407
       }
     ],
-    "summary": "[STUB] Worli, Lower Parel, Prabhadevi: placeholder summary. Claude will write this.",
+    "risk_score": 40,
+    "summary": "Worli, Lower Parel and Prabhadevi (ward G/S) used ₹28.2 lakh of its ₹32.0 lakh budget, 88%, across 64 jobs. About 33% of jobs were redone within 30 days, against an expected 25%, which is in line with expectations for a flood-prone ward (flood index 0.60). Repairs that failed cost ₹10.6 lakh. No jobs are listed for review. The ward has 22 open issues costing ₹5.7 lakh to fix, starting with waterlogging at Senapati Bapat Marg and Dr Annie Besant Road. The remaining ₹3.8 lakh covers 16 of them, not all.",
     "next_rupee": [
       {
         "rank": 1,
@@ -1914,7 +2005,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 378014,
+    "over_budget": false,
+    "open_issues": 22,
+    "billing_flagged_inr": 1059034,
+    "billing_flagged_work_orders": 21,
+    "adjusted": {
+      "sla_expected_rate": 0.502,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.253,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "be00a47a5cb9d30b"
   },
   {
     "ward_code": "G/N",
@@ -1923,10 +2027,9 @@
     "spend_inr": 6755738,
     "spend_on_failed_inr": 1729109,
     "work_orders": 139,
-    "sla_met_rate": 0.37,
-    "reopen_rate": 0.29,
+    "sla_met_rate": 0.367,
+    "reopen_rate": 0.295,
     "low_lying_index": 0.8,
-    "risk_score": 66,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -2003,7 +2106,8 @@
         "spend_inr": 320298
       }
     ],
-    "summary": "[STUB] Dadar West, Mahim, Dharavi: placeholder summary. Claude will write this.",
+    "risk_score": 66,
+    "summary": "Dadar West, Mahim and Dharavi (ward G/N) used ₹67.6 lakh of its ₹84.0 lakh budget, or 80%, staying within budget across 139 jobs. Repairs redone within 30 days came to 30%, against 24% expected, which is in line with expectations given the ward's flood-prone setting (flood index 0.80). Money spent on repairs that failed totals ₹17.3 lakh. Only 37% of jobs finished on time, worse than the 50% expected. Ten jobs are listed for billing review. Next, the ward should fund its 37 open issues, costing ₹10.3 lakh, starting with 90 Feet Road in Dharavi. The remaining ₹16.4 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -2183,7 +2287,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 1644262,
+    "over_budget": false,
+    "open_issues": 37,
+    "billing_flagged_inr": 1814081,
+    "billing_flagged_work_orders": 33,
+    "adjusted": {
+      "sla_expected_rate": 0.496,
+      "sla_verdict": "worse than expected",
+      "reopen_expected_rate": 0.24,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "d59093a46c2f6186"
   },
   {
     "ward_code": "H/E",
@@ -2192,10 +2309,9 @@
     "spend_inr": 6145533,
     "spend_on_failed_inr": 1612052,
     "work_orders": 111,
-    "sla_met_rate": 0.49,
-    "reopen_rate": 0.26,
+    "sla_met_rate": 0.486,
+    "reopen_rate": 0.261,
     "low_lying_index": 0.75,
-    "risk_score": 55,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -2272,7 +2388,8 @@
         "spend_inr": 431994
       }
     ],
-    "summary": "[STUB] Bandra East, Santacruz East, Khar East: placeholder summary. Claude will write this.",
+    "risk_score": 55,
+    "summary": "Ward H/E (Bandra East, Santacruz East, Khar East) used ₹61.5 lakh of its ₹82.0 lakh budget, or 75%, so it stayed within budget across 111 jobs. About 26% of repairs were redone within 30 days, against an expected 27%, which is in line with expectations; ₹16.1 lakh went to repairs that failed. The ward is flood-prone (flood index 0.75), which makes repairs harder to keep in place. Eleven jobs are listed for billing review, and 17 jobs worth ₹9.0 lakh were paid on roads under warranty. Next, the ward should fund its 30 open issues, starting with Kalanagar Road, at a cost of ₹10.1 lakh. The remaining ₹20.5 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -2444,7 +2561,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 2054467,
+    "over_budget": false,
+    "open_issues": 30,
+    "billing_flagged_inr": 1574303,
+    "billing_flagged_work_orders": 26,
+    "adjusted": {
+      "sla_expected_rate": 0.495,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.274,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "f77e67b08dffa111"
   },
   {
     "ward_code": "H/W",
@@ -2453,10 +2583,9 @@
     "spend_inr": 4245242,
     "spend_on_failed_inr": 1391670,
     "work_orders": 62,
-    "sla_met_rate": 0.45,
-    "reopen_rate": 0.26,
+    "sla_met_rate": 0.452,
+    "reopen_rate": 0.258,
     "low_lying_index": 0.55,
-    "risk_score": 13,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -2533,7 +2662,8 @@
         "spend_inr": 125020
       }
     ],
-    "summary": "[STUB] Bandra West, Khar West, Santacruz West: placeholder summary. Claude will write this.",
+    "risk_score": 13,
+    "summary": "In Bandra West, Khar West and Santacruz West (ward H/W), ₹42.5 lakh of the ₹43.0 lakh budget was spent, which is 99% and within budget, across 62 jobs. Repairs redone within 30 days came to 26%, against 24% expected, so durability is in line with expectations; the money spent on repairs that failed was ₹13.9 lakh. Two jobs are listed for billing review. Nine open issues would cost ₹3.4 lakh to fix, but only ₹0.5 lakh remains, enough for 3 of them. Top priorities are the Linking Road manhole cover (₹0.5 lakh), a Linking Road pothole (₹0.2 lakh) and SV Road drain desilting (₹0.7 lakh). The remaining budget does not cover all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -2690,7 +2820,20 @@
         "funded": false,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 54758,
+    "over_budget": false,
+    "open_issues": 9,
+    "billing_flagged_inr": 2283487,
+    "billing_flagged_work_orders": 30,
+    "adjusted": {
+      "sla_expected_rate": 0.483,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.245,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "20f0de289d2b9b70"
   },
   {
     "ward_code": "K/E",
@@ -2699,10 +2842,9 @@
     "spend_inr": 8264048,
     "spend_on_failed_inr": 1741105,
     "work_orders": 165,
-    "sla_met_rate": 0.61,
-    "reopen_rate": 0.24,
+    "sla_met_rate": 0.612,
+    "reopen_rate": 0.236,
     "low_lying_index": 0.65,
-    "risk_score": 63,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -2779,7 +2921,8 @@
         "spend_inr": 503329
       }
     ],
-    "summary": "[STUB] Andheri East, Vile Parle East, Jogeshwari East: placeholder summary. Claude will write this.",
+    "risk_score": 63,
+    "summary": "Ward K/E (Andheri East, Vile Parle East, Jogeshwari East) used ₹82.6 lakh of its ₹91.0 lakh budget, or 91%, staying within budget across 165 jobs. In this flood-prone ward (flood index 0.65), 24% of repairs were redone within 30 days, in line with the expected 26%, though ₹17.4 lakh went to repairs that failed. Also, 61% of jobs finished on time against an expected 48%. Five jobs are listed for review, and 7 payments totalling ₹3.0 lakh were made on roads under warranty. Of 34 open issues costing ₹14.4 lakh, the ₹8.4 lakh remaining covers only 19, starting with manholes and waterlogging on Western Express Highway and SV Road.",
     "next_rupee": [
       {
         "rank": 1,
@@ -2951,7 +3094,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 835952,
+    "over_budget": false,
+    "open_issues": 34,
+    "billing_flagged_inr": 487858,
+    "billing_flagged_work_orders": 12,
+    "adjusted": {
+      "sla_expected_rate": 0.482,
+      "sla_verdict": "better than expected",
+      "reopen_expected_rate": 0.263,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "f6580e3848c0d12d"
   },
   {
     "ward_code": "K/W",
@@ -2960,10 +3116,9 @@
     "spend_inr": 7845240,
     "spend_on_failed_inr": 1866600,
     "work_orders": 143,
-    "sla_met_rate": 0.56,
-    "reopen_rate": 0.26,
+    "sla_met_rate": 0.559,
+    "reopen_rate": 0.259,
     "low_lying_index": 0.7,
-    "risk_score": 63,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -3040,7 +3195,8 @@
         "spend_inr": 445013
       }
     ],
-    "summary": "[STUB] Andheri West, Juhu, Vile Parle West: placeholder summary. Claude will write this.",
+    "risk_score": 63,
+    "summary": "Andheri West, Juhu and Vile Parle West (ward K/W) spent ₹78.5 lakh of its ₹89.0 lakh budget, 88%, so it stayed within budget across 143 jobs. Some 26% of repairs were redone within 30 days, matching the expected 26%, though repairs that failed account for ₹18.7 lakh; the ward is flood-prone (flood index 0.70), which makes repairs harder to keep in place. On-time completion was 56% against an expected 48%. Thirteen jobs are listed for review, and 29 jobs, ₹17.1 lakh, were paid on roads under warranty. Next, the ward should fund 35 open issues costing ₹9.0 lakh, starting with manhole covers on Juhu Tara Road, Andheri Subway and SV Road. The remaining ₹10.5 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -3213,7 +3369,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 1054760,
+    "over_budget": false,
+    "open_issues": 35,
+    "billing_flagged_inr": 2515551,
+    "billing_flagged_work_orders": 41,
+    "adjusted": {
+      "sla_expected_rate": 0.479,
+      "sla_verdict": "better than expected",
+      "reopen_expected_rate": 0.255,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "cf4d0ac238f89384"
   },
   {
     "ward_code": "P/S",
@@ -3223,9 +3392,8 @@
     "spend_on_failed_inr": 340751,
     "work_orders": 82,
     "sla_met_rate": 0.61,
-    "reopen_rate": 0.21,
+    "reopen_rate": 0.207,
     "low_lying_index": 0.5,
-    "risk_score": 30,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -3302,7 +3470,8 @@
         "spend_inr": 281442
       }
     ],
-    "summary": "[STUB] Goregaon: placeholder summary. Claude will write this.",
+    "risk_score": 30,
+    "summary": "Goregaon (ward P/S) used ₹43.5 lakh of its ₹48.0 lakh budget, 91%, and stayed within budget across 82 jobs. About 21% of repairs were redone within 30 days, against 23% expected, so durability is in line with expectations; ₹3.4 lakh went on repairs that failed. Seven jobs are listed for review, and 14 jobs worth ₹5.0 lakh were paid on roads under warranty. Next, the ward should address 18 open issues costing ₹3.7 lakh, starting with waterlogging on Link Road and MG Road Goregaon. The remaining ₹4.5 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -3479,7 +3648,20 @@
         "funded": true,
         "dlp": true
       }
-    ]
+    ],
+    "remaining_budget_inr": 450003,
+    "over_budget": false,
+    "open_issues": 18,
+    "billing_flagged_inr": 1049793,
+    "billing_flagged_work_orders": 19,
+    "adjusted": {
+      "sla_expected_rate": 0.569,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.228,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "043bcfaabe574147"
   },
   {
     "ward_code": "P/N",
@@ -3488,10 +3670,9 @@
     "spend_inr": 7006462,
     "spend_on_failed_inr": 1816577,
     "work_orders": 141,
-    "sla_met_rate": 0.6,
-    "reopen_rate": 0.25,
+    "sla_met_rate": 0.596,
+    "reopen_rate": 0.248,
     "low_lying_index": 0.6,
-    "risk_score": 76,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -3568,7 +3749,8 @@
         "spend_inr": 567623
       }
     ],
-    "summary": "[STUB] Malad: placeholder summary. Claude will write this.",
+    "risk_score": 76,
+    "summary": "Malad (ward P/N) used ₹70.1 lakh of its ₹77.0 lakh budget, 91%, so it stayed within budget across 141 jobs. About 25% of repairs were redone within 30 days, matching the expected 25%, though ₹18.2 lakh went to repairs that failed. The ward is flood-prone (flood index 0.60), which makes repairs harder to keep in place. Work finished on time 60% of the time against an expected 47%. Nine jobs are listed for review, and 20 jobs worth ₹6.1 lakh were paid on roads under warranty. Next, the ward has 36 open issues costing ₹13.9 lakh to fix, starting with Marve Road, SV Road and Malad Subway. The remaining ₹6.9 lakh covers only 17 of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -3741,7 +3923,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 693538,
+    "over_budget": false,
+    "open_issues": 36,
+    "billing_flagged_inr": 1289349,
+    "billing_flagged_work_orders": 28,
+    "adjusted": {
+      "sla_expected_rate": 0.474,
+      "sla_verdict": "better than expected",
+      "reopen_expected_rate": 0.248,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "2496660e5e857b93"
   },
   {
     "ward_code": "R/S",
@@ -3750,10 +3945,9 @@
     "spend_inr": 6642234,
     "spend_on_failed_inr": 1020154,
     "work_orders": 121,
-    "sla_met_rate": 0.56,
-    "reopen_rate": 0.21,
+    "sla_met_rate": 0.562,
+    "reopen_rate": 0.207,
     "low_lying_index": 0.5,
-    "risk_score": 38,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -3830,7 +4024,8 @@
         "spend_inr": 454020
       }
     ],
-    "summary": "[STUB] Kandivali: placeholder summary. Claude will write this.",
+    "risk_score": 38,
+    "summary": "Kandivali (ward R/S) spent ₹66.4 lakh against a ₹66.0 lakh budget, or 101%, leaving it over budget across 121 jobs. Repairs redone within 30 days were 21%, against 23% expected, and 56% of jobs finished on time, against 55% expected; both are in line with expectations. Repairs that failed account for ₹10.2 lakh. Eight jobs are listed for review, and 11 jobs worth ₹5.4 lakh were paid on roads under warranty. Next, the ward should address 26 open issues costing ₹7.6 lakh, starting with waterlogging on Link Road and a manhole on SV Road. With ₹0 left, only one fits, so funds must be reallocated or warranty payments recovered.",
     "next_rupee": [
       {
         "rank": 1,
@@ -4002,7 +4197,20 @@
         "funded": false,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 0,
+    "over_budget": true,
+    "open_issues": 26,
+    "billing_flagged_inr": 1361275,
+    "billing_flagged_work_orders": 18,
+    "adjusted": {
+      "sla_expected_rate": 0.55,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.232,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "89d710e6a34a9f29"
   },
   {
     "ward_code": "R/C",
@@ -4011,10 +4219,9 @@
     "spend_inr": 3312447,
     "spend_on_failed_inr": 539981,
     "work_orders": 86,
-    "sla_met_rate": 0.59,
+    "sla_met_rate": 0.593,
     "reopen_rate": 0.14,
     "low_lying_index": 0.4,
-    "risk_score": 35,
     "spend_by_method": [
       {
         "repair_method": "Manhole cover replaced + grating",
@@ -4091,7 +4298,8 @@
         "spend_inr": 16391
       }
     ],
-    "summary": "[STUB] Borivali: placeholder summary. Claude will write this.",
+    "risk_score": 35,
+    "summary": "Borivali (ward R/C) spent ₹33.1 lakh against a ₹29.0 lakh budget, so it used 114% and is over budget. Across 86 jobs, 14% were redone within 30 days, better than the 24% expected, though repairs that failed still account for ₹5.4 lakh. Timeliness was 59%, in line with the expected 56%. Two jobs are listed for review. Separately, ₹14.6 lakh was paid on 30 jobs on roads under warranty. The ward has 22 open issues costing ₹9.2 lakh, led by cave-in repairs on Western Express Highway and Gorai Road at ₹1.9 lakh each. With ₹0 left, no open issue fits the budget, so money must be reallocated or warranty payments recovered.",
     "next_rupee": [
       {
         "rank": 1,
@@ -4267,7 +4475,20 @@
         "funded": true,
         "dlp": true
       }
-    ]
+    ],
+    "remaining_budget_inr": 0,
+    "over_budget": true,
+    "open_issues": 22,
+    "billing_flagged_inr": 1461912,
+    "billing_flagged_work_orders": 30,
+    "adjusted": {
+      "sla_expected_rate": 0.56,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.244,
+      "reopen_verdict": "better than expected"
+    },
+    "summary_source": "claude",
+    "narration_hash": "20500bc55e11956c"
   },
   {
     "ward_code": "R/N",
@@ -4276,10 +4497,9 @@
     "spend_inr": 3533838,
     "spend_on_failed_inr": 1160682,
     "work_orders": 82,
-    "sla_met_rate": 0.55,
-    "reopen_rate": 0.27,
+    "sla_met_rate": 0.549,
+    "reopen_rate": 0.268,
     "low_lying_index": 0.65,
-    "risk_score": 27,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -4352,7 +4572,8 @@
         "spend_inr": 194529
       }
     ],
-    "summary": "[STUB] Dahisar: placeholder summary. Claude will write this.",
+    "risk_score": 27,
+    "summary": "Dahisar (ward R/N) used ₹35.3 lakh of its ₹48.0 lakh budget, or 74%, staying within budget across 82 jobs. About 27% of repairs were redone within 30 days, close to the expected 24%, and ₹11.6 lakh went on repairs that failed. The ward is flood-prone (flood index 0.65), which makes repairs harder to keep in place. Work finished on time 55% of the time, against 51% expected. One job is listed for review. Next, the ward should fund its 15 open issues, costing ₹5.7 lakh, starting with Western Express Highway. The remaining ₹12.7 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -4527,7 +4748,20 @@
         "funded": true,
         "dlp": true
       }
-    ]
+    ],
+    "remaining_budget_inr": 1266162,
+    "over_budget": false,
+    "open_issues": 15,
+    "billing_flagged_inr": 578060,
+    "billing_flagged_work_orders": 23,
+    "adjusted": {
+      "sla_expected_rate": 0.51,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.236,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "b0b679da24b2e6c6"
   },
   {
     "ward_code": "L",
@@ -4536,10 +4770,9 @@
     "spend_inr": 13043418,
     "spend_on_failed_inr": 1820204,
     "work_orders": 232,
-    "sla_met_rate": 0.32,
-    "reopen_rate": 0.18,
+    "sla_met_rate": 0.319,
+    "reopen_rate": 0.177,
     "low_lying_index": 0.85,
-    "risk_score": 100,
     "spend_by_method": [
       {
         "repair_method": "Pump + debris removal",
@@ -4616,7 +4849,8 @@
         "spend_inr": 1169002
       }
     ],
-    "summary": "[STUB] Kurla: placeholder summary. Claude will write this.",
+    "risk_score": 100,
+    "summary": "Kurla (ward L) spent ₹1.30 crore against a ₹1.19 crore budget, or 110%, so it is over budget. Of 232 jobs, 18% were redone within 30 days, better than the 24% expected, which matters in a flood-prone ward (flood index 0.85). Even so, ₹18.2 lakh went on repairs that failed. Only 32% of jobs finished on time, against 47% expected. Twelve jobs are listed for review. Next, 48 open issues need ₹16.2 lakh, led by Kurla Andheri Road cave-ins. With ₹0 left, funds must be reallocated or recovered from warranty roads.",
     "next_rupee": [
       {
         "rank": 1,
@@ -4794,7 +5028,20 @@
         "funded": false,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 0,
+    "over_budget": true,
+    "open_issues": 48,
+    "billing_flagged_inr": 4860382,
+    "billing_flagged_work_orders": 63,
+    "adjusted": {
+      "sla_expected_rate": 0.468,
+      "sla_verdict": "worse than expected",
+      "reopen_expected_rate": 0.245,
+      "reopen_verdict": "better than expected"
+    },
+    "summary_source": "claude",
+    "narration_hash": "bdb702829a400e79"
   },
   {
     "ward_code": "M/E",
@@ -4803,10 +5050,9 @@
     "spend_inr": 7235685,
     "spend_on_failed_inr": 1427808,
     "work_orders": 148,
-    "sla_met_rate": 0.41,
-    "reopen_rate": 0.26,
+    "sla_met_rate": 0.412,
+    "reopen_rate": 0.264,
     "low_lying_index": 0.75,
-    "risk_score": 48,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -4883,7 +5129,8 @@
         "spend_inr": 332134
       }
     ],
-    "summary": "[STUB] Govandi, Mankhurd, Deonar: placeholder summary. Claude will write this.",
+    "risk_score": 48,
+    "summary": "Govandi, Mankhurd, Deonar (ward M/E) used ₹72.4 lakh of its ₹91.0 lakh budget, 80%, and stayed within budget across 148 jobs. Repairs redone within 30 days were 26%, in line with the 24% expected, though ₹14.3 lakh went on repairs that failed. This is a flood-prone ward (flood index 0.75), which makes repairs harder to keep in place. Only 41% of jobs finished on time, worse than the expected 49%. Eight jobs are listed for review, and ₹13.8 lakh was paid on 32 jobs on roads under warranty. The ward should next fund 26 open issues costing ₹7.8 lakh, starting with Ghatkopar Mankhurd Link Road. The remaining ₹18.6 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -5056,7 +5303,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 1864315,
+    "over_budget": false,
+    "open_issues": 26,
+    "billing_flagged_inr": 1667453,
+    "billing_flagged_work_orders": 37,
+    "adjusted": {
+      "sla_expected_rate": 0.494,
+      "sla_verdict": "worse than expected",
+      "reopen_expected_rate": 0.238,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "2c869d6ca516d456"
   },
   {
     "ward_code": "M/W",
@@ -5065,10 +5325,9 @@
     "spend_inr": 4689823,
     "spend_on_failed_inr": 1150699,
     "work_orders": 87,
-    "sla_met_rate": 0.56,
-    "reopen_rate": 0.28,
+    "sla_met_rate": 0.563,
+    "reopen_rate": 0.276,
     "low_lying_index": 0.6,
-    "risk_score": 45,
     "spend_by_method": [
       {
         "repair_method": "Desilting and garbage removal",
@@ -5145,7 +5404,8 @@
         "spend_inr": 266083
       }
     ],
-    "summary": "[STUB] Chembur: placeholder summary. Claude will write this.",
+    "risk_score": 45,
+    "summary": "Chembur (ward M/W) spent ₹46.9 lakh against a ₹44.0 lakh budget, or 107%, so it is over budget. Of 87 jobs, 28% were redone within 30 days, in line with the 24% expected, though ₹11.5 lakh went on repairs that failed. The ward is flood-prone (flood index 0.60), which makes repairs harder to keep in place. Work finished on time in 56% of jobs, better than the 45% expected. Four jobs are listed for review, and 23 jobs worth ₹12.8 lakh were paid on roads under warranty. Next, the ward should fund 26 open issues costing ₹5.0 lakh, starting with RC Marg waterlogging. With ₹0 left, the budget covers none of it, so money must be reallocated or warranty payments recovered.",
     "next_rupee": [
       {
         "rank": 1,
@@ -5321,7 +5581,20 @@
         "funded": false,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 0,
+    "over_budget": true,
+    "open_issues": 26,
+    "billing_flagged_inr": 1633871,
+    "billing_flagged_work_orders": 26,
+    "adjusted": {
+      "sla_expected_rate": 0.449,
+      "sla_verdict": "better than expected",
+      "reopen_expected_rate": 0.24,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "12feafa15d9097a7"
   },
   {
     "ward_code": "N",
@@ -5330,10 +5603,9 @@
     "spend_inr": 5999557,
     "spend_on_failed_inr": 970747,
     "work_orders": 112,
-    "sla_met_rate": 0.54,
-    "reopen_rate": 0.2,
+    "sla_met_rate": 0.545,
+    "reopen_rate": 0.196,
     "low_lying_index": 0.55,
-    "risk_score": 43,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -5410,7 +5682,8 @@
         "spend_inr": 345888
       }
     ],
-    "summary": "[STUB] Ghatkopar, Vikhroli: placeholder summary. Claude will write this.",
+    "risk_score": 43,
+    "summary": "Ghatkopar, Vikhroli (ward N) used ₹60.0 lakh of its ₹62.0 lakh budget, or 97%, and stayed within budget. Of 112 jobs, 20% were redone within 30 days, against 26% expected for similar work, and 55% finished on time, against 53% expected. Repairs that failed cost ₹9.7 lakh. Nine jobs are listed for review, and 15 jobs worth ₹7.1 lakh were paid on roads under warranty. Next, the ward should address 24 open issues costing ₹8.2 lakh, starting with waterlogging on LBS Marg, where dewatering pumps are deployed. The remaining ₹2.0 lakh covers only 6 of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -5582,7 +5855,20 @@
         "funded": false,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 200443,
+    "over_budget": false,
+    "open_issues": 24,
+    "billing_flagged_inr": 1349405,
+    "billing_flagged_work_orders": 23,
+    "adjusted": {
+      "sla_expected_rate": 0.53,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.255,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "ed720982e6c0273e"
   },
   {
     "ward_code": "S",
@@ -5591,10 +5877,9 @@
     "spend_inr": 7489270,
     "spend_on_failed_inr": 2219613,
     "work_orders": 123,
-    "sla_met_rate": 0.5,
-    "reopen_rate": 0.33,
+    "sla_met_rate": 0.504,
+    "reopen_rate": 0.325,
     "low_lying_index": 0.55,
-    "risk_score": 58,
     "spend_by_method": [
       {
         "repair_method": "Excavation, pipeline repair, PQC patch",
@@ -5671,7 +5956,8 @@
         "spend_inr": 571584
       }
     ],
-    "summary": "[STUB] Bhandup, Powai, Kanjurmarg: placeholder summary. Claude will write this.",
+    "risk_score": 58,
+    "summary": "Bhandup, Powai and Kanjurmarg (ward S) used ₹74.9 lakh of its ₹95.0 lakh budget, or 79%, across 123 jobs, staying within budget. Repairs redone within 30 days were 32% against an expected 24%, which is worse than expected, and ₹22.2 lakh went on repairs that failed. Timeliness was in line with expectations at 50% on time versus 51%. Nine jobs are listed for review, and 16 jobs worth ₹9.6 lakh were paid on roads under warranty. Next, the ward should fund its 32 open issues, costing ₹9.3 lakh, starting with Powai Adi Shankaracharya Marg. The remaining ₹20.1 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -5843,7 +6129,20 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 2010730,
+    "over_budget": false,
+    "open_issues": 32,
+    "billing_flagged_inr": 1617893,
+    "billing_flagged_work_orders": 23,
+    "adjusted": {
+      "sla_expected_rate": 0.51,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.238,
+      "reopen_verdict": "worse than expected"
+    },
+    "summary_source": "claude",
+    "narration_hash": "df0fb8060d1d475e"
   },
   {
     "ward_code": "T",
@@ -5852,10 +6151,9 @@
     "spend_inr": 3953564,
     "spend_on_failed_inr": 1677820,
     "work_orders": 65,
-    "sla_met_rate": 0.49,
-    "reopen_rate": 0.32,
+    "sla_met_rate": 0.492,
+    "reopen_rate": 0.323,
     "low_lying_index": 0.45,
-    "risk_score": 40,
     "spend_by_method": [
       {
         "repair_method": "Drain desilting",
@@ -5932,7 +6230,8 @@
         "spend_inr": 251729
       }
     ],
-    "summary": "[STUB] Mulund: placeholder summary. Claude will write this.",
+    "risk_score": 40,
+    "summary": "Mulund (ward T) used ₹39.5 lakh of its ₹51.0 lakh budget, 78%, so it stayed within budget across 65 jobs. Repairs redone within 30 days were 32%, against 24% expected for similar work, which the data rates as in line with expectations. Money spent on repairs that failed came to ₹16.8 lakh. Six jobs are listed for review, and 12 jobs, worth ₹4.6 lakh, were paid on roads under warranty. Next, the ward should fund its 25 open issues, costing ₹9.0 lakh, starting with the manhole on Powai Adi Shankaracharya Marg and waterlogging on Devidayal Road. The remaining ₹11.5 lakh covers all of them.",
     "next_rupee": [
       {
         "rank": 1,
@@ -6104,6 +6403,19 @@
         "funded": true,
         "dlp": false
       }
-    ]
+    ],
+    "remaining_budget_inr": 1146436,
+    "over_budget": false,
+    "open_issues": 25,
+    "billing_flagged_inr": 805764,
+    "billing_flagged_work_orders": 17,
+    "adjusted": {
+      "sla_expected_rate": 0.504,
+      "sla_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.244,
+      "reopen_verdict": "in line with expectations"
+    },
+    "summary_source": "claude",
+    "narration_hash": "33df251536a5e664"
   }
 ]

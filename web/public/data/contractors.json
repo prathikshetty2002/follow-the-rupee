@@ -16,7 +16,7 @@
     "cost_vs_rate_pct": 3.2,
     "context_adjusted_score": 89,
     "grade": "A",
-    "scorecard_text": "Deccan Paving Solutions did 287 monsoon road jobs worth ₹1.41 crore, mainly in L, M/E, F/S. Speed: 60% met their target time; for this mix of work about 48% is expected, so this is better than expected. Lasting repairs: 9% had to be redone within 30 days, against about 24% expected, which is better than expected. Cost: bills averaged 3.2% above the standard rate card; 9 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: A. To improve: Keep bills within the rate card: 9 job(s) were billed far above it or look like repeats, and are listed for review.",
+    "scorecard_text": "Deccan Paving Solutions completed 287 jobs worth ₹1.41 crore, mainly in wards L, M/E and F/S. On speed, 60% of jobs finished on time against 48% expected for similar work, which is better than expected. On durability, 9% of repairs were redone within 30 days, compared with 24% expected, also better than expected. The average bill ran 3.2% above the rate card. The contractor earns grade A. The one thing to improve is keeping bills within the rate card: 9 jobs were billed far above it or look like repeats, and are listed for review.",
     "improve": "Keep bills within the rate card: 9 job(s) were billed far above it or look like repeats, and are listed for review.",
     "evidence_work_order_ids": [
       "WO25-01942",
@@ -87,7 +87,7 @@
       "cost_vs_rate_pct": 8.3
     },
     "rank": 1,
-    "scorecard_source": "template",
+    "scorecard_source": "claude",
     "narration_hash": "6054f1a3d6256cc8"
   },
   {
@@ -107,7 +107,7 @@
     "cost_vs_rate_pct": 8.6,
     "context_adjusted_score": 84,
     "grade": "A",
-    "scorecard_text": "Sahyadri Infra Works did 337 monsoon road jobs worth ₹1.72 crore, mainly in L, F/N, P/N. Speed: 62% met their target time; for this mix of work about 50% is expected, so this is better than expected. Lasting repairs: 14% had to be redone within 30 days, against about 24% expected, which is better than expected. Cost: bills averaged 8.6% above the standard rate card; 11 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: A. To improve: Keep bills within the rate card: 11 job(s) were billed far above it or look like repeats, and are listed for review.",
+    "scorecard_text": "Sahyadri Infra Works completed 337 jobs billed at ₹1.72 crore, mainly in wards L, F/N and P/N. On speed, 62% of jobs were finished on time, against 50% expected across the city, which is better than expected. On durability, 14% of repairs were redone within 30 days, compared with 24% expected, also better than expected. Average bills ran 8.6% above the rate card. The contractor receives grade A. The one thing to improve is keeping bills within the rate card: 11 jobs, comprising 3 billed far above it and 8 possible repeat bills, are listed for review.",
     "improve": "Keep bills within the rate card: 11 job(s) were billed far above it or look like repeats, and are listed for review.",
     "evidence_work_order_ids": [
       "WO25-00611",
@@ -178,7 +178,7 @@
       "cost_vs_rate_pct": 8.3
     },
     "rank": 2,
-    "scorecard_source": "template",
+    "scorecard_source": "claude",
     "narration_hash": "7951594739f11b28"
   },
   {
@@ -198,7 +198,7 @@
     "cost_vs_rate_pct": 9.0,
     "context_adjusted_score": 78,
     "grade": "B",
-    "scorecard_text": "Mithi Infra Projects did 319 monsoon road jobs worth ₹1.71 crore, mainly in L, M/E, F/N. Speed: 52% met their target time; for this mix of work about 50% is expected, so this is in line with expectations. Lasting repairs: 12% had to be redone within 30 days, against about 25% expected, which is better than expected. Cost: bills averaged 9.0% above the standard rate card; 14 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: B. To improve: Keep bills within the rate card: 14 job(s) were billed far above it or look like repeats, and are listed for review.",
+    "scorecard_text": "Mithi Infra Projects handled 319 jobs worth ₹1.71 crore, mainly in wards L, M/E and F/N. On speed, 52% of jobs finished on time against an expected 50%, which is in line with expectations. Repairs lasted better than expected: 12% were redone within 30 days, compared with 25% expected for similar work and 24% across the city. On cost, the average bill ran 9.0% above the rate card. The contractor receives a grade of B. The one thing to improve is keeping bills within the rate card, as 14 jobs were billed far above it or look like repeats, and are listed for review.",
     "improve": "Keep bills within the rate card: 14 job(s) were billed far above it or look like repeats, and are listed for review.",
     "evidence_work_order_ids": [
       "WO25-02266",
@@ -268,7 +268,7 @@
       "cost_vs_rate_pct": 8.3
     },
     "rank": 3,
-    "scorecard_source": "template",
+    "scorecard_source": "claude",
     "narration_hash": "1f9ab1f49177c86d"
   },
   {
@@ -288,7 +288,7 @@
     "cost_vs_rate_pct": 6.0,
     "context_adjusted_score": 56,
     "grade": "C",
-    "scorecard_text": "Konkan Roadcon Pvt Ltd did 337 monsoon road jobs worth ₹1.89 crore, mainly in L, K/E, P/N. Speed: 46% met their target time; for this mix of work about 48% is expected, so this is in line with expectations. Lasting repairs: 27% had to be redone within 30 days, against about 24% expected, which is in line with expectations. Cost: bills averaged 6.0% above the standard rate card; 9 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: C. To improve: Cut repairs that fail within 30 days: 27% were redone, against about 24% expected for the same methods and roads.",
+    "scorecard_text": "Konkan Roadcon Pvt Ltd completed 337 jobs worth ₹1.89 crore, mainly in wards L, K/E and P/N. Speed was in line with expectations: 46% of jobs finished on time against 48% expected for similar work, while the city figure is 50%. Durability was also in line, though 27% of repairs were redone within 30 days against 24% expected. Bills averaged 6.0% above the rate card, with 5 jobs billed far above it and 4 possible repeat bills, all listed for review. The contractor receives a grade of C. The one thing to improve is cutting repairs that fail within 30 days.",
     "improve": "Cut repairs that fail within 30 days: 27% were redone, against about 24% expected for the same methods and roads.",
     "evidence_work_order_ids": [
       "WO25-01502",
@@ -359,7 +359,7 @@
       "cost_vs_rate_pct": 8.3
     },
     "rank": 4,
-    "scorecard_source": "template",
+    "scorecard_source": "claude",
     "narration_hash": "c7b9c6e27fc5b4e4"
   },
   {
@@ -379,7 +379,7 @@
     "cost_vs_rate_pct": 2.9,
     "context_adjusted_score": 55,
     "grade": "C",
-    "scorecard_text": "Shivneri Construction did 289 monsoon road jobs worth ₹1.47 crore, mainly in L, G/N, K/W. Speed: 47% met their target time; for this mix of work about 48% is expected, so this is in line with expectations. Lasting repairs: 26% had to be redone within 30 days, against about 24% expected, which is in line with expectations. Cost: bills averaged 2.9% above the standard rate card; 12 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: C. To improve: Cut repairs that fail within 30 days: 26% were redone, against about 24% expected for the same methods and roads.",
+    "scorecard_text": "Shivneri Construction handled 289 jobs worth ₹1.47 crore, mainly in wards L, G/N and K/W. Speed is in line with expectations: 47% of repairs finished on time, against 48% expected for similar work. Durability is also in line, though slightly weaker, with 26% redone within 30 days against 24% expected. On cost, the average bill ran 2.9% above the rate card; 4 jobs were billed far above it and 8 possible repeat bills are listed for review. The overall grade is C. The one thing to improve is cutting repairs that fail within 30 days, since 26% were redone, against about 24% expected for the same methods and roads.",
     "improve": "Cut repairs that fail within 30 days: 26% were redone, against about 24% expected for the same methods and roads.",
     "evidence_work_order_ids": [
       "WO25-00743",
@@ -449,7 +449,7 @@
       "cost_vs_rate_pct": 8.3
     },
     "rank": 5,
-    "scorecard_source": "template",
+    "scorecard_source": "claude",
     "narration_hash": "bed17768108a0997"
   },
   {
@@ -469,7 +469,7 @@
     "cost_vs_rate_pct": 7.1,
     "context_adjusted_score": 42,
     "grade": "D",
-    "scorecard_text": "Western Coast Asphalt Co did 299 monsoon road jobs worth ₹1.75 crore, mainly in L, K/W, M/E. Speed: 47% met their target time; for this mix of work about 48% is expected, so this is in line with expectations. Lasting repairs: 39% had to be redone within 30 days, against about 25% expected, which is worse than expected. Cost: bills averaged 7.1% above the standard rate card; 8 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: D. To improve: Cut repairs that fail within 30 days: 39% were redone, against about 25% expected for the same methods and roads.",
+    "scorecard_text": "Western Coast Asphalt Co handled 299 jobs worth ₹1.75 crore, mainly in wards L, K/W and M/E. Speed was in line with expectations: 47% of jobs finished on time against 48% expected. Durability was worse than expected, with 39% of repairs redone within 30 days against about 25% expected. On cost, the average bill was 7.1% above the rate card, and 5 jobs billed far above it and 3 possible repeat bills are listed for review. The grade is D. The one thing to improve is cutting repairs that fail within 30 days, since 39% were redone against about 25% expected for the same methods and roads.",
     "improve": "Cut repairs that fail within 30 days: 39% were redone, against about 25% expected for the same methods and roads.",
     "evidence_work_order_ids": [
       "WO25-01005",
@@ -539,7 +539,7 @@
       "cost_vs_rate_pct": 8.3
     },
     "rank": 6,
-    "scorecard_source": "template",
+    "scorecard_source": "claude",
     "narration_hash": "ea1d2c8246702abd"
   },
   {
@@ -559,7 +559,7 @@
     "cost_vs_rate_pct": 16.0,
     "context_adjusted_score": 30,
     "grade": "E",
-    "scorecard_text": "Arabian Sea Engineering did 328 monsoon road jobs worth ₹1.86 crore, mainly in L, G/N, K/E. Speed: 44% met their target time; for this mix of work about 52% is expected, so this is worse than expected. Lasting repairs: 32% had to be redone within 30 days, against about 25% expected, which is worse than expected. Cost: bills averaged 16.0% above the standard rate card; 40 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: E. To improve: Cut repairs that fail within 30 days: 32% were redone, against about 25% expected for the same methods and roads.",
+    "scorecard_text": "Arabian Sea Engineering completed 328 jobs worth ₹1.86 crore, mainly in wards L, G/N and K/E. Only 44% were finished on time, against 52% expected for similar work, so speed is worse than expected. Durability is also weaker: 32% of repairs were redone within 30 days, compared with 25% expected. On cost, the average bill was 16.0% above the rate card, with 37 jobs billed far above it and 3 possible repeat bills listed for review. The contractor receives grade E. The one thing to improve is cutting repairs that fail within 30 days, since 32% were redone against about 25% expected for the same methods and roads.",
     "improve": "Cut repairs that fail within 30 days: 32% were redone, against about 25% expected for the same methods and roads.",
     "evidence_work_order_ids": [
       "WO25-01626",
@@ -630,7 +630,7 @@
       "cost_vs_rate_pct": 8.3
     },
     "rank": 7,
-    "scorecard_source": "template",
+    "scorecard_source": "claude",
     "narration_hash": "cd883d0e80c8c702"
   },
   {
@@ -650,7 +650,7 @@
     "cost_vs_rate_pct": 12.9,
     "context_adjusted_score": 12,
     "grade": "E",
-    "scorecard_text": "Mahalaxmi Civil Contractors did 303 monsoon road jobs worth ₹1.62 crore, mainly in L, K/W, N. Speed: 39% met their target time; for this mix of work about 52% is expected, so this is worse than expected. Lasting repairs: 38% had to be redone within 30 days, against about 25% expected, which is worse than expected. Cost: bills averaged 12.9% above the standard rate card; 53 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: E. To improve: Cut repairs that fail within 30 days: 38% were redone, against about 25% expected for the same methods and roads.",
+    "scorecard_text": "Mahalaxmi Civil Contractors handled 303 jobs worth ₹1.62 crore, mainly in wards L, K/W and N. Speed was worse than expected: 39% of jobs finished on time, against 52% expected for similar work and 50% across the city. Durability was also weaker, with 38% of repairs redone within 30 days, compared with 25% expected and 24% citywide. Bills averaged 12.9% above the rate card, and 43 jobs billed far above it are listed for review, along with 10 possible repeat bills. The grade is E. The one thing to improve is cutting repairs that fail within 30 days.",
     "improve": "Cut repairs that fail within 30 days: 38% were redone, against about 25% expected for the same methods and roads.",
     "evidence_work_order_ids": [
       "WO25-01576",
@@ -720,7 +720,7 @@
       "cost_vs_rate_pct": 8.3
     },
     "rank": 8,
-    "scorecard_source": "template",
+    "scorecard_source": "claude",
     "narration_hash": "af50f2f751bdc264"
   }
 ]

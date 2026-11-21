@@ -1,0 +1,45 @@
+{
+  "complaints": 6501,
+  "issues": 3529,
+  "complaints_per_issue": 1.84,
+  "by_status": {
+    "fixed": {
+      "issues": 1850,
+      "complaints": 3753
+    },
+    "fixed_failed": {
+      "issues": 604,
+      "complaints": 1195
+    },
+    "never_fixed": {
+      "issues": 589,
+      "complaints": 896
+    },
+    "not_bmc_scope": {
+      "issues": 486,
+      "complaints": 657
+    }
+  },
+  "fixed_issues_that_failed_pct": 0.246,
+  "spend_on_fixed_inr": 131737531,
+  "spend_on_failed_inr": 30376614,
+  "median_days_to_fix": 2.9,
+  "met_target_pct": 0.497,
+  "road_matched_pct_open": 0.995,
+  "social_posts": 650,
+  "social_posts_linked": 368,
+  "social_post_kinds": {
+    "complaint": 357,
+    "forward": 98,
+    "repeat_claim": 92,
+    "thanks": 57,
+    "sarcasm": 46
+  },
+  "social_linked_by_kind": {
+    "complaint": 170,
+    "repeat_claim": 66,
+    "forward": 64,
+    "thanks": 38,
+    "sarcasm": 30
+  }
+}

@@ -22,6 +22,8 @@ EVIDENCE_PER_METRIC = {"over_billed": 3, "double_billed": 2, "reopened": 3, "sla
 
 def inr_short(x: float) -> str:
     """₹1.41 crore / ₹14.1 lakh: easier for a citizen to read than digit groups."""
+    if x <= 0:
+        return "₹0"
     if x >= 1e7:
         return f"₹{x / 1e7:.2f} crore"
     return f"₹{x / 1e5:.1f} lakh"
@@ -244,7 +246,7 @@ def write(cards: list[dict], writer: Writer) -> dict:
         prior = {c["contractor_id"]: {"hash": c.get("narration_hash"), "text": c.get("scorecard_text"), "source": c.get("scorecard_source")} for c in json.loads(path.read_text())}
     sources = {}
     for c in cards:
-        text, source, h = narrate(c["contractor_id"], facts_for_narration(c), SCORECARD_SYSTEM, template_text, writer, prior)
+        text, source, h = narrate(c["contractor_id"], (f := facts_for_narration(c)), SCORECARD_SYSTEM, template_text, writer, prior, must_name=f["contractor"])
         c["scorecard_text"], c["scorecard_source"], c["narration_hash"] = text, source, h
         sources[source] = sources.get(source, 0) + 1
     first = ["contractor_id", "contractor_name", "wards", "work_orders", "spend_inr", "sla_met_rate", "reopen_rate", "cost_vs_rate_pct", "context_adjusted_score", "grade", "scorecard_text", "improve", "evidence_work_order_ids"]
