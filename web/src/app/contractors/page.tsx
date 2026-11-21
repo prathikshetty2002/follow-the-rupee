@@ -190,7 +190,7 @@ async function Detail({ c }: { c: Contractor }) {
             Expected figures account for this contractor&apos;s mix of wards, weather and kinds of work, so a hard patch is not counted against it.
           </p>
           <div className="overflow-x-auto">
-            <table className="w-full min-w-120 text-[15px]">
+            <table className="w-full text-[14px] sm:min-w-120 sm:text-[15px]">
               <thead>
                 <tr className="text-left text-[13px] text-muted">
                   <th scope="col" className="pb-1 pr-3">
