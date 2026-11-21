@@ -57,3 +57,14 @@ SLA_MEDIUM_RATIO, SLA_HIGH_RATIO = 3.0, 5.0
 HEAVY_RAIN_CATEGORIES = ("Heavy", "Very heavy", "Extremely heavy")
 CARRIAGEWAY_WORK = ("Pothole", "Road cave-in", "Broken paver blocks", "Open or broken manhole")  # what a DLP normally covers
 STATION_SPLIT_LAT = 19.03  # ward centroids south of this use the Colaba gauge, the rest Santacruz
+
+# Contractor scorecards
+SCORE_WEIGHTS = {"durability": 0.40, "billing": 0.30, "speed": 0.30}
+DURABILITY_RATIO_BEST, DURABILITY_RATIO_WORST = 0.4, 1.6  # re-open rate / expected rate that scores 100 and 0
+SPEED_POINTS_PER_PP = 2.5  # score moves this much per percentage point above or below the expected on-time rate
+BILLING_POINTS_PER_PCT = 5  # score drops this much per 1% of jobs flagged over-billed or double-billed
+GRADE_CUTS = (("A", 80), ("B", 65), ("C", 50), ("D", 35))  # below the last cut is E
+LOW_LYING_CUT = 0.6  # ward low_lying_index at or above this counts as low-lying
+CLEAR_DIFFERENCE_Z = 2.0  # a gap smaller than this many standard errors is "in line with expectations"
+NARRATION_MODEL = "claude-sonnet-5-5"
+SCORECARD_MAX_WORDS = 120

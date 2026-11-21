@@ -44,24 +44,39 @@ All money is in rupees (integers). Rates are 0–1 fractions. Dates are ISO stri
 }
 ```
 
-## contractors.json: one object per contractor (8)
+## contractors.json: one object per contractor (8), best first (written by `uv run pipeline scorecards`)
+Each result is compared with what the city typically gets for the same work, not with other contractors' raw numbers:
+- **Speed** vs the on-time rate expected for the work types, heavy-rain windows and low-lying wards the contractor was given.
+- **Durability** vs the re-open rate expected for its repair methods, road surfaces and wards.
+- **Billing** counts jobs flagged over-billed or double-billed. Payments on roads under defect liability are shown but **not scored** (BMC chose to pay).
+- Volume is never penalised. A gap smaller than 2 standard errors is reported as "in line with expectations".
+Score = 40% durability + 30% billing + 30% speed (each 0-100). Grade cuts: A 80, B 65, C 50, D 35, else E; **C means about as expected**.
 ```json
 {
-  "contractor_id": "CT01",
-  "contractor_name": "Sahyadri Infra Works (synthetic)",
-  "wards": ["P/N", "K/E"],
-  "work_orders": 310,
-  "spend_inr": 1650000,
-  "sla_met_rate": 0.82,
-  "reopen_rate": 0.12,
-  "cost_vs_rate_pct": 8.5,              // avg % above (+) or below (-) the rate card
-  "context_adjusted_score": 74,         // 0–100, adjusted for low-lying wards / heavy-rain weeks
-  "grade": "B",
-  "scorecard_text": "Under 120 words, plain language, no accusations.",
+  "contractor_id": "CT05",
+  "contractor_name": "Deccan Paving Solutions (synthetic)",
+  "wards": ["L", "M/E", "F/S"],         // where it did most work
+  "work_orders": 287, "spend_inr": 14074782,
+  "sla_met_rate": 0.596, "reopen_rate": 0.091, "cost_vs_rate_pct": 3.2,   // raw numbers
+  "context_adjusted_score": 89, "grade": "A",
+  "scorecard_text": "Under 120 words, plain language, no accusations (written by Claude, or a template if there is no API key).",
   "improve": "One thing to improve.",
-  "evidence_work_order_ids": ["WO25-00004"]
+  "evidence_work_order_ids": ["WO25-01942"],   // up to 10, worst first; per-metric lists are in `evidence`
+  // optional fields added by the scorecard build
+  "rank": 1,
+  "scores": { "durability": 100, "billing": 84, "speed": 78 },
+  "adjusted": { "sla_expected_rate": 0.485, "sla_vs_expected_pp": 11.1, "speed_verdict": "better than expected",
+                "reopen_expected_rate": 0.237, "reopen_vs_expected": 0.38, "reopen_rate_ci95": [0.063, 0.129], "durability_verdict": "better than expected" },
+  "context": { "low_lying_share": 0.69, "heavy_rain_window_share": 0.56, "pothole_share": 0.49 },
+  "billing": { "typical_cost_vs_rate_pct": 3.2, "over_billed_jobs": 4, "over_billed_excess_inr": 0, "double_billed_jobs": 5, "double_billed_inr": 0,
+              "paid_on_dlp_roads_jobs": 0, "paid_on_dlp_roads_inr": 0 },
+  "evidence": { "over_billed": [], "double_billed": [], "reopened": [], "sla_missed": [] },
+  "city": { "sla_met_rate": 0.504, "reopen_rate": 0.244, "cost_vs_rate_pct": 8.6 },   // benchmark to show beside the contractor
+  "scorecard_source": "claude",         // claude | template: `template` means no API key was available
+  "narration_hash": "..."               // identifies the facts the text was written from; an unchanged hash keeps the committed text
 }
 ```
+`scorecard_text` is checked before it is accepted: under 120 words, every number must appear in the supplied facts, no accusatory words.
 
 ## flags.json: one object per flag (written by `uv run pipeline audit`)
 A work order can carry several flags. Sorted billing first, then by severity and money at risk. Real data (1,746 flags on 1,342 work orders).

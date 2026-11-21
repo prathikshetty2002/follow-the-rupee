@@ -14,6 +14,19 @@ Entry template:
 
 ---
 
+## 2026-11-21 11:45, Prathik, prathik/data-models
+**Changed:** Contractor scorecards are real. `uv run pipeline scorecards` writes `web/public/data/contractors.json` (8 contractors, best first).
+Code: `pipeline/src/pipeline/scorecard.py` and `narrate.py`, tests in `pipeline/tests/test_scorecard.py`.
+**Contract:** Additive. `Contractor` gained optional fields (`rank`, `scores`, `adjusted`, `context`, `billing`, `evidence`, `city`, `scorecard_source`);
+new type `Verdict`. Fields and the scoring rules are in `shared/schema.md`.
+**You need to:** nothing is blocking. Suggested UI: a card per contractor with the grade, `scorecard_text`, and the three `scores`;
+show the raw rate next to `city` and `adjusted.*_expected_rate` so readers see what "expected" means; link `evidence_work_order_ids`
+to the work orders. `adjusted.speed_verdict` / `durability_verdict` say "in line with expectations" when a gap is within normal
+variation: show that wording rather than ranking those contractors against each other. Grade C means about as expected.
+**Status:** `scorecard_text` is currently a template (`scorecard_source: "template"`) because no Anthropic API key is set yet.
+Once Prathik adds one and reruns, the same field holds Claude-written text; it is checked (under 120 words, only supplied numbers,
+no accusatory words) and falls back to the template if a draft fails. Still stubs: `issues.json`; `wards.json` `summary`.
+
 ## 2026-11-21 11:39, Prathik, prathik/data-models
 **Changed:** Audit flags are real. `uv run pipeline audit` writes `web/public/data/flags.json` (1,746 flags) and a new `audit_summary.json`.
 Code: `pipeline/src/pipeline/audit.py`, tests in `pipeline/tests/test_audit.py`.
@@ -42,9 +55,9 @@ Useful fields per issue: `priority_score` (0-100), `factors` (points that add up
 |---|---|
 | `next_rupee.json`, `validation.json` | real |
 | `wards.json` | partial: budget, spend, `next_rupee`, `risk_score` real; `summary` is a placeholder |
-| `contractors.json` | stub (scorecards not built yet) |
+| `contractors.json` | real (text is a template until an API key is added) |
 | `flags.json`, `audit_summary.json` | real |
 | `issues.json` | stub (complaint-to-work-order trail not built yet) |
 
-Next from Prathik: contractor scorecards, then Claude-written ward summaries. Each will replace a stub with
+Next from Prathik: Claude-written ward summaries, then the complaint-to-work-order trail (`issues.json`). Each will replace a stub with
 the same shape, so UI built on the stubs keeps working.
