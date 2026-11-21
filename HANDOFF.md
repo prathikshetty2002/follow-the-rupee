@@ -14,6 +14,63 @@ Entry template:
 
 ---
 
+## 2026-11-21 15:10, Prathik, prathik/map-search
+**Changed:** (1) **Search** in the map: a combobox top-left finds wards (code, area name, zone) and roads (name); choosing a result flies to its ward, and a road result also highlights that road (a note in the summary card says so). Arrow keys, Enter and Escape work; results are announced. (2) **Auto-fit:** choosing a ward by any route (map, card, arrows, search) now fits it to the free part of the map (tighter padding, accounts for the summary card). (3) **3D rebuilt:** smoother walls (10 height steps of 4.5px, shaded darker toward the base), the selected ward pops up two steps, roads, open-issue markers and labels now sit on each ward's own top instead of floating, labels and markers stay upright and round when the map is tipped, the 3D fit uses the turned and tipped size so the map fills the space, and layers no longer use overflow (they extend 12% past the stage instead) to keep memory down.
+**Code:** `StageData.roads` gained `name`; `fitView` takes `{bearing, pitch}` for 3D (tests updated). Mobile top bar is now three rows (layers, colour tabs, search).
+**You need to:** nothing. Checks: web 13 tests, lint, build pass. Looked at in headless Chrome (note: a full-page capture with `captureBeyondViewport` sometimes shows the 3D map blank; it renders fine in the page, capture without it).
+
+## 2026-11-21 14:40, Prathik, prathik/map-3d
+**Changed:** Brought the **Mumbai dawn** look back and rebuilt the home page on it. New hero: a full-width illustration of **Churchgate station** at sunrise (sandstone front with pediment clock and arcade, the domed Western Railway headquarters, a local train under the canopy, a kaali-peeli taxi, a BEST bus, Marine Drive palms, the Nariman Point towers); it follows light and dark (`components/churchgate.tsx`, `--ch-*` tokens). The user asked for a photo; they chose an illustration instead, so no image file was downloaded. The map stage is restyled in the same tokens (dawn sea chart, glass panels) instead of the forced night look.
+**Map interaction:** a **3D** toggle stands each ward up as tall as its value (risk, budget gap or open issues) using stacked layers and CSS 3D, with turn buttons and Shift + drag to turn. Zoom with the buttons, Ctrl or Cmd + scroll (zooms toward the pointer), trackpad pinch or two-finger pinch; drag to pan; the map itself is focusable (arrows pan, + and - zoom, 0 recentres, Shift + left or right turns). The camera maths moved into `lib/view.ts` (free-area fit, zoom at a point, screen-to-map movement under turn and tilt; 5 tests).
+**Notes:** plain scrolling still scrolls the page (wheel zoom needs Ctrl). Heights are in `LEVELS` steps of `STEP` px in `ward-stage.tsx`.
+**You need to:** nothing. Checks: web 13 tests, lint, build pass; looked at in headless Chrome at 1280 and 390 wide, light and dark.
+
+## 2026-11-21 14:20, Prathik, prathik/map-dashboard
+**Changed:** The home page is now an immersive **map dashboard**, after the Raktor drone-mission Dribbble shot the user pointed to (full-bleed dark map, centred pill tabs, floating card, bottom strip of cards, zoom stack). All 24 wards are drawn from `geo/wards.geojson`, with roads and the 577 open issues on top. Choose a ward (click it, or its card in the strip) and the camera flies to it, the other wards dim, its issues appear numbered by rank (filled = paid for, ring = not paid for) and a summary card opens with the figures, the first three things to fix and **Open the ward planner**. Tabs colour the map by Risk, Budget gap or Open issues; layer buttons toggle roads and issues; zoom, centre, drag to pan, previous and next ward. The selected ward lives in the URL (`/?ward=F-N`) and the planner links back to it ("Back to the map").
+**Code:** new `components/stage/` (`ward-stage.tsx` client, `types.ts`), `lib/view.ts` (camera maths, 5 tests in `tests/view.test.mjs`), `projectFeatures` now also returns `bounds`. The stage's night-sea look is its own tokens (`.stage`, `.stage-panel`, ...) in `globals.css`, the same in light and dark mode. Removed `ward-map.tsx` and `mumbai-skyline.tsx` (still in git history). The ward table stays below the map as the accessible, no-map way in.
+**Accessibility:** the SVG map is `aria-hidden`; the strip of ward cards and the summary are real buttons and links (44px targets, focus ring, `aria-pressed`). Choosing by keyboard moves focus to the summary heading; Escape closes it and returns focus to the card. A polite live region announces the choice. Status is a shape plus a word. Motion is skipped with reduced motion. On phones the summary becomes a bottom sheet and the strip hides until it is closed.
+**You need to:** nothing. Checks: web 13 tests, lint, build all pass.
+
+## 2026-11-21 13:33, Prathik, prathik/mumbai-theme
+**Changed:** Re-themed the whole site as **Mumbai dawn**, taking the soft, elegant style of the "Axion" Dribbble shot the user liked (Orbix Studio): a refined serif headline with one italic accent phrase, a sunrise gradient, charcoal pill buttons with an arrow, frosted stat cards, rounded white cards.
+Mumbai identity: Marine Drive dawn gradient; kaali-peeli palette (charcoal and marigold); Arabian-Sea teal for "paid"; a skyline illustration on the home hero (Rajabai Tower, CST dome, Gateway of India, Bandra-Worli Sea Link, the Queen's Necklace of lights); the logo is the Gateway arch on a marigold tile. Dark mode is "Mumbai night". Details and tokens in `brand.md`.
+**Fonts:** Instrument Serif (display, italic accent) and Instrument Sans (text and tabular figures); the IBM Plex fonts are gone.
+**Code:** only styling and layout. New: `components/mumbai-skyline.tsx` (decorative SVG), `Chip`, `Display`, `Card` in `ui.tsx`. Restyled: layout, nav, home, ward map, plan page, controls, figures, budget line, ledger, weights panel, plan map, method page, 404. No logic, data or pipeline changes; all tests unchanged and passing (8 planner, 49 pipeline).
+**Accessibility kept (WCAG 2.1 AA target):** every text pair 4.5:1 or better and large display text 3:1 or better, in light and dark (computed); control borders 3:1; one h1 per page and no skipped headings; labelled controls; 44px targets; no horizontal scroll at 320px with everything open; reduced motion honoured; status is a shape plus a word.
+**You need to:** nothing is blocking. Run `cd web && npm run dev`.
+
+## 2026-11-21 13:24, Prathik, prathik/redesign
+**Changed:** Full visual and UX redesign of the planner ("civic ledger"; direction and tokens in `brand.md`). Replaced the card-and-pill, serif and beige look, which read as generic AI output.
+New: Public Sans + IBM Plex Mono, flat paper with hairline rules, one signal colour (vermilion) reserved for the budget line and short money, 2px corners, no pill badges, no hero tiles.
+**New UX:** the plan is one **budget line** (every issue a segment, as wide as it costs, dark if paid, red line where the money runs out); a four-figure ledger header; a **ranked ledger** with a "Budget runs out here" row, running spend, risk and confidence;
+each issue opens to a real **arithmetic table** (factor, standing, weight, points, total), the facts, the cost range, confidence and why it was not paid. The weighting picker is a table showing each weighting's backtest at the moment of choice.
+New actions: copy a link to the plan, download the plan as CSV. Status is a glyph plus a word, never colour alone.
+**Accessibility (WCAG 2.1 AA target):** all text pairs checked at 4.5:1 or better and control borders at 3:1 or better, in light and dark; visible 3px focus ring; 44px targets; one h1 and no skipped heading levels on any page;
+labelled controls; tables with captions and scoped headers; live result announced after the user pauses; decorative map hidden from assistive tech (the table is the way in); no horizontal scroll at 320px with everything expanded; reduced motion honoured; skip link.
+**Code:** `web/src/components/planner/` now has `controls`, `figures`, `budget-line`, `ledger`, `weights-panel`, `plan-map`, `csv`, `planner`; `lib/planner.ts` gained `cutoff`, `leftAtCutoff`, `fromLeftover`, `runningSpend` (tested). Removed `budget-panel`, `summary-panel`, `issue-row`, `skeletons`. No pipeline or data changes.
+**You need to:** nothing is blocking. Checks: `cd web && npm test && npm run lint && npm run build`.
+
+## 2026-11-21 13:06, Prathik, prathik/planner
+**Changed:** Revamp. The site is now one tool, the **Next Rupee Planner**, and nothing else. Removed pages: audit, contractors, complaint lookup, work order, the old ward page.
+Pages now: `/` (pick a ward: map and table), `/plan/[slug]` (the planner), `/method` (how it works, the backtest, limits). The pipeline still builds the other data; the site does not show it.
+The planner (client side, `web/src/components/planner/`, logic in `web/src/lib/planner.ts`): type any budget; choose "riskiest first" or "most risk covered" (exact knapsack); change the weights live
+(presets show their backtest accuracy); each issue expands to show its score breakdown, facts, method and cost range, confidence and why it was not covered. The plan is in the URL, so a link shares it.
+**Pipeline:** `next_rupee.json` issues gained `factor_values`, `tiebreak`, `cost_range_inr`, `rank_range`, `confidence`, `confidence_notes`; new top-level `weight_presets` with a backtest per preset. See `shared/schema.md`. Run `uv run pipeline next-rupee` then `export`.
+**You need to (Noel / UI help):** styling is deliberately plain and token-based (`web/src/app/globals.css`, `brand.md`). Components are small: `budget-panel`, `summary-panel`, `weights-panel`, `issue-row`, `plan-map`, `planner`. Restyle freely; keep the logic in `lib/planner.ts`.
+**Checks:** `cd web && npm test` (7 planner tests incl. exact solver vs brute force), `npm run lint`, `npm run build`; `cd pipeline && uv run pytest` (49 tests).
+
+## 2026-11-21 12:46, Prathik, prathik/dashboard
+**Changed:** The dashboard is built (`web/`), since Noel is blocked and Prathik took the UI over. Pages: `/` overview with a ward map and key numbers,
+`/ward/[slug]` (24 wards: summary, budget vs spend, how it held up vs expected, ranked next rupee with reasons, open-complaint map, billing flags, failed fixes, contractors),
+`/contractors` and `/contractors/[id]` (scorecards with evidence), `/audit` (filters by type, severity, contractor, ward), `/work-order/[id]` (evidence page),
+`/complaint` ("what happened to my complaint?"), `/method` (how it works, backtest, limits). Look: civic ledger palette in `brand.md`, Fraunces + Geist, light and dark.
+**Contract:** none changed. The app only reads `web/public/data` through `web/src/lib/data.ts`. New: `lib/format.ts` (₹ formatting and labels), `lib/map.ts` (SVG map from the GeoJSON),
+`components/`. Dependencies added: `d3-geo`, `lucide-react` (unused so far), `@types/d3-geo`. `.claude/launch.json` lets Claude start the dev server.
+**You need to (Noel):** if you have UI work on your machine, do not push it to `main`. Rebase it onto `dev` (`git pull origin dev`), keep it small and in separate files where you can, and open a PR into `dev`;
+`scripts/sync.sh` will flag overlaps. Good places to help: polish copy, add a ward search box, Hindi and Marathi labels, a printable one-page ward summary.
+**Status:** verified in the browser at desktop and 375px, light and dark, no horizontal overflow; `npm run lint` and `npm run build` pass (43 pages, ward and contractor pages prerendered).
+Known gaps: no automated UI tests; the map is SVG without zoom; Claude text is static (generated by the pipeline), nothing calls the API at view time.
+
 ## 2026-11-21 12:18, Prathik, prathik/data-models
 **Changed:** Dashboard-ready views, so pages can load small files and evidence links resolve. `uv run pipeline export` (also the last step of `all`).
 New in `web/public/data/`: `manifest.json` (start here), `work_orders.json`, `complaint_to_issue.json`, `by_ward/<slug>.json` (24 files),

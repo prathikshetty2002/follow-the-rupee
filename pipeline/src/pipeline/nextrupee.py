@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from pipeline import config
-from pipeline.backtest import run_backtest, weight_stability
+from pipeline.backtest import preset_backtests, run_backtest, weight_stability
 from pipeline.budget import attach_methods, best_methods, contractor_table, fill_budgets, method_table, with_cost_ratio
 from pipeline.data import load, write_json
 from pipeline.index import FACTORS, road_factors, score_issues, severity_by_type
@@ -51,7 +51,34 @@ def _reasons(issue: pd.Series, roads: pd.DataFrame) -> list[str]:
     return reasons
 
 
+def confidence(issue: pd.Series) -> tuple[str, list[str]]:
+    """How far to trust one recommendation, and why. Three things matter: where the road is, how stable the rank is, how many people reported it."""
+    points, notes = 0, []
+    road = {
+        "gps": (2, "The road was matched from the complaint's GPS location."),
+        "name": (1, "The road was inferred from the road name in the complaint, which can pick the wrong stretch."),
+    }.get(issue.road_source, (0, "The road was guessed from the locality, so check the exact spot before sending a crew."))
+    points += road[0]
+    notes.append(road[1])
+    width = int(issue.rank_high) - int(issue.rank_low)
+    if width <= config.CONFIDENCE_RANGE_TIGHT:
+        points += 2
+    elif width <= config.CONFIDENCE_RANGE_WIDE:
+        points += 1
+    lo, hi = int(issue.rank_low), int(issue.rank_high)
+    notes.append(
+        f"Its rank stays at #{lo} when every weight is changed by up to 50%."
+        if lo == hi
+        else f"Its rank stays between #{lo} and #{hi} when every weight is changed by up to 50%."
+    )
+    if issue.n_complaints >= 2:
+        points += 1
+        notes.append(f"{int(issue.n_complaints)} separate complaints report it.")
+    return ("high" if points >= 4 else "medium" if points >= 2 else "low"), notes
+
+
 def _record(issue: pd.Series, roads: pd.DataFrame) -> dict:
+    level, notes = confidence(issue)
     road_name = roads.road_name.get(issue.road_id) if issue.road_id in roads.index else None
     return {
         "rank": int(issue.rank_in_ward),
@@ -63,8 +90,14 @@ def _record(issue: pd.Series, roads: pd.DataFrame) -> dict:
         "recommended_method": issue.recommended_method,
         "est_cost_inr": int(issue.method_cost_inr),
         "cost_to_bmc_inr": int(issue.cost_to_bmc_inr),
+        "cost_range_inr": [int(issue.cost_low_to_bmc_inr), int(issue.cost_high_to_bmc_inr)],
         "priority_score": round(float(issue.score) * 100, 1),
         "factors": {f: round(float(issue[f"contrib_{f}"]) * 100, 1) for f in FACTORS},
+        "factor_values": {f: round(float(issue[f]), 4) for f in FACTORS},
+        "tiebreak": round(float(issue.tiebreak), 5),
+        "rank_range": [int(issue.rank_low), int(issue.rank_high)],
+        "confidence": level,
+        "confidence_notes": notes,
         "funded": bool(issue.funded),
         "funded_max_value": bool(issue.funded_max_value),
         "cumulative_cost_inr": int(issue.cumulative_cost_inr),
@@ -97,8 +130,9 @@ def build() -> dict:
     planned, ward_plan = fill_budgets(scored, remaining)
 
     stability, jaccard = weight_stability(issues, factors, roads, severity)
-    planned["p_top3_under_weight_changes"] = planned.issue_id.map(stability)
+    planned = planned.join(stability, on="issue_id")
     backtest = run_backtest(complaints)
+    presets = preset_backtests(complaints, issues, factors, roads, severity)
 
     ward_plan["budget_inr"] = wards.monsoon_repair_budget_inr_2025
     ward_plan["spend_inr"] = wo.groupby("ward_code").cost_inr.sum()
@@ -151,6 +185,7 @@ def build() -> dict:
         "methods": methods,
         "contractors": contractors,
         "backtest": backtest,
+        "presets": presets,
         "stability": {"mean_top3_jaccard": round(jaccard, 3), "perturbations": config.WEIGHT_PERTURBATIONS, "weight_scale": [0.5, 1.5]},
         "severity": severity.round(2).to_dict(),
         "weights": config.WEIGHTS,
@@ -170,6 +205,7 @@ def write(result: dict) -> None:
             "methods": json.loads(result["methods"].to_json(orient="records")),
             "contractor_tiers": json.loads(result["contractors"].to_json(orient="records")),
             "weight_stability": result["stability"],
+            "weight_presets": result["presets"],
         },
         compact=True,
     )

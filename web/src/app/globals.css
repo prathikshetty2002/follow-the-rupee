@@ -1,26 +1,329 @@
 @import "tailwindcss";
 
+/* Mumbai dawn: see brand.md. Every colour in the UI comes from these tokens. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: #fbf7f1;
+  --card: #ffffff;
+  --peach: #fce6d2;
+  --mist: #e7eef3;
+  --foreground: #1e1d1b;
+  --muted: #5b5e63;
+  --accent: #cc5a08;
+  --accent-ink: #a8470a;
+  --glow: #f28a24;
+  --sea: #1b6682;
+  --sea-fill: #1b6682;
+  --sea-soft: #dcebf1;
+  --unpaid: #d3dbe2;
+  --line: #8c8f94;
+  --rule: #e6dfd3;
+  --focus: #1e1d1b;
+  --sky-far: #cbd8e2;
+  --sky-mid: #a9bccc;
+  --sky-near: #7f97ab;
+  --sea-band: #bcd6e1;
+  --shadow: 30 29 27;
+  --ch-wall: #f3dcb9;
+  --ch-shade: #dcb98a;
+  --ch-trim: #fff3de;
+  --ch-dark: #6a5242;
+  --ch-glass: #a9cbd8;
+  --ch-road: #d4c6b4;
+  --ch-leaf: #5b9a86;
+  --ch-leaf-dark: #3f7766;
+  --ch-trunk: #8a6d55;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0e141b;
+    --card: #16202b;
+    --peach: #2a1e22;
+    --mist: #12202b;
+    --foreground: #f3efe8;
+    --muted: #a5afba;
+    --accent: #ff9a3c;
+    --accent-ink: #ffb874;
+    --glow: #ff8a00;
+    --sea: #7cc8e0;
+    --sea-fill: #3e9bba;
+    --sea-soft: #17313e;
+    --unpaid: #2c3947;
+    --line: #6e7c8b;
+    --rule: #243241;
+    --focus: #f3efe8;
+    --sky-far: #1b2a38;
+    --sky-mid: #25384a;
+    --sky-near: #35506a;
+    --sea-band: #142b3a;
+    --shadow: 0 0 0;
+    --ch-wall: #3b4b5d;
+    --ch-shade: #2c3a4a;
+    --ch-trim: #566b80;
+    --ch-dark: #0e1721;
+    --ch-glass: #e8a458;
+    --ch-road: #1b2631;
+    --ch-leaf: #2f6a5a;
+    --ch-leaf-dark: #1f4a3f;
+    --ch-trunk: #4a4036;
   }
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-peach: var(--peach);
+  --color-mist: var(--mist);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-glow: var(--glow);
+  --color-sea: var(--sea);
+  --color-sea-fill: var(--sea-fill);
+  --color-sea-soft: var(--sea-soft);
+  --color-unpaid: var(--unpaid);
+  --color-line: var(--line);
+  --color-rule: var(--rule);
+  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html {
+  color-scheme: light dark;
+  scroll-padding-top: 5rem;
+}
+
+/* A sunrise over the sea at the top of every page, fading into plain paper. */
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image: linear-gradient(180deg, var(--peach) 0, color-mix(in oklab, var(--peach) 35%, var(--background)) 280px, var(--background) 620px);
+  background-repeat: no-repeat;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display headings: the refined serif, tight. */
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+.display em,
+.accent-word {
+  font-style: italic;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* Figures and amounts: aligned digits. */
+.num {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Soft card edge: a hairline plus a shadow too faint to see as a shadow. */
+.soft {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  box-shadow: 0 1px 2px rgb(var(--shadow) / 0.04), 0 10px 30px rgb(var(--shadow) / 0.05);
+}
+
+/* Frosted glass, for the hero stat cards only. Falls back to a solid card where blur is unsupported. */
+.glass {
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card) 70%, var(--rule));
+  box-shadow: 0 8px 30px rgb(var(--shadow) / 0.07);
+}
+@supports (backdrop-filter: blur(12px)) {
+  .glass {
+    background: color-mix(in srgb, var(--card) 62%, transparent);
+    backdrop-filter: blur(14px) saturate(1.1);
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+/* Browsers give fieldsets min-width: min-content, which stops wide tables inside them from scrolling. */
+fieldset {
+  min-width: 0;
+  min-inline-size: 0;
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+input[type="range"] {
+  accent-color: var(--sea-fill);
+}
+
+.ease {
+  transition-timing-function: var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* The Churchgate picture: clouds drift, the sun breathes, the train creeps in. Off with reduced motion. */
+@keyframes ch-drift {
+  from { transform: translateX(-40px); }
+  to { transform: translateX(60px); }
+}
+@keyframes ch-pulse {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
+}
+@keyframes ch-train {
+  from { transform: translateX(46px); }
+  to { transform: translateX(0); }
+}
+@keyframes ch-vehicle {
+  from { transform: translateX(-30px); }
+  to { transform: translateX(40px); }
+}
+.ch-drift { animation: ch-drift 26s ease-in-out infinite alternate; }
+.ch-pulse { animation: ch-pulse 6s ease-in-out infinite alternate; }
+.ch-train { animation: ch-train 14s ease-out infinite alternate; }
+.ch-vehicle { animation: ch-vehicle 22s ease-in-out infinite alternate; }
+
+/* The map stage: a dawn sea chart in the same tokens as the rest of the site. */
+.stage {
+  isolation: isolate;
+  background:
+    radial-gradient(60% 70% at 85% 8%, color-mix(in oklab, var(--glow) 22%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 30%, var(--mist)) 42%, var(--mist) 100%);
+  border: 1px solid var(--rule);
+  box-shadow: 0 1px 2px rgb(var(--shadow) / 0.04), 0 18px 50px rgb(var(--shadow) / 0.08);
+}
+/* A faint survey grid under the map. */
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(color-mix(in oklab, var(--sea) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--sea) 14%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(80% 80% at 50% 45%, #000 20%, transparent 100%);
+}
+.stage-panel {
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  border: 1px solid var(--rule);
+  box-shadow: 0 10px 34px rgb(var(--shadow) / 0.1);
+}
+@supports (backdrop-filter: blur(12px)) {
+  .stage-panel {
+    background: color-mix(in srgb, var(--card) 70%, transparent);
+    backdrop-filter: blur(16px) saturate(1.15);
+  }
+}
+.stage-pill {
+  display: inline-flex;
+  min-height: 2.75rem;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  transition: background-color 0.15s var(--ease-out), color 0.15s var(--ease-out);
+}
+.stage-pill:hover {
+  color: var(--foreground);
+}
+.stage-pill[aria-pressed="true"] {
+  background: var(--foreground);
+  color: var(--background);
+}
+.stage-icon {
+  display: inline-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 9999px;
+  color: var(--foreground);
+  transition: background-color 0.15s var(--ease-out);
+}
+.stage-icon:hover:not(:disabled) {
+  background: var(--mist);
+}
+.stage-icon[aria-pressed="true"] {
+  background: var(--foreground);
+  color: var(--background);
+}
+.stage-icon:disabled {
+  color: var(--muted);
+  opacity: 0.5;
+}
+.stage-card {
+  display: block;
+  width: 13.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--rule);
+  background: var(--card);
+  padding: 0.8rem 0.9rem;
+  text-align: left;
+  transition: border-color 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out), transform 0.15s var(--ease-out);
+}
+.stage-card:hover {
+  border-color: var(--line);
+  transform: translateY(-2px);
+}
+.stage-card[aria-pressed="true"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 24px color-mix(in oklab, var(--glow) 28%, transparent);
+}
+.stage-cta {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--foreground);
+  padding: 0 1.4rem;
+  font-weight: 600;
+  color: var(--background);
+  transition: transform 0.15s var(--ease-out);
+}
+.stage-cta:hover {
+  transform: translateY(-1px);
 }

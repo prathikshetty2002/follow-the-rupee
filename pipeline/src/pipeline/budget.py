@@ -23,7 +23,10 @@ def method_table(wo: pd.DataFrame) -> pd.DataFrame:
     """Re-open rate and typical cost per (work type, method). Cost excludes over-billed jobs."""
     clean = wo[wo.cost_ratio <= config.OVERBILL_RATIO]
     t = wo.groupby(["work_type", "repair_method"]).agg(jobs=("reopened", "size"), reopen_rate=("reopened", "mean"))
-    t["est_cost_inr"] = clean.groupby(["work_type", "repair_method"]).cost_inr.mean().round(-2)
+    by = clean.groupby(["work_type", "repair_method"]).cost_inr
+    t["est_cost_inr"] = by.mean().round(-2)
+    t["cost_low_inr"] = by.quantile(0.25).round(-2)  # the middle half of normal jobs cost between these
+    t["cost_high_inr"] = by.quantile(0.75).round(-2)
     t["cost_per_durable_fix_inr"] = (t.est_cost_inr / (1 - t.reopen_rate)).round(-2)
     return t.reset_index()
 
@@ -52,9 +55,13 @@ def attach_methods(scored: pd.DataFrame, roads: pd.DataFrame, best: pd.DataFrame
     out["recommended_method"] = out.work_type.map(best.repair_method)
     out["method_reopen_rate"] = out.work_type.map(best.reopen_rate)
     out["method_cost_inr"] = out.work_type.map(best.est_cost_inr)
+    out["method_cost_low_inr"] = out.work_type.map(best.cost_low_inr)
+    out["method_cost_high_inr"] = out.work_type.map(best.cost_high_inr)
     out["dlp"] = out.road_id.map(roads.under_dlp).eq("Y")
     # A defect-liability repair is the original contractor's job at no cost to BMC.
     out["cost_to_bmc_inr"] = np.where(out.dlp, 0.0, out.method_cost_inr)
+    out["cost_low_to_bmc_inr"] = np.where(out.dlp, 0.0, out.method_cost_low_inr)
+    out["cost_high_to_bmc_inr"] = np.where(out.dlp, 0.0, out.method_cost_high_inr)
     top = contractors[contractors.tier == "good"].contractor_id.tolist() or contractors.contractor_id.head(3).tolist()
     out["recommended_contractors"] = [["original DLP contractor"] if d else top for d in out.dlp]
     best_multiplier = contractors.vs_city.min()
