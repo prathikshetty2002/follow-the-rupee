@@ -46,7 +46,25 @@ def audit() -> None:
     print("Wrote web/public/data/{flags,audit_summary}.json")
 
 
+def scorecards() -> None:
+    import sys
+
+    from pipeline.narrate import Writer
+    from pipeline.scorecard import build_scorecards, write
+
+    writer = Writer(use_claude="--no-claude" not in sys.argv)
+    cards, _ = build_scorecards()
+    sources = write(cards, writer)
+    print(f"{'rank':<5}{'id':<6}{'grade':<6}{'score':<6}{'durability':<11}{'billing':<8}{'speed':<6}")
+    for c in cards:
+        s = c["scores"]
+        print(f"{c['rank']:<5}{c['contractor_id']:<6}{c['grade']:<6}{c['context_adjusted_score']:<6}{s['durability']:<11}{s['billing']:<8}{s['speed']:<6}")
+    print(f"\nText source: {sources}" + (f"  (Claude not used: {writer.disabled_reason})" if not writer.active else ""))
+    print("Wrote web/public/data/contractors.json")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(prog="pipeline")
-    parser.add_argument("command", nargs="?", default="summary", choices=["summary", "next-rupee", "audit"])
-    {"summary": summary, "next-rupee": next_rupee, "audit": audit}[parser.parse_args().command]()
+    parser.add_argument("--no-claude", action="store_true", help="scorecards: use the template text, never call the API")
+    parser.add_argument("command", nargs="?", default="summary", choices=["summary", "next-rupee", "audit", "scorecards"])
+    {"summary": summary, "next-rupee": next_rupee, "audit": audit, "scorecards": scorecards}[parser.parse_args().command]()
