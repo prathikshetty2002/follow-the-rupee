@@ -70,7 +70,7 @@ export default async function Home() {
           <Display id="hero-h" accent="next rupee" className="text-5xl sm:text-6xl xl:text-[4.25rem]">
             Where should the next rupee go?
           </Display>
-          <p className="mx-auto mt-3 max-w-5xl text-xl font-semibold leading-snug sm:text-2xl">Where Mumbai&apos;s monsoon road-repair money went, and where it should go next.</p>
+          <p className="mx-auto mt-3 max-w-5xl font-serif text-2xl font-normal leading-snug text-foreground sm:text-3xl">What Mumbai&apos;s monsoon road-repair money bought, and what it should fix next.</p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <a href="#map" className={`${btnPrimary} xl:min-h-12 xl:px-7 xl:text-base`}>
               Explore the map <span aria-hidden>↓</span>

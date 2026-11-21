@@ -372,8 +372,8 @@ export function WardStage({ data }: { data: StageData }) {
       {/* top: title and search, what to colour by, layers */}
       <div className="pointer-events-none absolute inset-x-0 top-0 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-3 p-4 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:p-5">
         <div className="min-w-0 max-w-[17rem]">
-          <h2 id="stage-h" className="display text-3xl leading-none sm:text-4xl">
-            Pick a <em>ward</em>
+          <h2 id="stage-h" className="sr-only">
+            Pick a ward on the map
           </h2>
         </div>
         <div role="group" aria-label="Colour the map by" className="stage-panel pointer-events-auto col-span-2 row-start-2 flex gap-1 rounded-full p-1 sm:col-span-1 sm:col-start-2 sm:row-start-1">
@@ -395,7 +395,7 @@ export function WardStage({ data }: { data: StageData }) {
           </button>
         </div>
         <div
-          className="pointer-events-auto relative col-span-2 row-start-3 sm:col-span-1 sm:col-start-1 sm:row-start-2 sm:max-w-[18rem]"
+          className="pointer-events-auto relative col-span-2 row-start-3 sm:col-span-1 sm:col-start-1 sm:row-start-1 sm:max-w-[18rem]"
           onBlur={(e) => {
             if (!e.currentTarget.contains(e.relatedTarget)) setListOpen(false);
           }}
