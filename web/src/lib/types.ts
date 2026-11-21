@@ -206,6 +206,22 @@ export type NextRupeeIssue = Required<Pick<NextRupee, "rank" | "issue_id" | "wor
   n_complaints: number;
   complaint_ids: string[];
   road_match: "gps" | "name" | "locality" | "none";
+  // Added for the planner: everything needed to re-score and explain the issue in the browser
+  factor_values: Record<"severity" | "flood" | "history" | "traffic" | "accidents" | "facilities", number>; // 0 to 1 before weighting
+  tiebreak: number; // small bonus for public concern, 0 to 0.02
+  cost_range_inr: [number, number]; // the middle half of normal jobs of this kind cost between these (0 when under warranty)
+  rank_range: [number, number]; // plausible rank within the ward if every weight were changed by up to 50%
+  confidence: "high" | "medium" | "low";
+  confidence_notes: string[];
+};
+
+export type WeightPreset = {
+  key: string;
+  label: string;
+  note: string;
+  weights: Record<"severity" | "flood" | "history" | "traffic" | "accidents" | "facilities", number>;
+  backtest: { city: number; in_ward: number; precision_at_3: number }; // against Aug-Sep work orders; severity is not backtested
+  top3_overlap_with_default: number;
 };
 
 export type NextRupeeWard = {
@@ -235,6 +251,7 @@ export type NextRupeeFile = {
   methods: { work_type: string; repair_method: string; jobs: number; reopen_rate: number; est_cost_inr: number; cost_per_durable_fix_inr: number }[];
   contractor_tiers: { contractor_id: string; contractor_name: string; jobs: number; reopen_rate: number; reopen_ci_low: number; reopen_ci_high: number; vs_city: number; tier: "good" | "middle" | "poor" }[];
   weight_stability: { mean_top3_jaccard: number; perturbations: number; weight_scale: [number, number] };
+  weight_presets: WeightPreset[];
 };
 
 // validation.json: backtest of the index (built on June-July data, checked on August-September)
@@ -316,3 +333,8 @@ export type OpenIssuePointProps = {
   issue_id: string; plan_issue_id: string; ward_code: string; category: string; road_name: string; priority_score: number; rank: number;
   funded: boolean; dlp: boolean; recommended_method: string; est_cost_inr: number;
 };
+
+// GeoJSON (the subset the map layers use)
+export type GeoFeature<P> = { type: "Feature"; properties: P; geometry: { type: string; coordinates: unknown } };
+export type GeoCollection<P> = { type: "FeatureCollection"; features: GeoFeature<P>[] };
+export type RoadFeatureProps = { road_id: string; road_name: string; ward_code: string; road_type: string; surface: string; open_issues: number; priority_score: number; rank_in_ward: number | null };

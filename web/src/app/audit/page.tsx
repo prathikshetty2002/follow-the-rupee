@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { Chip, PageShell, focusRing } from "@/components/ui";
+import { FilterChip } from "@/components/filter-chip";
 import { getAuditSummary, getFlags, getWards, getWorkOrders } from "@/lib/data";
 import { fmtDate, inr, inrShort, num, plural } from "@/lib/format";
 import type { Flag, FlagType, WorkOrder } from "@/lib/types";
@@ -65,10 +65,10 @@ function href(p: { view?: string; type?: string; ward?: string; page?: number })
 
 export default function AuditPage({ searchParams }: { searchParams: SearchParams }) {
   return (
-    <PageShell current="audit">
+    <div className="mx-auto max-w-5xl">
       <div className="mb-6 max-w-3xl">
         <h1 className="text-3xl font-bold leading-tight sm:text-4xl">Repairs worth a second look</h1>
-        <p className="mt-2 text-[17px] leading-relaxed text-[#4A5568]">
+        <p className="mt-2 text-[17px] leading-relaxed text-muted">
           Repair jobs where the bill, the timing or the warranty status did not add up. Normal variation is not flagged.
         </p>
       </div>
@@ -77,7 +77,7 @@ export default function AuditPage({ searchParams }: { searchParams: SearchParams
       <Suspense fallback={<ListSkeleton />}>
         <FlagList searchParams={searchParams} />
       </Suspense>
-    </PageShell>
+    </div>
   );
 }
 
@@ -89,8 +89,8 @@ async function Headline() {
         City totals
       </h2>
       <div className="grid gap-3 sm:grid-cols-3">
-        <div className="rounded-lg bg-[#FFF4DB] p-4 sm:col-span-3">
-          <p className="text-[13px] text-[#5C3B00]">Billed on repair jobs worth a second look</p>
+        <div className="rounded-lg bg-peach p-4 sm:col-span-3">
+          <p className="text-[13px] text-foreground">Billed on repair jobs worth a second look</p>
           <p className="text-3xl font-bold sm:text-4xl">
             {inrShort(city.billing_flagged_cost_inr)}{" "}
             <span className="text-base font-normal">across {plural(city.billing_flagged_work_orders, "job")}</span>
@@ -106,24 +106,24 @@ async function Headline() {
             <Link
               key={t}
               href={href({ type: t })}
-              className={`rounded-lg border border-[#C5CCD6] bg-[#F4F6F9] p-4 hover:bg-[#E8EFFA] ${focusRing}`}
+              className={`rounded-lg border border-rule bg-mist p-4 hover:bg-sea-soft`}
             >
-              <span className="block text-[13px] text-[#4A5568]">{SHORT[t]}</span>
+              <span className="block text-[13px] text-muted">{SHORT[t]}</span>
               <span className="block text-2xl font-bold">{num(b.count)} jobs</span>
               <span className="block text-[14px]">
-                {inrShort(b.amount_at_risk_inr)} <span className="text-[#4A5568]">{AMOUNT_LABEL[t]?.toLowerCase()}</span>
+                {inrShort(b.amount_at_risk_inr)} <span className="text-muted">{AMOUNT_LABEL[t]?.toLowerCase()}</span>
               </span>
             </Link>
           );
         })}
       </div>
-      <p className="mt-3 text-[14px] text-[#4A5568]">
+      <p className="mt-3 text-[14px] text-muted">
         Also on file as context:{" "}
-        <Link href={href({ view: "context", type: "reopened" })} className={`font-semibold text-[#1F4E9C] underline ${focusRing}`}>
+        <Link href={href({ view: "context", type: "reopened" })} className={`font-semibold text-sea underline`}>
           {num(city.by_type.reopened?.count ?? 0)} repairs that failed within 30 days
         </Link>{" "}
         and{" "}
-        <Link href={href({ view: "context", type: "sla_missed" })} className={`font-semibold text-[#1F4E9C] underline ${focusRing}`}>
+        <Link href={href({ view: "context", type: "sla_missed" })} className={`font-semibold text-sea underline`}>
           {num(city.by_type.sla_missed?.count ?? 0)} fixed well after the promised time
         </Link>
         . These are shown beside the city average, so a normal failure rate is not read as blame.
@@ -136,7 +136,7 @@ async function HowWeDecide() {
   const { thresholds: t } = await getAuditSummary();
   const [lo, hi] = t.normal_cost_range_vs_rate_card;
   return (
-    <section aria-labelledby="how" className="mb-8 rounded-lg bg-[#E8EFFA] p-4 text-[15px] leading-relaxed">
+    <section aria-labelledby="how" className="mb-8 rounded-lg bg-sea-soft p-4 text-[15px] leading-relaxed">
       <h2 id="how" className="text-base font-bold">
         How we decide
       </h2>
@@ -158,9 +158,9 @@ async function HowWeDecide() {
 function ListSkeleton() {
   return (
     <div aria-busy="true" aria-live="polite" className="space-y-3">
-      <p className="text-[15px] text-[#4A5568]">Loading flagged jobs…</p>
+      <p className="text-[15px] text-muted">Loading flagged jobs…</p>
       {[0, 1, 2].map((i) => (
-        <div key={i} className="h-32 animate-pulse rounded-lg bg-[#F4F6F9]" />
+        <div key={i} className="h-32 animate-pulse rounded-lg bg-mist" />
       ))}
     </div>
   );
@@ -198,20 +198,20 @@ async function FlagList({ searchParams }: { searchParams: SearchParams }) {
       </h2>
 
       <div className="mb-4 flex flex-wrap items-center gap-2" role="group" aria-label="Choose what to show">
-        <Chip href={href({ view: "billing", ward })} active={view === "billing"}>
+        <FilterChip href={href({ view: "billing", ward })} active={view === "billing"}>
           Billing
-        </Chip>
-        <Chip href={href({ view: "context", ward })} active={view === "context"}>
+        </FilterChip>
+        <FilterChip href={href({ view: "context", ward })} active={view === "context"}>
           Context
-        </Chip>
+        </FilterChip>
         <span className="mx-1 hidden h-6 w-px bg-[#C5CCD6] sm:block" aria-hidden="true" />
-        <Chip href={href({ view, ward })} active={!type}>
+        <FilterChip href={href({ view, ward })} active={!type}>
           All types
-        </Chip>
+        </FilterChip>
         {types.map((t) => (
-          <Chip key={t} href={href({ view, type: t, ward })} active={type === t}>
+          <FilterChip key={t} href={href({ view, type: t, ward })} active={type === t}>
             {SHORT[t]}
-          </Chip>
+          </FilterChip>
         ))}
       </div>
 
@@ -226,7 +226,7 @@ async function FlagList({ searchParams }: { searchParams: SearchParams }) {
             id="ward"
             name="ward"
             defaultValue={ward ?? ""}
-            className={`min-h-11 rounded-md border-2 border-[#14213D] bg-white px-3 text-[15px] ${focusRing}`}
+            className={`min-h-11 rounded-md border-2 border-foreground bg-card px-3 text-[15px]`}
           >
             <option value="">All wards</option>
             {wards.map((w) => (
@@ -236,17 +236,17 @@ async function FlagList({ searchParams }: { searchParams: SearchParams }) {
             ))}
           </select>
         </div>
-        <button type="submit" className={`min-h-11 rounded-md bg-[#1F4E9C] px-5 text-[15px] font-bold text-white ${focusRing}`}>
+        <button type="submit" className={`min-h-11 rounded-md bg-sea-fill px-5 text-[15px] font-bold text-background`}>
           Show
         </button>
         {ward && (
-          <Link href={href({ view, type })} className={`inline-flex min-h-11 items-center text-[15px] font-semibold text-[#1F4E9C] underline ${focusRing}`}>
+          <Link href={href({ view, type })} className={`inline-flex min-h-11 items-center text-[15px] font-semibold text-sea underline`}>
             Clear ward
           </Link>
         )}
       </form>
 
-      <p className="mb-3 text-[14px] text-[#4A5568]" aria-live="polite">
+      <p className="mb-3 text-[14px] text-muted" aria-live="polite">
         {filtered.length === 0
           ? "No flags match this filter."
           : `Showing ${num((page - 1) * PAGE_SIZE + 1)} to ${num((page - 1) * PAGE_SIZE + slice.length)} of ${plural(filtered.length, "flag")}${
@@ -263,17 +263,17 @@ async function FlagList({ searchParams }: { searchParams: SearchParams }) {
       {pages > 1 && (
         <nav aria-label="Pages" className="mt-6 flex items-center justify-between gap-3">
           {page > 1 ? (
-            <Link href={href({ ...base, page: page - 1 })} className={`inline-flex min-h-11 items-center rounded-md border-2 border-[#1F4E9C] px-4 font-semibold ${focusRing}`}>
+            <Link href={href({ ...base, page: page - 1 })} className={`inline-flex min-h-11 items-center rounded-md border-2 border-sea px-4 font-semibold`}>
               Previous
             </Link>
           ) : (
             <span />
           )}
-          <span className="text-[14px] text-[#4A5568]">
+          <span className="text-[14px] text-muted">
             Page {page} of {pages}
           </span>
           {page < pages ? (
-            <Link href={href({ ...base, page: page + 1 })} className={`inline-flex min-h-11 items-center rounded-md border-2 border-[#1F4E9C] px-4 font-semibold ${focusRing}`}>
+            <Link href={href({ ...base, page: page + 1 })} className={`inline-flex min-h-11 items-center rounded-md border-2 border-sea px-4 font-semibold`}>
               Next
             </Link>
           ) : (
@@ -291,8 +291,8 @@ function Severity({ level }: { level: Flag["severity"] }) {
     <span className="inline-flex items-center gap-1.5 text-[13px] font-bold">
       <span
         aria-hidden="true"
-        className={`inline-block h-3 w-3 border-2 border-[#14213D] ${
-          level === "high" ? "bg-[#14213D]" : level === "medium" ? "bg-[linear-gradient(90deg,#14213D_50%,#fff_50%)]" : "bg-white"
+        className={`inline-block h-3 w-3 border-2 border-foreground ${
+          level === "high" ? "bg-foreground" : level === "medium" ? "bg-[linear-gradient(90deg,#14213D_50%,#fff_50%)]" : "bg-card"
         }`}
       />
       {word} priority
@@ -304,13 +304,13 @@ function FlagCard({ flag: f, woById, wardName }: { flag: Flag; woById: Map<strin
   const evidence = f.evidence_work_order_ids.map((id) => woById.get(id)).filter((w): w is WorkOrder => Boolean(w));
   const amountLabel = AMOUNT_LABEL[f.flag_type];
   return (
-    <li className={`rounded-lg border p-4 ${f.severity === "high" ? "border-2 border-[#14213D]" : "border-[#8A94A6]"}`}>
+    <li className={`rounded-lg border p-4 ${f.severity === "high" ? "border-2 border-foreground" : "border-line"}`}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0 flex-1 basis-72">
           <Severity level={f.severity} />
           <h3 className="mt-1 text-lg font-bold">{LABEL[f.flag_type]}</h3>
-          <p className="text-[13px] text-[#4A5568]">
-            <span className="font-semibold text-[#14213D]">{f.work_order_id}</span> · Ward {f.ward_code}
+          <p className="text-[13px] text-muted">
+            <span className="font-semibold text-foreground">{f.work_order_id}</span> · Ward {f.ward_code}
             {wardName ? ` (${wardName})` : ""} · {f.contractor_name ?? f.contractor_id}
             {f.work_type ? ` · ${f.work_type}` : ""}
           </p>
@@ -318,29 +318,29 @@ function FlagCard({ flag: f, woById, wardName }: { flag: Flag; woById: Map<strin
         <div className="text-right">
           {amountLabel ? (
             <>
-              <p className="text-[13px] text-[#4A5568]">{amountLabel}</p>
+              <p className="text-[13px] text-muted">{amountLabel}</p>
               <p className="text-2xl font-bold">{inr(f.amount_at_risk_inr)}</p>
             </>
           ) : (
-            <p className="text-[13px] text-[#4A5568]">No money flagged. Shown for context.</p>
+            <p className="text-[13px] text-muted">No money flagged. Shown for context.</p>
           )}
         </div>
       </div>
 
       <p className="mt-3 text-[16px] leading-relaxed">{f.reason}</p>
 
-      <p className="mt-3 rounded-md bg-[#E8EFFA] px-3 py-2 text-[14px]">
+      <p className="mt-3 rounded-md bg-sea-soft px-3 py-2 text-[14px]">
         <span className="font-bold">Suggested next step:</span> {NEXT_STEP[f.flag_type]}
       </p>
 
       {evidence.length > 0 && (
         <details className="mt-3">
-          <summary className={`inline-flex min-h-11 cursor-pointer items-center text-[15px] font-semibold text-[#1F4E9C] ${focusRing}`}>
+          <summary className={`inline-flex min-h-11 cursor-pointer items-center text-[15px] font-semibold text-sea`}>
             Show the {evidence.length === 1 ? "job" : `${evidence.length} jobs`} behind this flag
           </summary>
           <ul className="mt-2 space-y-2">
             {evidence.map((w) => (
-              <li key={w.work_order_id} className="rounded-md bg-[#F4F6F9] p-3 text-[14px]">
+              <li key={w.work_order_id} className="rounded-md bg-mist p-3 text-[14px]">
                 <p className="font-bold">
                   {w.work_order_id} · {w.road_name ?? w.road_id}
                 </p>
@@ -365,7 +365,7 @@ function FlagCard({ flag: f, woById, wardName }: { flag: Flag; woById: Map<strin
 function Row({ k, v }: { k: string; v: string }) {
   return (
     <div className="flex gap-2">
-      <dt className="shrink-0 text-[#4A5568]">{k}:</dt>
+      <dt className="shrink-0 text-muted">{k}:</dt>
       <dd>{v}</dd>
     </div>
   );

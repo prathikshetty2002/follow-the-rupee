@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { PageShell, focusRing } from "@/components/ui";
 import { getComplaintLookup, getIssues, getIssuesSummary, getNextRupee } from "@/lib/data";
 import { fmtDate, fmtDays, inr, num, pct, plural } from "@/lib/format";
 import type { FlagType, Issue, IssueStatus } from "@/lib/types";
@@ -24,9 +23,9 @@ const STATUS: Record<IssueStatus, { title: string; tone: "ok" | "warn" | "neutra
 };
 
 const TONE = {
-  ok: "border-[#1F4E9C] bg-[#E8EFFA]",
-  warn: "border-[#8A5A00] bg-[#FFF4DB]",
-  neutral: "border-[#4A5568] bg-[#F4F6F9]",
+  ok: "border-sea bg-sea-soft",
+  warn: "border-accent bg-peach",
+  neutral: "border-line bg-mist",
 } as const;
 
 const FLAG_LABEL: Record<FlagType, string> = {
@@ -41,25 +40,25 @@ const MAX_RESULTS = 15;
 
 export default function ComplaintsPage({ searchParams }: { searchParams: SearchParams }) {
   return (
-    <PageShell current="complaints">
+    <div className="mx-auto max-w-5xl">
       <div className="mb-6 max-w-3xl">
         <h1 className="text-3xl font-bold leading-tight sm:text-4xl">What happened to my complaint?</h1>
-        <p className="mt-2 text-[17px] leading-relaxed text-[#4A5568]">
+        <p className="mt-2 text-[17px] leading-relaxed text-muted">
           Search by complaint ID, locality or road. You will see the repair job, who did it, what it cost and whether it held.
         </p>
       </div>
       <Suspense fallback={<Skeleton />}>
         <Body searchParams={searchParams} />
       </Suspense>
-    </PageShell>
+    </div>
   );
 }
 
 function Skeleton() {
   return (
     <div aria-busy="true" aria-live="polite" className="space-y-3">
-      <div className="h-24 animate-pulse rounded-lg bg-[#F4F6F9]" />
-      <p className="text-[15px] text-[#4A5568]">Loading…</p>
+      <div className="h-24 animate-pulse rounded-lg bg-mist" />
+      <p className="text-[15px] text-muted">Loading…</p>
     </div>
   );
 }
@@ -78,10 +77,10 @@ function SearchForm({ q }: { q: string }) {
           defaultValue={q}
           autoComplete="off"
           placeholder="For example BMC25-000005 or Hindmata"
-          className={`min-h-13 rounded-md border-2 border-[#14213D] px-4 text-[16px] ${focusRing}`}
+          className={`min-h-13 rounded-md border-2 border-foreground px-4 text-[16px]`}
         />
       </div>
-      <button type="submit" className={`min-h-13 rounded-md bg-[#1F4E9C] px-7 text-[16px] font-bold text-white ${focusRing}`}>
+      <button type="submit" className={`min-h-13 rounded-md bg-sea-fill px-7 text-[16px] font-bold text-background`}>
         Check status
       </button>
     </form>
@@ -139,7 +138,7 @@ async function Body({ searchParams }: { searchParams: SearchParams }) {
 
 function NotFound({ q }: { q: string }) {
   return (
-    <section aria-live="polite" className="rounded-lg border-2 border-[#4A5568] bg-[#F4F6F9] p-5">
+    <section aria-live="polite" className="rounded-lg border-2 border-line bg-mist p-5">
       <h2 className="text-xl font-bold">Nothing found for {q}</h2>
       <p className="mt-1 text-[15px] leading-relaxed">
         Check the complaint ID for typos. It looks like BMC25-000005. You can also try the name of a locality or a road, such as Bandra or Hindmata.
@@ -153,22 +152,22 @@ async function CityTiles() {
   const failed = s.by_status.fixed_failed?.issues ?? 0;
   return (
     <dl className="grid gap-3 sm:grid-cols-3">
-      <div className="rounded-lg bg-[#F4F6F9] p-4">
-        <dt className="text-[13px] text-[#4A5568]">Complaints became</dt>
+      <div className="rounded-lg bg-mist p-4">
+        <dt className="text-[13px] text-muted">Complaints became</dt>
         <dd className="text-2xl font-bold">
           {num(s.complaints)} → {num(s.issues)} issues
         </dd>
-        <dd className="text-[14px] text-[#4A5568]">Repeat reports on the same problem are merged into one.</dd>
+        <dd className="text-[14px] text-muted">Repeat reports on the same problem are merged into one.</dd>
       </div>
-      <div className="rounded-lg bg-[#F4F6F9] p-4">
-        <dt className="text-[13px] text-[#4A5568]">Repairs that failed within 30 days</dt>
+      <div className="rounded-lg bg-mist p-4">
+        <dt className="text-[13px] text-muted">Repairs that failed within 30 days</dt>
         <dd className="text-2xl font-bold">{pct(s.fixed_issues_that_failed_pct, 1)}</dd>
-        <dd className="text-[14px] text-[#4A5568]">{plural(failed, "issue")} among repaired ones.</dd>
+        <dd className="text-[14px] text-muted">{plural(failed, "issue")} among repaired ones.</dd>
       </div>
-      <div className="rounded-lg bg-[#F4F6F9] p-4">
-        <dt className="text-[13px] text-[#4A5568]">Typical time to fix</dt>
+      <div className="rounded-lg bg-mist p-4">
+        <dt className="text-[13px] text-muted">Typical time to fix</dt>
         <dd className="text-2xl font-bold">{s.median_days_to_fix.toFixed(1)} days</dd>
-        <dd className="text-[14px] text-[#4A5568]">{pct(s.met_target_pct, 1)} met the promised time.</dd>
+        <dd className="text-[14px] text-muted">{pct(s.met_target_pct, 1)} met the promised time.</dd>
       </div>
     </dl>
   );
@@ -185,8 +184,8 @@ function Landing({ issues }: { issues: Issue[] }) {
           Try an example
         </h2>
         {sample && (
-          <p className="mb-3 text-[15px] text-[#4A5568]">
-            Paste a complaint ID such as <span className="font-semibold text-[#14213D]">{sample}</span>, or pick one of these:
+          <p className="mb-3 text-[15px] text-muted">
+            Paste a complaint ID such as <span className="font-semibold text-foreground">{sample}</span>, or pick one of these:
           </p>
         )}
         <ul className="grid gap-2 sm:grid-cols-2">
@@ -194,10 +193,10 @@ function Landing({ issues }: { issues: Issue[] }) {
             <li key={s}>
               <Link
                 href={`/complaints?issue=${issue!.issue_id}`}
-                className={`flex min-h-14 flex-col justify-center rounded-lg border border-[#8A94A6] px-4 py-2 hover:bg-[#F4F6F9] ${focusRing}`}
+                className={`flex min-h-14 flex-col justify-center rounded-lg border border-line px-4 py-2 hover:bg-mist`}
               >
                 <span className="font-bold">{STATUS[s].short}</span>
-                <span className="text-[14px] text-[#4A5568]">
+                <span className="text-[14px] text-muted">
                   {issue!.category} near {issue!.locality}
                 </span>
               </Link>
@@ -223,19 +222,19 @@ function ResultList({ results, total, q }: { results: Issue[]; total: number; q:
       <h2 id="res" className="mb-1 text-xl font-bold">
         {plural(total, "issue")} matching {q}
       </h2>
-      {total > results.length && <p className="mb-3 text-[14px] text-[#4A5568]">Showing the {results.length} with the most complaints. Add a road name to narrow it down.</p>}
+      {total > results.length && <p className="mb-3 text-[14px] text-muted">Showing the {results.length} with the most complaints. Add a road name to narrow it down.</p>}
       <ul className="space-y-2">
         {results.map((i) => (
           <li key={i.issue_id}>
             <Link
               href={`/complaints?issue=${i.issue_id}`}
-              className={`flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[#8A94A6] p-4 hover:bg-[#F4F6F9] ${focusRing}`}
+              className={`flex flex-wrap items-center justify-between gap-2 rounded-lg border border-line p-4 hover:bg-mist`}
             >
               <span className="min-w-0 flex-1 basis-64">
                 <span className="block font-bold">
                   {i.category} near {i.locality}
                 </span>
-                <span className="block text-[14px] text-[#4A5568]">
+                <span className="block text-[14px] text-muted">
                   {i.road_name ? `${i.road_name} · ` : ""}
                   {plural(i.n_complaints ?? i.complaint_ids.length, "complaint")} · first reported {fmtDate(i.first_reported_at)}
                 </span>
@@ -270,7 +269,7 @@ async function IssueDetail({ issue, searched }: { issue: Issue; searched?: strin
   return (
     <article aria-labelledby="detail">
       <p className="mb-2 text-[14px]">
-        <Link href="/complaints" className={`font-semibold text-[#1F4E9C] underline ${focusRing}`}>
+        <Link href="/complaints" className={`font-semibold text-sea underline`}>
           New search
         </Link>
       </p>
@@ -278,7 +277,7 @@ async function IssueDetail({ issue, searched }: { issue: Issue; searched?: strin
       <div className={`rounded-lg border-2 p-4 sm:p-5 ${TONE[s.tone]}`}>
         <p className="text-[13px] font-bold tracking-wide">STATUS</p>
         <h2 id="detail" className="flex items-center gap-2 text-2xl font-bold">
-          <span aria-hidden="true" className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#14213D] text-lg">
+          <span aria-hidden="true" className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-foreground text-lg">
             {s.glyph}
           </span>
           {s.title}
@@ -291,7 +290,7 @@ async function IssueDetail({ issue, searched }: { issue: Issue; searched?: strin
       </div>
 
       <h3 className="mb-2 mt-6 text-xl font-bold">What was done</h3>
-      <ol className="border-l-4 border-[#C5CCD6] pl-5">
+      <ol className="border-l-4 border-rule pl-5">
         <Step title="Reported" when={fmtDate(issue.first_reported_at)}>
           {issue.category} near {issue.locality}
           {issue.road_name ? `, ${issue.road_name}` : ""}, ward {issue.ward_code}. {plural(issue.n_complaints ?? issue.complaint_ids.length, "complaint")} merged into this issue
@@ -320,7 +319,7 @@ async function IssueDetail({ issue, searched }: { issue: Issue; searched?: strin
                   : plan.funded
                     ? `It fits the ward's remaining budget. Suggested repair: ${plan.method.toLowerCase()}, about ${inr(plan.cost)}.`
                     : `It does not fit the ward's remaining budget yet. Suggested repair: ${plan.method.toLowerCase()}, about ${inr(plan.cost)}.`}
-                {plan.reasons.length > 0 && <span className="mt-1 block text-[14px] text-[#4A5568]">Why it ranks here: {plan.reasons.join("; ")}.</span>}
+                {plan.reasons.length > 0 && <span className="mt-1 block text-[14px] text-muted">Why it ranks here: {plan.reasons.join("; ")}.</span>}
               </>
             ) : (
               "BMC has not assigned a repair job to this issue."
@@ -334,9 +333,9 @@ async function IssueDetail({ issue, searched }: { issue: Issue; searched?: strin
       </ol>
 
       {flags.length > 0 && (
-        <p className="mt-4 rounded-md bg-[#FFF4DB] p-3 text-[15px]">
+        <p className="mt-4 rounded-md bg-peach p-3 text-[15px]">
           This repair job is also on the audit list: {flags.map((f) => FLAG_LABEL[f]).join("; ")}.{" "}
-          <Link href={auditHref} className={`font-semibold text-[#1F4E9C] underline ${focusRing}`}>
+          <Link href={auditHref} className={`font-semibold text-sea underline`}>
             See flagged jobs in ward {issue.ward_code}
           </Link>
         </p>
@@ -349,12 +348,12 @@ async function IssueDetail({ issue, searched }: { issue: Issue; searched?: strin
         <Meta k="Issue" v={issue.issue_id} />
         {issue.social_post_ids.length > 0 && <Meta k="Social posts matched" v={num(issue.social_post_ids.length)} />}
       </dl>
-      <p className="mt-3 text-[14px] text-[#4A5568]">Complaint IDs in this issue:</p>
+      <p className="mt-3 text-[14px] text-muted">Complaint IDs in this issue:</p>
       <ul className="mt-1 flex flex-wrap gap-2">
         {issue.complaint_ids.map((c) => (
           <li
             key={c}
-            className={`rounded-md border px-2 py-1 text-[13px] ${c === searched ? "border-2 border-[#1F4E9C] bg-[#E8EFFA] font-bold" : "border-[#C5CCD6] bg-[#F4F6F9]"}`}
+            className={`rounded-md border px-2 py-1 text-[13px] ${c === searched ? "border-2 border-sea bg-sea-soft font-bold" : "border-rule bg-mist"}`}
           >
             {c}
             {c === searched ? " (your search)" : ""}
@@ -376,10 +375,10 @@ async function findPlan(ward: string, planId: string) {
 function Step({ title, when, children, last }: { title: string; when?: string; children: React.ReactNode; last?: boolean }) {
   return (
     <li className={`relative ${last ? "" : "pb-5"}`}>
-      <span aria-hidden="true" className="absolute -left-[30px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-[#14213D] bg-white" />
+      <span aria-hidden="true" className="absolute -left-[30px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-foreground bg-card" />
       <p className="font-bold">
         {title}
-        {when ? <span className="ml-2 text-[14px] font-normal text-[#4A5568]">{when}</span> : null}
+        {when ? <span className="ml-2 text-[14px] font-normal text-muted">{when}</span> : null}
       </p>
       <p className="text-[15px] leading-relaxed">{children}</p>
     </li>
@@ -389,7 +388,7 @@ function Step({ title, when, children, last }: { title: string; when?: string; c
 function Meta({ k, v }: { k: string; v: string }) {
   return (
     <div className="flex gap-2">
-      <dt className="shrink-0 text-[#4A5568]">{k}:</dt>
+      <dt className="shrink-0 text-muted">{k}:</dt>
       <dd className="font-semibold">{v}</dd>
     </div>
   );

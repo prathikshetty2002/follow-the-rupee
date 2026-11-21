@@ -189,3 +189,13 @@ These add no new numbers: they are joins and slices, so every value matches the 
 | `geo/open_issues.geojson` | 577 of the 589 ranked open issues as points (complaint GPS, else the locality centre): `priority_score`, `rank`, `funded`, `recommended_method`, `est_cost_inr`. The other 12 have no usable location |
 
 Joins to know: a never-fixed issue in `issues.json` has `plan_issue_id`, which is its id in `next_rupee.json` (`OI-xxxx`); flags and issues point at work orders by id; a work order's `issue_id` points back to its issue.
+
+## Planner fields in next_rupee.json (added for the Next Rupee Planner)
+Every issue in `wards[].issues[]` also carries what the browser needs to re-score and explain it exactly:
+- `factor_values`: the six factors scaled 0 to 1 (`severity, flood, history, traffic, accidents, facilities`). `score = sum(weight x value) + tiebreak`; the web app re-ranks live from these when a user changes the weights, and `web/tests/planner.test.mjs` checks it reproduces `priority_score` within 0.06 points.
+- `tiebreak`: the small public-concern term (0 to 0.02).
+- `cost_range_inr`: `[low, high]`, the middle half of normal jobs of that kind (`[0, 0]` when the road is under warranty).
+- `rank_range`: plausible rank within the ward if every weight were changed by up to 50% (5th to 95th percentile of 1,000 re-rankings).
+- `confidence` (`high | medium | low`) and `confidence_notes`: from where the road match came from (GPS, name, locality), how stable the rank is, and how many complaints report it.
+
+Top level: `weight_presets` is a list of `{ key, label, note, weights, backtest: { city, in_ward, precision_at_3 }, top3_overlap_with_default }`. The first (`balanced`) is the weighting the ranking uses. Each preset is backtested against Aug-Sep work orders (severity cannot be backtested), so a user who picks a preset sees what it costs in accuracy.

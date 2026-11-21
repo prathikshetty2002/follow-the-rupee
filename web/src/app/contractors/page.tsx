@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { PageShell, focusRing } from "@/components/ui";
 import { getContractors, getWorkOrdersById } from "@/lib/data";
 import { fmtDate, inr, inrShort, num, pct, plural } from "@/lib/format";
 import type { Contractor, Verdict, WorkOrder } from "@/lib/types";
@@ -15,9 +14,9 @@ type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
 
 const VERDICT: Record<Verdict, { word: string; glyph: string; cls: string }> = {
-  "better than expected": { word: "Better than expected", glyph: "▲", cls: "border-[#1F4E9C] bg-[#E8EFFA]" },
-  "in line with expectations": { word: "In line with expectations", glyph: "●", cls: "border-[#4A5568] bg-[#F4F6F9]" },
-  "worse than expected": { word: "Worse than expected", glyph: "▼", cls: "border-[#8A5A00] bg-[#FFF4DB]" },
+  "better than expected": { word: "Better than expected", glyph: "▲", cls: "border-sea bg-sea-soft" },
+  "in line with expectations": { word: "In line with expectations", glyph: "●", cls: "border-line bg-mist" },
+  "worse than expected": { word: "Worse than expected", glyph: "▼", cls: "border-accent bg-peach" },
 };
 
 const GROUPS = [
@@ -31,11 +30,11 @@ const shortName = (n: string) => n.replace(" (synthetic)", "");
 
 export default function ContractorsPage({ searchParams }: { searchParams: SearchParams }) {
   return (
-    <PageShell current="contractors">
-      <Suspense fallback={<p aria-busy="true" className="text-[15px] text-[#4A5568]">Loading…</p>}>
+    <div className="mx-auto max-w-5xl">
+      <Suspense fallback={<p aria-busy="true" className="text-[15px] text-muted">Loading…</p>}>
         <Body searchParams={searchParams} />
       </Suspense>
-    </PageShell>
+    </div>
   );
 }
 
@@ -62,25 +61,25 @@ function List({ all, unknown }: { all: Contractor[]; unknown: string }) {
     <>
       <div className="mb-6 max-w-3xl">
         <h1 className="text-3xl font-bold leading-tight sm:text-4xl">Contractor scorecards</h1>
-        <p className="mt-2 text-[17px] leading-relaxed text-[#4A5568]">
+        <p className="mt-2 text-[17px] leading-relaxed text-muted">
           Each contractor is judged against what is expected for the same kind of work, in the same wards, in the same weather. Grade C means about as expected. A
           contractor given the hard jobs is not marked down for them.
         </p>
-        {unknown && <p className="mt-2 rounded-md bg-[#FFF4DB] p-3 text-[15px]">No contractor with ID {unknown}. Pick one below.</p>}
+        {unknown && <p className="mt-2 rounded-md bg-peach p-3 text-[15px]">No contractor with ID {unknown}. Pick one below.</p>}
       </div>
       <ol className="space-y-3">
         {all.map((c) => (
           <li key={c.contractor_id}>
             <Link
               href={`/contractors?c=${c.contractor_id}`}
-              className={`grid gap-3 rounded-lg border border-[#8A94A6] p-4 hover:bg-[#F4F6F9] sm:grid-cols-[3rem_1fr_auto] sm:items-center ${focusRing}`}
+              className={`grid gap-3 rounded-lg border border-line p-4 hover:bg-mist sm:grid-cols-[3rem_1fr_auto] sm:items-center`}
             >
-              <span className="text-2xl font-bold text-[#4A5568]" aria-label={`Rank ${c.rank}`}>
+              <span className="text-2xl font-bold text-muted" aria-label={`Rank ${c.rank}`}>
                 #{c.rank}
               </span>
               <span>
                 <span className="block text-lg font-bold">{shortName(c.contractor_name)}</span>
-                <span className="block text-[14px] text-[#4A5568]">
+                <span className="block text-[14px] text-muted">
                   {plural(c.work_orders, "job")} · {inrShort(c.spend_inr)} · wards {c.wards.slice(0, 3).join(", ")}
                 </span>
                 {c.adjusted && (
@@ -93,15 +92,15 @@ function List({ all, unknown }: { all: Contractor[]; unknown: string }) {
                 )}
               </span>
               <span className="text-left sm:text-right">
-                <span className="block text-[13px] text-[#4A5568]">Grade</span>
+                <span className="block text-[13px] text-muted">Grade</span>
                 <span className="block text-3xl font-bold">{c.grade}</span>
-                <span className="block text-[13px] text-[#4A5568]">{c.context_adjusted_score} out of 100</span>
+                <span className="block text-[13px] text-muted">{c.context_adjusted_score} out of 100</span>
               </span>
             </Link>
           </li>
         ))}
       </ol>
-      <p className="mt-6 max-w-3xl text-[14px] text-[#4A5568]">
+      <p className="mt-6 max-w-3xl text-[14px] text-muted">
         Score weights: repairs holding 40%, billing 30%, speed 30%. A job on a road under warranty is shown, not scored, because BMC chose to pay for it.
       </p>
     </>
@@ -110,7 +109,7 @@ function List({ all, unknown }: { all: Contractor[]; unknown: string }) {
 
 function Row({ label, mine, expected, city }: { label: string; mine: string; expected?: string; city: string }) {
   return (
-    <tr className="border-t border-[#C5CCD6]">
+    <tr className="border-t border-rule">
       <th scope="row" className="py-2 pr-3 text-left font-semibold">
         {label}
       </th>
@@ -133,14 +132,14 @@ async function Detail({ c }: { c: Contractor }) {
   return (
     <article>
       <p className="mb-2 text-[14px]">
-        <Link href="/contractors" className={`font-semibold text-[#1F4E9C] underline ${focusRing}`}>
+        <Link href="/contractors" className={`font-semibold text-sea underline`}>
           All contractors
         </Link>
       </p>
-      <div className="rounded-lg border-2 border-[#14213D] p-4 sm:p-5">
+      <div className="rounded-lg border-2 border-foreground p-4 sm:p-5">
         <p className="text-[13px] font-bold tracking-wide">RANK {c.rank} OF 8</p>
         <h1 className="text-3xl font-bold leading-tight">{shortName(c.contractor_name)}</h1>
-        <p className="mt-1 text-[15px] text-[#4A5568]">
+        <p className="mt-1 text-[15px] text-muted">
           {plural(c.work_orders, "job")} · {inr(c.spend_inr)} · wards {c.wards.join(", ")}
         </p>
         <p className="mt-3 flex items-baseline gap-3">
@@ -148,7 +147,7 @@ async function Detail({ c }: { c: Contractor }) {
           <span className="text-lg">{c.context_adjusted_score} out of 100</span>
         </p>
         <p className="mt-3 max-w-3xl text-[17px] leading-relaxed">{c.scorecard_text}</p>
-        <p className="mt-3 max-w-3xl rounded-md bg-[#F4F6F9] p-3 text-[15px]">
+        <p className="mt-3 max-w-3xl rounded-md bg-mist p-3 text-[15px]">
           <b>One thing to improve:</b> {c.improve}
         </p>
       </div>
@@ -165,8 +164,8 @@ async function Detail({ c }: { c: Contractor }) {
                   <span className="font-semibold">{barLabel[k] ?? k}</span>
                   <span className="font-bold">{v} out of 100</span>
                 </div>
-                <div className="mt-1 h-3 w-full rounded bg-[#E3E7ED]" role="img" aria-label={`${v} out of 100`}>
-                  <div className="h-3 rounded bg-[#1F4E9C]" style={{ width: `${v}%` }} />
+                <div className="mt-1 h-3 w-full rounded bg-unpaid" role="img" aria-label={`${v} out of 100`}>
+                  <div className="h-3 rounded bg-sea-fill" style={{ width: `${v}%` }} />
                 </div>
               </li>
             ))}
@@ -179,13 +178,13 @@ async function Detail({ c }: { c: Contractor }) {
           <h2 id="cmp" className="mb-1 text-xl font-bold">
             Against what is expected
           </h2>
-          <p className="mb-2 text-[14px] text-[#4A5568]">
+          <p className="mb-2 text-[14px] text-muted">
             Expected figures account for this contractor&apos;s mix of wards, weather and kinds of work, so a hard patch is not counted against it.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full min-w-120 text-[15px]">
               <thead>
-                <tr className="text-left text-[13px] text-[#4A5568]">
+                <tr className="text-left text-[13px] text-muted">
                   <th scope="col" className="pb-1 pr-3">
                     Measure
                   </th>
@@ -227,18 +226,18 @@ async function Detail({ c }: { c: Contractor }) {
             Billing facts
           </h2>
           <dl className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-lg bg-[#F4F6F9] p-4">
-              <dt className="text-[13px] text-[#4A5568]">Billed above the rate card</dt>
+            <div className="rounded-lg bg-mist p-4">
+              <dt className="text-[13px] text-muted">Billed above the rate card</dt>
               <dd className="text-xl font-bold">{plural(b.over_billed_jobs, "job")}</dd>
               <dd className="text-[14px]">{inr(b.over_billed_excess_inr)} above the normal range</dd>
             </div>
-            <div className="rounded-lg bg-[#F4F6F9] p-4">
-              <dt className="text-[13px] text-[#4A5568]">Looks billed twice</dt>
+            <div className="rounded-lg bg-mist p-4">
+              <dt className="text-[13px] text-muted">Looks billed twice</dt>
               <dd className="text-xl font-bold">{plural(b.double_billed_jobs, "job")}</dd>
               <dd className="text-[14px]">{inr(b.double_billed_inr)}</dd>
             </div>
-            <div className="rounded-lg bg-[#F4F6F9] p-4">
-              <dt className="text-[13px] text-[#4A5568]">Paid on warranty roads</dt>
+            <div className="rounded-lg bg-mist p-4">
+              <dt className="text-[13px] text-muted">Paid on warranty roads</dt>
               <dd className="text-xl font-bold">{plural(b.paid_on_dlp_roads_jobs, "job")}</dd>
               <dd className="text-[14px]">{inr(b.paid_on_dlp_roads_inr)}. Shown, not scored: BMC chose to pay.</dd>
             </div>
@@ -250,20 +249,20 @@ async function Detail({ c }: { c: Contractor }) {
         <h2 id="ev" className="mb-1 text-xl font-bold">
           Repair jobs behind these numbers
         </h2>
-        <p className="mb-3 text-[14px] text-[#4A5568]">Worst examples first. Each is a job record, not a verdict.</p>
+        <p className="mb-3 text-[14px] text-muted">Worst examples first. Each is a job record, not a verdict.</p>
         <div className="space-y-3">
           {GROUPS.map((g) => {
             const list = (c.evidence?.[g.key] ?? []).map((id) => byId.get(id)).filter((w): w is WorkOrder => !!w);
             if (list.length === 0) return null;
             return (
-              <details key={g.key} className="rounded-lg border border-[#8A94A6] p-3">
-                <summary className={`min-h-11 cursor-pointer py-2 font-bold ${focusRing}`}>
+              <details key={g.key} className="rounded-lg border border-line p-3">
+                <summary className={`min-h-11 cursor-pointer py-2 font-bold`}>
                   {g.title} ({list.length} shown)
                 </summary>
-                <p className="mb-2 text-[14px] text-[#4A5568]">{g.note}</p>
+                <p className="mb-2 text-[14px] text-muted">{g.note}</p>
                 <ul className="space-y-2">
                   {list.map((w) => (
-                    <li key={w.work_order_id} className="rounded-md bg-[#F4F6F9] p-3 text-[14px]">
+                    <li key={w.work_order_id} className="rounded-md bg-mist p-3 text-[14px]">
                       <span className="font-bold">{w.work_order_id}</span> · ward {w.ward_code} · {w.road_name ?? "road not named"} · {fmtDate(w.completed_at)}
                       <br />
                       {w.repair_method}. Billed {inr(w.cost_inr)} against {inr(w.expected_cost_inr)} on the rate card ({w.cost_ratio.toFixed(2)} times).
@@ -271,7 +270,7 @@ async function Detail({ c }: { c: Contractor }) {
                       {w.issue_id ? (
                         <>
                           {" "}
-                          <Link href={`/complaints?issue=${w.issue_id}`} className={`font-semibold text-[#1F4E9C] underline ${focusRing}`}>
+                          <Link href={`/complaints?issue=${w.issue_id}`} className={`font-semibold text-sea underline`}>
                             See the complaint trail
                           </Link>
                         </>
@@ -284,7 +283,7 @@ async function Detail({ c }: { c: Contractor }) {
           })}
         </div>
         <p className="mt-4 text-[14px]">
-          <Link href="/audit" className={`font-semibold text-[#1F4E9C] underline ${focusRing}`}>
+          <Link href="/audit" className={`font-semibold text-sea underline`}>
             See all flagged jobs in the audit
           </Link>{" "}
           · {num(c.work_orders)} jobs reviewed for this contractor.

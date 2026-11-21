@@ -1,77 +1,89 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 
-// Shared page frame for the audit and complaint pages. Server components, no client JavaScript.
-// The frame sets its own light background so the pages read the same in any colour scheme.
+export function cx(...parts: (string | false | null | undefined)[]) {
+  return parts.filter(Boolean).join(" ");
+}
 
-type NavKey = "home" | "contractors" | "audit" | "complaints";
-
-const NAV: { key: NavKey; href: string; label: string }[] = [
-  { key: "home", href: "/", label: "Wards" },
-  { key: "contractors", href: "/contractors", label: "Contractors" },
-  { key: "audit", href: "/audit", label: "Audit" },
-  { key: "complaints", href: "/complaints", label: "Track a complaint" },
-];
-
-export const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F4E9C]";
-
-export function PageShell({ current, children }: { current: NavKey; children: ReactNode }) {
+/** A small pill label with a sparkle, as in the reference. The sparkle is decoration. */
+export function Chip({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-white text-[#14213D]">
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-10 focus:rounded focus:bg-white focus:px-3 focus:py-2"
-      >
-        Skip to content
-      </a>
-      <div className="bg-[#FFF4DB] px-4 py-2 text-center text-[13px] text-[#5C3B00]">
-        Demo uses synthetic data. Not BMC records. All contractors are fictional.
-      </div>
-      <header className="border-b border-[#C5CCD6]">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-4 sm:px-8">
-          <Link href="/" className={`py-3 text-lg font-bold ${focusRing}`}>
-            Follow the Rupee
-          </Link>
-          <nav aria-label="Main">
-            <ul className="flex flex-wrap gap-1">
-              {NAV.map((n) => (
-                <li key={n.key}>
-                  <Link
-                    href={n.href}
-                    aria-current={n.key === current ? "page" : undefined}
-                    className={`inline-flex min-h-11 items-center border-b-4 px-3 text-[15px] ${focusRing} ${
-                      n.key === current ? "border-[#1F4E9C] font-bold" : "border-transparent hover:border-[#C5CCD6]"
-                    }`}
-                  >
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+    <span className="soft inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-sm font-medium text-muted">
+      <span aria-hidden className="text-glow">
+        ✦
+      </span>
+      {children}
+    </span>
+  );
+}
+
+/** Display title in the serif, with one phrase set in the italic accent. */
+export function Display({ children, accent, as: Tag = "h1", className, id }: { children: string; accent?: string; as?: "h1" | "h2"; className?: string; id?: string }) {
+  const at = accent ? children.indexOf(accent) : -1;
+  return (
+    <Tag id={id} className={cx("display", className)}>
+      {at < 0 ? (
+        children
+      ) : (
+        <>
+          {children.slice(0, at)}
+          <em>{accent}</em>
+          {children.slice(at + accent!.length)}
+        </>
+      )}
+    </Tag>
+  );
+}
+
+/** Page title block: chip, serif title with an italic accent phrase, then one plain sentence. */
+export function PageTitle({ kicker, title, accent, children, center }: { kicker?: string; title: string; accent?: string; children?: ReactNode; center?: boolean }) {
+  return (
+    <header className={cx("max-w-3xl", center && "mx-auto text-center")}>
+      {kicker && (
+        <div className="mb-6">
+          <Chip>{kicker}</Chip>
         </div>
-      </header>
-      <main id="main" className="mx-auto w-full max-w-5xl px-4 py-6 sm:px-8 sm:py-8">
-        {children}
-      </main>
-      <footer className="border-t border-[#C5CCD6] px-4 py-6 text-center text-[13px] text-[#4A5568]">
-        Every figure links back to the repair jobs behind it. Context such as heavy rain and low-lying wards is checked before anything is flagged.
-      </footer>
+      )}
+      <Display accent={accent} className="text-5xl sm:text-6xl">
+        {title}
+      </Display>
+      {children && <div className={cx("mt-6 max-w-2xl text-lg leading-relaxed text-muted", center && "mx-auto")}>{children}</div>}
+    </header>
+  );
+}
+
+/** Section heading in the serif. */
+export function Section({ id, title, accent, aside, children }: { id: string; title: string; accent?: string; aside?: ReactNode; children: ReactNode }) {
+  return (
+    <section aria-labelledby={id}>
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+        <Display as="h2" id={id} accent={accent} className="text-3xl sm:text-4xl">
+          {title}
+        </Display>
+        {aside && <div className="text-sm text-muted">{aside}</div>}
+      </div>
+      {children}
+    </section>
+  );
+}
+
+export function Card({ children, className }: { children: ReactNode; className?: string }) {
+  return <div className={cx("soft rounded-3xl p-6 sm:p-8", className)}>{children}</div>;
+}
+
+/** A horizontally scrollable region for wide tables; focusable so keyboard users can scroll it. */
+export function TableWrap({ children, label }: { children: ReactNode; label: string }) {
+  return (
+    <div className="overflow-x-auto" role="region" aria-label={label} tabIndex={0}>
+      {children}
     </div>
   );
 }
 
-/** A filter chip that is a plain link, so filters work without JavaScript. */
-export function Chip({ href, active, children }: { href: string; active: boolean; children: ReactNode }) {
-  return (
-    <Link
-      href={href}
-      aria-current={active ? "true" : undefined}
-      className={`inline-flex min-h-11 items-center rounded-full border-2 px-4 text-[14px] ${focusRing} ${
-        active ? "border-[#1F4E9C] bg-[#E8EFFA] font-bold" : "border-[#8A94A6] bg-white hover:bg-[#F4F6F9]"
-      }`}
-    >
-      {children}
-    </Link>
-  );
-}
+export const th = "border-b border-rule px-3 py-3 text-left text-xs font-semibold uppercase tracking-[0.06em] text-muted";
+export const td = "border-b border-rule px-3 py-4 align-top text-sm";
+export const link = "font-semibold text-sea underline decoration-glow decoration-2 underline-offset-4 hover:decoration-4";
+
+export const field = "min-h-12 w-full rounded-xl border border-line bg-card px-4";
+export const btn = "inline-flex min-h-12 items-center justify-center gap-2 rounded-full border px-6 text-sm font-semibold transition-colors duration-150 ease";
+export const btnPrimary = `${btn} border-foreground bg-foreground text-background hover:bg-foreground/85`;
+export const btnQuiet = `${btn} border-line bg-card text-foreground hover:bg-mist`;
