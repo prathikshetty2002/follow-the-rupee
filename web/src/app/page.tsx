@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { Churchgate } from "@/components/churchgate";
+import { BmcOffice } from "@/components/bmc-office";
 import { Card, Chip, Display, TableWrap, btnPrimary, btnQuiet, td, th } from "@/components/ui";
 import type { StageData } from "@/components/stage/types";
 import { WardStage } from "@/components/stage/ward-stage";
@@ -65,8 +65,7 @@ export default async function Home() {
 
   return (
     <div className="space-y-16">
-      <section aria-labelledby="hero-h" className="soft relative isolate h-[42rem] overflow-hidden rounded-[2rem] sm:h-[47rem]" style={{ background: "linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 35%, var(--card)) 45%, var(--mist) 100%)" }}>
-        <Churchgate className="absolute inset-0 -z-10 size-full" />
+      <section aria-labelledby="hero-h" className="soft relative isolate overflow-hidden rounded-[2rem]" style={{ background: "linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 35%, var(--card)) 45%, var(--mist) 100%)" }}>
         <div className="relative mx-auto max-w-3xl px-5 pt-12 text-center sm:px-12 sm:pt-16">
           <div className="mb-6 flex justify-center">
             <Chip>Mumbai monsoon roads, June to September 2025</Chip>
@@ -84,6 +83,7 @@ export default async function Home() {
             </Link>
           </div>
         </div>
+        <BmcOffice className="relative -mt-4 block h-[24rem] w-full sm:h-[37rem]" />
       </section>
 
       <div id="map" className="scroll-mt-4">
