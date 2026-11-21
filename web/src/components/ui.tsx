@@ -4,10 +4,11 @@ import type { ReactNode } from "react";
 // Shared page frame for the audit and complaint pages. Server components, no client JavaScript.
 // The frame sets its own light background so the pages read the same in any colour scheme.
 
-type NavKey = "home" | "audit" | "complaints";
+type NavKey = "home" | "contractors" | "audit" | "complaints";
 
 const NAV: { key: NavKey; href: string; label: string }[] = [
   { key: "home", href: "/", label: "Wards" },
+  { key: "contractors", href: "/contractors", label: "Contractors" },
   { key: "audit", href: "/audit", label: "Audit" },
   { key: "complaints", href: "/complaints", label: "Track a complaint" },
 ];
