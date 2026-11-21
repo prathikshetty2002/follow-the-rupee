@@ -314,6 +314,15 @@ function FlagCard({ flag: f, woById, wardName }: { flag: Flag; woById: Map<strin
             {wardName ? ` (${wardName})` : ""} · {f.contractor_name ?? f.contractor_id}
             {f.work_type ? ` · ${f.work_type}` : ""}
           </p>
+          <p className="mt-1 text-[14px]">
+            <Link href={`/contractors?c=${f.contractor_id}`} className="font-semibold text-sea underline">
+              Contractor scorecard
+            </Link>
+            {" · "}
+            <Link href={`/plan/${f.ward_code.replace("/", "-")}`} className="font-semibold text-sea underline">
+              Plan the next rupee for ward {f.ward_code}
+            </Link>
+          </p>
         </div>
         <div className="text-right">
           {amountLabel ? (

@@ -6,7 +6,7 @@ import { Planner } from "@/components/planner/planner";
 import type { PlannerData, PlannerIssue } from "@/components/planner/types";
 import { PlanSkeleton } from "@/components/skeleton";
 import { PageTitle, link } from "@/components/ui";
-import { getContractors, getNextRupee, getOpenIssuePoints, getRoadGeo, getWardGeo, getWards } from "@/lib/data";
+import { getContractors, getFlags, getNextRupee, getOpenIssuePoints, getRoadGeo, getWardGeo, getWards } from "@/lib/data";
 import { inrShort, slugToWard, wardSlug } from "@/lib/format";
 import { projectFeatures } from "@/lib/map";
 
@@ -31,7 +31,8 @@ export default function PlanPage(props: PageProps<"/plan/[slug]">) {
 async function Content({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const code = slugToWard(slug);
-  const [file, wards, contractors, wardGeo, roadGeo, points] = await Promise.all([getNextRupee(), getWards(), getContractors(), getWardGeo(), getRoadGeo(), getOpenIssuePoints()]);
+  const [file, wards, contractors, wardGeo, roadGeo, points, flags] = await Promise.all([getNextRupee(), getWards(), getContractors(), getWardGeo(), getRoadGeo(), getOpenIssuePoints(), getFlags()]);
+  const flaggedHere = new Set(flags.filter((f) => f.ward_code === code && (f.kind ?? "billing") === "billing").map((f) => f.work_order_id)).size;
   const plan = file.wards.find((w) => w.ward_code === code);
   const ward = wards.find((w) => w.ward_code === code);
   const feature = wardGeo.features.find((f) => f.properties.ward_code === code);
@@ -62,6 +63,8 @@ async function Content({ params }: { params: Promise<{ slug: string }> }) {
       method: i.recommended_method,
       reasons: i.reasons,
       contractors: i.recommended_contractors.map((c) => names[c] ?? c),
+      contractorIds: i.recommended_contractors,
+      ward: code,
       expectedFail: i.expected_reopen_rate,
       nComplaints: i.n_complaints,
       complaintIds: i.complaint_ids,
@@ -106,6 +109,34 @@ async function Content({ params }: { params: Promise<{ slug: string }> }) {
         </PageTitle>
       </div>
       <Planner data={data} />
+      <section aria-labelledby="ev" className="soft rounded-3xl p-6 sm:p-8">
+        <h2 id="ev" className="font-serif text-3xl">
+          The evidence behind this <em>plan</em>
+        </h2>
+        <p className="mt-2 max-w-2xl text-muted">The ranking says where to look first. These pages show what has already been spent here, who did the work, and whether it held.</p>
+        <ul className="mt-5 grid gap-3 md:grid-cols-3">
+          <li>
+            <Link href={`/audit?ward=${encodeURIComponent(code)}`} className="block min-h-11 rounded-2xl bg-card p-4 hover:bg-mist">
+              <span className="block font-semibold">Audit: past repair bills</span>
+              <span className="mt-1 block text-sm text-muted">
+                {flaggedHere > 0 ? `${flaggedHere} repair ${flaggedHere === 1 ? "job" : "jobs"} in ward ${code} have a billing flag` : `No billing flags in ward ${code}`}
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/contractors" className="block min-h-11 rounded-2xl bg-card p-4 hover:bg-mist">
+              <span className="block font-semibold">Contractor scorecards</span>
+              <span className="mt-1 block text-sm text-muted">The contractors suggested above, graded against what is expected for the same work</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/complaints" className="block min-h-11 rounded-2xl bg-card p-4 hover:bg-mist">
+              <span className="block font-semibold">Track a complaint</span>
+              <span className="mt-1 block text-sm text-muted">Follow any complaint ID from the first report to the repair</span>
+            </Link>
+          </li>
+        </ul>
+      </section>
     </div>
   );
 }

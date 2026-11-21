@@ -300,7 +300,10 @@ async function IssueDetail({ issue, searched }: { issue: Issue; searched?: strin
         {wo ? (
           <>
             <Step title="Repair job" when={wo.work_order_id}>
-              {wo.contractor_name} used {wo.repair_method.toLowerCase()}. Billed {inr(wo.cost_inr)}.
+              <Link href={`/contractors?c=${wo.contractor_id}`} className="font-semibold text-sea underline">
+                {wo.contractor_name}
+              </Link>{" "}
+              used {wo.repair_method.toLowerCase()}. Billed {inr(wo.cost_inr)}.
             </Step>
             <Step title="Completed" when={fmtDate(wo.completed_at)}>
               {fmtDays(wo.days_to_fix)} after the first complaint. The promised time was {wo.sla_hours} hours, and it was {wo.sla_met ? "met" : "missed"}.
@@ -340,6 +343,12 @@ async function IssueDetail({ issue, searched }: { issue: Issue; searched?: strin
           </Link>
         </p>
       )}
+
+      <p className="mt-4 text-[15px]">
+        <Link href={`/plan/${issue.ward_code.replace("/", "-")}`} className="font-semibold text-sea underline">
+          See how ward {issue.ward_code} ranks its open repairs
+        </Link>
+      </p>
 
       <h3 className="mb-2 mt-6 text-xl font-bold">How it was reported</h3>
       <dl className="grid gap-x-8 gap-y-2 text-[15px] sm:grid-cols-2">

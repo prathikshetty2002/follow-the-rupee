@@ -140,7 +140,15 @@ async function Detail({ c }: { c: Contractor }) {
         <p className="text-[13px] font-bold tracking-wide">RANK {c.rank} OF 8</p>
         <h1 className="text-3xl font-bold leading-tight">{shortName(c.contractor_name)}</h1>
         <p className="mt-1 text-[15px] text-muted">
-          {plural(c.work_orders, "job")} · {inr(c.spend_inr)} · wards {c.wards.join(", ")}
+          {plural(c.work_orders, "job")} · {inr(c.spend_inr)} · wards{" "}
+          {c.wards.map((w, k) => (
+            <span key={w}>
+              {k > 0 && ", "}
+              <Link href={`/plan/${w.replace("/", "-")}`} className="font-semibold text-sea underline">
+                {w}
+              </Link>
+            </span>
+          ))}
         </p>
         <p className="mt-3 flex items-baseline gap-3">
           <span className="text-5xl font-bold">{c.grade}</span>

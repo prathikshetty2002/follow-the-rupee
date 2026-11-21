@@ -9,6 +9,8 @@ export type PlannerIssue = PlanItem & {
   method: string;
   reasons: string[];
   contractors: string[];
+  contractorIds: string[]; // same order as contractors; "original DLP contractor" is not a scorecard id
+  ward: string; // ward code, for links into the audit
   expectedFail: number; // 0 to 1
   nComplaints: number;
   complaintIds: string[];

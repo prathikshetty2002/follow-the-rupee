@@ -1,7 +1,8 @@
 import { FACTOR_INFO } from "@/lib/factors";
 import { inr, inrShort, pct } from "@/lib/format";
 import { FAMILIES, contributions, normaliseWeights, type Fill, type Scored, type Strategy, type Weights } from "@/lib/planner";
-import { cx } from "../ui";
+import Link from "next/link";
+import { cx, link } from "../ui";
 import type { PlannerIssue } from "./types";
 
 type Item = Scored<PlannerIssue>;
@@ -236,11 +237,33 @@ function Working({ item, fill, weights, paid }: { item: Item; fill: Fill; weight
             <dt className="text-muted">Cost to BMC</dt>
             <dd>
               <span className="num font-semibold">{item.dlp ? "₹0" : inr(item.cost)}</span>
-              {item.dlp ? " The original contractor fixes it under warranty." : item.costHigh > item.costLow ? <span className="num block text-xs text-muted">Half of normal jobs like this cost {inr(item.costLow)} to {inr(item.costHigh)}</span> : null}
+              {item.dlp ? (
+                <>
+                  {" "}
+                  The original contractor fixes it under warranty.{" "}
+                  <Link href={`/audit?type=dlp_paid&ward=${encodeURIComponent(item.ward)}`} className={link}>
+                    See warranty-road bills in this ward
+                  </Link>
+                </>
+              ) : item.costHigh > item.costLow ? <span className="num block text-xs text-muted">Half of normal jobs like this cost {inr(item.costLow)} to {inr(item.costHigh)}</span> : null}
             </dd>
             <dt className="text-muted">Contractors</dt>
             <dd>
-              {item.contractors.join(", ")}
+              {item.contractors.map((n, k) => {
+                const id = item.contractorIds[k];
+                return (
+                  <span key={`${n}-${k}`}>
+                    {k > 0 && ", "}
+                    {id && /^CT\d+$/.test(id) ? (
+                      <Link href={`/contractors?c=${id}`} className={link}>
+                        {n}
+                      </Link>
+                    ) : (
+                      n
+                    )}
+                  </span>
+                );
+              })}
               {!item.dlp && <span className="block text-xs text-muted">Expected to need redoing about {pct(item.expectedFail)} of the time with them.</span>}
             </dd>
           </dl>
@@ -255,7 +278,15 @@ function Working({ item, fill, weights, paid }: { item: Item; fill: Fill; weight
             ))}
           </ul>
           <p className="num mt-2 text-xs text-muted">
-            Complaint{item.complaintIds.length > 1 ? "s" : ""}: {item.complaintIds.slice(0, 4).join(", ")}
+            Complaint{item.complaintIds.length > 1 ? "s" : ""}:{" "}
+            {item.complaintIds.slice(0, 4).map((c, k) => (
+              <span key={c}>
+                {k > 0 && ", "}
+                <Link href={`/complaints?q=${c}`} className={link}>
+                  {c}
+                </Link>
+              </span>
+            ))}
             {item.complaintIds.length > 4 ? ` and ${item.complaintIds.length - 4} more` : ""}
           </p>
         </section>
