@@ -46,3 +46,14 @@ TOP_K_WARD = 3
 BOOTSTRAP_REPS = 1000
 WEIGHT_PERTURBATIONS = 1000
 RANDOM_SEED = 7
+
+# Audit flags
+OVERBILL_RATIO = 1.4  # normal jobs sit within 0.75-1.3x the rate card; the data has a clean gap up to 1.4x
+NORMAL_RATIO_MAX = 1.3  # money at risk is the part of the bill above this multiple of the rate card
+OVERBILL_HIGH_RATIO = 2.0
+DOUBLE_BILL_WINDOW_DAYS = 7  # same road and work type, earlier job, no complaint linked
+SLA_FLAG_RATIO = 2.0  # flag a missed SLA only when the fix took at least this many times the target
+SLA_MEDIUM_RATIO, SLA_HIGH_RATIO = 3.0, 5.0
+HEAVY_RAIN_CATEGORIES = ("Heavy", "Very heavy", "Extremely heavy")
+CARRIAGEWAY_WORK = ("Pothole", "Road cave-in", "Broken paver blocks", "Open or broken manhole")  # what a DLP normally covers
+STATION_SPLIT_LAT = 19.03  # ward centroids south of this use the Colaba gauge, the rest Santacruz

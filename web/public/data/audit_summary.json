@@ -1,0 +1,976 @@
+{
+  "city": {
+    "work_orders": 2499,
+    "flags": 1746,
+    "by_type": {
+      "dlp_paid": {
+        "count": 493,
+        "amount_at_risk_inr": 26225791
+      },
+      "double_billed": {
+        "count": 45,
+        "amount_at_risk_inr": 2590652
+      },
+      "over_billed": {
+        "count": 111,
+        "amount_at_risk_inr": 4473031
+      },
+      "reopened": {
+        "count": 611,
+        "amount_at_risk_inr": 30668281
+      },
+      "sla_missed": {
+        "count": 486,
+        "amount_at_risk_inr": 0
+      }
+    },
+    "billing_flagged_work_orders": 622,
+    "billing_flagged_cost_inr": 37700070,
+    "high_severity": 585
+  },
+  "by_ward": [
+    {
+      "ward_code": "A",
+      "work_orders": 29,
+      "flags": 26,
+      "by_type": {
+        "dlp_paid": {
+          "count": 9,
+          "amount_at_risk_inr": 363827
+        },
+        "double_billed": {
+          "count": 1,
+          "amount_at_risk_inr": 18824
+        },
+        "over_billed": {
+          "count": 1,
+          "amount_at_risk_inr": 24029
+        },
+        "reopened": {
+          "count": 11,
+          "amount_at_risk_inr": 582099
+        },
+        "sla_missed": {
+          "count": 4,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 11,
+      "billing_flagged_cost_inr": 523680,
+      "high_severity": 14
+    },
+    {
+      "ward_code": "B",
+      "work_orders": 44,
+      "flags": 26,
+      "by_type": {
+        "dlp_paid": {
+          "count": 3,
+          "amount_at_risk_inr": 173383
+        },
+        "over_billed": {
+          "count": 5,
+          "amount_at_risk_inr": 400752
+        },
+        "reopened": {
+          "count": 9,
+          "amount_at_risk_inr": 578915
+        },
+        "sla_missed": {
+          "count": 9,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 8,
+      "billing_flagged_cost_inr": 1211135,
+      "high_severity": 4
+    },
+    {
+      "ward_code": "C",
+      "work_orders": 20,
+      "flags": 18,
+      "by_type": {
+        "dlp_paid": {
+          "count": 5,
+          "amount_at_risk_inr": 183276
+        },
+        "over_billed": {
+          "count": 2,
+          "amount_at_risk_inr": 35193
+        },
+        "reopened": {
+          "count": 8,
+          "amount_at_risk_inr": 247660
+        },
+        "sla_missed": {
+          "count": 3,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 6,
+      "billing_flagged_cost_inr": 199067,
+      "high_severity": 10
+    },
+    {
+      "ward_code": "D",
+      "work_orders": 40,
+      "flags": 27,
+      "by_type": {
+        "dlp_paid": {
+          "count": 11,
+          "amount_at_risk_inr": 525710
+        },
+        "double_billed": {
+          "count": 1,
+          "amount_at_risk_inr": 73848
+        },
+        "over_billed": {
+          "count": 1,
+          "amount_at_risk_inr": 14658
+        },
+        "reopened": {
+          "count": 8,
+          "amount_at_risk_inr": 235027
+        },
+        "sla_missed": {
+          "count": 6,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 12,
+      "billing_flagged_cost_inr": 564236,
+      "high_severity": 14
+    },
+    {
+      "ward_code": "E",
+      "work_orders": 118,
+      "flags": 98,
+      "by_type": {
+        "dlp_paid": {
+          "count": 41,
+          "amount_at_risk_inr": 2496332
+        },
+        "double_billed": {
+          "count": 2,
+          "amount_at_risk_inr": 69926
+        },
+        "over_billed": {
+          "count": 9,
+          "amount_at_risk_inr": 357825
+        },
+        "reopened": {
+          "count": 36,
+          "amount_at_risk_inr": 2011624
+        },
+        "sla_missed": {
+          "count": 10,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 49,
+      "billing_flagged_cost_inr": 3017584,
+      "high_severity": 42
+    },
+    {
+      "ward_code": "F/N",
+      "work_orders": 150,
+      "flags": 114,
+      "by_type": {
+        "dlp_paid": {
+          "count": 37,
+          "amount_at_risk_inr": 2221383
+        },
+        "double_billed": {
+          "count": 3,
+          "amount_at_risk_inr": 233560
+        },
+        "over_billed": {
+          "count": 6,
+          "amount_at_risk_inr": 389664
+        },
+        "reopened": {
+          "count": 37,
+          "amount_at_risk_inr": 2134363
+        },
+        "sla_missed": {
+          "count": 31,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 44,
+      "billing_flagged_cost_inr": 3243782,
+      "high_severity": 44
+    },
+    {
+      "ward_code": "F/S",
+      "work_orders": 135,
+      "flags": 83,
+      "by_type": {
+        "dlp_paid": {
+          "count": 14,
+          "amount_at_risk_inr": 676407
+        },
+        "double_billed": {
+          "count": 2,
+          "amount_at_risk_inr": 53444
+        },
+        "over_billed": {
+          "count": 7,
+          "amount_at_risk_inr": 335298
+        },
+        "reopened": {
+          "count": 21,
+          "amount_at_risk_inr": 1335554
+        },
+        "sla_missed": {
+          "count": 39,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 22,
+      "billing_flagged_cost_inr": 1531115,
+      "high_severity": 22
+    },
+    {
+      "ward_code": "G/N",
+      "work_orders": 139,
+      "flags": 107,
+      "by_type": {
+        "dlp_paid": {
+          "count": 23,
+          "amount_at_risk_inr": 986130
+        },
+        "double_billed": {
+          "count": 7,
+          "amount_at_risk_inr": 596157
+        },
+        "over_billed": {
+          "count": 3,
+          "amount_at_risk_inr": 121788
+        },
+        "reopened": {
+          "count": 41,
+          "amount_at_risk_inr": 1729109
+        },
+        "sla_missed": {
+          "count": 33,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 33,
+      "billing_flagged_cost_inr": 1814081,
+      "high_severity": 38
+    },
+    {
+      "ward_code": "G/S",
+      "work_orders": 64,
+      "flags": 54,
+      "by_type": {
+        "dlp_paid": {
+          "count": 21,
+          "amount_at_risk_inr": 1059034
+        },
+        "reopened": {
+          "count": 21,
+          "amount_at_risk_inr": 1057467
+        },
+        "sla_missed": {
+          "count": 12,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 21,
+      "billing_flagged_cost_inr": 1059034,
+      "high_severity": 17
+    },
+    {
+      "ward_code": "H/E",
+      "work_orders": 111,
+      "flags": 79,
+      "by_type": {
+        "dlp_paid": {
+          "count": 17,
+          "amount_at_risk_inr": 896301
+        },
+        "double_billed": {
+          "count": 5,
+          "amount_at_risk_inr": 270633
+        },
+        "over_billed": {
+          "count": 6,
+          "amount_at_risk_inr": 202968
+        },
+        "reopened": {
+          "count": 29,
+          "amount_at_risk_inr": 1612052
+        },
+        "sla_missed": {
+          "count": 22,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 26,
+      "billing_flagged_cost_inr": 1574303,
+      "high_severity": 24
+    },
+    {
+      "ward_code": "H/W",
+      "work_orders": 62,
+      "flags": 57,
+      "by_type": {
+        "dlp_paid": {
+          "count": 29,
+          "amount_at_risk_inr": 2237982
+        },
+        "double_billed": {
+          "count": 1,
+          "amount_at_risk_inr": 45505
+        },
+        "over_billed": {
+          "count": 1,
+          "amount_at_risk_inr": 143429
+        },
+        "reopened": {
+          "count": 16,
+          "amount_at_risk_inr": 1391670
+        },
+        "sla_missed": {
+          "count": 10,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 30,
+      "billing_flagged_cost_inr": 2283487,
+      "high_severity": 15
+    },
+    {
+      "ward_code": "K/E",
+      "work_orders": 165,
+      "flags": 74,
+      "by_type": {
+        "dlp_paid": {
+          "count": 7,
+          "amount_at_risk_inr": 303578
+        },
+        "double_billed": {
+          "count": 2,
+          "amount_at_risk_inr": 40724
+        },
+        "over_billed": {
+          "count": 3,
+          "amount_at_risk_inr": 57808
+        },
+        "reopened": {
+          "count": 39,
+          "amount_at_risk_inr": 1741105
+        },
+        "sla_missed": {
+          "count": 23,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 12,
+      "billing_flagged_cost_inr": 487858,
+      "high_severity": 12
+    },
+    {
+      "ward_code": "K/W",
+      "work_orders": 143,
+      "flags": 98,
+      "by_type": {
+        "dlp_paid": {
+          "count": 29,
+          "amount_at_risk_inr": 1714069
+        },
+        "double_billed": {
+          "count": 3,
+          "amount_at_risk_inr": 190688
+        },
+        "over_billed": {
+          "count": 10,
+          "amount_at_risk_inr": 207075
+        },
+        "reopened": {
+          "count": 37,
+          "amount_at_risk_inr": 1866600
+        },
+        "sla_missed": {
+          "count": 19,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 41,
+      "billing_flagged_cost_inr": 2515551,
+      "high_severity": 37
+    },
+    {
+      "ward_code": "L",
+      "work_orders": 232,
+      "flags": 175,
+      "by_type": {
+        "dlp_paid": {
+          "count": 52,
+          "amount_at_risk_inr": 3959357
+        },
+        "double_billed": {
+          "count": 4,
+          "amount_at_risk_inr": 231036
+        },
+        "over_billed": {
+          "count": 8,
+          "amount_at_risk_inr": 323109
+        },
+        "reopened": {
+          "count": 41,
+          "amount_at_risk_inr": 1820204
+        },
+        "sla_missed": {
+          "count": 70,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 63,
+      "billing_flagged_cost_inr": 4860382,
+      "high_severity": 43
+    },
+    {
+      "ward_code": "M/E",
+      "work_orders": 148,
+      "flags": 117,
+      "by_type": {
+        "dlp_paid": {
+          "count": 32,
+          "amount_at_risk_inr": 1380088
+        },
+        "double_billed": {
+          "count": 2,
+          "amount_at_risk_inr": 98531
+        },
+        "over_billed": {
+          "count": 6,
+          "amount_at_risk_inr": 112499
+        },
+        "reopened": {
+          "count": 39,
+          "amount_at_risk_inr": 1427808
+        },
+        "sla_missed": {
+          "count": 38,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 37,
+      "billing_flagged_cost_inr": 1667453,
+      "high_severity": 36
+    },
+    {
+      "ward_code": "M/W",
+      "work_orders": 87,
+      "flags": 65,
+      "by_type": {
+        "dlp_paid": {
+          "count": 23,
+          "amount_at_risk_inr": 1275227
+        },
+        "over_billed": {
+          "count": 4,
+          "amount_at_risk_inr": 177526
+        },
+        "reopened": {
+          "count": 24,
+          "amount_at_risk_inr": 1150699
+        },
+        "sla_missed": {
+          "count": 14,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 26,
+      "billing_flagged_cost_inr": 1633871,
+      "high_severity": 22
+    },
+    {
+      "ward_code": "N",
+      "work_orders": 112,
+      "flags": 63,
+      "by_type": {
+        "dlp_paid": {
+          "count": 15,
+          "amount_at_risk_inr": 705327
+        },
+        "double_billed": {
+          "count": 3,
+          "amount_at_risk_inr": 182410
+        },
+        "over_billed": {
+          "count": 6,
+          "amount_at_risk_inr": 182005
+        },
+        "reopened": {
+          "count": 22,
+          "amount_at_risk_inr": 970747
+        },
+        "sla_missed": {
+          "count": 17,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 23,
+      "billing_flagged_cost_inr": 1349405,
+      "high_severity": 20
+    },
+    {
+      "ward_code": "P/N",
+      "work_orders": 141,
+      "flags": 90,
+      "by_type": {
+        "dlp_paid": {
+          "count": 20,
+          "amount_at_risk_inr": 614828
+        },
+        "double_billed": {
+          "count": 2,
+          "amount_at_risk_inr": 62991
+        },
+        "over_billed": {
+          "count": 7,
+          "amount_at_risk_inr": 318324
+        },
+        "reopened": {
+          "count": 35,
+          "amount_at_risk_inr": 1816577
+        },
+        "sla_missed": {
+          "count": 26,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 28,
+      "billing_flagged_cost_inr": 1289349,
+      "high_severity": 35
+    },
+    {
+      "ward_code": "P/S",
+      "work_orders": 82,
+      "flags": 47,
+      "by_type": {
+        "dlp_paid": {
+          "count": 14,
+          "amount_at_risk_inr": 497073
+        },
+        "double_billed": {
+          "count": 1,
+          "amount_at_risk_inr": 29162
+        },
+        "over_billed": {
+          "count": 6,
+          "amount_at_risk_inr": 282042
+        },
+        "reopened": {
+          "count": 17,
+          "amount_at_risk_inr": 340751
+        },
+        "sla_missed": {
+          "count": 9,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 19,
+      "billing_flagged_cost_inr": 1049793,
+      "high_severity": 18
+    },
+    {
+      "ward_code": "R/C",
+      "work_orders": 86,
+      "flags": 62,
+      "by_type": {
+        "dlp_paid": {
+          "count": 30,
+          "amount_at_risk_inr": 1461912
+        },
+        "double_billed": {
+          "count": 2,
+          "amount_at_risk_inr": 35666
+        },
+        "reopened": {
+          "count": 12,
+          "amount_at_risk_inr": 539981
+        },
+        "sla_missed": {
+          "count": 18,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 30,
+      "billing_flagged_cost_inr": 1461912,
+      "high_severity": 33
+    },
+    {
+      "ward_code": "R/N",
+      "work_orders": 82,
+      "flags": 55,
+      "by_type": {
+        "dlp_paid": {
+          "count": 22,
+          "amount_at_risk_inr": 535961
+        },
+        "double_billed": {
+          "count": 1,
+          "amount_at_risk_inr": 42099
+        },
+        "reopened": {
+          "count": 22,
+          "amount_at_risk_inr": 1160682
+        },
+        "sla_missed": {
+          "count": 10,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 23,
+      "billing_flagged_cost_inr": 578060,
+      "high_severity": 29
+    },
+    {
+      "ward_code": "R/S",
+      "work_orders": 121,
+      "flags": 67,
+      "by_type": {
+        "dlp_paid": {
+          "count": 11,
+          "amount_at_risk_inr": 543742
+        },
+        "over_billed": {
+          "count": 8,
+          "amount_at_risk_inr": 351020
+        },
+        "reopened": {
+          "count": 25,
+          "amount_at_risk_inr": 1020154
+        },
+        "sla_missed": {
+          "count": 23,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 18,
+      "billing_flagged_cost_inr": 1361275,
+      "high_severity": 13
+    },
+    {
+      "ward_code": "S",
+      "work_orders": 123,
+      "flags": 90,
+      "by_type": {
+        "dlp_paid": {
+          "count": 16,
+          "amount_at_risk_inr": 959710
+        },
+        "double_billed": {
+          "count": 3,
+          "amount_at_risk_inr": 315448
+        },
+        "over_billed": {
+          "count": 6,
+          "amount_at_risk_inr": 221589
+        },
+        "reopened": {
+          "count": 40,
+          "amount_at_risk_inr": 2219613
+        },
+        "sla_missed": {
+          "count": 25,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 23,
+      "billing_flagged_cost_inr": 1617893,
+      "high_severity": 27
+    },
+    {
+      "ward_code": "T",
+      "work_orders": 65,
+      "flags": 54,
+      "by_type": {
+        "dlp_paid": {
+          "count": 12,
+          "amount_at_risk_inr": 455154
+        },
+        "over_billed": {
+          "count": 6,
+          "amount_at_risk_inr": 214430
+        },
+        "reopened": {
+          "count": 21,
+          "amount_at_risk_inr": 1677820
+        },
+        "sla_missed": {
+          "count": 15,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 17,
+      "billing_flagged_cost_inr": 805764,
+      "high_severity": 16
+    }
+  ],
+  "by_contractor": [
+    {
+      "contractor_id": "CT01",
+      "contractor_name": "Sahyadri Infra Works (synthetic)",
+      "work_orders": 337,
+      "flags": 167,
+      "by_type": {
+        "dlp_paid": {
+          "count": 69,
+          "amount_at_risk_inr": 3611868
+        },
+        "double_billed": {
+          "count": 8,
+          "amount_at_risk_inr": 493202
+        },
+        "over_billed": {
+          "count": 3,
+          "amount_at_risk_inr": 314080
+        },
+        "reopened": {
+          "count": 46,
+          "amount_at_risk_inr": 2478680
+        },
+        "sla_missed": {
+          "count": 41,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 78,
+      "billing_flagged_cost_inr": 4588974,
+      "high_severity": 72
+    },
+    {
+      "contractor_id": "CT02",
+      "contractor_name": "Konkan Roadcon Pvt Ltd (synthetic)",
+      "work_orders": 337,
+      "flags": 237,
+      "by_type": {
+        "dlp_paid": {
+          "count": 64,
+          "amount_at_risk_inr": 3662157
+        },
+        "double_billed": {
+          "count": 4,
+          "amount_at_risk_inr": 316939
+        },
+        "over_billed": {
+          "count": 5,
+          "amount_at_risk_inr": 177339
+        },
+        "reopened": {
+          "count": 90,
+          "amount_at_risk_inr": 4361233
+        },
+        "sla_missed": {
+          "count": 74,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 72,
+      "billing_flagged_cost_inr": 4322995,
+      "high_severity": 65
+    },
+    {
+      "contractor_id": "CT03",
+      "contractor_name": "Mahalaxmi Civil Contractors (synthetic)",
+      "work_orders": 303,
+      "flags": 309,
+      "by_type": {
+        "dlp_paid": {
+          "count": 53,
+          "amount_at_risk_inr": 2538642
+        },
+        "double_billed": {
+          "count": 10,
+          "amount_at_risk_inr": 564028
+        },
+        "over_billed": {
+          "count": 43,
+          "amount_at_risk_inr": 1269367
+        },
+        "reopened": {
+          "count": 114,
+          "amount_at_risk_inr": 5127412
+        },
+        "sla_missed": {
+          "count": 89,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 99,
+      "billing_flagged_cost_inr": 6020098,
+      "high_severity": 96
+    },
+    {
+      "contractor_id": "CT04",
+      "contractor_name": "Western Coast Asphalt Co (synthetic)",
+      "work_orders": 299,
+      "flags": 242,
+      "by_type": {
+        "dlp_paid": {
+          "count": 48,
+          "amount_at_risk_inr": 2817163
+        },
+        "double_billed": {
+          "count": 3,
+          "amount_at_risk_inr": 76329
+        },
+        "over_billed": {
+          "count": 5,
+          "amount_at_risk_inr": 363635
+        },
+        "reopened": {
+          "count": 116,
+          "amount_at_risk_inr": 6009427
+        },
+        "sla_missed": {
+          "count": 70,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 55,
+      "billing_flagged_cost_inr": 3566695,
+      "high_severity": 53
+    },
+    {
+      "contractor_id": "CT05",
+      "contractor_name": "Deccan Paving Solutions (synthetic)",
+      "work_orders": 287,
+      "flags": 132,
+      "by_type": {
+        "dlp_paid": {
+          "count": 53,
+          "amount_at_risk_inr": 2694040
+        },
+        "double_billed": {
+          "count": 5,
+          "amount_at_risk_inr": 219595
+        },
+        "over_billed": {
+          "count": 4,
+          "amount_at_risk_inr": 278485
+        },
+        "reopened": {
+          "count": 26,
+          "amount_at_risk_inr": 1133015
+        },
+        "sla_missed": {
+          "count": 44,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 60,
+      "billing_flagged_cost_inr": 3282130,
+      "high_severity": 53
+    },
+    {
+      "contractor_id": "CT06",
+      "contractor_name": "Shivneri Construction (synthetic)",
+      "work_orders": 289,
+      "flags": 196,
+      "by_type": {
+        "dlp_paid": {
+          "count": 59,
+          "amount_at_risk_inr": 2923442
+        },
+        "double_billed": {
+          "count": 8,
+          "amount_at_risk_inr": 443774
+        },
+        "over_billed": {
+          "count": 4,
+          "amount_at_risk_inr": 56249
+        },
+        "reopened": {
+          "count": 76,
+          "amount_at_risk_inr": 3943737
+        },
+        "sla_missed": {
+          "count": 49,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 67,
+      "billing_flagged_cost_inr": 3477795,
+      "high_severity": 67
+    },
+    {
+      "contractor_id": "CT07",
+      "contractor_name": "Arabian Sea Engineering (synthetic)",
+      "work_orders": 328,
+      "flags": 282,
+      "by_type": {
+        "dlp_paid": {
+          "count": 68,
+          "amount_at_risk_inr": 3802155
+        },
+        "double_billed": {
+          "count": 3,
+          "amount_at_risk_inr": 185356
+        },
+        "over_billed": {
+          "count": 37,
+          "amount_at_risk_inr": 1368202
+        },
+        "reopened": {
+          "count": 106,
+          "amount_at_risk_inr": 5598389
+        },
+        "sla_missed": {
+          "count": 68,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 101,
+      "billing_flagged_cost_inr": 7167659,
+      "high_severity": 103
+    },
+    {
+      "contractor_id": "CT08",
+      "contractor_name": "Mithi Infra Projects (synthetic)",
+      "work_orders": 319,
+      "flags": 181,
+      "by_type": {
+        "dlp_paid": {
+          "count": 79,
+          "amount_at_risk_inr": 4176324
+        },
+        "double_billed": {
+          "count": 4,
+          "amount_at_risk_inr": 291429
+        },
+        "over_billed": {
+          "count": 10,
+          "amount_at_risk_inr": 645674
+        },
+        "reopened": {
+          "count": 37,
+          "amount_at_risk_inr": 2016388
+        },
+        "sla_missed": {
+          "count": 51,
+          "amount_at_risk_inr": 0
+        }
+      },
+      "billing_flagged_work_orders": 90,
+      "billing_flagged_cost_inr": 5273724,
+      "high_severity": 76
+    }
+  ],
+  "thresholds": {
+    "over_billed_ratio": 1.4,
+    "double_bill_window_days": 7,
+    "sla_flag_ratio": 2.0,
+    "normal_cost_range_vs_rate_card": [
+      0.75,
+      1.3
+    ]
+  }
+}

@@ -63,20 +63,39 @@ All money is in rupees (integers). Rates are 0–1 fractions. Dates are ISO stri
 }
 ```
 
-## flags.json: one object per flagged work order
+## flags.json: one object per flag (written by `uv run pipeline audit`)
+A work order can carry several flags. Sorted billing first, then by severity and money at risk. Real data (1,746 flags on 1,342 work orders).
 ```json
 {
-  "work_order_id": "WO25-00004",
-  "ward_code": "P/S",
-  "road_id": "RD0166",
-  "contractor_id": "CT04",
+  "work_order_id": "WO25-01626",
+  "ward_code": "F/N",
+  "road_id": "RD0123",
+  "contractor_id": "CT03",
   "flag_type": "over_billed",           // over_billed | double_billed | dlp_paid | sla_missed | reopened
   "severity": "high",                   // high | medium | low
-  "amount_at_risk_inr": 64000,
-  "reason": "One line: billed ₹1,16,079 vs ~₹52,000 expected at the rate card.",
-  "evidence_work_order_ids": ["WO25-00004"]
+  "amount_at_risk_inr": 188958,         // 0 for sla_missed
+  "reason": "Billed ₹3,31,958 for work the rate card prices at about ₹1,10,000 (3.0× the rate; normal jobs stay within 1.3×).",
+  "evidence_work_order_ids": ["WO25-01626"],
+  "kind": "billing",                    // billing | performance (added fields below are optional)
+  "contractor_name": "...", "work_type": "...", "repair_method": "...", "cost_inr": 331958,
+  "details": { "cost_ratio": 3.02, "expected_cost_inr": 110000, "unit": "per job" }   // varies by flag_type
 }
 ```
+| flag_type | kind | Rule | Severity |
+|---|---|---|---|
+| `over_billed` | billing | cost above 1.4× the rate card (normal jobs sit within 0.75–1.3×) | high from 2×, else medium |
+| `double_billed` | billing | no complaint linked, and an earlier job on the same road and work type within 7 days | high if same contractor and method, else medium |
+| `dlp_paid` | billing | road still under its defect liability period, yet BMC paid | high for carriageway work, low for drainage or pumping (check the DLP covers it) |
+| `sla_missed` | performance | fixed at least 2× the SLA target after the first complaint | medium from 3×, high from 5×; one level lower if heavy rain fell in the window |
+| `reopened` | performance | repair failed within 30 days | low; medium if it failed repeatedly on that road; high if the road is under DLP |
+
+Billing flags are the high-confidence ones. Performance flags give context; `reason` for `reopened` shows the contractor's rate next to the city average so nobody is blamed for a normal failure rate.
+`details` for `double_billed`: `earlier_work_order_id`, `days_after_earlier_job`, `same_contractor`, `same_method`. For `dlp_paid`: `last_resurfaced`, `carriageway_work`. For `sla_missed`: `response_hours`, `sla_hours`, `sla_ratio`, `heavy_rain_days`.
+
+## audit_summary.json: flag totals by city, ward and contractor
+Type `AuditSummary`. Each block has `work_orders`, `flags`, `by_type` (count and money per flag type), `billing_flagged_work_orders` and
+`billing_flagged_cost_inr` (each work order counted once, so overlapping billing flags are not double counted), and `high_severity`.
+`thresholds` lists the rule settings so the UI can show them.
 
 ## issues.json: de-duplicated complaints linked to work orders
 ```json

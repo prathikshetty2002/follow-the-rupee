@@ -4,8 +4,9 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import Bounds, LinearConstraint, milp
 
+from pipeline import config
+
 MIN_JOBS_FOR_METHOD = 30
-OVERBILL_RATIO = 1.4  # jobs billed above this multiple of the rate card are excluded from cost estimates
 GOOD_TIER_MAX, POOR_TIER_MIN = 0.75, 1.2  # contractor re-open rate relative to the city average
 
 
@@ -20,7 +21,7 @@ def with_cost_ratio(work_orders: pd.DataFrame, rate_card: pd.DataFrame) -> pd.Da
 
 def method_table(wo: pd.DataFrame) -> pd.DataFrame:
     """Re-open rate and typical cost per (work type, method). Cost excludes over-billed jobs."""
-    clean = wo[wo.cost_ratio <= OVERBILL_RATIO]
+    clean = wo[wo.cost_ratio <= config.OVERBILL_RATIO]
     t = wo.groupby(["work_type", "repair_method"]).agg(jobs=("reopened", "size"), reopen_rate=("reopened", "mean"))
     t["est_cost_inr"] = clean.groupby(["work_type", "repair_method"]).cost_inr.mean().round(-2)
     t["cost_per_durable_fix_inr"] = (t.est_cost_inr / (1 - t.reopen_rate)).round(-2)
