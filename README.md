@@ -16,6 +16,8 @@
 
 <sub>Click the preview to play the full walkthrough with captions: [`docs/walkthrough.mp4`](docs/walkthrough.mp4) · the map, then the planner (the main tool), then the evidence pages</sub>
 
+**[Pitch deck: Follow the Rupee, 11 slides](https://claude.ai/artifact/Qspoh18Gkn3LvtUnYAoQgq)** · the story of one ward officer’s ₹10 lakh, with the algorithm in the speaker notes · demo script: [`docs/DEMO.md`](docs/DEMO.md)
+
 </div>
 
 ---
