@@ -70,7 +70,8 @@ export default async function Home() {
           <Display id="hero-h" accent="next rupee" className="text-5xl sm:text-6xl xl:text-[4.25rem]">
             Where should the next rupee go?
           </Display>
-          <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-muted xl:max-w-4xl xl:text-xl">Pick a ward on the map. The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
+          <p className="mx-auto mt-3 max-w-5xl text-xl font-semibold leading-snug sm:text-2xl">Where Mumbai&apos;s monsoon road-repair money went, and where it should go next.</p>
+          <p className="mx-auto mt-3 max-w-3xl text-lg leading-relaxed text-muted xl:max-w-4xl xl:text-xl">Pick a ward on the map. The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <a href="#map" className={`${btnPrimary} xl:min-h-12 xl:px-7 xl:text-base`}>
               Explore the map <span aria-hidden>↓</span>
