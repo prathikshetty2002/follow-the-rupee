@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { BmcOffice } from "@/components/bmc-office";
-import { MotionToggle } from "@/components/motion-toggle";
 import { Card, Chip, Display, TableWrap, btnPrimary, btnQuiet, td, th } from "@/components/ui";
 import type { StageData } from "@/components/stage/types";
 import { WardStage } from "@/components/stage/ward-stage";
@@ -84,7 +83,6 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-        <MotionToggle />
         <BmcOffice className="relative -mt-4 block h-[24rem] w-full sm:h-[32rem] lg:h-0 lg:min-h-[28rem] lg:flex-1" />
       </section>
 

@@ -63,7 +63,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <p>A ranking says where to look first. Confirm on site before sending a crew.</p>
           </div>
         </footer>
-        <Guide />
+        <Suspense fallback={null}>
+          <Guide />
+        </Suspense>
       </body>
     </html>
   );
