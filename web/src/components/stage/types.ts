@@ -24,6 +24,6 @@ export type StageData = {
   width: number;
   height: number;
   wards: StageWard[];
-  roads: { d: string; ward: string; hot: boolean }[]; // hot: has open issues
+  roads: { d: string; ward: string; hot: boolean; name: string }[]; // hot: has open issues
   dots: { x: number; y: number; ward: string; rank: number; funded: boolean }[];
 };

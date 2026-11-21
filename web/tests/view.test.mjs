@@ -14,11 +14,16 @@ test("fitView keeps the stage's shape and contains the box in the free area", ()
   assert.ok(Math.abs(v.x + v.w / 2 - 200) < 1e-9 && Math.abs(v.y + v.h / 2 - 400) < 1e-9);
 });
 
-test("fitView leaves more room when spread, and never goes below the minimum scale", () => {
+test("fitView in 3D fits the turned, tipped box and never goes below the minimum scale", () => {
   const box = [0, 0, 300, 300];
   const free = { w: 500, h: 500 };
-  assert.ok(fitView(box, stage, free, true).w > fitView(box, stage, free).w);
-  assert.equal(scaleOf(fitView([0, 0, 1, 1], stage, free, false, 2), stage), 2);
+  // tipped back 60 degrees and not turned: half as tall on screen, so a wider-than-tall free area is the limit
+  const flat = scaleOf(fitView(box, stage, free, undefined, 0, 1), stage);
+  const tipped = scaleOf(fitView(box, stage, free, { bearing: 0, pitch: 60 }, 0, 1), stage);
+  assert.ok(Math.abs(flat - 0.6) < 1e-9 && Math.abs(tipped - 0.6) < 1e-9);
+  // turned 45 degrees a square is wider on screen, so it needs more room
+  assert.ok(scaleOf(fitView(box, stage, free, { bearing: 45, pitch: 0 }, 0, 1), stage) > flat);
+  assert.equal(scaleOf(fitView([0, 0, 1, 1], stage, free, undefined, 2), stage), 2);
 });
 
 test("zoomView keeps the chosen point still and respects limits", () => {

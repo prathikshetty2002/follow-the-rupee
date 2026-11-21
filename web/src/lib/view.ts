@@ -14,16 +14,25 @@ export type Size = { w: number; h: number };
 export const scaleOf = (v: View, stage: Size) => v.w / stage.w;
 
 /**
- * The view that shows `box` centred, large enough to fit the free area. `spread` leaves room for the box to be turned
- * and tipped (the 3D view), by fitting its diagonal instead of its sides.
+ * The view that shows `box` centred, large enough to fit the free area. `turn` is the 3D view: the box is turned by `bearing`
+ * degrees and tipped back by `pitch` degrees, so its size on screen is that of its turned corners, squashed by the tip.
  */
-export function fitView(box: Box, stage: Size, free: Size, spread = false, minScale = 0): View {
-  const bw = box[2] - box[0];
-  const bh = box[3] - box[1];
-  const d = Math.hypot(bw, bh) * 0.92;
-  const s = Math.max(Math.max(bw / free.w, bh / free.h, spread ? d / Math.max(free.w, free.h) : 0) * 1.15, minScale); // 15% breathing room
-  const w = s * stage.w;
-  const h = s * stage.h;
+export function fitView(box: Box, stage: Size, free: Size, turn?: { bearing: number; pitch: number }, minScale = 0, pad = 1.15): View {
+  let bw = box[2] - box[0];
+  let bh = box[3] - box[1];
+  if (turn) {
+    const a = (turn.bearing * Math.PI) / 180;
+    const [c, s] = [Math.cos(a), Math.sin(a)];
+    const xs = [-bw / 2, bw / 2];
+    const ys = [-bh / 2, bh / 2];
+    const turned = xs.flatMap((x) => ys.map((y) => [x * c - y * s, x * s + y * c]));
+    bw = Math.max(...turned.map((p) => p[0])) - Math.min(...turned.map((p) => p[0]));
+    bh = (Math.max(...turned.map((p) => p[1])) - Math.min(...turned.map((p) => p[1]))) * Math.cos((turn.pitch * Math.PI) / 180);
+  }
+  const k = Math.max(bw / free.w, bh / free.h) * pad;
+  const sc = Math.max(k, minScale);
+  const w = sc * stage.w;
+  const h = sc * stage.h;
   return { x: (box[0] + box[2]) / 2 - w / 2, y: (box[1] + box[3]) / 2 - h / 2, w, h };
 }
 
