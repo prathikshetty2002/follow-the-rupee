@@ -316,3 +316,8 @@ export type OpenIssuePointProps = {
   issue_id: string; plan_issue_id: string; ward_code: string; category: string; road_name: string; priority_score: number; rank: number;
   funded: boolean; dlp: boolean; recommended_method: string; est_cost_inr: number;
 };
+
+// GeoJSON (the subset the map layers use)
+export type GeoFeature<P> = { type: "Feature"; properties: P; geometry: { type: string; coordinates: unknown } };
+export type GeoCollection<P> = { type: "FeatureCollection"; features: GeoFeature<P>[] };
+export type RoadFeatureProps = { road_id: string; road_name: string; ward_code: string; road_type: string; surface: string; open_issues: number; priority_score: number; rank_in_ward: number | null };
