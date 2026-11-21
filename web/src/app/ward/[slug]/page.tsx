@@ -49,6 +49,10 @@ async function WardContent({ params }: { params: Promise<{ slug: string }> }) {
   const byStatus = (s: string) => b.issues.filter((i) => i.status === s);
   const top = plan.issues.slice(0, 10);
   const rest = plan.issues.slice(10);
+  // Several ranked issues often sit on the same road; show its road-level reasons once and point back to it.
+  const firstOnRoad = new Map<string, number>();
+  for (const i of plan.issues) if (i.road_id && !firstOnRoad.has(i.road_id)) firstOnRoad.set(i.road_id, i.rank);
+  const sameRoadAs = (i: NextRupeeIssue) => (i.road_id && firstOnRoad.get(i.road_id) !== i.rank ? firstOnRoad.get(i.road_id) : undefined);
 
   return (
     <div className="space-y-12">
@@ -113,7 +117,7 @@ async function WardContent({ params }: { params: Promise<{ slug: string }> }) {
         )}
         <ol className="space-y-3">
           {top.map((i) => (
-            <IssueCard key={i.issue_id} i={i} names={names} />
+            <IssueCard key={i.issue_id} i={i} names={names} sameRoadAs={sameRoadAs(i)} />
           ))}
         </ol>
         {rest.length > 0 && (
@@ -123,7 +127,7 @@ async function WardContent({ params }: { params: Promise<{ slug: string }> }) {
             </summary>
             <ol start={11} className="mt-3 space-y-3">
               {rest.map((i) => (
-                <IssueCard key={i.issue_id} i={i} names={names} />
+                <IssueCard key={i.issue_id} i={i} names={names} sameRoadAs={sameRoadAs(i)} />
               ))}
             </ol>
           </details>
@@ -242,7 +246,7 @@ async function WardContent({ params }: { params: Promise<{ slug: string }> }) {
   );
 }
 
-function IssueCard({ i, names }: { i: NextRupeeIssue; names: Record<string, string> }) {
+function IssueCard({ i, names, sameRoadAs }: { i: NextRupeeIssue; names: Record<string, string>; sameRoadAs?: number }) {
   const contractors = i.recommended_contractors.map((c) => names[c] ?? c).join(", ");
   return (
     <li className="rounded-xl border border-border bg-surface p-4 sm:p-5">
@@ -270,9 +274,10 @@ function IssueCard({ i, names }: { i: NextRupeeIssue; names: Record<string, stri
         <FactorBar factors={i.factors} />
       </div>
       <ul className="mt-4 list-disc space-y-1 pl-5 text-sm leading-relaxed">
-        {i.reasons.map((r) => (
+        {(sameRoadAs ? i.reasons.filter((r) => /is a severity \d/.test(r)) : i.reasons).map((r) => (
           <li key={r}>{r}</li>
         ))}
+        {sameRoadAs && <li className="list-none text-muted">Same road as #{sameRoadAs}, so its flood, past-trouble and traffic reasons apply here too.</li>}
       </ul>
       <dl className="mt-4 grid gap-x-6 gap-y-2 border-t border-border pt-4 text-sm sm:grid-cols-3">
         <div>
