@@ -177,7 +177,7 @@ export function Guide() {
   }
 
   return (
-    <aside aria-label="Site guide" data-path={pathname} className="fixed inset-x-3 bottom-3 z-40 rounded-[1.75rem] border border-rule bg-background text-foreground shadow-2xl sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[26rem]">
+    <aside aria-label="Site guide" data-path={pathname} className={`fixed bottom-3 z-40 rounded-[1.75rem] border border-rule bg-background text-foreground shadow-2xl sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[26rem] ${small ? "right-3" : "inset-x-3"}`}>
       <div className="flex items-center justify-between gap-3 rounded-t-[1.75rem] bg-peach px-5 py-3">
         <p className="label flex items-center gap-2">
           <TrainFront aria-hidden className="size-4 text-accent-ink" />

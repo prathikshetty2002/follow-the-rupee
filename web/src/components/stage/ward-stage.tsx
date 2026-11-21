@@ -73,7 +73,7 @@ export function WardStage({ data }: { data: StageData }) {
   }, []);
   useEffect(() => () => cancelAnimationFrame(raf.current), []);
 
-  const wide = size.w >= 860;
+  const wide = size.w >= 950; // matches the lg layout: one row of controls, summary card on the right
   const homeBox = union(wards.map((w) => w.box));
 
   /** The part of the stage the panels leave free for the map, and how far its centre sits from the stage's centre. */
@@ -370,32 +370,32 @@ export function WardStage({ data }: { data: StageData }) {
       </div>
 
       {/* top: title and search, what to colour by, layers */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-3 p-4 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:p-5">
+      <div className="pointer-events-none absolute inset-x-0 top-0 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-3 p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
         <div className="min-w-0 max-w-[17rem]">
           <h2 id="stage-h" className="sr-only">
             Pick a ward on the map
           </h2>
         </div>
-        <div role="group" aria-label="Colour the map by" className="stage-panel pointer-events-auto col-span-2 row-start-2 flex gap-1 rounded-full p-1 sm:col-span-1 sm:col-start-2 sm:row-start-1">
+        <div role="group" aria-label="Colour the map by" className="stage-panel pointer-events-auto col-span-2 row-start-2 flex gap-1 rounded-full p-1 lg:col-span-1 lg:col-start-2 lg:row-start-1">
           {MODES.map((m) => (
             <button key={m.key} type="button" aria-pressed={mode === m.key} onClick={() => setMode(m.key)} className="stage-pill">
               {m.label}
             </button>
           ))}
         </div>
-        <div role="group" aria-label="Map layers and view" className="stage-panel pointer-events-auto col-start-2 row-start-1 flex justify-self-end gap-1 rounded-full p-1 sm:col-start-3">
+        <div role="group" aria-label="Map layers and view" className="stage-panel pointer-events-auto col-start-2 row-start-1 flex justify-self-end gap-1 rounded-full p-1 lg:col-start-3">
           <button type="button" aria-pressed={tilt} onClick={toggle3d} className="stage-pill gap-2">
             <Box aria-hidden className="size-4" /> <span>3D</span>
           </button>
           <button type="button" aria-pressed={layers.roads} onClick={() => setLayers((l) => ({ ...l, roads: !l.roads }))} className="stage-pill gap-2">
-            <Route aria-hidden className="size-4" /> <span className="max-sm:sr-only">Roads</span>
+            <Route aria-hidden className="size-4" /> <span className="max-sm:sr-only lg:max-xl:sr-only">Roads</span>
           </button>
           <button type="button" aria-pressed={layers.issues} onClick={() => setLayers((l) => ({ ...l, issues: !l.issues }))} className="stage-pill gap-2">
-            <span aria-hidden className="size-3 rounded-full border-2 border-current" /> <span className="max-sm:sr-only">Open issues</span>
+            <span aria-hidden className="size-3 rounded-full border-2 border-current" /> <span className="max-sm:sr-only lg:max-xl:sr-only">Open issues</span>
           </button>
         </div>
         <div
-          className="pointer-events-auto relative col-span-2 row-start-3 sm:col-span-1 sm:col-start-1 sm:row-start-1 sm:max-w-[18rem]"
+          className="pointer-events-auto relative col-span-2 row-start-3 lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:max-w-[18rem]"
           onBlur={(e) => {
             if (!e.currentTarget.contains(e.relatedTarget)) setListOpen(false);
           }}
@@ -471,7 +471,7 @@ export function WardStage({ data }: { data: StageData }) {
       </div>
 
       {/* zoom and turn */}
-      <div role="group" aria-label="Zoom and turn" className="stage-panel absolute right-4 top-[14rem] flex flex-col gap-1 rounded-full p-1 sm:right-5 sm:top-24" style={{ right: wide && selected ? 392 : undefined }}>
+      <div role="group" aria-label="Zoom and turn" className="stage-panel absolute right-4 top-[14rem] flex flex-col gap-1 rounded-full p-1 sm:right-5 lg:top-24" style={{ right: wide && selected ? 392 : undefined }}>
         <button type="button" onClick={() => zoom(1.6)} aria-label="Zoom in" className="stage-icon">
           <Plus aria-hidden className="size-5" />
         </button>

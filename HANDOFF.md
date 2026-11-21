@@ -27,6 +27,10 @@ Entry template:
 
 ---
 
+## 2026-11-21 17:45, Prathik, prathik/mobile
+**Changed:** Mobile and tablet pass. No page scrolls sideways at 320, 360, 375, 390, 768, 1024, 1280 or 1440 px (checked every page). (1) **Header:** below 768 px the five links become a **Menu** button (shows the current page) with a drop-down list; the pill row is unchanged on wider screens. The old scrolling pill row was 465 px wide and made phones zoom out. (2) **Hero picture** is drawn larger on phones and tablets (the building fills the width; the sides are cropped), full scene from 1024 px. (3) **Map controls** use the stacked layout (layers, tabs, search on separate rows) below 1024 px, and the one-row layout with the summary card on the right from 1024 px; layer labels hide between 1024 and 1280 so nothing wraps. (4) **Tables:** the method factor table and the contractor "against what is expected" table now fit a phone (help text moves under the factor name); wide tables that still scroll say "Swipe the table sideways to see every column" on phones. (5) Audit ward filter and the complaint search box and button go full width on phones. (6) The guide's collapsed bar sits at the right on phones instead of spanning the screen.
+**You need to:** nothing. Checks: web 13 tests, lint, build pass.
+
 ## 2026-11-21 16:35, Prathik, prathik/hero-motion
 **Changed:** (1) The hero picture **keeps moving even when the system asks for reduced motion** (the global reduced-motion rule was switching it off; `[data-hero] .ch-*` now overrides it). To stay accessible it has a **Pause the animation** button (top left of the hero, `components/motion-toggle.tsx`) that stops and resumes it. (2) The **guide opens by itself for first-time visitors** on the home page, about 1.4 seconds after load, once (`guide-seen` in localStorage; not on deep links with a query like `?ward=`); a "Chalo, shuru karein" button closes it. To see it again, clear that key.
 **You need to:** nothing. Checks: web 13 tests, lint, build pass; verified in headless Chrome with reduced motion emulated.
