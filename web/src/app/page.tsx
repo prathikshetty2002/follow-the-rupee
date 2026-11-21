@@ -65,13 +65,13 @@ export default async function Home() {
 
   return (
     <div className="space-y-16 xl:space-y-24">
-      <section aria-labelledby="hero-h" data-hero className="soft relative isolate flex flex-col overflow-hidden lg:h-[calc(100dvh-5.5rem)] lg:min-h-[48rem] lg:max-h-[60rem] rounded-[2rem]" style={{ background: "linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 35%, var(--card)) 45%, var(--mist) 100%)" }}>
-        <div className="relative mx-auto max-w-6xl px-5 pt-3 text-center sm:px-12 sm:pt-5 xl:pt-4">
-          <Display id="hero-h" accent="next rupee" className="text-5xl sm:text-6xl xl:text-[4.75rem]">
+      <section aria-labelledby="hero-h" data-hero className="soft relative isolate flex flex-col overflow-hidden lg:h-[calc(100dvh-8rem)] lg:min-h-[30rem] lg:max-h-[54rem] rounded-[2rem]" style={{ background: "linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 35%, var(--card)) 45%, var(--mist) 100%)" }}>
+        <div className="relative mx-auto max-w-6xl px-5 pt-6 text-center sm:px-12 sm:pt-8">
+          <Display id="hero-h" accent="next rupee" className="text-5xl sm:text-6xl xl:text-[4.25rem]">
             Where should the next rupee go?
           </Display>
-          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted xl:mt-4 xl:max-w-4xl xl:text-xl">Pick a ward on the map. The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-muted xl:max-w-4xl xl:text-xl">Pick a ward on the map. The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
             <a href="#map" className={`${btnPrimary} xl:min-h-12 xl:px-7 xl:text-base`}>
               Explore the map <span aria-hidden>↓</span>
             </a>
@@ -80,7 +80,7 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-        <BmcOffice className="relative -mt-4 block h-[24rem] w-full sm:h-[32rem] lg:h-0 lg:min-h-[28rem] lg:flex-1" />
+        <BmcOffice className="relative mt-2 block aspect-[2400/880] w-full lg:aspect-auto lg:h-0 lg:min-h-0 lg:flex-1" />
       </section>
 
       <div id="map" className="scroll-mt-4">

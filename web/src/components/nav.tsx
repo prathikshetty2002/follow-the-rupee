@@ -11,12 +11,12 @@ export const LINKS = [
   { href: "/method", label: "How it works" },
 ];
 
-const base = "inline-flex min-h-11 items-center rounded-full px-5 text-sm font-semibold transition-colors duration-150 ease";
+const base = "inline-flex min-h-11 shrink-0 items-center rounded-full px-3.5 text-sm sm:px-5 font-semibold transition-colors duration-150 ease";
 
 export function Nav() {
   const path = usePathname();
   return (
-    <nav aria-label="Main" className="soft flex gap-1 rounded-full p-1">
+    <nav aria-label="Main" className="soft flex max-w-full gap-1 overflow-x-auto rounded-full p-1">
       {LINKS.map((l) => {
         const active = l.href === "/" ? path === "/" || path.startsWith("/plan") : path.startsWith(l.href);
         return (
@@ -32,7 +32,7 @@ export function Nav() {
 /** Same links without the active mark: shown while the current path is still loading. */
 export function NavFallback() {
   return (
-    <nav aria-label="Main" className="soft flex gap-1 rounded-full p-1">
+    <nav aria-label="Main" className="soft flex max-w-full gap-1 overflow-x-auto rounded-full p-1">
       {LINKS.map((l) => (
         <Link key={l.href} href={l.href} className={`${base} text-muted hover:text-foreground`}>
           {l.label}

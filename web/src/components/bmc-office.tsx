@@ -19,6 +19,9 @@ function rng(seed: number) {
 
 const GROUND = 930;
 
+/** The whole picture is shown (never cropped); the skyline fades out at both ends so it melts into the hero. */
+const FADE = { maskImage: "linear-gradient(to right, transparent, #000 7%, #000 93%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, #000 7%, #000 93%, transparent)" } as const;
+
 function blocks(seed: number, minW: number, maxW: number, minH: number, maxH: number) {
   const r = rng(seed);
   const out: { x: number; w: number; h: number }[] = [];
@@ -121,7 +124,7 @@ export function BmcOffice({ className }: { className?: string }) {
   const crenels = (x0: number, x1: number, y: number) => Array.from({ length: Math.floor((x1 - x0) / 22) }, (_, i) => <rect key={`${x0}-${i}`} x={x0 + i * 22} y={y} width={12} height={12} fill="var(--ch-trim)" />);
 
   return (
-    <svg viewBox="-400 120 2400 880" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false" className={className}>
+    <svg viewBox="-400 120 2400 880" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false" className={className} style={FADE}>
       <defs>
         <radialGradient id="ch-sun" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="var(--glow)" stopOpacity="0.85" />

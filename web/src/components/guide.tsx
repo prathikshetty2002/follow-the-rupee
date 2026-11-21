@@ -71,7 +71,7 @@ const STOPS: Stop[] = [
 
 // Where the visitor is in the guide, kept for the browser tab so it carries across pages.
 const KEY = "guide-state";
-type State = { open: boolean; step: number; seen: boolean };
+type State = { open: boolean; step: number; seen: boolean; compact?: boolean };
 const DEFAULT: State = { open: false, step: 0, seen: false };
 
 const store = {
@@ -128,20 +128,22 @@ export function Guide() {
   const router = useRouter();
   const pathname = usePathname();
   const state = parse(useSyncExternalStore(store.subscribe, store.raw, () => ""));
-  const [small, setSmall] = useState(false);
+  const [shrunk, setShrunk] = useState<boolean | null>(null); // null: follow the stored default (collapsed when it opened itself)
+  const small = shrunk ?? state.compact ?? false;
   const stop = STOPS[Math.min(state.step, STOPS.length - 1)];
   const last = state.step === STOPS.length - 1;
 
   // First-time visitors to the home page get the guide opened for them once (not as a pop-up, and without moving them).
   useEffect(() => {
     if (parse(store.raw()).seen || window.location.pathname !== "/" || window.location.search) return;
-    const timer = setTimeout(() => store.write({ ...parse(store.raw()), open: true, seen: true }), 1400);
+    const timer = setTimeout(() => store.write({ ...parse(store.raw()), open: true, seen: true, compact: true }), 1400);
     return () => clearTimeout(timer);
   }, []);
 
   const go = (step: number) => {
     const next = STOPS[step];
-    store.write({ open: true, step, seen: true });
+    setShrunk(false);
+    store.write({ open: true, step, seen: true, compact: false });
     if (!next) return;
     const here = window.location.pathname + window.location.search;
     const there = new URL(next.href, window.location.origin);
@@ -161,7 +163,10 @@ export function Guide() {
         )}
         <button
           type="button"
-          onClick={() => store.write({ open: true, step: state.step, seen: true })}
+          onClick={() => {
+            setShrunk(null);
+            store.write({ open: true, step: state.step, seen: true, compact: false });
+          }}
           className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-foreground bg-foreground px-5 text-sm font-semibold text-background shadow-lg transition-transform duration-150 ease hover:-translate-y-0.5"
         >
           <TrainFront aria-hidden className="size-5 text-glow" />
@@ -179,7 +184,7 @@ export function Guide() {
           Stop {state.step + 1} of {STOPS.length} · {stop.station}
         </p>
         <div className="flex gap-1">
-          <button type="button" onClick={() => setSmall((v) => !v)} aria-expanded={!small} aria-label={small ? "Show the guide text" : "Shrink the guide"} className="inline-grid size-11 place-items-center rounded-full hover:bg-card">
+          <button type="button" onClick={() => setShrunk(!small)} aria-expanded={!small} aria-label={small ? "Show the guide text" : "Shrink the guide"} className="inline-grid size-11 place-items-center rounded-full hover:bg-card">
             {small ? <ChevronUp aria-hidden className="size-5" /> : <ChevronDown aria-hidden className="size-5" />}
           </button>
           <button type="button" onClick={close} aria-label="Close the guide" className="inline-grid size-11 place-items-center rounded-full hover:bg-card">
