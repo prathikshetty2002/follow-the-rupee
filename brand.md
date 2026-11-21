@@ -9,7 +9,7 @@ _Direction: **Mumbai dawn**. Soft, airy and elegant: a refined serif headline wi
 - **Kaali-peeli:** charcoal (kaali, the taxi's black) for buttons and ink; marigold orange (peeli, the taxi's yellow) for the accent, italic headline words and the budget line.
 - **Sea:** a deep Arabian-Sea teal for "paid", pale mist for "not paid".
 - **Skyline illustration (home hero):** Rajabai Tower, CST's dome, the Gateway of India, the Bandra-Worli Sea Link and the Marine Drive "Queen's Necklace" of lights, in three soft tones. Decorative only.
-- **Logo mark:** the Gateway arch on a marigold tile.
+- **Logo mark:** a domed heritage building over a rupee sign with an orange sweep, in brown and marigold (`web/public/logo.png`, transparent; also the favicon).
 
 ## Design brief
 - **Type:** Instrument Serif for display headings, with an italic accent word. Instrument Sans for text and figures (tabular numerals). Three weights: 400, 500 to 600, 700.

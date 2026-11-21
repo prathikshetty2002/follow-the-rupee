@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Guide } from "@/components/guide";
@@ -14,18 +15,6 @@ export const metadata: Metadata = {
   description: "What should a Mumbai ward fix first with the road repair money it has left? Ranked by risk, with the arithmetic shown. Synthetic data.",
 };
 
-/** The Gateway of India's arch on a marigold tile. */
-function Mark() {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" className="size-9">
-      <rect width="32" height="32" rx="10" fill="var(--glow)" />
-      <path d="M16 6.2a4.4 4.4 0 0 1 4.4 4.4H11.6A4.4 4.4 0 0 1 16 6.2z" fill="#1e1d1b" />
-      <rect x="7.5" y="10.6" width="17" height="3.4" rx="0.6" fill="#1e1d1b" />
-      <path d="M8.6 14h14.8v11.4h-4.1v-5.6a3.3 3.3 0 0 0-6.6 0v5.6H8.6z" fill="#1e1d1b" />
-    </svg>
-  );
-}
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable} h-full`}>
@@ -36,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <header>
           <div className="mx-auto flex max-w-[90rem] flex-wrap items-center justify-between gap-x-8 gap-y-2 px-4 py-4 sm:px-8">
             <Link href="/" className="flex min-h-11 items-center gap-3">
-              <Mark />
+              <Image src="/logo.png" alt="" width={497} height={640} priority className="h-12 w-auto" />
               <span className="font-serif text-2xl leading-none tracking-tight">
                 Next Rupee <span className="text-muted">Planner</span>
               </span>
