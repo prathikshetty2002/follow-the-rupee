@@ -14,6 +14,10 @@ Entry template:
 
 ---
 
+## 2026-11-21 15:40, Prathik, prathik/theme-toggle
+**Changed:** (1) A **light / dark toggle** in the header (sun or moon button, next to the nav). It follows the system until the visitor chooses, then remembers the choice in this browser (`localStorage` key `theme`, set as `data-theme` on `<html>`; a tiny inline script in `layout.tsx` applies it before first paint so there is no flash). The dark tokens in `globals.css` now exist twice (system dark, and `data-theme="dark"`): change both together. (2) The hero illustration is now the **BMC head office** (Victorian Gothic front with clock tower, pointed crown, turrets, banded stone, the statue, gulmohar trees, a BEST bus and kaali-peeli taxis) in `components/bmc-office.tsx`, replacing the Churchgate one. The picture now sits under the hero text instead of behind it, so the tower never crosses the headline.
+**You need to:** nothing. Checks: web 13 tests, lint, build pass; looked at in headless Chrome, light and dark, 1280 and 390 wide.
+
 ## 2026-11-21 15:10, Prathik, prathik/map-search
 **Changed:** (1) **Search** in the map: a combobox top-left finds wards (code, area name, zone) and roads (name); choosing a result flies to its ward, and a road result also highlights that road (a note in the summary card says so). Arrow keys, Enter and Escape work; results are announced. (2) **Auto-fit:** choosing a ward by any route (map, card, arrows, search) now fits it to the free part of the map (tighter padding, accounts for the summary card). (3) **3D rebuilt:** smoother walls (10 height steps of 4.5px, shaded darker toward the base), the selected ward pops up two steps, roads, open-issue markers and labels now sit on each ward's own top instead of floating, labels and markers stay upright and round when the map is tipped, the 3D fit uses the turned and tipped size so the map fills the space, and layers no longer use overflow (they extend 12% past the stage instead) to keep memory down.
 **Code:** `StageData.roads` gained `name`; `fitView` takes `{bearing, pitch}` for 3D (tests updated). Mobile top bar is now three rows (layers, colour tabs, search).
