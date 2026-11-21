@@ -1,30 +1,36 @@
-# Brand: Next Rupee Planner
+# Brand: Next Rupee Planner, Mumbai edition
 
-_Direction: **civic ledger**. Industrial and utilitarian, with editorial restraint. Chosen 2026-11-21 to replace the earlier warm-beige, serif and card-heavy look, which read as generic._
+_Direction: **Mumbai dawn**. Soft, airy and elegant: a refined serif headline with one italic accent word, a Marine Drive sunrise gradient, charcoal pill buttons, frosted cards. Inspired by the "Axion" mobile design (Orbix Studio, Dribbble) and rebuilt with a Mumbai identity. Replaces the earlier flat "civic ledger" look._
 
-**Feel:** a budget worksheet a ward officer would trust. Flat paper, ink, hairline rules, tabular figures. One signal colour (vermilion) is reserved for the budget line and for money that is short. Nothing decorative.
+**Feel:** calm, trustworthy, light. A ward officer should feel the page is clear before they read it. Mumbai shows up in colour and a single illustration, not in decoration on every element.
+
+## Mumbai in the design
+- **Dawn over the Arabian Sea:** the page background is a peach-to-cream-to-mist gradient, like sunrise on Marine Drive.
+- **Kaali-peeli:** charcoal (kaali, the taxi's black) for buttons and ink; marigold orange (peeli, the taxi's yellow) for the accent, italic headline words and the budget line.
+- **Sea:** a deep Arabian-Sea teal for "paid", pale mist for "not paid".
+- **Skyline illustration (home hero):** Rajabai Tower, CST's dome, the Gateway of India, the Bandra-Worli Sea Link and the Marine Drive "Queen's Necklace" of lights, in three soft tones. Decorative only.
+- **Logo mark:** the Gateway arch on a marigold tile.
 
 ## Design brief
-- **Density:** comfortable and tabular. Rows and columns, not cards. No box inside a box.
-- **Surface:** flat paper. Structure comes from rules, spacing and type, not shadows or rounded panels.
-- **Type:** Public Sans (the US government design-system face: plain, civic, deliberate) for text. IBM Plex Mono for every figure, ID and amount, with tabular numerals. Three weights: 400, 600, 700. Display text tracks tight (-0.02em); small uppercase labels track loose (+0.06em).
-- **Shape:** 2px corners on controls, none on rows. No pill badges: status is a glyph plus a word.
-- **Motion:** none decorative. State changes take 120 to 200ms with `cubic-bezier(0.23, 1, 0.32, 1)`; everything stops under `prefers-reduced-motion`.
-- **Do:** one accent; state in words and glyphs, never colour alone; lead with the number; put the budget line where the money runs out; show the arithmetic.
-- **Don't:** icon-and-paragraph feature grids, hero metric tiles, gradient or glass, centred everything, identical padding and radius everywhere, vague headlines.
+- **Type:** Instrument Serif for display headings, with an italic accent word. Instrument Sans for text and figures (tabular numerals). Three weights: 400, 500 to 600, 700.
+- **Shape (varied by role):** pills for buttons, chips and status; 24px for cards; 14px for inputs; square-cornered rows inside cards.
+- **Surface:** white cards on the gradient, hairline border, shadow at most 5% opacity. Frosted glass only for the hero stat cards.
+- **Motion:** gentle only: 150 to 250ms, `cubic-bezier(0.23, 1, 0.32, 1)`, none under `prefers-reduced-motion`.
+- **Do:** one accent; state in words and shapes as well as colour; lead with the number.
+- **Don't:** more than one illustration, gradients on text, drop shadows you can clearly see, tiny low-contrast labels.
 
-## Tokens (live in `web/src/app/globals.css`; every text pair is at least 4.5:1, control borders at least 3:1)
-| Token | Light | Dark | Use |
+## Tokens (live in `web/src/app/globals.css`; text pairs at least 4.5:1, large display text at least 3:1, control borders at least 3:1)
+| Token | Light | Dark (Mumbai night) | Use |
 |---|---|---|---|
-| `background` | `#EFEFEA` | `#101418` | page |
-| `panel` | `#FAFAF7` | `#171C21` | inputs, the expanded working |
-| `foreground` | `#12161B` | `#ECEDE8` | text, covered marks, primary button |
-| `muted` | `#4F5660` | `#9BA2AB` | secondary text |
-| `rule` | `#C3C6BD` | `#3A424B` | hairlines between rows (decorative) |
-| `line` | `#767C84` | `#7A838D` | borders of controls (3:1) |
-| `accent` | `#B52A0B` | `#FF7A59` | the budget line, short money, key figures |
-| `ok` | `#14684F` | `#5CC8A4` | rare positive state |
-| `warn` | `#8A5A00` | `#E3B341` | low-confidence marker |
-
-## Voice
-Plain English a ward officer can repeat. Say what the number is and what to do with it. No filler headings.
+| `background` | `#FBF7F1` | `#0E141B` | page |
+| `card` | `#FFFFFF` | `#16202B` | cards, inputs |
+| `peach` / `mist` | `#FCE6D2` / `#E7EEF3` | `#2A1E22` / `#12202B` | sunrise gradient, soft panels |
+| `foreground` | `#1E1D1B` | `#F3EFE8` | text, primary button |
+| `muted` | `#5B5E63` | `#A5AFBA` | secondary text |
+| `accent` | `#CC5A08` | `#FF9A3C` | italic headline words, the budget line, large text |
+| `accent-ink` | `#A8470A` | `#FFB874` | small accent text |
+| `sea` | `#1B6682` | `#7CC8E0` | paid, positive, links |
+| `sea-fill` | `#1B6682` | `#3E9BBA` | the "paid" segments |
+| `unpaid` | `#D3DBE2` | `#2C3947` | the "not paid" segments |
+| `line` | `#8C8F94` | `#6E7C8B` | control borders |
+| `rule` | `#E6DFD3` | `#243241` | hairlines |

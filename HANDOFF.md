@@ -14,6 +14,14 @@ Entry template:
 
 ---
 
+## 2026-11-21 13:33, Prathik, prathik/mumbai-theme
+**Changed:** Re-themed the whole site as **Mumbai dawn**, taking the soft, elegant style of the "Axion" Dribbble shot the user liked (Orbix Studio): a refined serif headline with one italic accent phrase, a sunrise gradient, charcoal pill buttons with an arrow, frosted stat cards, rounded white cards.
+Mumbai identity: Marine Drive dawn gradient; kaali-peeli palette (charcoal and marigold); Arabian-Sea teal for "paid"; a skyline illustration on the home hero (Rajabai Tower, CST dome, Gateway of India, Bandra-Worli Sea Link, the Queen's Necklace of lights); the logo is the Gateway arch on a marigold tile. Dark mode is "Mumbai night". Details and tokens in `brand.md`.
+**Fonts:** Instrument Serif (display, italic accent) and Instrument Sans (text and tabular figures); the IBM Plex fonts are gone.
+**Code:** only styling and layout. New: `components/mumbai-skyline.tsx` (decorative SVG), `Chip`, `Display`, `Card` in `ui.tsx`. Restyled: layout, nav, home, ward map, plan page, controls, figures, budget line, ledger, weights panel, plan map, method page, 404. No logic, data or pipeline changes; all tests unchanged and passing (8 planner, 49 pipeline).
+**Accessibility kept (WCAG 2.1 AA target):** every text pair 4.5:1 or better and large display text 3:1 or better, in light and dark (computed); control borders 3:1; one h1 per page and no skipped headings; labelled controls; 44px targets; no horizontal scroll at 320px with everything open; reduced motion honoured; status is a shape plus a word.
+**You need to:** nothing is blocking. Run `cd web && npm run dev`.
+
 ## 2026-11-21 13:24, Prathik, prathik/redesign
 **Changed:** Full visual and UX redesign of the planner ("civic ledger"; direction and tokens in `brand.md`). Replaced the card-and-pill, serif and beige look, which read as generic AI output.
 New: Public Sans + IBM Plex Mono, flat paper with hairline rules, one signal colour (vermilion) reserved for the budget line and short money, 2px corners, no pill badges, no hero tiles.
