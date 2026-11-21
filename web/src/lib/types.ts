@@ -1,6 +1,12 @@
 // Mirrors shared/schema.md. Change both together.
 
-export type Meta = { generated_at: string; stub: boolean; season: string };
+export type Meta = {
+  generated_at: string;
+  stub: boolean; // false: every data file is real pipeline output
+  season: string;
+  text_sources?: Record<"contractors" | "wards", Record<string, number>>; // how many texts were written by "claude" vs a "template"
+  counts?: Record<string, number>;
+};
 
 export type NextRupee = {
   rank: number;
@@ -141,6 +147,7 @@ export type Issue = {
   first_reported_at: string;
   status: IssueStatus; // fixed | fixed_failed (failed within 30 days) | never_fixed (open, no work order) | not_bmc_scope (rejected or forwarded)
   work_order_ids: string[]; // empty unless fixed or fixed_failed
+  plan_issue_id?: string | null; // for never_fixed: the id this issue has in next_rupee.json (join to get its rank, score and reasons)
   // Added by the trail build
   trail: string; // one plain-language sentence: complaints -> work order -> contractor -> did it hold
   road_id?: string | null;
@@ -251,4 +258,61 @@ export type Validation = {
     precision_at_3_work_orders: number;
     work_orders_city_ci95: [number, number];
   }[];
+};
+
+// work_orders.json: look up any work order id that a flag, issue or scorecard points at
+
+export type WorkOrder = {
+  work_order_id: string;
+  ward_code: string;
+  road_id: string;
+  road_name: string | null;
+  under_dlp: boolean;
+  work_type: string;
+  repair_method: string;
+  contractor_id: string;
+  contractor_name: string;
+  assigned_at: string | null;
+  work_started_at: string | null;
+  completed_at: string | null;
+  area_sqm: number | null;
+  cost_inr: number;
+  expected_cost_inr: number; // what the rate card says this job should cost
+  cost_ratio: number; // cost / expected; normal jobs sit between 0.75 and 1.3
+  sla_hours: number;
+  sla_met: boolean;
+  reopened_within_30d: boolean;
+  engineer_remark: string | null;
+  complaint_ids: string[];
+  issue_id: string | null;
+  flags: FlagType[];
+};
+
+// by_ward/<slug>.json: everything one ward page needs (slug F-S for ward F/S)
+
+export type WardBundle = {
+  ward: Ward;
+  plan: NextRupeeWard; // full ranked list with factor breakdowns
+  audit: AuditBlock & { ward_code: string };
+  flags: Flag[];
+  issues: (Issue & { plan: Pick<NextRupeeIssue, "rank" | "priority_score" | "funded" | "dlp" | "recommended_method" | "est_cost_inr" | "reasons"> | null })[]; // plan is set for never_fixed issues
+  contractors: { contractor_id: string; contractor_name: string; jobs: number; spend_inr: number; reopen_rate: number; grade: string }[];
+};
+
+export type Manifest = {
+  generated_at: string;
+  note: string;
+  files: { path: string; bytes: number }[];
+  descriptions: Record<string, string>;
+  wards: { ward_code: string; slug: string; ward_name: string; bundle: string; bytes: number | null }[];
+};
+
+// geo/*.geojson: map layers (GeoJSON FeatureCollections)
+export type WardFeatureProps = {
+  ward_code: string; ward_name: string; zone: string; slug: string; risk_score: number; budget_inr: number; spend_inr: number;
+  budget_used_pct: number; over_budget: boolean; open_issues: number; reopen_rate: number; sla_met_rate: number; low_lying_index: number; billing_flagged_inr: number;
+};
+export type OpenIssuePointProps = {
+  issue_id: string; plan_issue_id: string; ward_code: string; category: string; road_name: string; priority_score: number; rank: number;
+  funded: boolean; dlp: boolean; recommended_method: string; est_cost_inr: number;
 };

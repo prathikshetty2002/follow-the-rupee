@@ -25,9 +25,12 @@ def load(name: str) -> pd.DataFrame:
     return pd.read_csv(DATA_DIR / f"{name}.csv", parse_dates=DATE_COLUMNS.get(name, []))
 
 
-def write_json(name: str, obj) -> Path:
-    """Write web/public/data/<name>.json (schema in shared/schema.md)."""
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    path = OUT_DIR / f"{name}.json"
-    path.write_text(json.dumps(obj, ensure_ascii=False, indent=2, default=str))
+def write_json(name: str, obj, compact: bool = False) -> Path:
+    """Write web/public/data/<name>.json (schema in shared/schema.md). A name with an extension (geo/wards.geojson) is used as given.
+
+    compact=True drops the indentation: about 40% smaller, used for the large files."""
+    path = OUT_DIR / (name if Path(name).suffix else f"{name}.json")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    kwargs = {"separators": (",", ":")} if compact else {"indent": 2}
+    path.write_text(json.dumps(obj, ensure_ascii=False, default=str, **kwargs))
     return path

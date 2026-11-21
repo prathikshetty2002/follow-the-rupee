@@ -7,9 +7,12 @@ This file is the contract. **Change it only after telling the other person**, an
 Until the real pipeline runs, the files hold hand-written stubs (`meta.json` has `"stub": true`).
 All money is in rupees (integers). Rates are 0–1 fractions. Dates are ISO strings.
 
-## meta.json
+## meta.json (and manifest.json)
+`manifest.json` lists every file with its size, a one-line description of what it is for, and the 24 ward bundles. Start there.
 ```json
-{ "generated_at": "2026-11-21T11:00:00+05:30", "stub": true, "season": "Jun–Sep 2025" }
+{ "generated_at": "2026-11-21T12:16:10+05:30", "stub": false, "season": "Jun–Sep 2025",
+  "text_sources": { "contractors": { "claude": 8 }, "wards": { "claude": 24 } },     // claude | template
+  "counts": { "wards": 24, "work_orders": 2499, "flags": 1746, "issues": 3529, "complaints": 6501 } }
 ```
 
 ## wards.json: one object per ward (24)
@@ -173,3 +176,16 @@ estimate (method rate x best contractor's relative rate), not an observed number
 Built from data before 2025-08-01 and compared with what happened 1 Aug to 30 Sep, per road: Spearman rank correlation
 with later work orders, complaints, re-opens and spend (city-wide and mean within ward), precision@3 per ward, and a
 bootstrap 95% interval. Includes baselines (past work-order count, past complaint count, equal-weight factors).
+
+## Dashboard views (written by `uv run pipeline export`, built from the files above)
+These add no new numbers: they are joins and slices, so every value matches the file it came from. `uv run pipeline all` rebuilds everything.
+| File | Use |
+|---|---|
+| `work_orders.json` | All 2,499 work orders (`WorkOrder`). Resolve any `evidence_work_order_ids` / `work_order_ids` here: contractor, road, dates, cost vs `expected_cost_inr`, flags, complaint ids. Helper: `getWorkOrdersById(ids)` |
+| `complaint_to_issue.json` | `{ "BMC25-000012": "ISS-0004" }` for a "what happened to my complaint?" search; then read the issue's `trail` and `work_order` |
+| `by_ward/<slug>.json` | One file per ward (slug `F-S` for ward `F/S`; `getWardBundle(code)`): `ward`, `plan` (ranked list), `audit`, `flags`, `issues` (with `plan` rank/score/reasons attached to never-fixed ones), `contractors` (who worked there, with grade). About 200 KB each: use these for a ward page instead of the 3 MB city-wide files |
+| `geo/wards.geojson` | Ward polygons with `risk_score`, `budget_used_pct`, `over_budget`, `reopen_rate`, `sla_met_rate`, `billing_flagged_inr`, `slug` as properties: a choropleth needs no join |
+| `geo/roads.geojson` | 291 road lines with `open_issues`, `priority_score`, `rank_in_ward` |
+| `geo/open_issues.geojson` | 577 of the 589 ranked open issues as points (complaint GPS, else the locality centre): `priority_score`, `rank`, `funded`, `recommended_method`, `est_cost_inr`. The other 12 have no usable location |
+
+Joins to know: a never-fixed issue in `issues.json` has `plan_issue_id`, which is its id in `next_rupee.json` (`OI-xxxx`); flags and issues point at work orders by id; a work order's `issue_id` points back to its issue.
