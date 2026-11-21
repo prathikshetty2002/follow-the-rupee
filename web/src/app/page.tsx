@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { Card, Display, TableWrap, td, th } from "@/components/ui";
+import { Churchgate } from "@/components/churchgate";
+import { Card, Chip, Display, TableWrap, btnPrimary, btnQuiet, td, th } from "@/components/ui";
 import type { StageData } from "@/components/stage/types";
 import { WardStage } from "@/components/stage/ward-stage";
 import { getNextRupee, getOpenIssuePoints, getRoadGeo, getWardGeo, getWards } from "@/lib/data";
@@ -64,9 +65,32 @@ export default async function Home() {
 
   return (
     <div className="space-y-16">
-      <Suspense fallback={<div aria-hidden className="stage h-[min(50rem,calc(100dvh-5.5rem))] min-h-[44rem] rounded-[2rem] sm:min-h-[40rem]" />}>
-        <WardStage data={stage} />
-      </Suspense>
+      <section aria-labelledby="hero-h" className="soft relative isolate h-[42rem] overflow-hidden rounded-[2rem] sm:h-[47rem]" style={{ background: "linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 35%, var(--card)) 45%, var(--mist) 100%)" }}>
+        <Churchgate className="absolute inset-0 -z-10 size-full" />
+        <div className="relative mx-auto max-w-3xl px-5 pt-12 text-center sm:px-12 sm:pt-16">
+          <div className="mb-6 flex justify-center">
+            <Chip>Mumbai monsoon roads, June to September 2025</Chip>
+          </div>
+          <Display id="hero-h" accent="next rupee" className="text-5xl sm:text-7xl">
+            Where should the next rupee go?
+          </Display>
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted">Pick a ward on the map. The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a href="#map" className={btnPrimary}>
+              Explore the map <span aria-hidden>↓</span>
+            </a>
+            <Link href="/method" className={btnQuiet}>
+              How it works
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <div id="map" className="scroll-mt-4">
+        <Suspense fallback={<div aria-hidden className="stage h-[min(50rem,calc(100dvh-5.5rem))] min-h-[44rem] rounded-[2rem] sm:min-h-[40rem]" />}>
+          <WardStage data={stage} />
+        </Suspense>
+      </div>
 
       <dl className="grid gap-3 sm:grid-cols-3">
         <Stat value={int(openIssues)} label="Open road issues" note="Complaints with no repair ordered" />
