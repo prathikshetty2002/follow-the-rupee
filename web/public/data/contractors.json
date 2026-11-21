@@ -1,202 +1,726 @@
 [
   {
-    "contractor_id": "CT01",
-    "contractor_name": "Sahyadri Infra Works (synthetic)",
-    "wards": [
-      "P/N",
-      "K/E",
-      "D",
-      "F/N",
-      "R/N",
-      "C",
-      "E"
-    ],
-    "work_orders": 337,
-    "spend_inr": 17209448,
-    "sla_met_rate": 0.62,
-    "reopen_rate": 0.14,
-    "cost_vs_rate_pct": 0.0,
-    "context_adjusted_score": 70,
-    "grade": "B",
-    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
-    "improve": "[STUB]",
-    "evidence_work_order_ids": [
-      "WO25-00041",
-      "WO25-00028",
-      "WO25-00007"
-    ]
-  },
-  {
-    "contractor_id": "CT02",
-    "contractor_name": "Konkan Roadcon Pvt Ltd (synthetic)",
-    "wards": [
-      "T",
-      "B",
-      "N",
-      "C",
-      "K/E",
-      "A"
-    ],
-    "work_orders": 337,
-    "spend_inr": 18906137,
-    "sla_met_rate": 0.46,
-    "reopen_rate": 0.27,
-    "cost_vs_rate_pct": 0.0,
-    "context_adjusted_score": 70,
-    "grade": "B",
-    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
-    "improve": "[STUB]",
-    "evidence_work_order_ids": [
-      "WO25-00011",
-      "WO25-00022",
-      "WO25-00026"
-    ]
-  },
-  {
-    "contractor_id": "CT03",
-    "contractor_name": "Mahalaxmi Civil Contractors (synthetic)",
-    "wards": [
-      "F/N",
-      "C",
-      "P/N",
-      "M/E",
-      "L",
-      "B",
-      "H/W"
-    ],
-    "work_orders": 303,
-    "spend_inr": 16190323,
-    "sla_met_rate": 0.39,
-    "reopen_rate": 0.38,
-    "cost_vs_rate_pct": 0.0,
-    "context_adjusted_score": 70,
-    "grade": "B",
-    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
-    "improve": "[STUB]",
-    "evidence_work_order_ids": [
-      "WO25-00003",
-      "WO25-00033",
-      "WO25-00018"
-    ]
-  },
-  {
-    "contractor_id": "CT04",
-    "contractor_name": "Western Coast Asphalt Co (synthetic)",
-    "wards": [
-      "E",
-      "M/E",
-      "F/N"
-    ],
-    "work_orders": 299,
-    "spend_inr": 17491777,
-    "sla_met_rate": 0.47,
-    "reopen_rate": 0.39,
-    "cost_vs_rate_pct": 0.0,
-    "context_adjusted_score": 70,
-    "grade": "B",
-    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
-    "improve": "[STUB]",
-    "evidence_work_order_ids": [
-      "WO25-00004",
-      "WO25-00008",
-      "WO25-00021"
-    ]
-  },
-  {
     "contractor_id": "CT05",
     "contractor_name": "Deccan Paving Solutions (synthetic)",
     "wards": [
-      "K/W",
-      "R/S",
-      "B",
-      "A",
+      "L",
+      "M/E",
+      "F/S",
+      "K/E",
       "H/E"
     ],
     "work_orders": 287,
     "spend_inr": 14074782,
-    "sla_met_rate": 0.6,
-    "reopen_rate": 0.09,
-    "cost_vs_rate_pct": 0.0,
-    "context_adjusted_score": 70,
-    "grade": "B",
-    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
-    "improve": "[STUB]",
+    "sla_met_rate": 0.596,
+    "reopen_rate": 0.091,
+    "cost_vs_rate_pct": 3.2,
+    "context_adjusted_score": 89,
+    "grade": "A",
+    "scorecard_text": "Deccan Paving Solutions did 287 monsoon road jobs worth ₹1.41 crore, mainly in L, M/E, F/S. Speed: 60% met their target time; for this mix of work about 48% is expected, so this is better than expected. Lasting repairs: 9% had to be redone within 30 days, against about 24% expected, which is better than expected. Cost: bills averaged 3.2% above the standard rate card; 9 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: A. To improve: Keep bills within the rate card: 9 job(s) were billed far above it or look like repeats, and are listed for review.",
+    "improve": "Keep bills within the rate card: 9 job(s) were billed far above it or look like repeats, and are listed for review.",
     "evidence_work_order_ids": [
-      "WO25-00002",
-      "WO25-00010",
-      "WO25-00025"
-    ]
-  },
-  {
-    "contractor_id": "CT06",
-    "contractor_name": "Shivneri Construction (synthetic)",
-    "wards": [
-      "K/E",
-      "P/N",
-      "E",
-      "D"
+      "WO25-01942",
+      "WO25-00140",
+      "WO25-00382",
+      "WO25-02487",
+      "WO25-02461",
+      "WO25-02135",
+      "WO25-01375",
+      "WO25-00576",
+      "WO25-00847",
+      "WO25-00002"
     ],
-    "work_orders": 289,
-    "spend_inr": 14672446,
-    "sla_met_rate": 0.47,
-    "reopen_rate": 0.26,
-    "cost_vs_rate_pct": 0.0,
-    "context_adjusted_score": 70,
-    "grade": "B",
-    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
-    "improve": "[STUB]",
-    "evidence_work_order_ids": [
-      "WO25-00017",
-      "WO25-00005",
-      "WO25-00012"
-    ]
+    "scores": {
+      "durability": 100,
+      "billing": 84,
+      "speed": 78
+    },
+    "adjusted": {
+      "sla_expected_rate": 0.485,
+      "sla_vs_expected_pp": 11.1,
+      "speed_verdict": "better than expected",
+      "reopen_expected_rate": 0.237,
+      "reopen_vs_expected": 0.38,
+      "reopen_rate_ci95": [
+        0.063,
+        0.129
+      ],
+      "durability_verdict": "better than expected"
+    },
+    "context": {
+      "low_lying_share": 0.69,
+      "heavy_rain_window_share": 0.56,
+      "pothole_share": 0.46
+    },
+    "billing": {
+      "typical_cost_vs_rate_pct": 0.6,
+      "over_billed_jobs": 4,
+      "over_billed_excess_inr": 278485,
+      "double_billed_jobs": 5,
+      "double_billed_inr": 219595,
+      "paid_on_dlp_roads_jobs": 53,
+      "paid_on_dlp_roads_inr": 2694040
+    },
+    "evidence": {
+      "over_billed": [
+        "WO25-01942",
+        "WO25-00140",
+        "WO25-00382"
+      ],
+      "double_billed": [
+        "WO25-02487",
+        "WO25-02461"
+      ],
+      "reopened": [
+        "WO25-02135",
+        "WO25-01375",
+        "WO25-00576"
+      ],
+      "sla_missed": [
+        "WO25-00847",
+        "WO25-00002"
+      ]
+    },
+    "city": {
+      "sla_met_rate": 0.496,
+      "reopen_rate": 0.244,
+      "cost_vs_rate_pct": 8.3
+    },
+    "rank": 1,
+    "scorecard_source": "template",
+    "narration_hash": "6054f1a3d6256cc8"
   },
   {
-    "contractor_id": "CT07",
-    "contractor_name": "Arabian Sea Engineering (synthetic)",
+    "contractor_id": "CT01",
+    "contractor_name": "Sahyadri Infra Works (synthetic)",
     "wards": [
+      "L",
       "F/N",
-      "N",
-      "H/E"
+      "P/N",
+      "K/E",
+      "F/S"
     ],
-    "work_orders": 328,
-    "spend_inr": 18639434,
-    "sla_met_rate": 0.44,
-    "reopen_rate": 0.32,
-    "cost_vs_rate_pct": 0.0,
-    "context_adjusted_score": 70,
-    "grade": "B",
-    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
-    "improve": "[STUB]",
+    "work_orders": 337,
+    "spend_inr": 17209448,
+    "sla_met_rate": 0.623,
+    "reopen_rate": 0.136,
+    "cost_vs_rate_pct": 8.6,
+    "context_adjusted_score": 84,
+    "grade": "A",
+    "scorecard_text": "Sahyadri Infra Works did 337 monsoon road jobs worth ₹1.72 crore, mainly in L, F/N, P/N. Speed: 62% met their target time; for this mix of work about 50% is expected, so this is better than expected. Lasting repairs: 14% had to be redone within 30 days, against about 24% expected, which is better than expected. Cost: bills averaged 8.6% above the standard rate card; 11 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: A. To improve: Keep bills within the rate card: 11 job(s) were billed far above it or look like repeats, and are listed for review.",
+    "improve": "Keep bills within the rate card: 11 job(s) were billed far above it or look like repeats, and are listed for review.",
     "evidence_work_order_ids": [
-      "WO25-00006",
-      "WO25-00044",
-      "WO25-00058"
-    ]
+      "WO25-00611",
+      "WO25-01723",
+      "WO25-01003",
+      "WO25-02486",
+      "WO25-02480",
+      "WO25-00491",
+      "WO25-01192",
+      "WO25-02002",
+      "WO25-01490",
+      "WO25-02112"
+    ],
+    "scores": {
+      "durability": 87,
+      "billing": 84,
+      "speed": 80
+    },
+    "adjusted": {
+      "sla_expected_rate": 0.502,
+      "sla_vs_expected_pp": 12.1,
+      "speed_verdict": "better than expected",
+      "reopen_expected_rate": 0.244,
+      "reopen_vs_expected": 0.56,
+      "reopen_rate_ci95": [
+        0.104,
+        0.177
+      ],
+      "durability_verdict": "better than expected"
+    },
+    "context": {
+      "low_lying_share": 0.66,
+      "heavy_rain_window_share": 0.51,
+      "pothole_share": 0.52
+    },
+    "billing": {
+      "typical_cost_vs_rate_pct": 6.0,
+      "over_billed_jobs": 3,
+      "over_billed_excess_inr": 314080,
+      "double_billed_jobs": 8,
+      "double_billed_inr": 493202,
+      "paid_on_dlp_roads_jobs": 69,
+      "paid_on_dlp_roads_inr": 3611868
+    },
+    "evidence": {
+      "over_billed": [
+        "WO25-00611",
+        "WO25-01723",
+        "WO25-01003"
+      ],
+      "double_billed": [
+        "WO25-02486",
+        "WO25-02480"
+      ],
+      "reopened": [
+        "WO25-00491",
+        "WO25-01192",
+        "WO25-02002"
+      ],
+      "sla_missed": [
+        "WO25-01490",
+        "WO25-02112"
+      ]
+    },
+    "city": {
+      "sla_met_rate": 0.496,
+      "reopen_rate": 0.244,
+      "cost_vs_rate_pct": 8.3
+    },
+    "rank": 2,
+    "scorecard_source": "template",
+    "narration_hash": "7951594739f11b28"
   },
   {
     "contractor_id": "CT08",
     "contractor_name": "Mithi Infra Projects (synthetic)",
     "wards": [
-      "G/S",
-      "R/N",
-      "P/N",
-      "C",
-      "K/E"
+      "L",
+      "M/E",
+      "F/N",
+      "K/E",
+      "R/C"
     ],
     "work_orders": 319,
     "spend_inr": 17143836,
-    "sla_met_rate": 0.52,
-    "reopen_rate": 0.12,
-    "cost_vs_rate_pct": 0.0,
-    "context_adjusted_score": 70,
+    "sla_met_rate": 0.517,
+    "reopen_rate": 0.116,
+    "cost_vs_rate_pct": 9.0,
+    "context_adjusted_score": 78,
     "grade": "B",
-    "scorecard_text": "[STUB] Plain-language scorecard goes here.",
-    "improve": "[STUB]",
+    "scorecard_text": "Mithi Infra Projects did 319 monsoon road jobs worth ₹1.71 crore, mainly in L, M/E, F/N. Speed: 52% met their target time; for this mix of work about 50% is expected, so this is in line with expectations. Lasting repairs: 12% had to be redone within 30 days, against about 25% expected, which is better than expected. Cost: bills averaged 9.0% above the standard rate card; 14 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: B. To improve: Keep bills within the rate card: 14 job(s) were billed far above it or look like repeats, and are listed for review.",
+    "improve": "Keep bills within the rate card: 14 job(s) were billed far above it or look like repeats, and are listed for review.",
     "evidence_work_order_ids": [
-      "WO25-00019",
+      "WO25-02266",
+      "WO25-01496",
+      "WO25-02275",
+      "WO25-02467",
+      "WO25-02492",
+      "WO25-01343",
       "WO25-00037",
-      "WO25-00036"
-    ]
+      "WO25-01540",
+      "WO25-01249"
+    ],
+    "scores": {
+      "durability": 94,
+      "billing": 78,
+      "speed": 55
+    },
+    "adjusted": {
+      "sla_expected_rate": 0.497,
+      "sla_vs_expected_pp": 2.0,
+      "speed_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.248,
+      "reopen_vs_expected": 0.47,
+      "reopen_rate_ci95": [
+        0.085,
+        0.156
+      ],
+      "durability_verdict": "better than expected"
+    },
+    "context": {
+      "low_lying_share": 0.71,
+      "heavy_rain_window_share": 0.48,
+      "pothole_share": 0.5
+    },
+    "billing": {
+      "typical_cost_vs_rate_pct": 4.0,
+      "over_billed_jobs": 10,
+      "over_billed_excess_inr": 645674,
+      "double_billed_jobs": 4,
+      "double_billed_inr": 291429,
+      "paid_on_dlp_roads_jobs": 79,
+      "paid_on_dlp_roads_inr": 4176324
+    },
+    "evidence": {
+      "over_billed": [
+        "WO25-02266",
+        "WO25-01496",
+        "WO25-02275"
+      ],
+      "double_billed": [
+        "WO25-02467",
+        "WO25-02492"
+      ],
+      "reopened": [
+        "WO25-02266",
+        "WO25-01343",
+        "WO25-00037"
+      ],
+      "sla_missed": [
+        "WO25-01540",
+        "WO25-01249"
+      ]
+    },
+    "city": {
+      "sla_met_rate": 0.496,
+      "reopen_rate": 0.244,
+      "cost_vs_rate_pct": 8.3
+    },
+    "rank": 3,
+    "scorecard_source": "template",
+    "narration_hash": "1f9ab1f49177c86d"
+  },
+  {
+    "contractor_id": "CT02",
+    "contractor_name": "Konkan Roadcon Pvt Ltd (synthetic)",
+    "wards": [
+      "L",
+      "K/E",
+      "P/N",
+      "M/E",
+      "F/N"
+    ],
+    "work_orders": 337,
+    "spend_inr": 18906137,
+    "sla_met_rate": 0.46,
+    "reopen_rate": 0.267,
+    "cost_vs_rate_pct": 6.0,
+    "context_adjusted_score": 56,
+    "grade": "C",
+    "scorecard_text": "Konkan Roadcon Pvt Ltd did 337 monsoon road jobs worth ₹1.89 crore, mainly in L, K/E, P/N. Speed: 46% met their target time; for this mix of work about 48% is expected, so this is in line with expectations. Lasting repairs: 27% had to be redone within 30 days, against about 24% expected, which is in line with expectations. Cost: bills averaged 6.0% above the standard rate card; 9 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: C. To improve: Cut repairs that fail within 30 days: 27% were redone, against about 24% expected for the same methods and roads.",
+    "improve": "Cut repairs that fail within 30 days: 27% were redone, against about 24% expected for the same methods and roads.",
+    "evidence_work_order_ids": [
+      "WO25-01502",
+      "WO25-01259",
+      "WO25-01865",
+      "WO25-02465",
+      "WO25-02488",
+      "WO25-01320",
+      "WO25-01258",
+      "WO25-01440",
+      "WO25-00354",
+      "WO25-01995"
+    ],
+    "scores": {
+      "durability": 40,
+      "billing": 87,
+      "speed": 45
+    },
+    "adjusted": {
+      "sla_expected_rate": 0.479,
+      "sla_vs_expected_pp": -1.9,
+      "speed_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.239,
+      "reopen_vs_expected": 1.12,
+      "reopen_rate_ci95": [
+        0.223,
+        0.317
+      ],
+      "durability_verdict": "in line with expectations"
+    },
+    "context": {
+      "low_lying_share": 0.7,
+      "heavy_rain_window_share": 0.5,
+      "pothole_share": 0.45
+    },
+    "billing": {
+      "typical_cost_vs_rate_pct": 4.7,
+      "over_billed_jobs": 5,
+      "over_billed_excess_inr": 177339,
+      "double_billed_jobs": 4,
+      "double_billed_inr": 316939,
+      "paid_on_dlp_roads_jobs": 64,
+      "paid_on_dlp_roads_inr": 3662157
+    },
+    "evidence": {
+      "over_billed": [
+        "WO25-01502",
+        "WO25-01259",
+        "WO25-01865"
+      ],
+      "double_billed": [
+        "WO25-02465",
+        "WO25-02488"
+      ],
+      "reopened": [
+        "WO25-01320",
+        "WO25-01258",
+        "WO25-01440"
+      ],
+      "sla_missed": [
+        "WO25-00354",
+        "WO25-01995"
+      ]
+    },
+    "city": {
+      "sla_met_rate": 0.496,
+      "reopen_rate": 0.244,
+      "cost_vs_rate_pct": 8.3
+    },
+    "rank": 4,
+    "scorecard_source": "template",
+    "narration_hash": "c7b9c6e27fc5b4e4"
+  },
+  {
+    "contractor_id": "CT06",
+    "contractor_name": "Shivneri Construction (synthetic)",
+    "wards": [
+      "L",
+      "G/N",
+      "K/W",
+      "M/E",
+      "F/N"
+    ],
+    "work_orders": 289,
+    "spend_inr": 14672446,
+    "sla_met_rate": 0.471,
+    "reopen_rate": 0.263,
+    "cost_vs_rate_pct": 2.9,
+    "context_adjusted_score": 55,
+    "grade": "C",
+    "scorecard_text": "Shivneri Construction did 289 monsoon road jobs worth ₹1.47 crore, mainly in L, G/N, K/W. Speed: 47% met their target time; for this mix of work about 48% is expected, so this is in line with expectations. Lasting repairs: 26% had to be redone within 30 days, against about 24% expected, which is in line with expectations. Cost: bills averaged 2.9% above the standard rate card; 12 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: C. To improve: Cut repairs that fail within 30 days: 26% were redone, against about 24% expected for the same methods and roads.",
+    "improve": "Cut repairs that fail within 30 days: 26% were redone, against about 24% expected for the same methods and roads.",
+    "evidence_work_order_ids": [
+      "WO25-00743",
+      "WO25-01514",
+      "WO25-00045",
+      "WO25-02494",
+      "WO25-02485",
+      "WO25-01615",
+      "WO25-01213",
+      "WO25-01345",
+      "WO25-01954"
+    ],
+    "scores": {
+      "durability": 42,
+      "billing": 79,
+      "speed": 47
+    },
+    "adjusted": {
+      "sla_expected_rate": 0.483,
+      "sla_vs_expected_pp": -1.2,
+      "speed_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.24,
+      "reopen_vs_expected": 1.09,
+      "reopen_rate_ci95": [
+        0.216,
+        0.317
+      ],
+      "durability_verdict": "in line with expectations"
+    },
+    "context": {
+      "low_lying_share": 0.73,
+      "heavy_rain_window_share": 0.55,
+      "pothole_share": 0.46
+    },
+    "billing": {
+      "typical_cost_vs_rate_pct": 2.2,
+      "over_billed_jobs": 4,
+      "over_billed_excess_inr": 56249,
+      "double_billed_jobs": 8,
+      "double_billed_inr": 443774,
+      "paid_on_dlp_roads_jobs": 59,
+      "paid_on_dlp_roads_inr": 2923442
+    },
+    "evidence": {
+      "over_billed": [
+        "WO25-00743",
+        "WO25-01514",
+        "WO25-00045"
+      ],
+      "double_billed": [
+        "WO25-02494",
+        "WO25-02485"
+      ],
+      "reopened": [
+        "WO25-01615",
+        "WO25-01213",
+        "WO25-01514"
+      ],
+      "sla_missed": [
+        "WO25-01345",
+        "WO25-01954"
+      ]
+    },
+    "city": {
+      "sla_met_rate": 0.496,
+      "reopen_rate": 0.244,
+      "cost_vs_rate_pct": 8.3
+    },
+    "rank": 5,
+    "scorecard_source": "template",
+    "narration_hash": "bed17768108a0997"
+  },
+  {
+    "contractor_id": "CT04",
+    "contractor_name": "Western Coast Asphalt Co (synthetic)",
+    "wards": [
+      "L",
+      "K/W",
+      "M/E",
+      "K/E",
+      "P/N"
+    ],
+    "work_orders": 299,
+    "spend_inr": 17491777,
+    "sla_met_rate": 0.472,
+    "reopen_rate": 0.388,
+    "cost_vs_rate_pct": 7.1,
+    "context_adjusted_score": 42,
+    "grade": "D",
+    "scorecard_text": "Western Coast Asphalt Co did 299 monsoon road jobs worth ₹1.75 crore, mainly in L, K/W, M/E. Speed: 47% met their target time; for this mix of work about 48% is expected, so this is in line with expectations. Lasting repairs: 39% had to be redone within 30 days, against about 25% expected, which is worse than expected. Cost: bills averaged 7.1% above the standard rate card; 8 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: D. To improve: Cut repairs that fail within 30 days: 39% were redone, against about 25% expected for the same methods and roads.",
+    "improve": "Cut repairs that fail within 30 days: 39% were redone, against about 25% expected for the same methods and roads.",
+    "evidence_work_order_ids": [
+      "WO25-01005",
+      "WO25-01301",
+      "WO25-00415",
+      "WO25-02458",
+      "WO25-02477",
+      "WO25-02223",
+      "WO25-01925",
+      "WO25-00877",
+      "WO25-01412"
+    ],
+    "scores": {
+      "durability": 4,
+      "billing": 87,
+      "speed": 48
+    },
+    "adjusted": {
+      "sla_expected_rate": 0.481,
+      "sla_vs_expected_pp": -1.0,
+      "speed_verdict": "in line with expectations",
+      "reopen_expected_rate": 0.25,
+      "reopen_vs_expected": 1.55,
+      "reopen_rate_ci95": [
+        0.334,
+        0.444
+      ],
+      "durability_verdict": "worse than expected"
+    },
+    "context": {
+      "low_lying_share": 0.69,
+      "heavy_rain_window_share": 0.51,
+      "pothole_share": 0.46
+    },
+    "billing": {
+      "typical_cost_vs_rate_pct": 4.5,
+      "over_billed_jobs": 5,
+      "over_billed_excess_inr": 363635,
+      "double_billed_jobs": 3,
+      "double_billed_inr": 76329,
+      "paid_on_dlp_roads_jobs": 48,
+      "paid_on_dlp_roads_inr": 2817163
+    },
+    "evidence": {
+      "over_billed": [
+        "WO25-01005",
+        "WO25-01301",
+        "WO25-00415"
+      ],
+      "double_billed": [
+        "WO25-02458",
+        "WO25-02477"
+      ],
+      "reopened": [
+        "WO25-01005",
+        "WO25-02223",
+        "WO25-01925"
+      ],
+      "sla_missed": [
+        "WO25-00877",
+        "WO25-01412"
+      ]
+    },
+    "city": {
+      "sla_met_rate": 0.496,
+      "reopen_rate": 0.244,
+      "cost_vs_rate_pct": 8.3
+    },
+    "rank": 6,
+    "scorecard_source": "template",
+    "narration_hash": "ea1d2c8246702abd"
+  },
+  {
+    "contractor_id": "CT07",
+    "contractor_name": "Arabian Sea Engineering (synthetic)",
+    "wards": [
+      "L",
+      "G/N",
+      "K/E",
+      "F/N",
+      "N"
+    ],
+    "work_orders": 328,
+    "spend_inr": 18639434,
+    "sla_met_rate": 0.436,
+    "reopen_rate": 0.323,
+    "cost_vs_rate_pct": 16.0,
+    "context_adjusted_score": 30,
+    "grade": "E",
+    "scorecard_text": "Arabian Sea Engineering did 328 monsoon road jobs worth ₹1.86 crore, mainly in L, G/N, K/E. Speed: 44% met their target time; for this mix of work about 52% is expected, so this is worse than expected. Lasting repairs: 32% had to be redone within 30 days, against about 25% expected, which is worse than expected. Cost: bills averaged 16.0% above the standard rate card; 40 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: E. To improve: Cut repairs that fail within 30 days: 32% were redone, against about 25% expected for the same methods and roads.",
+    "improve": "Cut repairs that fail within 30 days: 32% were redone, against about 25% expected for the same methods and roads.",
+    "evidence_work_order_ids": [
+      "WO25-01626",
+      "WO25-00197",
+      "WO25-00020",
+      "WO25-02482",
+      "WO25-02479",
+      "WO25-00319",
+      "WO25-01510",
+      "WO25-02068",
+      "WO25-02380",
+      "WO25-01460"
+    ],
+    "scores": {
+      "durability": 25,
+      "billing": 39,
+      "speed": 29
+    },
+    "adjusted": {
+      "sla_expected_rate": 0.521,
+      "sla_vs_expected_pp": -8.5,
+      "speed_verdict": "worse than expected",
+      "reopen_expected_rate": 0.249,
+      "reopen_vs_expected": 1.3,
+      "reopen_rate_ci95": [
+        0.275,
+        0.376
+      ],
+      "durability_verdict": "worse than expected"
+    },
+    "context": {
+      "low_lying_share": 0.67,
+      "heavy_rain_window_share": 0.49,
+      "pothole_share": 0.51
+    },
+    "billing": {
+      "typical_cost_vs_rate_pct": 4.4,
+      "over_billed_jobs": 37,
+      "over_billed_excess_inr": 1368202,
+      "double_billed_jobs": 3,
+      "double_billed_inr": 185356,
+      "paid_on_dlp_roads_jobs": 68,
+      "paid_on_dlp_roads_inr": 3802155
+    },
+    "evidence": {
+      "over_billed": [
+        "WO25-01626",
+        "WO25-00197",
+        "WO25-00020"
+      ],
+      "double_billed": [
+        "WO25-02482",
+        "WO25-02479"
+      ],
+      "reopened": [
+        "WO25-00319",
+        "WO25-01510",
+        "WO25-02068"
+      ],
+      "sla_missed": [
+        "WO25-02380",
+        "WO25-01460"
+      ]
+    },
+    "city": {
+      "sla_met_rate": 0.496,
+      "reopen_rate": 0.244,
+      "cost_vs_rate_pct": 8.3
+    },
+    "rank": 7,
+    "scorecard_source": "template",
+    "narration_hash": "cd883d0e80c8c702"
+  },
+  {
+    "contractor_id": "CT03",
+    "contractor_name": "Mahalaxmi Civil Contractors (synthetic)",
+    "wards": [
+      "L",
+      "K/W",
+      "N",
+      "R/S",
+      "M/E"
+    ],
+    "work_orders": 303,
+    "spend_inr": 16190323,
+    "sla_met_rate": 0.393,
+    "reopen_rate": 0.376,
+    "cost_vs_rate_pct": 12.9,
+    "context_adjusted_score": 12,
+    "grade": "E",
+    "scorecard_text": "Mahalaxmi Civil Contractors did 303 monsoon road jobs worth ₹1.62 crore, mainly in L, K/W, N. Speed: 39% met their target time; for this mix of work about 52% is expected, so this is worse than expected. Lasting repairs: 38% had to be redone within 30 days, against about 25% expected, which is worse than expected. Cost: bills averaged 12.9% above the standard rate card; 53 job(s) were billed far above it or look like repeats and are listed for review. Overall grade: E. To improve: Cut repairs that fail within 30 days: 38% were redone, against about 25% expected for the same methods and roads.",
+    "improve": "Cut repairs that fail within 30 days: 38% were redone, against about 25% expected for the same methods and roads.",
+    "evidence_work_order_ids": [
+      "WO25-01576",
+      "WO25-01011",
+      "WO25-01151",
+      "WO25-02462",
+      "WO25-02499",
+      "WO25-01355",
+      "WO25-01782",
+      "WO25-00318",
+      "WO25-01977"
+    ],
+    "scores": {
+      "durability": 6,
+      "billing": 13,
+      "speed": 18
+    },
+    "adjusted": {
+      "sla_expected_rate": 0.522,
+      "sla_vs_expected_pp": -12.9,
+      "speed_verdict": "worse than expected",
+      "reopen_expected_rate": 0.247,
+      "reopen_vs_expected": 1.52,
+      "reopen_rate_ci95": [
+        0.324,
+        0.432
+      ],
+      "durability_verdict": "worse than expected"
+    },
+    "context": {
+      "low_lying_share": 0.65,
+      "heavy_rain_window_share": 0.53,
+      "pothole_share": 0.52
+    },
+    "billing": {
+      "typical_cost_vs_rate_pct": 1.1,
+      "over_billed_jobs": 43,
+      "over_billed_excess_inr": 1269367,
+      "double_billed_jobs": 10,
+      "double_billed_inr": 564028,
+      "paid_on_dlp_roads_jobs": 53,
+      "paid_on_dlp_roads_inr": 2538642
+    },
+    "evidence": {
+      "over_billed": [
+        "WO25-01576",
+        "WO25-01011",
+        "WO25-01151"
+      ],
+      "double_billed": [
+        "WO25-02462",
+        "WO25-02499"
+      ],
+      "reopened": [
+        "WO25-01355",
+        "WO25-01782",
+        "WO25-00318"
+      ],
+      "sla_missed": [
+        "WO25-01355",
+        "WO25-01977"
+      ]
+    },
+    "city": {
+      "sla_met_rate": 0.496,
+      "reopen_rate": 0.244,
+      "cost_vs_rate_pct": 8.3
+    },
+    "rank": 8,
+    "scorecard_source": "template",
+    "narration_hash": "af50f2f751bdc264"
   }
 ]

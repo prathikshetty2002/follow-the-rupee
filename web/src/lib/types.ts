@@ -37,18 +37,46 @@ export type Ward = {
 export type Contractor = {
   contractor_id: string;
   contractor_name: string;
-  wards: string[];
+  wards: string[]; // wards where it did most work
   work_orders: number;
   spend_inr: number;
-  sla_met_rate: number;
-  reopen_rate: number;
-  cost_vs_rate_pct: number;
-  context_adjusted_score: number;
-  grade: string;
-  scorecard_text: string;
-  improve: string;
-  evidence_work_order_ids: string[];
+  sla_met_rate: number; // raw share of jobs finished within their target time
+  reopen_rate: number; // raw share of repairs redone within 30 days
+  cost_vs_rate_pct: number; // billed vs rate card, spend-weighted, % above (+) or below (-)
+  context_adjusted_score: number; // 0-100, judged against what is expected for the same work, wards and weather
+  grade: string; // A-E; C means about as expected
+  scorecard_text: string; // under 120 words, plain language, no accusations
+  improve: string; // one thing to improve
+  evidence_work_order_ids: string[]; // up to 10 work orders behind the flags, worst first
+  // Added by the scorecard build
+  rank?: number; // 1 = best
+  scores?: { durability: number; billing: number; speed: number }; // 0-100 each; weights 40 / 30 / 30
+  adjusted?: {
+    sla_expected_rate: number;
+    sla_vs_expected_pp: number; // percentage points more (+) or less (-) on time than expected
+    speed_verdict: Verdict;
+    reopen_expected_rate: number;
+    reopen_vs_expected: number; // 1.0 = as expected, 0.5 = half as many failures
+    reopen_rate_ci95: [number, number];
+    durability_verdict: Verdict;
+  };
+  context?: { low_lying_share: number; heavy_rain_window_share: number; pothole_share: number };
+  billing?: {
+    typical_cost_vs_rate_pct: number; // leaving out jobs billed far above the rate card
+    over_billed_jobs: number;
+    over_billed_excess_inr: number;
+    double_billed_jobs: number;
+    double_billed_inr: number;
+    paid_on_dlp_roads_jobs: number; // shown, not scored: BMC chose to pay for work on a road under warranty
+    paid_on_dlp_roads_inr: number;
+  };
+  evidence?: Record<"over_billed" | "double_billed" | "reopened" | "sla_missed", string[]>;
+  city?: { sla_met_rate: number; reopen_rate: number; cost_vs_rate_pct: number }; // benchmark for comparison
+  scorecard_source?: "claude" | "template";
+  narration_hash?: string;
 };
+
+export type Verdict = "better than expected" | "in line with expectations" | "worse than expected";
 
 export type FlagType = "over_billed" | "double_billed" | "dlp_paid" | "sla_missed" | "reopened";
 
@@ -60,8 +88,34 @@ export type Flag = {
   flag_type: FlagType;
   severity: "high" | "medium" | "low";
   amount_at_risk_inr: number;
-  reason: string;
-  evidence_work_order_ids: string[];
+  reason: string; // one plain-language line
+  evidence_work_order_ids: string[]; // the work orders behind the flag (for double billing: the duplicate first, then the earlier job)
+  // Added by the audit build, all present in the real flags.json
+  kind?: "billing" | "performance"; // billing = over_billed, double_billed, dlp_paid; performance = sla_missed, reopened
+  contractor_name?: string;
+  work_type?: string;
+  repair_method?: string;
+  cost_inr?: number; // what the work order billed
+  details?: Record<string, number | string | boolean>; // the numbers behind the reason, varies by flag_type
+};
+
+export type FlagCounts = { count: number; amount_at_risk_inr: number };
+
+export type AuditBlock = {
+  work_orders: number;
+  flags: number;
+  by_type: Partial<Record<FlagType, FlagCounts>>;
+  billing_flagged_work_orders: number; // each work order counted once across billing flags
+  billing_flagged_cost_inr: number;
+  high_severity: number;
+};
+
+// audit_summary.json
+export type AuditSummary = {
+  city: AuditBlock;
+  by_ward: (AuditBlock & { ward_code: string })[];
+  by_contractor: (AuditBlock & { contractor_id: string; contractor_name: string })[];
+  thresholds: { over_billed_ratio: number; double_bill_window_days: number; sla_flag_ratio: number; normal_cost_range_vs_rate_card: [number, number] };
 };
 
 export type Issue = {

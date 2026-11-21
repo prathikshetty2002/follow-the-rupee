@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import type { Contractor, Flag, Issue, Meta, NextRupeeFile, Validation, Ward } from "./types";
+import type { AuditSummary, Contractor, Flag, Issue, Meta, NextRupeeFile, Validation, Ward } from "./types";
 
 // Server-only: reads the pipeline's JSON from public/data. Cached, so pages prerender at build time;
 // rebuild (or restart dev) after the pipeline rewrites the files.
@@ -17,3 +17,4 @@ export const getFlags = () => read<Flag[]>("flags");
 export const getIssues = () => read<Issue[]>("issues");
 export const getNextRupee = () => read<NextRupeeFile>("next_rupee");
 export const getValidation = () => read<Validation>("validation");
+export const getAuditSummary = () => read<AuditSummary>("audit_summary");
