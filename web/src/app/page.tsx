@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { BmcOffice } from "@/components/bmc-office";
-import { Card, Chip, Display, TableWrap, btnPrimary, btnQuiet, td, th } from "@/components/ui";
+import { Card, Display, TableWrap, btnPrimary, btnQuiet, td, th } from "@/components/ui";
 import type { StageData } from "@/components/stage/types";
 import { WardStage } from "@/components/stage/ward-stage";
 import { getNextRupee, getOpenIssuePoints, getRoadGeo, getWardGeo, getWards } from "@/lib/data";
@@ -66,10 +66,7 @@ export default async function Home() {
   return (
     <div className="space-y-16 xl:space-y-24">
       <section aria-labelledby="hero-h" data-hero className="soft relative isolate flex flex-col overflow-hidden lg:h-[calc(100dvh-5.5rem)] lg:min-h-[48rem] lg:max-h-[60rem] rounded-[2rem]" style={{ background: "linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 35%, var(--card)) 45%, var(--mist) 100%)" }}>
-        <div className="relative mx-auto max-w-6xl px-5 pt-10 text-center sm:px-12 sm:pt-12 xl:pt-10">
-          <div className="mb-4 flex justify-center">
-            <Chip>Mumbai monsoon roads, June to September 2025</Chip>
-          </div>
+        <div className="relative mx-auto max-w-6xl px-5 pt-3 text-center sm:px-12 sm:pt-5 xl:pt-4">
           <Display id="hero-h" accent="next rupee" className="text-5xl sm:text-6xl xl:text-[4.75rem]">
             Where should the next rupee go?
           </Display>
