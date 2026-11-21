@@ -158,6 +158,8 @@ def open_issues(
         canonical_locality=("locality", "first"),
         lat=("lat", "mean"),
         lon=("lon", "mean"),
+        loc_lat=("loc_lat", "mean"),
+        loc_lon=("loc_lon", "mean"),
         channels=("channel", lambda s: sorted(set(s))),
         languages=("language", lambda s: sorted(set(s))),
         first_reported_at=("received_at", "min"),

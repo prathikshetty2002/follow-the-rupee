@@ -171,5 +171,6 @@ def write(result: dict) -> None:
             "contractor_tiers": json.loads(result["contractors"].to_json(orient="records")),
             "weight_stability": result["stability"],
         },
+        compact=True,
     )
     write_json("validation", {"generated_at": now, **result["backtest"]})

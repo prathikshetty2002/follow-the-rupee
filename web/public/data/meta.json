@@ -1,5 +1,23 @@
 {
-  "generated_at": "2026-11-21T10:46:34+05:30",
-  "stub": true,
-  "season": "Jun–Sep 2025"
+  "generated_at": "2026-11-21T12:17:35+05:30",
+  "stub": false,
+  "season": "Jun–Sep 2025",
+  "text_sources": {
+    "contractors": {
+      "claude": 8
+    },
+    "wards": {
+      "claude": 24
+    }
+  },
+  "counts": {
+    "wards": 24,
+    "contractors": 8,
+    "work_orders": 2499,
+    "flags": 1746,
+    "issues": 3529,
+    "complaints": 6501,
+    "open_issues_ranked": 589,
+    "map_points": 577
+  }
 }

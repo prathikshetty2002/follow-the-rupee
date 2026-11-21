@@ -14,6 +14,20 @@ Entry template:
 
 ---
 
+## 2026-11-21 12:18, Prathik, prathik/data-models
+**Changed:** Dashboard-ready views, so pages can load small files and evidence links resolve. `uv run pipeline export` (also the last step of `all`).
+New in `web/public/data/`: `manifest.json` (start here), `work_orders.json`, `complaint_to_issue.json`, `by_ward/<slug>.json` (24 files),
+`geo/wards.geojson`, `geo/roads.geojson`, `geo/open_issues.geojson`. `meta.json` is now real (`stub: false`; it said `true` before, so the
+placeholder page showed "STUB DATA"). Code: `pipeline/src/pipeline/export.py`; 8 integrity tests in `tests/test_outputs.py` (45 tests total).
+**Contract:** Additive. `Issue.plan_issue_id` (for never-fixed issues: their id in `next_rupee.json`, so you can join a trail issue to its rank, score and reasons).
+New types `WorkOrder`, `WardBundle`, `Manifest`, `WardFeatureProps`, `OpenIssuePointProps`; `Meta` gained optional `text_sources`, `counts`.
+New readers in `web/src/lib/data.ts`: `getManifest`, `getWorkOrders`, `getWorkOrdersById(ids)`, `getComplaintLookup`, `getWardBundle(code)`, `wardSlug(code)`.
+Large files (`issues`, `flags`, `next_rupee`, `work_orders`) are now compact JSON (no indentation), so they are not readable in an editor; use the manifest or the types.
+**You need to:** nothing is blocking. A ward page can be built from `getWardBundle(code)` alone (ward summary, ranked plan, flags with reasons, issues with trails, contractors).
+`flags[].evidence_work_order_ids` resolve through `getWorkOrdersById`. A choropleth map reads `geo/wards.geojson` with no join; ranked open issues are
+points in `geo/open_issues.geojson`. See the "Dashboard views" table in `shared/schema.md`.
+**Status:** all data files real; 45 tests pass.
+
 ## 2026-11-21 12:02, Prathik, prathik/data-models
 **Changed:** Every data file is now real. Claude-written text is live (key added): 8 scorecards and 24 ward summaries, each checked
 (length, only supplied numbers including spelled-out ones, no accusatory words). New: the complaint trail. `uv run pipeline all` rebuilds everything.
