@@ -48,7 +48,7 @@ const STOPS: Stop[] = [
     title: "Paisa kahan gaya",
     tag: "Jo ajeeb lage, woh yahan.",
     body: "Repair jobs where the bill, the timing or the warranty status did not add up. The headline is what flagged jobs billed, not money proven lost. Normal variation is not flagged.",
-    href: "/audit",
+    href: "/audit?ward=F%2FN",
     target: "#main h1, #main h2",
   },
   {
@@ -56,7 +56,7 @@ const STOPS: Stop[] = [
     title: "Meri shikayat ka kya hua?",
     tag: "Complaint se repair tak, poori kahani.",
     body: "Search a complaint ID or locality and follow it: the repair job, who did it, what it cost, and whether it held. Duplicate complaints are merged into one issue.",
-    href: "/complaints?issue=ISS-0001",
+    href: "/complaints?issue=ISS-1794",
     target: "#main h1, #main h2",
   },
   {
