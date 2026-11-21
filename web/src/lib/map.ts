@@ -38,6 +38,10 @@ export function projectFeatures<P>(input: GeoFeature<P>[], width: number, height
   return {
     paths: features.map((f) => path(asGeo(f)) ?? ""),
     centroids: features.map((f) => path.centroid(asGeo(f))),
+    bounds: features.map((f) => {
+      const [[x0, y0], [x1, y1]] = path.bounds(asGeo(f));
+      return [x0, y0, x1, y1] as const;
+    }),
     point: (lon: number, lat: number): [number, number] => projection([lon, lat]) ?? [0, 0],
     path: (f: GeoFeature<unknown>) => path(asGeo(f)) ?? "",
   };

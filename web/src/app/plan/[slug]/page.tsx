@@ -88,8 +88,8 @@ async function Content({ params }: { params: Promise<{ slug: string }> }) {
     <div className="space-y-10">
       <div>
         <p className="mb-5">
-          <Link href="/" className={`${link} inline-flex min-h-11 items-center`}>
-            ← All wards
+          <Link href={`/?ward=${slug}`} className={`${link} inline-flex min-h-11 items-center`}>
+            ← Back to the map
           </Link>
         </p>
         <PageTitle kicker={`Ward ${code}`} title={`What should ${ward.ward_name} fix first?`} accent={ward.ward_name}>

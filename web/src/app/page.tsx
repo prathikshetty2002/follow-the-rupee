@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { MumbaiSkyline } from "@/components/mumbai-skyline";
-import { Card, Chip, Display, TableWrap, btnPrimary, td, th } from "@/components/ui";
-import { WardMap, type MapWard } from "@/components/ward-map";
-import { getNextRupee, getWardGeo, getWards } from "@/lib/data";
+import { Suspense } from "react";
+import { Card, Display, TableWrap, td, th } from "@/components/ui";
+import type { StageData } from "@/components/stage/types";
+import { WardStage } from "@/components/stage/ward-stage";
+import { getNextRupee, getOpenIssuePoints, getRoadGeo, getWardGeo, getWards } from "@/lib/data";
 import { inrShort, int, wardSlug } from "@/lib/format";
 import { projectFeatures } from "@/lib/map";
 
-const W = 560;
-const H = 640;
+const W = 900;
+const H = 1200;
 
 function Stat({ value, label, note }: { value: string; label: string; note?: string }) {
   return (
@@ -20,7 +21,7 @@ function Stat({ value, label, note }: { value: string; label: string; note?: str
 }
 
 export default async function Home() {
-  const [plan, wards, geo] = await Promise.all([getNextRupee(), getWards(), getWardGeo()]);
+  const [plan, wards, geo, roadGeo, points] = await Promise.all([getNextRupee(), getWards(), getWardGeo(), getRoadGeo(), getOpenIssuePoints()]);
   const byCode = new Map(plan.wards.map((w) => [w.ward_code, w]));
   const name = new Map(wards.map((w) => [w.ward_code, w.ward_name]));
 
@@ -29,47 +30,57 @@ export default async function Home() {
   const left = plan.wards.reduce((s, w) => s + Math.max(w.remaining_budget_inr, 0), 0);
   const over = plan.wards.filter((w) => w.over_budget).length;
 
-  const { paths, centroids } = projectFeatures(geo.features, W, H);
-  const mapWards: MapWard[] = geo.features.map((f, i) => {
-    const p = byCode.get(f.properties.ward_code)!;
-    return { slug: f.properties.slug, code: f.properties.ward_code, name: f.properties.ward_name, d: paths[i], cx: centroids[i][0], cy: centroids[i][1], need: p.risk_score, openIssues: p.open_issues, budgetLeft: inrShort(p.remaining_budget_inr), covered: "" };
-  });
+  const proj = projectFeatures(geo.features, W, H, 0);
+  const stage: StageData = {
+    width: W,
+    height: H,
+    wards: geo.features.map((f, i) => {
+      const p = byCode.get(f.properties.ward_code)!;
+      return {
+        code: f.properties.ward_code,
+        slug: f.properties.slug,
+        name: f.properties.ward_name,
+        zone: f.properties.zone,
+        d: proj.paths[i],
+        box: proj.bounds[i],
+        cx: proj.centroids[i][0],
+        cy: proj.centroids[i][1],
+        risk: p.risk_score,
+        open: p.open_issues,
+        funded: p.funded_issues,
+        needInr: p.need_inr,
+        leftInr: Math.max(p.remaining_budget_inr, 0),
+        over: p.over_budget,
+        top: p.issues.slice(0, 3).map((i) => ({ rank: i.rank, road: i.road_name, type: i.work_type, costInr: i.cost_to_bmc_inr, funded: i.funded })),
+      };
+    }),
+    roads: roadGeo.features.map((f) => ({ d: proj.path(f), ward: f.properties.ward_code, hot: f.properties.open_issues > 0 })),
+    dots: points.features.map((f) => {
+      const [x, y] = proj.point(...(f.geometry.coordinates as [number, number]));
+      return { x, y, ward: f.properties.ward_code, rank: f.properties.rank, funded: f.properties.funded };
+    }),
+  };
   const rows = [...plan.wards].sort((a, b) => b.risk_score - a.risk_score);
 
   return (
-    <div className="space-y-20">
-      <section aria-labelledby="hero-h" className="soft relative overflow-hidden rounded-[2rem] px-5 pb-8 pt-14 text-center sm:px-12 sm:pt-20" style={{ background: "linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 30%, var(--card)) 52%, var(--mist) 100%)" }}>
-        <div className="relative z-10 mx-auto max-w-3xl">
-          <div className="mb-7 flex justify-center">
-            <Chip>Mumbai monsoon roads, June to September 2025</Chip>
-          </div>
-          <Display id="hero-h" accent="next rupee" className="text-5xl sm:text-7xl">
-            Where should the next rupee go?
-          </Display>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted">Pick a ward. The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
-          <div className="mt-9 flex justify-center">
-            <a href="#wards" className={btnPrimary}>
-              Choose a ward <span aria-hidden>↗</span>
-            </a>
-          </div>
-        </div>
-        <div className="relative mt-12 h-48 sm:h-64">
-          <MumbaiSkyline className="absolute inset-x-[-5%] bottom-[-2rem] h-[20rem] w-[110%] sm:h-[26rem]" />
-        </div>
-        <dl className="relative z-10 mx-auto -mt-16 grid max-w-3xl gap-3 sm:-mt-20 sm:grid-cols-3">
-          <Stat value={int(openIssues)} label="Open road issues" note="Complaints with no repair ordered" />
-          <Stat value={inrShort(need)} label="Cost to fix them all" note="Typical job costs" />
-          <Stat value={inrShort(left)} label="Budget left in total" note={`${over} wards are already over budget`} />
-        </dl>
-      </section>
+    <div className="space-y-16">
+      <Suspense fallback={<div aria-hidden className="stage h-[min(50rem,calc(100dvh-5.5rem))] min-h-[44rem] rounded-[2rem] sm:min-h-[40rem]" />}>
+        <WardStage data={stage} />
+      </Suspense>
 
-      <div id="wards" className="grid scroll-mt-6 gap-x-8 gap-y-10 lg:grid-cols-[minmax(0,1fr)_21rem]">
+      <dl className="grid gap-3 sm:grid-cols-3">
+        <Stat value={int(openIssues)} label="Open road issues" note="Complaints with no repair ordered" />
+        <Stat value={inrShort(need)} label="Cost to fix them all" note="Typical job costs" />
+        <Stat value={inrShort(left)} label="Budget left in total" note={`${over} wards are already over budget`} />
+      </dl>
+
+      <div id="wards" className="scroll-mt-6">
         <section aria-labelledby="wards-h" className="min-w-0">
           <div className="mb-6">
-            <Display as="h2" id="wards-h" accent="ward" className="text-4xl">
-              Choose a ward
+            <Display as="h2" id="wards-h" accent="table" className="text-4xl">
+              Every ward, in a table
             </Display>
-            <p className="mt-2 text-muted">Most serious open issues first. The bar shows how much of each ward&apos;s open issues its remaining budget pays for.</p>
+            <p className="mt-2 text-muted">The same wards as the map, most serious open issues first. The bar shows how much of each ward&apos;s open issues its remaining budget pays for.</p>
           </div>
           <Card className="!p-2 sm:!p-4">
             <TableWrap label="Wards ranked by how serious their open issues are">
@@ -116,11 +127,6 @@ export default async function Home() {
           </Card>
         </section>
 
-        <aside aria-label="Map of wards" className="lg:sticky lg:top-6 lg:self-start">
-          <Card className="!p-5">
-            <WardMap wards={mapWards} width={W} height={H} />
-          </Card>
-        </aside>
       </div>
     </div>
   );

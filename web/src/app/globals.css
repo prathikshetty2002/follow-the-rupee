@@ -67,6 +67,13 @@
   --color-unpaid: var(--unpaid);
   --color-line: var(--line);
   --color-rule: var(--rule);
+  --color-st-bg: var(--st-bg);
+  --color-st-text: var(--st-text);
+  --color-st-muted: var(--st-muted);
+  --color-st-line: var(--st-line);
+  --color-st-sea: var(--st-sea);
+  --color-st-hot: var(--st-hot);
+  --color-st-hot-text: var(--st-hot-text);
   --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
   --font-serif: var(--font-instrument-serif), Georgia, serif;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -181,4 +188,114 @@ input[type="range"] {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* The map stage: always a night sea, in light or dark mode, so the glowing map reads the same way. */
+.stage {
+  --st-bg: #08121b;
+  --st-text: #eef3f7;
+  --st-muted: #aebccb;
+  --st-line: rgb(255 255 255 / 0.18);
+  --st-cool: #18394e;
+  --st-hot: #ff8a2b;
+  --st-hot-text: #ffb067;
+  --st-sea: #5ec8e5;
+  --focus: #ffffff;
+  isolation: isolate;
+  color: var(--st-text);
+  background: radial-gradient(110% 90% at 72% 18%, #14384f 0%, #0b1d2b 48%, #08121b 100%);
+}
+/* A faint chart grid, like survey paper. */
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(80% 80% at 50% 40%, #000 30%, transparent 100%);
+}
+.stage .display em {
+  color: var(--st-hot-text);
+}
+.stage-panel {
+  background: rgb(10 24 36 / 0.82);
+  border: 1px solid var(--st-line);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.35);
+}
+@supports (backdrop-filter: blur(12px)) {
+  .stage-panel {
+    background: rgb(10 24 36 / 0.62);
+    backdrop-filter: blur(16px) saturate(1.2);
+  }
+}
+.stage-pill {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  flex: 1 1 auto;
+  padding: 0 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--st-muted);
+  transition: background-color 0.15s var(--ease-out), color 0.15s var(--ease-out);
+}
+.stage-pill:hover {
+  color: var(--st-text);
+}
+.stage-pill[aria-pressed="true"] {
+  background: var(--st-text);
+  color: var(--st-bg);
+}
+.stage-icon {
+  display: inline-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 9999px;
+  color: var(--st-text);
+  transition: background-color 0.15s var(--ease-out);
+}
+.stage-icon:hover:not(:disabled) {
+  background: rgb(255 255 255 / 0.14);
+}
+.stage-icon:disabled {
+  color: var(--st-muted);
+  opacity: 0.45;
+}
+.stage-card {
+  display: block;
+  width: 13.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--st-line);
+  background: rgb(255 255 255 / 0.06);
+  padding: 0.8rem 0.9rem;
+  text-align: left;
+  transition: background-color 0.15s var(--ease-out), border-color 0.15s var(--ease-out), transform 0.15s var(--ease-out);
+}
+.stage-card:hover {
+  background: rgb(255 255 255 / 0.12);
+}
+.stage-card[aria-pressed="true"] {
+  border-color: var(--st-hot);
+  background: rgb(255 138 43 / 0.16);
+  box-shadow: 0 0 0 1px var(--st-hot);
+}
+.stage-cta {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--st-hot);
+  padding: 0 1.4rem;
+  font-weight: 600;
+  color: #1a1007;
+  transition: filter 0.15s var(--ease-out);
+}
+.stage-cta:hover {
+  filter: brightness(1.1);
 }

@@ -19,7 +19,7 @@ Team: Prathik (owns pipeline and now the web app). Noel (`technoelogy`) was bloc
 ## 3. Where things stand
 - Repo: `https://github.com/prathikshetty2002/follow-the-rupee` (public). Branches: `main` (what judges see), `dev` (integration), `prathik/*` feature branches, `noel/dashboard` (empty).
 - **`dev` has everything and is the branch to continue from.** `main` is about 10 commits behind: it has the data, audit flags and scorecards but **not the planner, the redesign or the Mumbai theme**. Merging `dev` into `main` is pending Prathik's say-so (`git switch main && git merge --no-ff dev && git push`, after the checks below).
-- Latest work (all on `dev`): the planner revamp, a "civic ledger" redesign (kept in git history), then the current **Mumbai dawn theme** inspired by the Axion Dribbble shot. All checks pass: web 8 tests, pipeline 49 tests, lint, build.
+- Latest work: the planner revamp, a "civic ledger" redesign (kept in git history), the **Mumbai dawn theme** (Axion Dribbble shot), then the **map dashboard** home page (Raktor Dribbble shot: dark immersive ward map, click a ward to fly to it and open its summary and planner link; branch `prathik/map-dashboard`, merged into `dev` once checks pass). All checks pass: web 13 tests, pipeline 49 tests, lint, build.
 - Not done: the **demo script and 3-minute walkthrough and submission text** (10% of the score), a Vercel deploy, a visual check at full desktop width (the browser pane here is small).
 - `docs/PLAN.md` is an early hour-by-hour plan, untracked and out of date. Ignore or delete it. `SYNC_REPORT.md` is generated and git-ignored.
 
@@ -32,7 +32,8 @@ pipeline/        Python (uv). `uv run pipeline all` rebuilds every output; steps
                  nextrupee.py (writes next_rupee.json), audit.py, scorecard.py, narrate.py (guarded Claude text), trail.py, wards.py, export.py
   tests/         49 tests, including integrity checks on the JSON the web app reads
 web/             Next.js 16 (Cache Components), Tailwind v4. Reads web/public/data/*.json on the server
-  src/app/       page.tsx (home: skyline hero, ward table, map), plan/[slug]/page.tsx (the planner), method/page.tsx, layout.tsx, globals.css (all tokens)
+  src/app/       page.tsx (home: the interactive map dashboard, stats, ward table), plan/[slug]/page.tsx (the planner), method/page.tsx, layout.tsx, globals.css (all tokens)
+  src/components/stage/    ward-stage.tsx (the map dashboard: camera, ward cards, summary card), types.ts; lib/view.ts is its tested camera maths
   src/components/planner/  planner.tsx (state in the URL), controls, figures, budget-line, ledger (rows + score arithmetic), weights-panel, plan-map, csv
   src/lib/       planner.ts (re-score, fill, exact knapsack: pure, tested), data.ts (server JSON readers), types.ts, format.ts, factors.ts, map.ts
   tests/planner.test.mjs   run with `npm test` (Node's test runner)
@@ -58,6 +59,7 @@ Git: work on a `prathik/<topic>` branch, merge into `dev` with `--no-ff`, push. 
 
 ## 7. Gotchas
 - **Next.js 16 is not the Next.js in your training data.** Read `web/node_modules/next/dist/docs/` before using APIs (`web/AGENTS.md` says so). With Cache Components: `await params` and `useSearchParams` must sit under `<Suspense>`; `dynamicParams` is rejected; the JSON reader uses `"use cache"`; rebuild or restart dev after the pipeline rewrites JSON.
+- The map stage keeps its camera in React state (`camera` null means follow the selected ward) and its selection in the URL `?ward=<slug>`; animations use requestAnimationFrame (lint forbids `performance.now()` in components, use the rAF timestamp). Pan starts only after 6px of movement so ward clicks still work.
 - Plan state (budget, strategy, weighting preset) lives in the URL via `window.history.replaceState` and `useSearchParams`, not in an effect. Do not add setState-in-effect (the lint rule blocks it).
 - GeoJSON polygons wind the opposite way to what d3-geo expects; `lib/map.ts` flips them. Do not remove that.
 - Fieldsets need `min-width: 0` or wide tables overflow on phones (set globally).
@@ -66,7 +68,7 @@ Git: work on a `prathik/<topic>` branch, merge into `dev` with `--no-ff`, push. 
 - Never commit `pipeline/.env`, never print keys. Check the staged diff for key-like strings before each commit (grep for the key prefix); none has ever been committed.
 
 ## 8. Suggested next steps (in order)
-1. Prathik reviews the site (`npm run dev`, `/plan/F-N`, `/plan/N`, `/plan/L?budget=500000`); adjust the look or copy.
+1. Prathik reviews the site (`npm run dev`: the map at `/`, `/?ward=F-N`, then `/plan/F-N`, `/plan/L?budget=500000`); adjust the look or copy. Map ideas not done: scroll-wheel zoom (left off so the page can scroll), keyboard control of the map itself (the ward cards are the keyboard path), a dedicated mobile layout check on a real phone.
 2. Merge `dev` into `main` once happy, so judges see the planner. Deploy `web/` to Vercel from `main`.
 3. Write the **3-minute demo script** and submission text (write it to `docs/DEMO.md`): problem, the budget line, riskiest-first vs most-risk, open an issue to show the arithmetic, change the weights and show the backtest, confidence and limits, how Claude is used (guarded text, research).
 4. Precision ideas if time allows: improve road placement for non-GPS complaints; revisit the paver severity (1.4/5 pushes all paver issues to the bottom); tune presets; add a per-ward "what changed if budget +10%" note.
