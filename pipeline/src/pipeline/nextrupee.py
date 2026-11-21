@@ -9,12 +9,11 @@ import pandas as pd
 from pipeline import config
 from pipeline.backtest import run_backtest, weight_stability
 from pipeline.budget import attach_methods, best_methods, contractor_table, fill_budgets, method_table, with_cost_ratio
-from pipeline.data import OUT_DIR, load, write_json
+from pipeline.data import load, write_json
 from pipeline.index import FACTORS, road_factors, score_issues, severity_by_type
 from pipeline.issues import open_issues, prepare_complaints
 from pipeline.roads import road_table
 
-TOP_PER_WARD = 10
 REASON_FACTORS = 3  # how many of the biggest contributing factors get a plain-language reason
 
 
@@ -174,29 +173,3 @@ def write(result: dict) -> None:
         },
     )
     write_json("validation", {"generated_at": now, **result["backtest"]})
-
-    # Keep wards.json (shared/schema.md) in step: replace only the fields this module owns.
-    path = OUT_DIR / "wards.json"
-    wards = json.loads(path.read_text())
-    for w in wards:
-        plan = result["wards"].get(w["ward_code"])
-        if not plan:
-            continue
-        w["risk_score"] = plan["risk_score"]
-        w["next_rupee"] = [
-            {
-                "rank": i["rank"],
-                "road_id": i["road_id"],
-                "road_name": i["road_name"],
-                "recommended_method": i["recommended_method"],
-                "est_cost_inr": i["est_cost_inr"],
-                "reasons": i["reasons"],
-                "issue_id": i["issue_id"],
-                "work_type": i["work_type"],
-                "priority_score": i["priority_score"],
-                "funded": i["funded"],
-                "dlp": i["dlp"],
-            }
-            for i in plan["issues"][:TOP_PER_WARD]
-        ]
-    path.write_text(json.dumps(wards, ensure_ascii=False, indent=2))

@@ -14,6 +14,19 @@ Entry template:
 
 ---
 
+## 2026-11-21 12:02, Prathik, prathik/data-models
+**Changed:** Every data file is now real. Claude-written text is live (key added): 8 scorecards and 24 ward summaries, each checked
+(length, only supplied numbers including spelled-out ones, no accusatory words). New: the complaint trail. `uv run pipeline all` rebuilds everything.
+Files: `web/public/data/` `issues.json` (3,529 issues), `issues_summary.json`, `wards.json` (real `summary`), `contractors.json` (Claude text).
+Code: `pipeline/src/pipeline/trail.py`, `wards.py`; tests grew to 37.
+**Contract:** Additive, except one new enum value. `Issue.status` gains `"not_bmc_scope"` (rejected or forwarded complaints, 486 issues): handle it in any
+`switch` on status. `Issue` gains `trail`, `work_order`, `road_*`, `channels`, `languages`, `disposition`; new types `IssuesSummary`, `IssueStatus`;
+`Ward` gains optional `summary_source`, `remaining_budget_inr`, `over_budget`, `adjusted`, `billing_flagged_*`; reader `getIssuesSummary()`. See `shared/schema.md`.
+**You need to:** nothing is blocking. Ideas: (1) a "what happened to my complaint?" view: search by complaint id or locality and show `trail` plus the
+`work_order` details; (2) a money-trail view per ward: issues by `status`, with `spend_on_failed_inr` from `issues_summary.json`; (3) the ward page header can use
+`summary` as is. `trail` is one finished sentence, safe to show to citizens. `issues.json` is 3 MB, so read it on the server and send only what a page needs.
+**Status:** all data files real. Next from Prathik: tidy and checks; open to requests for any field the dashboard needs.
+
 ## 2026-11-21 11:45, Prathik, prathik/data-models
 **Changed:** Contractor scorecards are real. `uv run pipeline scorecards` writes `web/public/data/contractors.json` (8 contractors, best first).
 Code: `pipeline/src/pipeline/scorecard.py` and `narrate.py`, tests in `pipeline/tests/test_scorecard.py`.
@@ -54,10 +67,9 @@ Useful fields per issue: `priority_score` (0-100), `factors` (points that add up
 | File | State |
 |---|---|
 | `next_rupee.json`, `validation.json` | real |
-| `wards.json` | partial: budget, spend, `next_rupee`, `risk_score` real; `summary` is a placeholder |
-| `contractors.json` | real (text is a template until an API key is added) |
+| `wards.json` | real (Claude-written `summary`) |
+| `contractors.json` | real (Claude-written text) |
 | `flags.json`, `audit_summary.json` | real |
-| `issues.json` | stub (complaint-to-work-order trail not built yet) |
+| `issues.json`, `issues_summary.json` | real |
 
-Next from Prathik: Claude-written ward summaries, then the complaint-to-work-order trail (`issues.json`). Each will replace a stub with
-the same shape, so UI built on the stubs keeps working.
+All data files are real now; the shapes did not change, so UI built on the stubs keeps working.

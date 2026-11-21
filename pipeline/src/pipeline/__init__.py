@@ -3,7 +3,7 @@ import argparse
 from pipeline.data import load
 
 
-def summary() -> None:
+def cmd_summary() -> None:
     wo = load("work_orders")
     wards = load("wards")
     print(f"{len(wo)} work orders, ₹{wo.cost_inr.sum():,.0f} billed across {wo.ward_code.nunique()} wards")
@@ -11,7 +11,7 @@ def summary() -> None:
     print(wo.groupby("contractor_name")["cost_inr"].sum().sort_values(ascending=False).to_string())
 
 
-def next_rupee() -> None:
+def cmd_next_rupee() -> None:
     import pandas as pd
 
     from pipeline.nextrupee import build, write
@@ -29,7 +29,7 @@ def next_rupee() -> None:
     print("Wrote web/public/data/{next_rupee,validation,wards}.json")
 
 
-def audit() -> None:
+def cmd_audit() -> None:
     from pipeline.audit import build_flags, summarise, write
 
     flags, d = build_flags()
@@ -46,13 +46,11 @@ def audit() -> None:
     print("Wrote web/public/data/{flags,audit_summary}.json")
 
 
-def scorecards() -> None:
-    import sys
-
+def cmd_scorecards() -> None:
     from pipeline.narrate import Writer
     from pipeline.scorecard import build_scorecards, write
 
-    writer = Writer(use_claude="--no-claude" not in sys.argv)
+    writer = Writer(use_claude=not _args().no_claude)
     cards, _ = build_scorecards()
     sources = write(cards, writer)
     print(f"{'rank':<5}{'id':<6}{'grade':<6}{'score':<6}{'durability':<11}{'billing':<8}{'speed':<6}")
@@ -63,8 +61,44 @@ def scorecards() -> None:
     print("Wrote web/public/data/contractors.json")
 
 
-def main() -> None:
+def cmd_trail() -> None:
+    from pipeline.trail import build_trail, write
+
+    iss, summary = build_trail()
+    write(iss, summary)
+    print(f"{summary['complaints']} complaints -> {summary['issues']} issues ({summary['complaints_per_issue']} complaints each)")
+    for status, v in summary["by_status"].items():
+        print(f"  {status:<14} {v['issues']:>5} issues, {v['complaints']:>5} complaints")
+    print(f"Fixed issues that failed within 30 days: {summary['fixed_issues_that_failed_pct']:.1%}, ₹{summary['spend_on_failed_inr']:,} of ₹{summary['spend_on_fixed_inr']:,}")
+    print(f"Social posts linked: {summary['social_posts_linked']} of {summary['social_posts']}  {summary['social_linked_by_kind']}")
+    print("Wrote web/public/data/{issues,issues_summary}.json")
+
+
+def cmd_wards() -> None:
+    from pipeline.narrate import Writer
+    from pipeline.wards import build_wards, write
+
+    writer = Writer(use_claude=not _args().no_claude)
+    records, sources = build_wards(writer)
+    write(records)
+    print(f"{len(records)} wards. Summary text source: {sources}" + (f"  (Claude not used: {writer.disabled_reason})" if not writer.active else ""))
+    print("Wrote web/public/data/wards.json")
+
+
+def cmd_run_all() -> None:
+    """Rebuild every output in dependency order."""
+    for step in (cmd_audit, cmd_next_rupee, cmd_scorecards, cmd_trail, cmd_wards):
+        print(f"\n=== {step.__name__} ===")
+        step()
+
+
+def _args():
     parser = argparse.ArgumentParser(prog="pipeline")
-    parser.add_argument("--no-claude", action="store_true", help="scorecards: use the template text, never call the API")
-    parser.add_argument("command", nargs="?", default="summary", choices=["summary", "next-rupee", "audit", "scorecards"])
-    {"summary": summary, "next-rupee": next_rupee, "audit": audit, "scorecards": scorecards}[parser.parse_args().command]()
+    parser.add_argument("--no-claude", action="store_true", help="use template text, never call the API")
+    parser.add_argument("command", nargs="?", default="summary", choices=["summary", "next-rupee", "audit", "scorecards", "trail", "wards", "all"])
+    return parser.parse_args()
+
+
+def main() -> None:
+    steps = {"summary": cmd_summary, "next-rupee": cmd_next_rupee, "audit": cmd_audit, "scorecards": cmd_scorecards, "trail": cmd_trail, "wards": cmd_wards, "all": cmd_run_all}
+    steps[_args().command]()
