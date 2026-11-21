@@ -13,10 +13,10 @@ const H = 1200;
 
 function Stat({ value, label, note }: { value: string; label: string; note?: string }) {
   return (
-    <div className="glass rounded-2xl px-5 py-4 text-left">
-      <p className="num text-3xl font-semibold leading-none">{value}</p>
-      <p className="mt-2 text-sm font-medium">{label}</p>
-      {note && <p className="mt-0.5 text-sm text-muted">{note}</p>}
+    <div className="glass rounded-3xl px-6 py-6 text-left xl:px-8 xl:py-8">
+      <p className="num text-4xl font-semibold leading-none xl:text-6xl">{value}</p>
+      <p className="mt-3 text-base font-medium xl:text-lg">{label}</p>
+      {note && <p className="mt-0.5 text-sm text-muted xl:text-base">{note}</p>}
     </div>
   );
 }
@@ -64,35 +64,35 @@ export default async function Home() {
   const rows = [...plan.wards].sort((a, b) => b.risk_score - a.risk_score);
 
   return (
-    <div className="space-y-16">
-      <section aria-labelledby="hero-h" className="soft relative isolate overflow-hidden rounded-[2rem]" style={{ background: "linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 35%, var(--card)) 45%, var(--mist) 100%)" }}>
-        <div className="relative mx-auto max-w-3xl px-5 pt-12 text-center sm:px-12 sm:pt-16">
-          <div className="mb-6 flex justify-center">
+    <div className="space-y-16 xl:space-y-24">
+      <section aria-labelledby="hero-h" className="soft relative isolate flex flex-col overflow-hidden lg:h-[calc(100dvh-5.5rem)] lg:min-h-[48rem] lg:max-h-[60rem] rounded-[2rem]" style={{ background: "linear-gradient(180deg, var(--peach) 0%, color-mix(in oklab, var(--peach) 35%, var(--card)) 45%, var(--mist) 100%)" }}>
+        <div className="relative mx-auto max-w-6xl px-5 pt-10 text-center sm:px-12 sm:pt-12 xl:pt-10">
+          <div className="mb-4 flex justify-center">
             <Chip>Mumbai monsoon roads, June to September 2025</Chip>
           </div>
-          <Display id="hero-h" accent="next rupee" className="text-5xl sm:text-7xl">
+          <Display id="hero-h" accent="next rupee" className="text-5xl sm:text-6xl xl:text-[4.75rem]">
             Where should the next rupee go?
           </Display>
-          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted">Pick a ward on the map. The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="#map" className={btnPrimary}>
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted xl:mt-4 xl:max-w-4xl xl:text-xl">Pick a ward on the map. The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <a href="#map" className={`${btnPrimary} xl:min-h-12 xl:px-7 xl:text-base`}>
               Explore the map <span aria-hidden>↓</span>
             </a>
-            <Link href="/method" className={btnQuiet}>
+            <Link href="/method" className={`${btnQuiet} xl:min-h-12 xl:px-7 xl:text-base`}>
               How it works
             </Link>
           </div>
         </div>
-        <BmcOffice className="relative -mt-4 block h-[24rem] w-full sm:h-[37rem]" />
+        <BmcOffice className="relative -mt-4 block h-[24rem] w-full sm:h-[32rem] lg:h-0 lg:min-h-[28rem] lg:flex-1" />
       </section>
 
       <div id="map" className="scroll-mt-4">
-        <Suspense fallback={<div aria-hidden className="stage h-[min(50rem,calc(100dvh-5.5rem))] min-h-[44rem] rounded-[2rem] sm:min-h-[40rem]" />}>
+        <Suspense fallback={<div aria-hidden className="stage h-[calc(100dvh-5.5rem)] min-h-[44rem] max-h-[62rem] rounded-[2rem] sm:min-h-[40rem]" />}>
           <WardStage data={stage} />
         </Suspense>
       </div>
 
-      <dl className="grid gap-3 sm:grid-cols-3">
+      <dl className="grid gap-4 sm:grid-cols-3 xl:gap-6">
         <Stat value={int(openIssues)} label="Open road issues" note="Complaints with no repair ordered" />
         <Stat value={inrShort(need)} label="Cost to fix them all" note="Typical job costs" />
         <Stat value={inrShort(left)} label="Budget left in total" note={`${over} wards are already over budget`} />

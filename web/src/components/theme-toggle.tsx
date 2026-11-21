@@ -5,25 +5,18 @@ import { useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
-/** The theme in force: the visitor's choice (data-theme on <html>) or else the system's. */
+/** The theme in force: the visitor's choice (data-theme on <html>), light until they choose. */
 function current(): Theme {
-  const set = document.documentElement.dataset.theme;
-  if (set === "light" || set === "dark") return set;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
 }
 
 function subscribe(onChange: () => void) {
   const watch = new MutationObserver(onChange);
   watch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
-  media.addEventListener("change", onChange);
-  return () => {
-    watch.disconnect();
-    media.removeEventListener("change", onChange);
-  };
+  return () => watch.disconnect();
 }
 
-/** Light or dark, remembered in this browser. Until the visitor chooses, the system setting applies. */
+/** Light or dark, remembered in this browser. Light is the default. */
 export function ThemeToggle() {
   const theme = useSyncExternalStore(subscribe, current, () => "light" as Theme);
   const next: Theme = theme === "dark" ? "light" : "dark";

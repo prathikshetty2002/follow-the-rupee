@@ -215,7 +215,7 @@ export function WardStage({ data }: { data: StageData }) {
   return (
     <section
       aria-labelledby="stage-h"
-      className="stage relative h-[min(50rem,calc(100dvh-5.5rem))] min-h-[44rem] overflow-hidden rounded-[2rem] sm:min-h-[40rem]"
+      className="stage relative h-[calc(100dvh-5.5rem)] min-h-[44rem] max-h-[62rem] overflow-hidden rounded-[2rem] sm:min-h-[40rem]"
       ref={stageRef}
       onKeyDown={(e) => {
         if (e.key !== "Escape" || !selected) return;
