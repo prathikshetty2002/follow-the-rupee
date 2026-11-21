@@ -12,6 +12,13 @@ Entry template:
 **Status:** real / partial / stub, and what is still to come.
 ```
 
+## 2026-11-21 16:10, Noel, noel/dashboard-claude
+**Changed:** Team decision (Noel, 16:00): the Planner stays the hero and the audit, contractor and complaint-trail pages stay on the site as the evidence behind it (the brief asks for connect, audit, hold to account and budget; the rubric scores them). New: `/audit`, `/contractors`, `/complaints`, cross-links from the planner to each and back, the non-modal guided tour (`guide.tsx`), logo, light mode only, hero fit, README with demo video (`docs/demo.mp4`, `docs/img/`), `next.config.ts` file-tracing include so Vercel ships `public/data`.
+**Contract:** none. Added readers to `web/src/lib/data.ts` (getFlags, getIssues, getAuditSummary, getIssuesSummary, getWorkOrders, getComplaintLookup, getWorkOrdersById) and helpers to `format.ts`.
+**You need to:** update the **Scope** line in `CLAUDE.md` (it still says "do not add pages for audit, contractors or complaint lookup"), so a fresh session does not delete these pages. Deploy to Vercel with Root Directory `web`.
+**Status:** real. Lint, build and 13 tests pass.
+
+
 ---
 
 ## 2026-11-21 16:35, Prathik, prathik/hero-motion
