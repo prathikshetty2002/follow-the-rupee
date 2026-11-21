@@ -12,9 +12,9 @@
 
 **Built at Claude Impact Lab Mumbai, 21 November 2026**
 
-[![Watch the 70-second demo](docs/img/demo-preview.gif)](docs/demo.mp4)
+[![Watch the 94-second walkthrough](docs/img/walkthrough-preview.gif)](docs/walkthrough.mp4)
 
-<sub>Click the preview to play the full demo with captions: [`docs/demo.mp4`](docs/demo.mp4)</sub>
+<sub>Click the preview to play the full walkthrough with captions: [`docs/walkthrough.mp4`](docs/walkthrough.mp4) · the map, then the planner (the main tool), then the evidence pages</sub>
 
 </div>
 
@@ -99,7 +99,7 @@ data/        input CSVs (synthetic, read-only)
 pipeline/    Python: complaints → issues → work orders, audit, scorecards, budget, Claude narration
 web/         Next.js 16 app, reads web/public/data/*.json
 shared/      schema.md, the JSON contract between the two
-docs/        the brief, data dictionary, and the demo video
+docs/        the brief, data dictionary, and the walkthrough video (re-record with scripts/walkthrough/)
 ```
 
 ## Team

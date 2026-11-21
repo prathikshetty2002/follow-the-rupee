@@ -57,6 +57,8 @@ Git: work on a `prathik/<topic>` branch, merge into `dev` with `--no-ff`, push. 
 - **Budget logic:** "riskiest first" pays in rank order until the first issue that does not fit (the budget line), then fills leftover with cheaper issues; "most risk covered" is an exact knapsack. Warranty (DLP) roads cost BMC nothing. Both are tested (solver checked against brute force).
 - **Audit and scorecards** (not on the site): billing flags use a 1.4x rate-card threshold, unlinked repeat jobs within 7 days, DLP-paid; scorecards compare each contractor with what is expected for the same work, and Claude-written text is checked for length, supplied numbers (including spelled-out ones) and tone, with a template fallback.
 
+- **Walkthrough video:** `docs/walkthrough.mp4` (94 s, 1920x1080, burned-in captions, no voice; `docs/walkthrough.srt` has the same captions). Re-record after UI changes: `cd web && npx next build && npx next start -p 3100`, then `node scripts/walkthrough/record.mjs /tmp/walkthrough-out http://localhost:3100 && python3 scripts/walkthrough/encode.py /tmp/walkthrough-out` (needs google-chrome-stable and ffmpeg). It drives the real site and the guide; captions live in `record.mjs`.
+
 ## 7. Gotchas
 - The dev server can serve a stale stylesheet after a branch switch (symptoms: black or unstyled page, old colours). Stop it, `rm -rf web/.next`, start it again.
 - **Next.js 16 is not the Next.js in your training data.** Read `web/node_modules/next/dist/docs/` before using APIs (`web/AGENTS.md` says so). With Cache Components: `await params` and `useSearchParams` must sit under `<Suspense>`; `dynamicParams` is rejected; the JSON reader uses `"use cache"`; rebuild or restart dev after the pipeline rewrites JSON.

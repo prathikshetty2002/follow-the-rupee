@@ -1,0 +1,67 @@
+1
+00:00:00,200 --> 00:00:05,600
+Follow the Rupee · Mumbai monsoon roads: Mumbai's 24 wards spend crores on monsoon road repairs. With the money left, what should be fixed first?
+
+2
+00:00:05,800 --> 00:00:11,304
+Built-in guide: A built-in guide rides the site like a Western line local, one stop per section.
+
+3
+00:00:11,504 --> 00:00:16,605
+Stop 1 · Churchgate · The ward map: All 24 wards on one map. Darker blue means riskier open issues. Filled dots are paid for; rings are not.
+
+4
+00:00:16,805 --> 00:00:23,085
+Colour and 3D: Recolour by risk, budget gap or open issues. In 3D, each ward stands as tall as its value.
+
+5
+00:00:23,285 --> 00:00:26,886
+Search: Search any ward, area or road, like Sion.
+
+6
+00:00:27,086 --> 00:00:33,287
+Stop 2 · Marine Lines · Ward summary: Pick a ward and the map flies there. Its summary shows open issues, cost, budget left and what to fix first.
+
+7
+00:00:33,487 --> 00:00:39,285
+Stop 3 · Charni Road · The main tool: The main tool: the Next Rupee Planner. Every open issue in the ward, ranked by risk and matched to the money left.
+
+8
+00:00:39,485 --> 00:00:44,788
+Budget: Start from the budget left, ₹10.9 lakh, or type any amount. At ₹5 lakh the plan recalculates instantly.
+
+9
+00:00:44,988 --> 00:00:50,791
+Budget line: Each block is one repair, as wide as it costs. Dark blocks are paid for; the marker shows where money runs out.
+
+10
+00:00:50,991 --> 00:00:56,595
+Two ways to spend: Riskiest first pays in rank order. Most risk covered finds the exact mix that covers the most risk.
+
+11
+00:00:56,795 --> 00:01:02,796
+Show the working: Each issue gets a risk score out of 100 and a confidence level. Open one to see the arithmetic behind it.
+
+12
+00:01:02,996 --> 00:01:07,596
+Your weights, tested: Change how risk is weighed and see how each weighting did against later repairs.
+
+13
+00:01:07,796 --> 00:01:12,600
+The evidence behind the plan: Below the plan, the evidence: where money already went, who did the work, whether it held.
+
+14
+00:01:12,800 --> 00:01:18,201
+Stop 4 · Grant Road · Contractor scorecards: Contractor scorecards grade each firm against what is expected for the same work, wards and weather.
+
+15
+00:01:18,401 --> 00:01:23,602
+Stop 5 · Mumbai Central · Audit: The audit flags repair bills worth a second look, not proven losses. Every flag lists its jobs.
+
+16
+00:01:23,802 --> 00:01:29,000
+Stop 6 · Dadar · Complaint trail: Follow any complaint to its repair: who did it, what it cost, and whether it held.
+
+17
+00:01:29,004 --> 00:01:33,999
+The planner decides where the next rupee goes. The evidence shows why. All data is synthetic; confirm on site before sending a crew.
