@@ -60,8 +60,34 @@ export type Flag = {
   flag_type: FlagType;
   severity: "high" | "medium" | "low";
   amount_at_risk_inr: number;
-  reason: string;
-  evidence_work_order_ids: string[];
+  reason: string; // one plain-language line
+  evidence_work_order_ids: string[]; // the work orders behind the flag (for double billing: the duplicate first, then the earlier job)
+  // Added by the audit build, all present in the real flags.json
+  kind?: "billing" | "performance"; // billing = over_billed, double_billed, dlp_paid; performance = sla_missed, reopened
+  contractor_name?: string;
+  work_type?: string;
+  repair_method?: string;
+  cost_inr?: number; // what the work order billed
+  details?: Record<string, number | string | boolean>; // the numbers behind the reason, varies by flag_type
+};
+
+export type FlagCounts = { count: number; amount_at_risk_inr: number };
+
+export type AuditBlock = {
+  work_orders: number;
+  flags: number;
+  by_type: Partial<Record<FlagType, FlagCounts>>;
+  billing_flagged_work_orders: number; // each work order counted once across billing flags
+  billing_flagged_cost_inr: number;
+  high_severity: number;
+};
+
+// audit_summary.json
+export type AuditSummary = {
+  city: AuditBlock;
+  by_ward: (AuditBlock & { ward_code: string })[];
+  by_contractor: (AuditBlock & { contractor_id: string; contractor_name: string })[];
+  thresholds: { over_billed_ratio: number; double_bill_window_days: number; sla_flag_ratio: number; normal_cost_range_vs_rate_card: [number, number] };
 };
 
 export type Issue = {

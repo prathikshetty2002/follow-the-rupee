@@ -29,7 +29,24 @@ def next_rupee() -> None:
     print("Wrote web/public/data/{next_rupee,validation,wards}.json")
 
 
+def audit() -> None:
+    from pipeline.audit import build_flags, summarise, write
+
+    flags, d = build_flags()
+    summary = summarise(flags, d)
+    write(flags, summary)
+    city = summary["city"]
+    print(f"{city['flags']} flags on {flags.work_order_id.nunique()} of {city['work_orders']} work orders")
+    for kind, g in flags.groupby("kind"):
+        print(f"\n{kind}:")
+        for t, h in g.groupby("flag_type"):
+            sev = h.severity.value_counts().reindex(["high", "medium", "low"], fill_value=0).to_dict()
+            print(f"  {t:<14} {len(h):>4}  ₹{h.amount_at_risk_inr.sum():>12,}  {sev}")
+    print(f"\nBilling-flagged work orders (each counted once): {city['billing_flagged_work_orders']}, ₹{city['billing_flagged_cost_inr']:,} billed")
+    print("Wrote web/public/data/{flags,audit_summary}.json")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(prog="pipeline")
-    parser.add_argument("command", nargs="?", default="summary", choices=["summary", "next-rupee"])
-    {"summary": summary, "next-rupee": next_rupee}[parser.parse_args().command]()
+    parser.add_argument("command", nargs="?", default="summary", choices=["summary", "next-rupee", "audit"])
+    {"summary": summary, "next-rupee": next_rupee, "audit": audit}[parser.parse_args().command]()
