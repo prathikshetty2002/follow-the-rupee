@@ -14,6 +14,15 @@ Entry template:
 
 ---
 
+## 2026-11-21 13:06, Prathik, prathik/planner
+**Changed:** Revamp. The site is now one tool, the **Next Rupee Planner**, and nothing else. Removed pages: audit, contractors, complaint lookup, work order, the old ward page.
+Pages now: `/` (pick a ward: map and table), `/plan/[slug]` (the planner), `/method` (how it works, the backtest, limits). The pipeline still builds the other data; the site does not show it.
+The planner (client side, `web/src/components/planner/`, logic in `web/src/lib/planner.ts`): type any budget; choose "riskiest first" or "most risk covered" (exact knapsack); change the weights live
+(presets show their backtest accuracy); each issue expands to show its score breakdown, facts, method and cost range, confidence and why it was not covered. The plan is in the URL, so a link shares it.
+**Pipeline:** `next_rupee.json` issues gained `factor_values`, `tiebreak`, `cost_range_inr`, `rank_range`, `confidence`, `confidence_notes`; new top-level `weight_presets` with a backtest per preset. See `shared/schema.md`. Run `uv run pipeline next-rupee` then `export`.
+**You need to (Noel / UI help):** styling is deliberately plain and token-based (`web/src/app/globals.css`, `brand.md`). Components are small: `budget-panel`, `summary-panel`, `weights-panel`, `issue-row`, `plan-map`, `planner`. Restyle freely; keep the logic in `lib/planner.ts`.
+**Checks:** `cd web && npm test` (7 planner tests incl. exact solver vs brute force), `npm run lint`, `npm run build`; `cd pipeline && uv run pytest` (49 tests).
+
 ## 2026-11-21 12:46, Prathik, prathik/dashboard
 **Changed:** The dashboard is built (`web/`), since Noel is blocked and Prathik took the UI over. Pages: `/` overview with a ward map and key numbers,
 `/ward/[slug]` (24 wards: summary, budget vs spend, how it held up vs expected, ranked next rupee with reasons, open-complaint map, billing flags, failed fixes, contractors),
