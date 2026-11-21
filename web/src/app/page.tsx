@@ -71,7 +71,6 @@ export default async function Home() {
             Where should the next rupee go?
           </Display>
           <p className="mx-auto mt-3 max-w-5xl text-xl font-semibold leading-snug sm:text-2xl">Where Mumbai&apos;s monsoon road-repair money went, and where it should go next.</p>
-          <p className="mx-auto mt-3 max-w-3xl text-lg leading-relaxed text-muted xl:max-w-4xl xl:text-xl">Pick a ward on the map. The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <a href="#map" className={`${btnPrimary} xl:min-h-12 xl:px-7 xl:text-base`}>
               Explore the map <span aria-hidden>↓</span>
@@ -85,6 +84,12 @@ export default async function Home() {
       </section>
 
       <div id="map" className="scroll-mt-4">
+        <section aria-labelledby="map-h" className="mb-6 max-w-4xl">
+          <Display as="h2" id="map-h" accent="ward" className="text-4xl sm:text-5xl">
+            Pick a ward on the map
+          </Display>
+          <p className="mt-3 text-lg leading-relaxed text-muted xl:text-xl">The planner ranks every open road issue by risk, then shows what the ward&apos;s remaining budget should fix first, with the arithmetic behind every score.</p>
+        </section>
         <Suspense fallback={<div aria-hidden className="stage h-[calc(100dvh-5.5rem)] min-h-[44rem] max-h-[62rem] rounded-[2rem] sm:min-h-[40rem]" />}>
           <WardStage data={stage} />
         </Suspense>
