@@ -34,41 +34,7 @@
   --ch-trunk: #8a6d55;
 }
 
-/* Dark follows the system unless the visitor chose a theme with the toggle (data-theme on <html>). */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --background: #0e141b;
-    --card: #16202b;
-    --peach: #2a1e22;
-    --mist: #12202b;
-    --foreground: #f3efe8;
-    --muted: #a5afba;
-    --accent: #ff9a3c;
-    --accent-ink: #ffb874;
-    --glow: #ff8a00;
-    --sea: #7cc8e0;
-    --sea-fill: #3e9bba;
-    --sea-soft: #17313e;
-    --unpaid: #2c3947;
-    --line: #6e7c8b;
-    --rule: #243241;
-    --focus: #f3efe8;
-    --sky-far: #1b2a38;
-    --sky-mid: #25384a;
-    --sky-near: #35506a;
-    --sea-band: #142b3a;
-    --shadow: 0 0 0;
-    --ch-wall: #3b4b5d;
-    --ch-shade: #2c3a4a;
-    --ch-trim: #566b80;
-    --ch-dark: #0e1721;
-    --ch-glass: #e8a458;
-    --ch-road: #1b2631;
-    --ch-leaf: #2f6a5a;
-    --ch-leaf-dark: #1f4a3f;
-    --ch-trunk: #4a4036;
-  }
-}
+/* Light is the default. Dark applies only when the visitor picks it with the toggle (data-theme on <html>). */
 :root[data-theme="dark"] {
   --background: #0e141b;
   --card: #16202b;
@@ -131,7 +97,7 @@
 }
 
 html {
-  color-scheme: light dark;
+  color-scheme: light;
   scroll-padding-top: 5rem;
 }
 
@@ -241,27 +207,38 @@ input[type="range"] {
   }
 }
 
-/* The Churchgate picture: clouds drift, the sun breathes, the train creeps in. Off with reduced motion. */
+/* The hero picture: clouds drift, the sun breathes, traffic rolls by, birds cross, the flag flutters. Off with reduced motion. */
 @keyframes ch-drift {
-  from { transform: translateX(-40px); }
-  to { transform: translateX(60px); }
+  from { transform: translateX(-60px); }
+  to { transform: translateX(90px); }
 }
 @keyframes ch-pulse {
-  from { opacity: 0.8; }
+  from { opacity: 0.75; }
   to { opacity: 1; }
 }
-@keyframes ch-train {
-  from { transform: translateX(46px); }
-  to { transform: translateX(0); }
+@keyframes ch-drive {
+  from { transform: translateX(-700px); }
+  to { transform: translateX(1900px); }
 }
-@keyframes ch-vehicle {
-  from { transform: translateX(-30px); }
-  to { transform: translateX(40px); }
+@keyframes ch-fly {
+  from { transform: translate(-700px, 30px); }
+  to { transform: translate(1900px, -40px); }
 }
-.ch-drift { animation: ch-drift 26s ease-in-out infinite alternate; }
-.ch-pulse { animation: ch-pulse 6s ease-in-out infinite alternate; }
-.ch-train { animation: ch-train 14s ease-out infinite alternate; }
-.ch-vehicle { animation: ch-vehicle 22s ease-in-out infinite alternate; }
+@keyframes ch-flag {
+  from { transform: scaleX(1) skewY(0deg); }
+  to { transform: scaleX(0.78) skewY(6deg); }
+}
+@keyframes ch-flicker {
+  from { opacity: 0.12; }
+  to { opacity: 0.3; }
+}
+.ch-drift { animation: ch-drift 9s ease-in-out infinite alternate; }
+.ch-pulse { animation: ch-pulse 3s ease-in-out infinite alternate; }
+.ch-drive { animation: ch-drive 16s linear infinite; }
+.ch-drive-slow { animation: ch-drive 24s linear infinite; }
+.ch-fly { animation: ch-fly 18s linear infinite; }
+.ch-flag { animation: ch-flag 0.9s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: left center; }
+.ch-flicker { animation: ch-flicker 1.6s ease-in-out infinite alternate; }
 
 /* The map stage: a dawn sea chart in the same tokens as the rest of the site. */
 .stage {

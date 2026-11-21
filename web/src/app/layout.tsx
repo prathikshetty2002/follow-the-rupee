@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import Link from "next/link";
 import { Suspense } from "react";
+import { Guide } from "@/components/guide";
 import { Nav, NavFallback } from "@/components/nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import "./globals.css";
@@ -38,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to the main content
         </a>
         <header>
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-4 py-4 sm:px-6">
+          <div className="mx-auto flex max-w-[90rem] flex-wrap items-center justify-between gap-x-8 gap-y-2 px-4 py-4 sm:px-8">
             <Link href="/" className="flex min-h-11 items-center gap-3">
               <Mark />
               <span className="font-serif text-2xl leading-none tracking-tight">
@@ -53,15 +54,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </div>
           </div>
         </header>
-        <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-4 pb-16 pt-4 sm:px-6 sm:pt-8">
+        <main id="main" className="mx-auto w-full max-w-[90rem] flex-1 px-4 pb-24 pt-4 sm:px-8 sm:pt-6">
           {children}
         </main>
         <footer>
-          <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-x-8 gap-y-2 border-t border-rule px-4 py-8 text-sm text-muted sm:px-6">
+          <div className="mx-auto flex max-w-[90rem] flex-wrap justify-between gap-x-8 gap-y-2 border-t border-rule px-4 py-8 text-sm text-muted sm:px-8">
             <p>Synthetic data: names of wards and roads are real; every amount, date and record is invented.</p>
             <p>A ranking says where to look first. Confirm on site before sending a crew.</p>
           </div>
         </footer>
+        <Guide />
       </body>
     </html>
   );

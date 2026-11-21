@@ -22,8 +22,8 @@ const GROUND = 930;
 function blocks(seed: number, minW: number, maxW: number, minH: number, maxH: number) {
   const r = rng(seed);
   const out: { x: number; w: number; h: number }[] = [];
-  let x = -20;
-  while (x < 1620) {
+  let x = -420;
+  while (x < 2020) {
     const w = minW + r() * (maxW - minW);
     out.push({ x, w, h: minH + r() * (maxH - minH) });
     x += w + 3;
@@ -121,7 +121,7 @@ export function BmcOffice({ className }: { className?: string }) {
   const crenels = (x0: number, x1: number, y: number) => Array.from({ length: Math.floor((x1 - x0) / 22) }, (_, i) => <rect key={`${x0}-${i}`} x={x0 + i * 22} y={y} width={12} height={12} fill="var(--ch-trim)" />);
 
   return (
-    <svg viewBox="0 170 1600 830" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false" className={className}>
+    <svg viewBox="-400 120 2400 880" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false" className={className}>
       <defs>
         <radialGradient id="ch-sun" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="var(--glow)" stopOpacity="0.85" />
@@ -166,7 +166,7 @@ export function BmcOffice({ className }: { className?: string }) {
       <g fill="var(--card)" opacity="0.28">
         {mid.flatMap((b, i) => [0.3, 0.5, 0.7].map((f) => <rect key={`${i}-${f}`} x={b.x} y={GROUND - b.h * f} width={b.w} height={3} />))}
       </g>
-      <rect x="0" y={GROUND - 260} width="1600" height="270" fill="url(#ch-haze)" />
+      <rect x="-400" y={GROUND - 260} width="2400" height="270" fill="url(#ch-haze)" />
 
       {/* the wings: banded stone, pointed windows, an arcade below, a crenellated parapet */}
       {[
@@ -260,7 +260,7 @@ export function BmcOffice({ className }: { className?: string }) {
       ))}
       <rect x="798" y="196" width="4" height="58" fill="var(--ch-trim)" />
       <circle cx="800" cy="192" r="6" fill="var(--glow)" />
-      <path d="M802 198 h38 l-8 9 l8 9 h-38 z" fill="var(--accent)" />
+      <path d="M802 198 h38 l-8 9 l8 9 h-38 z" fill="var(--accent)" className="ch-flag" />
 
       {/* the entrance: a big pointed arch, lit, with steps */}
       <path d={pointed(750, 760, 100, 170)} fill="url(#ch-door)" />
@@ -293,28 +293,32 @@ export function BmcOffice({ className }: { className?: string }) {
       <Gulmohar x={1470} s={1.15} />
 
       {/* the road, with a BEST bus and kaali-peeli taxis */}
-      <rect x="0" y={GROUND} width="1600" height="70" fill="var(--ch-road)" />
-      <rect x="0" y={GROUND} width="1600" height="6" fill="var(--ch-shade)" />
+      <rect x="-400" y={GROUND} width="2400" height="70" fill="var(--ch-road)" />
+      <rect x="-400" y={GROUND} width="2400" height="6" fill="var(--ch-shade)" />
       <g fill="var(--card)" opacity="0.75">
-        {Array.from({ length: 14 }, (_, i) => (
-          <rect key={i} x={i * 120 + 30} y="986" width="62" height="4" rx="2" />
+        {Array.from({ length: 20 }, (_, i) => (
+          <rect key={i} x={i * 120 - 390} y="986" width="62" height="4" rx="2" />
         ))}
       </g>
-      <g className="ch-vehicle">
+      <g className="ch-drive-slow" style={{ animationDelay: "-9s" }}>
         <Bus x={470} y={900} />
       </g>
-      <Taxi x={250} y={926} />
-      <Taxi x={1190} y={934} />
+      <g className="ch-drive" style={{ animationDelay: "-3s" }}>
+        <Taxi x={250} y={926} />
+      </g>
+      <g className="ch-drive" style={{ animationDelay: "-11s" }}>
+        <Taxi x={1190} y={934} />
+      </g>
 
       {[236, 640, 960, 1370].map((x) => (
         <g key={x}>
           <rect x={x} y="770" width="5" height={GROUND - 770} fill="var(--foreground)" opacity="0.7" />
           <circle cx={x + 2.5} cy="766" r="9" fill="var(--glow)" opacity="0.9" />
-          <circle cx={x + 2.5} cy="766" r="26" fill="var(--glow)" opacity="0.16" />
+          <circle cx={x + 2.5} cy="766" r="26" fill="var(--glow)" className="ch-flicker" style={{ animationDelay: `${-x % 7}ms` }} />
         </g>
       ))}
 
-      <g fill="none" stroke="var(--sky-near)" strokeWidth="2.4" strokeLinecap="round">
+      <g fill="none" stroke="var(--sky-near)" strokeWidth="2.4" strokeLinecap="round" className="ch-fly">
         <path d="M170 360 q8 -10 16 0 q8 -10 16 0" />
         <path d="M250 320 q7 -9 14 0 q7 -9 14 0" />
         <path d="M120 290 q6 -8 12 0 q6 -8 12 0" />

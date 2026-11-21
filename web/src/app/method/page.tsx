@@ -20,7 +20,7 @@ export default async function MethodPage() {
   const open = plan.wards.reduce((s, x) => s + x.open_issues, 0);
 
   return (
-    <div className="space-y-20">
+    <div className="mx-auto max-w-6xl space-y-20">
       <PageTitle kicker="How it works" title="How the planner ranks, and what it cannot tell you" accent="what it cannot tell you">
         <p>Every number comes from ordinary code you can check. The ranking is a weighted score, not a black box, so you can change the weights and see what moves.</p>
       </PageTitle>
