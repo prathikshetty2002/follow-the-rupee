@@ -2,14 +2,11 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { BmcOffice } from "@/components/bmc-office";
 import { Card, Display, TableWrap, btnPrimary, btnQuiet, td, th } from "@/components/ui";
-import type { StageData } from "@/components/stage/types";
+import type { LngLat, StageData } from "@/components/stage/types";
 import { WardStage } from "@/components/stage/ward-stage";
 import { getNextRupee, getOpenIssuePoints, getRoadGeo, getWardGeo, getWards } from "@/lib/data";
 import { inrShort, int, wardSlug } from "@/lib/format";
-import { projectFeatures } from "@/lib/map";
-
-const W = 900;
-const H = 1200;
+import { boundsOf, labelPoint, outerRings, round } from "@/lib/geo";
 
 function Stat({ value, label, note }: { value: string; label: string; note?: string }) {
   return (
@@ -31,21 +28,18 @@ export default async function Home() {
   const left = plan.wards.reduce((s, w) => s + Math.max(w.remaining_budget_inr, 0), 0);
   const over = plan.wards.filter((w) => w.over_budget).length;
 
-  const proj = projectFeatures(geo.features, W, H, 0);
   const stage: StageData = {
-    width: W,
-    height: H,
-    wards: geo.features.map((f, i) => {
+    wards: geo.features.map((f) => {
       const p = byCode.get(f.properties.ward_code)!;
+      const rings = outerRings(f.geometry);
       return {
         code: f.properties.ward_code,
         slug: f.properties.slug,
         name: f.properties.ward_name,
         zone: f.properties.zone,
-        d: proj.paths[i],
-        box: proj.bounds[i],
-        cx: proj.centroids[i][0],
-        cy: proj.centroids[i][1],
+        geometry: { type: f.geometry.type as "Polygon" | "MultiPolygon", coordinates: round(f.geometry.coordinates) },
+        bounds: boundsOf(rings),
+        center: labelPoint(rings),
         risk: p.risk_score,
         open: p.open_issues,
         funded: p.funded_issues,
@@ -55,11 +49,10 @@ export default async function Home() {
         top: p.issues.slice(0, 3).map((i) => ({ rank: i.rank, road: i.road_name, type: i.work_type, costInr: i.cost_to_bmc_inr, funded: i.funded })),
       };
     }),
-    roads: roadGeo.features.map((f) => ({ d: proj.path(f), ward: f.properties.ward_code, hot: f.properties.open_issues > 0, name: f.properties.road_name })),
-    dots: points.features.map((f) => {
-      const [x, y] = proj.point(...(f.geometry.coordinates as [number, number]));
-      return { x, y, ward: f.properties.ward_code, rank: f.properties.rank, funded: f.properties.funded };
-    }),
+    roads: roadGeo.features
+      .filter((f) => f.geometry.type === "LineString")
+      .map((f) => ({ coords: round(f.geometry.coordinates) as LngLat[], ward: f.properties.ward_code, hot: f.properties.open_issues > 0, name: f.properties.road_name })),
+    dots: points.features.map((f) => ({ at: round(f.geometry.coordinates) as LngLat, ward: f.properties.ward_code, rank: f.properties.rank, funded: f.properties.funded })),
   };
   const rows = [...plan.wards].sort((a, b) => b.risk_score - a.risk_score);
 
