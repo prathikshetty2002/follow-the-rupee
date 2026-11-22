@@ -1,12 +1,14 @@
 "use client";
 
+import "maplibre-gl/dist/maplibre-gl.css";
 import { ArrowRight, Box, ChevronLeft, ChevronRight, LocateFixed, Minus, Plus, RotateCcw, RotateCw, Route, Search, TriangleAlert, X } from "lucide-react";
+import type { ExpressionSpecification, FilterSpecification, Map as MapLibre } from "maplibre-gl";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { INK, WORKER_URL, basemapStyle } from "@/lib/basemap";
 import { inrShort, int } from "@/lib/format";
-import { easeOut, fitView, lerpView, scaleOf, screenToPlane, zoomView, type Box as BBox, type View } from "@/lib/view";
-import type { StageData, StageWard } from "./types";
+import type { Bounds, StageData, StageWard } from "./types";
 
 type Mode = "risk" | "gap" | "open";
 type Hit = { key: string; label: string; sub: string; ward: StageWard; road?: string };
@@ -17,16 +19,78 @@ const MODES: { key: Mode; label: string; low: string; high: string; about: strin
   { key: "open", label: "Open issues", low: "Fewer", high: "More", about: "How many complaints still have no repair ordered." },
 ];
 
-const LEVELS = 10; // how many steps tall a ward can stand in 3D
-const STEP = 4.5; // pixels per step, small so the sides look smooth
-const EDGE = 0.12; // each layer reaches this share of the stage beyond every edge, so panning and the 3D tip never show its border
-const PITCH = 58; // how far the 3D map is tipped back, in degrees
-const union = (boxes: BBox[]): BBox => [Math.min(...boxes.map((b) => b[0])), Math.min(...boxes.map((b) => b[1])), Math.max(...boxes.map((b) => b[2])), Math.max(...boxes.map((b) => b[3]))];
+const PITCH = 55; // how far the 3D map is tipped back, in degrees
+const BEARING = -16; // and turned, so Mumbai's long north-south shape reads well
+const union = (b: Bounds[]): Bounds => [Math.min(...b.map((x) => x[0])), Math.min(...b.map((x) => x[1])), Math.max(...b.map((x) => x[2])), Math.max(...b.map((x) => x[3]))];
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const box = (b: Bounds): [[number, number], [number, number]] => [
+  [b[0], b[1]],
+  [b[2], b[3]],
+];
+
+/** The map's own data: wards with a 0-1 value per colouring, their label points, the roads with open issues, and the issues. */
+function layersData(data: StageData) {
+  const maxOpen = Math.max(...data.wards.map((w) => w.open), 1);
+  return {
+    wards: {
+      type: "FeatureCollection" as const,
+      features: data.wards.map((w) => ({
+        type: "Feature" as const,
+        properties: { code: w.code, v_risk: w.risk / 100, v_gap: w.open ? 1 - w.funded / w.open : 0, v_open: w.open / maxOpen },
+        geometry: w.geometry as GeoJSON.Polygon | GeoJSON.MultiPolygon,
+      })),
+    },
+    labels: {
+      type: "FeatureCollection" as const,
+      features: data.wards.map((w) => ({ type: "Feature" as const, properties: { code: w.code }, geometry: { type: "Point" as const, coordinates: w.center } })),
+    },
+    roads: {
+      type: "FeatureCollection" as const,
+      features: data.roads.map((r) => ({ type: "Feature" as const, properties: { ward: r.ward, hot: r.hot, name: r.name }, geometry: { type: "LineString" as const, coordinates: r.coords } })),
+    },
+    issues: {
+      type: "FeatureCollection" as const,
+      features: data.dots.map((d) => ({ type: "Feature" as const, properties: { ward: d.ward, rank: d.rank, funded: d.funded }, geometry: { type: "Point" as const, coordinates: d.at } })),
+    },
+  };
+}
+
+/** Our layers on top of the basemap. Paint that depends on the colouring or the chosen ward is set later, in one place. */
+function addOverlays(m: MapLibre, d: ReturnType<typeof layersData>) {
+  m.addSource("wards", { type: "geojson", data: d.wards });
+  m.addSource("ward-labels", { type: "geojson", data: d.labels });
+  m.addSource("our-roads", { type: "geojson", data: d.roads });
+  m.addSource("issues", { type: "geojson", data: d.issues });
+  const under = "sea-names"; // ward colour sits under the basemap's place names
+  m.addLayer({ id: "wards-fill", type: "fill", source: "wards", paint: { "fill-color": INK.wardLow, "fill-opacity": 0.6 } }, under);
+  m.addLayer({ id: "wards-3d", type: "fill-extrusion", source: "wards", layout: { visibility: "none" }, paint: { "fill-extrusion-color": INK.wardLow, "fill-extrusion-opacity": 0.88, "fill-extrusion-height": 0 } }, under);
+  m.addLayer({ id: "wards-edge", type: "line", source: "wards", layout: { "line-join": "round" }, paint: { "line-color": INK.edge, "line-width": 1.4, "line-opacity": 0.95 } }, under);
+  m.addLayer({ id: "our-roads", type: "line", source: "our-roads", layout: { "line-cap": "round", "line-join": "round" }, paint: { "line-color": INK.accent, "line-width": 1.6, "line-opacity": 0.6 } });
+  m.addLayer({ id: "ward-hover", type: "line", source: "wards", filter: ["==", ["get", "code"], ""], paint: { "line-color": INK.ink, "line-width": 2, "line-opacity": 0.55 } });
+  m.addLayer({ id: "ward-glow", type: "line", source: "wards", filter: ["==", ["get", "code"], ""], paint: { "line-color": INK.glow, "line-width": 12, "line-blur": 9, "line-opacity": 0.75 } });
+  m.addLayer({ id: "ward-line", type: "line", source: "wards", filter: ["==", ["get", "code"], ""], layout: { "line-join": "round" }, paint: { "line-color": INK.accent, "line-width": 3 } });
+  m.addLayer({ id: "issues", type: "circle", source: "issues", paint: { "circle-color": ["case", ["get", "funded"], INK.wardHigh, "#FFFFFF"], "circle-stroke-color": ["case", ["get", "funded"], "#FFFFFF", INK.accentInk], "circle-stroke-width": 1.4, "circle-radius": 3 } });
+  m.addLayer({
+    id: "issue-ranks",
+    type: "symbol",
+    source: "issues",
+    filter: ["==", ["get", "ward"], ""],
+    layout: { "text-field": ["to-string", ["get", "rank"]], "text-font": ["Noto Sans Bold"], "text-size": 10, "text-allow-overlap": true, "text-ignore-placement": true },
+    paint: { "text-color": ["case", ["get", "funded"], "#FFFFFF", INK.accentInk] },
+  });
+  m.addLayer({
+    id: "ward-codes",
+    type: "symbol",
+    source: "ward-labels",
+    layout: { "text-field": ["get", "code"], "text-font": ["Noto Sans Bold"], "text-size": 13, "text-allow-overlap": true },
+    paint: { "text-color": INK.ink, "text-halo-color": "#FFFFFF", "text-halo-width": 1.8 },
+  });
+}
 
 /**
- * An interactive map of the wards, flat or in 3D (each ward stands as tall as its value). Choose a ward (map, card or arrows)
- * and the camera flies to it and opens its summary. Drag to move, Ctrl and scroll or pinch to zoom, arrow keys when it has focus.
+ * The ward map: a real map of Mumbai in the site's light palette with the 24 wards on top, flat or in 3D (each ward
+ * stands as tall as its value, and opens up to show its buildings when chosen). Choose a ward (map, card, arrows or search)
+ * and the map flies to it and opens its summary. Drag to move, Ctrl and scroll or two fingers to zoom, arrow keys when it has focus.
  */
 export function WardStage({ data }: { data: StageData }) {
   const { wards } = data;
@@ -36,33 +100,51 @@ export function WardStage({ data }: { data: StageData }) {
   const [mode, setMode] = useState<Mode>("risk");
   const [layers, setLayers] = useState({ roads: true, issues: true });
   const [tilt, setTilt] = useState(false);
-  const [bearing, setBearing] = useState(-12);
   const [q, setQ] = useState("");
   const [listOpen, setListOpen] = useState(false);
   const [act, setAct] = useState(0);
   const [pinRoad, setPinRoad] = useState<string | null>(null);
   const [hover, setHover] = useState<{ ward: StageWard; x: number; y: number } | null>(null);
   const [size, setSize] = useState({ w: 1100, h: 720 });
-  const [camera, setCamera] = useState<View | null>(null); // null: follow the selected ward
-
-  const byWard = useMemo(() => {
-    const roads = new Map<string, StageData["roads"]>();
-    const dots = new Map<string, StageData["dots"]>();
-    data.roads.forEach((r) => roads.set(r.ward, [...(roads.get(r.ward) ?? []), r]));
-    data.dots.forEach((d) => dots.set(d.ward, [...(dots.get(d.ward) ?? []), d]));
-    return { roads, dots };
-  }, [data]);
+  const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const stageRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<HTMLDivElement>(null);
+  const mapEl = useRef<HTMLDivElement>(null);
+  const map = useRef<MapLibre | null>(null);
   const railRef = useRef<HTMLUListElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const raf = useRef(0);
-  const pointers = useRef(new Map<number, { x: number; y: number }>());
-  const drag = useRef<{ x: number; y: number; from: View; active: boolean; turn: boolean; bearing: number } | null>(null);
-  const pinch = useRef<{ dist: number; from: View } | null>(null);
   const focusCard = useRef(false);
   const restoreFocus = useRef<string | null>(null);
+
+  const overlays = useMemo(() => layersData(data), [data]);
+  const home = useMemo(() => union(wards.map((w) => w.bounds)), [wards]);
+  const wide = size.w >= 950; // matches the lg layout: one row of controls, summary card on the right
+
+  /** Room the panels take on each side of a w × h map, so the chosen area is framed in what stays visible. Never more than the map can give. */
+  const padFor = (open: boolean, w: number, h: number) => {
+    const big = w >= 950;
+    const p = { top: big ? 96 : 220, bottom: big ? 236 : open ? 360 : 220, left: 32, right: big && open ? 412 : 32 };
+    const v = Math.min(1, (h * 0.8) / (p.top + p.bottom));
+    const across = Math.min(1, (w * 0.8) / (p.left + p.right));
+    return { top: p.top * v, bottom: p.bottom * v, left: p.left * across, right: p.right * across };
+  };
+
+  const select = (w: StageWard | null, fromKeyboard = false, road: string | null = null) => {
+    setPinRoad(w ? road : null);
+    setHover(null);
+    const url = new URL(window.location.href);
+    if (w) url.searchParams.set("ward", w.slug);
+    else url.searchParams.delete("ward");
+    window.history.replaceState(null, "", url.pathname + url.search + url.hash);
+    focusCard.current = fromKeyboard && !!w;
+  };
+
+  // Everything the map's own event handlers need, kept current without re-registering them.
+  const live = useRef<{ wards: StageWard[]; pick: (w: StageWard) => void }>({ wards, pick: () => {} });
+  useEffect(() => {
+    live.current = { wards, pick: (w: StageWard) => select(w) };
+  });
 
   useEffect(() => {
     const el = stageRef.current;
@@ -71,60 +153,133 @@ export function WardStage({ data }: { data: StageData }) {
     watch.observe(el);
     return () => watch.disconnect();
   }, []);
-  useEffect(() => () => cancelAnimationFrame(raf.current), []);
 
-  const wide = size.w >= 950; // matches the lg layout: one row of controls, summary card on the right
-  const homeBox = union(wards.map((w) => w.box));
-
-  /** The part of the stage the panels leave free for the map, and how far its centre sits from the stage's centre. */
-  const freeArea = (open: boolean) => {
-    const left = 16;
-    const right = wide && open ? 392 : 16;
-    const top = wide ? 84 : 206;
-    const bottom = (wide ? 214 : open ? 56 : 196) + (!wide && open ? 290 : 0);
-    const w = Math.max(size.w - left - right, 200);
-    const h = Math.max(size.h - top - bottom, 160);
-    return { w, h, dx: left + w / 2 - size.w / 2, dy: top + h / 2 - size.h / 2 };
-  };
-  const turnOf = (t: boolean) => (t ? { bearing, pitch: PITCH } : undefined);
-  const homeFor = (t: boolean) => fitView(homeBox, size, freeArea(false), turnOf(t), 0, 1.1);
-  const targetFor = (w: StageWard | null, t = tilt): View => (w ? fitView(w.box, size, freeArea(true), turnOf(t), scaleOf(homeFor(t), size) / 9, 1.08) : homeFor(t));
-  const view = camera ?? targetFor(selected);
-  const home = homeFor(tilt);
-  const limits = { minW: home.w / 14, maxW: home.w * 1.6 };
-  const offset = freeArea(!!selected);
-  const s = scaleOf(view, size); // drawing units per screen pixel
-
-  const latest = useRef({ view, size, tilt, limits, offset });
+  // Start the map once, in the browser. MapLibre is loaded only here, so the server never runs it.
+  const start = useRef({ overlays, home });
   useEffect(() => {
-    latest.current = { view, size, tilt, limits, offset };
-  });
-
-  const fly = (to: View, follow: boolean) => {
-    cancelAnimationFrame(raf.current);
-    const from = latest.current.view;
-    setCamera(from);
-    if (reducedMotion()) return setCamera(follow ? null : to);
-    let t0 = 0;
-    const step = (now: number) => {
-      t0 ||= now;
-      const t = Math.min(1, (now - t0) / 800);
-      setCamera(lerpView(from, to, easeOut(t)));
-      if (t < 1) raf.current = requestAnimationFrame(step);
-      else if (follow) setCamera(null);
+    let gone = false;
+    let m: MapLibre | null = null;
+    import("maplibre-gl")
+      .then((ml) => {
+        if (gone || !mapEl.current) return;
+        ml.setWorkerUrl(WORKER_URL);
+        m = new ml.Map({
+          container: mapEl.current,
+          style: basemapStyle(),
+          bounds: box(start.current.home),
+          fitBoundsOptions: { padding: 40 },
+          attributionControl: false,
+          cooperativeGestures: true,
+          minZoom: 9,
+          maxZoom: 17.5,
+          maxPitch: 70,
+        });
+        map.current = m;
+        const canvas = m.getCanvas();
+        canvas.setAttribute("aria-label", "Map of Mumbai's wards. Arrow keys move it, plus and minus zoom, shift with an arrow turns or tilts it. Choose a ward with the search or the ward cards.");
+        m.on("load", () => {
+          addOverlays(m!, start.current.overlays);
+          setReady(true);
+        });
+        m.on("error", (e) => {
+          if (String(e.error?.message ?? "").includes("WebGL")) setFailed(true);
+        });
+        m.on("click", "wards-fill", (e) => {
+          const code = e.features?.[0]?.properties?.code;
+          const w = live.current.wards.find((x) => x.code === code);
+          if (w) live.current.pick(w);
+        });
+        m.on("mousemove", "wards-fill", (e) => {
+          const code = e.features?.[0]?.properties?.code;
+          const w = live.current.wards.find((x) => x.code === code);
+          canvas.style.cursor = "pointer";
+          setHover(w ? { ward: w, x: e.originalEvent.clientX, y: e.originalEvent.clientY } : null);
+        });
+        m.on("mouseleave", "wards-fill", () => {
+          canvas.style.cursor = "";
+          setHover(null);
+        });
+        m.on("dragstart", () => setHover(null));
+        // The camera, readable from the page (used by checks and the walkthrough recorder).
+        m.on("moveend", () => {
+          const c = m!.getCenter();
+          mapEl.current?.setAttribute("data-view", `${c.lng.toFixed(4)},${c.lat.toFixed(4)},${m!.getZoom().toFixed(2)},${m!.getPitch().toFixed(0)}`);
+        });
+      })
+      .catch(() => setFailed(true));
+    return () => {
+      gone = true;
+      m?.remove();
+      map.current = null;
     };
-    raf.current = requestAnimationFrame(step);
-  };
+  }, []);
 
-  const select = (w: StageWard | null, fromKeyboard = false, road: string | null = null) => {
-    setPinRoad(w ? road : null);
-    const url = new URL(window.location.href);
-    if (w) url.searchParams.set("ward", w.slug);
-    else url.searchParams.delete("ward");
-    window.history.replaceState(null, "", url.pathname + url.search + url.hash);
-    focusCard.current = fromKeyboard && !!w;
-    fly(targetFor(w), true);
+  useEffect(() => {
+    map.current?.resize();
+  }, [size]);
+
+  // Colour, height and highlights follow the colouring, the chosen ward and the layer switches.
+  const sel = selected?.code ?? "";
+  const hoverCode = hover?.ward.code ?? "";
+  useEffect(() => {
+    const m = map.current;
+    if (!ready || !m) return;
+    const v = ["get", `v_${mode}`] as ExpressionSpecification;
+    const isSel = ["==", ["get", "code"], sel] as ExpressionSpecification;
+    const inSel = ["==", ["get", "ward"], sel] as ExpressionSpecification;
+    const colour = ["interpolate", ["linear"], v, 0, INK.wardLow, 1, INK.wardHigh] as ExpressionSpecification;
+    // In 3D a chosen ward drops flat so its streets show, and the others sink to low plinths around it.
+    const tall = (k: number, base: number) => ["case", isSel, 0, ["*", sel ? 0.2 : 1, ["+", base, ["*", v, k]]]] as ExpressionSpecification;
+    m.setPaintProperty("wards-fill", "fill-color", colour);
+    m.setPaintProperty("wards-fill", "fill-opacity", sel ? ["case", isSel, 0.05, 0.4] : 0.62);
+    m.setPaintProperty("wards-3d", "fill-extrusion-color", colour);
+    m.setPaintProperty("wards-3d", "fill-extrusion-height", ["interpolate", ["linear"], ["zoom"], 10, tall(3600, 150), 12.6, tall(1300, 60), 13.6, 0]);
+    m.setPaintProperty("wards-3d", "fill-extrusion-opacity", sel ? 0.7 : 0.9);
+    m.setLayoutProperty("wards-3d", "visibility", tilt ? "visible" : "none");
+    m.setLayoutProperty("buildings-3d", "visibility", tilt ? "visible" : "none");
+    m.setLayoutProperty("buildings", "visibility", tilt ? "none" : "visible");
+    const only = (code: string) => ["==", ["get", "code"], code] as FilterSpecification;
+    m.setFilter("ward-line", only(sel));
+    m.setFilter("ward-glow", only(sel));
+    m.setFilter("ward-hover", only(hoverCode === sel ? "" : hoverCode));
+
+    const pinned = ["==", ["get", "name"], pinRoad ?? ""] as ExpressionSpecification;
+    m.setLayoutProperty("our-roads", "visibility", layers.roads ? "visible" : "none");
+    m.setFilter("our-roads", ["any", ["get", "hot"], pinned] as FilterSpecification);
+    m.setPaintProperty("our-roads", "line-width", ["case", pinned, 6, inSel, 2.6, 1.6]);
+    m.setPaintProperty("our-roads", "line-opacity", sel ? ["case", pinned, 1, inSel, 0.95, 0.12] : 0.55);
+
+    m.setLayoutProperty("issues", "visibility", layers.issues ? "visible" : "none");
+    m.setLayoutProperty("issue-ranks", "visibility", layers.issues ? "visible" : "none");
+    m.setFilter("issue-ranks", ["==", ["get", "ward"], sel]);
+    m.setPaintProperty("issues", "circle-radius", ["interpolate", ["linear"], ["zoom"], 10, ["case", inSel, 6, 2.4], 13, ["case", inSel, 9, 4], 16, ["case", inSel, 12, 6]]);
+    m.setPaintProperty("issues", "circle-opacity", sel ? ["case", inSel, 1, 0.35] : 1);
+    m.setPaintProperty("issues", "circle-stroke-opacity", sel ? ["case", inSel, 1, 0.35] : 1);
+    m.setPaintProperty("issues", "circle-stroke-width", ["case", inSel, 2, 1.4]);
+    m.setFilter("ward-codes", layers.issues && sel ? (["!=", ["get", "code"], sel] as FilterSpecification) : null);
+  }, [ready, mode, sel, hoverCode, layers, tilt, pinRoad]);
+
+  // The camera frames the chosen ward (or the whole city), leaving room for the panels, and tips back in 3D.
+  const frame = (w: StageWard | null, threeD = tilt) => {
+    const m = map.current;
+    if (!m) return;
+    const pitch = threeD ? PITCH : 0;
+    const bearing = threeD ? BEARING : 0;
+    const el = m.getContainer();
+    const cam = m.cameraForBounds(box(w ? w.bounds : home), { padding: padFor(!!w, el.clientWidth, el.clientHeight), pitch, bearing, maxZoom: 14.6 });
+    if (!cam) return;
+    // A tipped map shows the far side small, so in 3D come a little closer than a flat fit would.
+    const zoom = (cam.zoom ?? 11) + (threeD ? (w ? 0.35 : 0.8) : 0);
+    m.flyTo({ ...cam, zoom, pitch, bearing, duration: reducedMotion() ? 0 : 1500, essential: true });
   };
+  const frameRef = useRef(frame);
+  useEffect(() => {
+    frameRef.current = frame;
+  });
+  useEffect(() => {
+    if (!ready) return;
+    frameRef.current(wards.find((w) => w.code === sel) ?? null, tilt);
+  }, [ready, sel, tilt, wide, wards]);
 
   // After a keyboard choice the summary opens and takes focus, so its link is the next thing to tab to.
   useEffect(() => {
@@ -137,36 +292,10 @@ export function WardStage({ data }: { data: StageData }) {
     if (strip && card) strip.scrollTo({ left: card.offsetLeft - strip.clientWidth / 2 + card.clientWidth / 2, behavior: reducedMotion() ? "auto" : "smooth" });
   }, [selected]);
 
-  // Ctrl (or Cmd) and scroll, or a trackpad pinch, zooms toward the pointer. Plain scrolling still scrolls the page.
-  useEffect(() => {
-    const el = mapRef.current;
-    if (!el) return;
-    const onWheel = (e: WheelEvent) => {
-      if (!e.ctrlKey && !e.metaKey) return;
-      e.preventDefault();
-      cancelAnimationFrame(raf.current);
-      const { view: v, size: sz, tilt: t, limits: lim, offset: off } = latest.current;
-      const r = el.getBoundingClientRect();
-      const fx = t ? 0.5 : (e.clientX - r.left - off.dx) / sz.w;
-      const fy = t ? 0.5 : (e.clientY - r.top - off.dy) / sz.h;
-      setCamera(zoomView(v, Math.exp(-Math.max(-60, Math.min(60, e.deltaY)) * 0.01), lim, fx, fy));
-    };
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, []);
-
-  const zoom = (factor: number) => fly(zoomView(latest.current.view, factor, limits), false);
-  const turn = (deg: number) => setBearing((b) => b + deg);
-  const toggle3d = () => {
-    const next = !tilt;
-    setTilt(next);
-    fly(targetFor(selected, next), true);
-  };
-  const pan = (dxPx: number, dyPx: number) => {
-    const { view: v, tilt: t } = latest.current;
-    const [px, py] = screenToPlane(dxPx, dyPx, t ? bearing : 0, t ? PITCH : 0);
-    setCamera({ ...v, x: v.x + px * scaleOf(v, size), y: v.y + py * scaleOf(v, size) });
-  };
+  const ms = () => (reducedMotion() ? 0 : 400);
+  const zoom = (by: number) => map.current?.easeTo({ zoom: map.current.getZoom() + by, duration: ms() });
+  const turn = (deg: number) => map.current?.easeTo({ bearing: map.current.getBearing() + deg, duration: ms() });
+  const toggle3d = () => setTilt((t) => !t);
 
   const valueOf = (w: StageWard, m: Mode) => {
     if (m === "risk") return w.risk / 100;
@@ -176,12 +305,6 @@ export function WardStage({ data }: { data: StageData }) {
   const headline = (w: StageWard) => (mode === "risk" ? { big: String(w.risk), unit: "risk" } : mode === "gap" ? { big: `${Math.round(valueOf(w, "gap") * 100)}%`, unit: "unpaid" } : { big: String(w.open), unit: "open" });
   const ordered = [...wards].sort((a, b) => valueOf(b, mode) - valueOf(a, mode) || b.risk - a.risk);
   const at = selected ? ordered.findIndex((w) => w.code === selected.code) : -1;
-  const level = (w: StageWard) => 1 + Math.round(valueOf(w, mode) * (LEVELS - 3)) + (selected?.code === w.code ? 2 : 0);
-  const top = (w: StageWard) => {
-    const fill = `color-mix(in oklab, var(--sea-fill) ${Math.round(8 + valueOf(w, mode) * 84)}%, var(--sea-soft))`;
-    return selected && selected.code !== w.code && hover?.ward.code !== w.code ? `color-mix(in oklab, ${fill} 48%, var(--mist))` : fill;
-  };
-  const side = (w: StageWard, j: number, l: number) => `color-mix(in oklab, ${top(w)} ${Math.round(70 - 28 * (1 - j / l))}%, var(--foreground))`;
   const term = q.trim().toLowerCase();
   const hits: Hit[] = term
     ? [
@@ -203,14 +326,7 @@ export function WardStage({ data }: { data: StageData }) {
     setListOpen(false);
     select(h.ward, kb, h.road ?? null);
   };
-  const flat = 1 / Math.cos((PITCH * Math.PI) / 180);
-  /** Keeps a label or marker upright and round on the tipped, turned map. */
-  const upright = (x: number, y: number) => (tilt ? `translate(${x} ${y}) rotate(${-bearing}) scale(1 ${flat}) translate(${-x} ${-y})` : undefined);
   const modeInfo = MODES.find((m) => m.key === mode)!;
-  const stack = Array.from({ length: LEVELS + 1 }, (_, j) => j);
-  const lift = (j: number) => (tilt ? j * STEP : 0);
-  const viewBox = `${view.x - EDGE * view.w} ${view.y - EDGE * view.h} ${view.w * (1 + 2 * EDGE)} ${view.h * (1 + 2 * EDGE)}`;
-  const layerStyle = (z: number) => ({ left: `${-EDGE * 100}%`, top: `${-EDGE * 100}%`, width: `${(1 + 2 * EDGE) * 100}%`, height: `${(1 + 2 * EDGE) * 100}%`, transform: `translateZ(${z}px)`, transition: "transform 0.8s var(--ease-out)", pointerEvents: "none" as const });
 
   return (
     <section
@@ -223,151 +339,20 @@ export function WardStage({ data }: { data: StageData }) {
         select(null);
       }}
     >
-      {/* the map: a plane that can tip back and turn, with the wards stacked in layers to give them height */}
-      <div
-        ref={mapRef}
-        tabIndex={0}
-        role="group"
-        aria-roledescription="map"
-        aria-label="Ward map. With this focused, arrow keys move the map, plus and minus zoom, zero recentres, and shift with left or right arrow turns the 3D view. Choose a ward with the ward cards."
-        className="absolute inset-0 cursor-grab touch-pan-y select-none outline-offset-[-4px] active:cursor-grabbing"
-        style={{ perspective: "1700px", transform: `translate(${offset.dx}px, ${offset.dy}px)`, transition: "transform 0.8s var(--ease-out)" }}
-        onKeyDown={(e) => {
-          if (e.target !== e.currentTarget) return;
-          const step = 70;
-          const k = e.key;
-          if (k === "ArrowLeft" && e.shiftKey && tilt) turn(-15);
-          else if (k === "ArrowRight" && e.shiftKey && tilt) turn(15);
-          else if (k === "ArrowLeft") pan(-step, 0);
-          else if (k === "ArrowRight") pan(step, 0);
-          else if (k === "ArrowUp") pan(0, -step);
-          else if (k === "ArrowDown") pan(0, step);
-          else if (k === "+" || k === "=") zoom(1.5);
-          else if (k === "-" || k === "_") zoom(1 / 1.5);
-          else if (k === "0") fly(targetFor(selected), true);
-          else return;
-          e.preventDefault();
-        }}
-        onPointerDown={(e) => {
-          if (e.button !== 0) return;
-          pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
-          if (pointers.current.size === 2) {
-            const [a, b] = [...pointers.current.values()];
-            pinch.current = { dist: Math.hypot(a.x - b.x, a.y - b.y) || 1, from: latest.current.view };
-            drag.current = null;
-          } else drag.current = { x: e.clientX, y: e.clientY, from: latest.current.view, active: false, turn: e.shiftKey && tilt, bearing };
-        }}
-        onPointerMove={(e) => {
-          if (!pointers.current.has(e.pointerId)) return;
-          pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
-          if (pinch.current && pointers.current.size === 2) {
-            const [a, b] = [...pointers.current.values()];
-            cancelAnimationFrame(raf.current);
-            setCamera(zoomView(pinch.current.from, (Math.hypot(a.x - b.x, a.y - b.y) || 1) / pinch.current.dist, limits));
-            return;
-          }
-          const d = drag.current;
-          if (!d) return;
-          const dx = e.clientX - d.x;
-          const dy = e.clientY - d.y;
-          if (!d.active) {
-            if (Math.hypot(dx, dy) < 6) return;
-            d.active = true;
-            cancelAnimationFrame(raf.current);
-            setHover(null);
-            e.currentTarget.setPointerCapture(e.pointerId);
-          }
-          if (d.turn) return setBearing(d.bearing + dx * 0.4);
-          const [px, py] = screenToPlane(dx, dy, tilt ? bearing : 0, tilt ? PITCH : 0);
-          const u = scaleOf(d.from, size);
-          setCamera({ ...d.from, x: d.from.x - px * u, y: d.from.y - py * u });
-        }}
-        onPointerUp={(e) => {
-          pointers.current.delete(e.pointerId);
-          pinch.current = null;
-          drag.current = null;
-        }}
-        onPointerCancel={(e) => {
-          pointers.current.delete(e.pointerId);
-          pinch.current = null;
-          drag.current = null;
-        }}
-      >
-        <div className="absolute inset-0" style={{ transformStyle: "preserve-3d", transform: tilt ? `rotateX(${PITCH}deg) rotateZ(${bearing}deg)` : "none", transition: "transform 0.8s var(--ease-out)" }}>
-          {stack.map((j) => (
-            <svg key={j} viewBox={viewBox} aria-hidden="true" focusable="false" className="absolute" style={layerStyle(lift(j))}>
-              {j === 0 && (
-                <defs>
-                  <filter id="stage-glow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation={6 * s} />
-                  </filter>
-                </defs>
-              )}
-              {wards.map((w) => {
-                const l = level(w);
-                if (l < j) return null;
-                if (l > j) return <path key={w.code} d={w.d} fill={side(w, j, l)} stroke="none" />;
-                const on = selected?.code === w.code;
-                return (
-                  <g key={w.code}>
-                    <path
-                      d={w.d}
-                      fill={top(w)}
-                      stroke="var(--card)"
-                      strokeWidth={1.4}
-                      vectorEffect="non-scaling-stroke"
-                      strokeLinejoin="round"
-                      style={{ pointerEvents: "auto", cursor: "pointer" }}
-                      className="hover:brightness-110"
-                      onPointerEnter={(e) => e.pointerType === "mouse" && setHover({ ward: w, x: e.clientX, y: e.clientY })}
-                      onPointerMove={(e) => e.pointerType === "mouse" && !drag.current?.active && setHover({ ward: w, x: e.clientX, y: e.clientY })}
-                      onPointerLeave={() => setHover(null)}
-                      onClick={() => select(w)}
-                    />
-                    {on && (
-                      <>
-                        <path d={w.d} fill="none" stroke="var(--glow)" strokeWidth={6} vectorEffect="non-scaling-stroke" filter="url(#stage-glow)" opacity={0.95} pointerEvents="none" />
-                        <path d={w.d} fill="none" stroke="var(--accent)" strokeWidth={3} vectorEffect="non-scaling-stroke" strokeLinejoin="round" pointerEvents="none" />
-                      </>
-                    )}
-                    {/* roads, open issues and the label sit on the ward's own top, so they rise with it in 3D */}
-                    <g pointerEvents="none">
-                      {layers.roads && (
-                        <g fill="none" strokeLinecap="round">
-                          {(byWard.roads.get(w.code) ?? []).map((r, i) => {
-                            const pinned = pinRoad === r.name;
-                            return <path key={i} d={r.d} vectorEffect="non-scaling-stroke" strokeWidth={pinned ? 5 : r.hot ? 1.5 : 0.8} stroke={pinned || r.hot ? "var(--accent)" : "var(--foreground)"} opacity={pinned ? 1 : selected && !on ? 0.1 : on ? 0.9 : r.hot ? 0.6 : 0.22} />;
-                          })}
-                        </g>
-                      )}
-                      {layers.issues &&
-                        (byWard.dots.get(w.code) ?? []).map((d, i) =>
-                          on ? (
-                            <g key={i} transform={upright(d.x, d.y)}>
-                              <circle cx={d.x} cy={d.y} r={8.5 * s} fill={d.funded ? "var(--sea-fill)" : "var(--card)"} stroke={d.funded ? "var(--card)" : "var(--accent-ink)"} strokeWidth={(d.funded ? 1.6 : 2.2) * s} />
-                              <text x={d.x} y={d.y} textAnchor="middle" dominantBaseline="central" fontSize={9.5 * s} fontWeight={700} fill={d.funded ? "var(--card)" : "var(--accent-ink)"}>
-                                {d.rank}
-                              </text>
-                            </g>
-                          ) : (
-                            <g key={i} transform={upright(d.x, d.y)} opacity={selected ? 0.4 : 1}>
-                              <circle cx={d.x} cy={d.y} r={2.8 * s} fill={d.funded ? "var(--sea-fill)" : "var(--card)"} stroke={d.funded ? "var(--card)" : "var(--accent-ink)"} strokeWidth={1.2 * s} />
-                            </g>
-                          ),
-                        )}
-                      {!(on && layers.issues) && (
-                        <text x={w.cx} y={w.cy} transform={upright(w.cx, w.cy)} textAnchor="middle" dominantBaseline="central" fontWeight={700} fontSize={(on ? 14 : 11) * s} fill="var(--foreground)" stroke="var(--card)" strokeWidth={3.5 * s} paintOrder="stroke">
-                          {w.code}
-                        </text>
-                      )}
-                    </g>
-                  </g>
-                );
-              })}
-            </svg>
-          ))}
-        </div>
+      {/* the real map of Mumbai, with the wards drawn on it */}
+      <div className="stage-map absolute inset-0">
+        <div ref={mapEl} className="size-full" />
       </div>
+      {!ready && !failed && (
+        <p role="status" className="stage-panel pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full px-5 py-2.5 text-sm font-medium">
+          Loading the map of Mumbai…
+        </p>
+      )}
+      {failed && (
+        <p className="stage-panel absolute left-1/2 top-1/2 max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-3xl px-5 py-4 text-center text-sm">
+          The map could not start in this browser. Use the search or the ward cards below, or the table further down the page.
+        </p>
+      )}
 
       {/* top: title and search, what to colour by, layers */}
       <div className="pointer-events-none absolute inset-x-0 top-0 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-3 p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
@@ -472,21 +457,21 @@ export function WardStage({ data }: { data: StageData }) {
 
       {/* zoom and turn */}
       <div role="group" aria-label="Zoom and turn" className="stage-panel absolute right-4 top-[14rem] flex flex-col gap-1 rounded-full p-1 sm:right-5 lg:top-24" style={{ right: wide && selected ? 392 : undefined }}>
-        <button type="button" onClick={() => zoom(1.6)} aria-label="Zoom in" className="stage-icon">
+        <button type="button" onClick={() => zoom(1)} aria-label="Zoom in" className="stage-icon">
           <Plus aria-hidden className="size-5" />
         </button>
-        <button type="button" onClick={() => zoom(1 / 1.6)} aria-label="Zoom out" className="stage-icon">
+        <button type="button" onClick={() => zoom(-1)} aria-label="Zoom out" className="stage-icon">
           <Minus aria-hidden className="size-5" />
         </button>
-        <button type="button" onClick={() => fly(targetFor(selected), true)} aria-label={selected ? `Centre on ward ${selected.code}` : "Show every ward"} className="stage-icon">
+        <button type="button" onClick={() => frame(selected)} aria-label={selected ? `Centre on ward ${selected.code}` : "Show every ward"} className="stage-icon">
           <LocateFixed aria-hidden className="size-5" />
         </button>
         {tilt && (
           <>
-            <button type="button" onClick={() => turn(-25)} aria-label="Turn the map left" className="stage-icon">
+            <button type="button" onClick={() => turn(-30)} aria-label="Turn the map left" className="stage-icon">
               <RotateCcw aria-hidden className="size-5" />
             </button>
-            <button type="button" onClick={() => turn(25)} aria-label="Turn the map right" className="stage-icon">
+            <button type="button" onClick={() => turn(30)} aria-label="Turn the map right" className="stage-icon">
               <RotateCw aria-hidden className="size-5" />
             </button>
           </>
@@ -596,12 +581,12 @@ export function WardStage({ data }: { data: StageData }) {
 
       {/* bottom: legend and the strip of wards */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-2 p-4 pt-0 sm:p-5 sm:pt-0">
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-1 px-1 text-xs text-muted">
+        <div className="stage-panel flex flex-wrap items-center gap-x-5 gap-y-1 self-start rounded-2xl px-3 py-1.5 text-xs text-muted">
           <p className="flex items-center gap-2" title={modeInfo.about}>
             <span>{modeInfo.low}</span>
             <span aria-hidden className="h-2 w-24 rounded-full" style={{ background: "linear-gradient(90deg, color-mix(in oklab, var(--sea-fill) 8%, var(--sea-soft)), var(--sea-fill))" }} />
             <span>{modeInfo.high}</span>
-            {tilt && <span>· taller = {mode === "risk" ? "higher risk" : mode === "gap" ? "less paid for" : "more open issues"}</span>}
+            {tilt && <span>· taller = {mode === "risk" ? "higher risk" : mode === "gap" ? "less paid for" : "more open issues"}; a chosen ward opens up; zoom in to see its buildings</span>}
           </p>
           {layers.issues && (
             <p className="flex items-center gap-3">
@@ -613,7 +598,17 @@ export function WardStage({ data }: { data: StageData }) {
               </span>
             </p>
           )}
-          <p className="hidden sm:block">Drag to move · Ctrl + scroll or pinch to zoom{tilt ? " · Shift + drag to turn" : ""}</p>
+          <p className="hidden sm:block">Drag to move · Ctrl + scroll to zoom{tilt ? " · Right-drag to turn" : ""}</p>
+          <p className="pointer-events-auto">
+            Map ©{" "}
+            <a href="https://www.openstreetmap.org/copyright" className="underline underline-offset-2">
+              OpenStreetMap
+            </a>{" "}
+            ·{" "}
+            <a href="https://openfreemap.org" className="underline underline-offset-2">
+              OpenFreeMap
+            </a>
+          </p>
         </div>
         <div className={`stage-panel pointer-events-auto rounded-3xl p-2 ${selected && !wide ? "hidden" : ""}`}>
           <ul ref={railRef} aria-label={`Wards, most ${mode === "gap" ? "unpaid" : mode === "open" ? "open issues" : "risk"} first`} className="flex snap-x gap-2 overflow-x-auto pb-1">

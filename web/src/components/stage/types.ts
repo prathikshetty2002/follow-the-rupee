@@ -1,16 +1,17 @@
-import type { Box } from "@/lib/view";
-
 export type StageIssue = { rank: number; road: string; type: string; costInr: number; funded: boolean };
+
+export type LngLat = [number, number];
+/** West, south, east, north in degrees. */
+export type Bounds = [number, number, number, number];
 
 export type StageWard = {
   code: string;
   slug: string;
   name: string;
   zone: string;
-  d: string; // outline as an SVG path
-  box: Box; // bounding box in drawing units
-  cx: number;
-  cy: number;
+  geometry: { type: "Polygon" | "MultiPolygon"; coordinates: unknown }; // GeoJSON, lon/lat
+  bounds: Bounds;
+  center: LngLat; // where its label sits
   risk: number; // 0-100, the worst ward is 100
   open: number;
   funded: number; // open issues the remaining budget pays for
@@ -21,9 +22,7 @@ export type StageWard = {
 };
 
 export type StageData = {
-  width: number;
-  height: number;
   wards: StageWard[];
-  roads: { d: string; ward: string; hot: boolean; name: string }[]; // hot: has open issues
-  dots: { x: number; y: number; ward: string; rank: number; funded: boolean }[];
+  roads: { coords: LngLat[]; ward: string; hot: boolean; name: string }[]; // hot: has open issues
+  dots: { at: LngLat; ward: string; rank: number; funded: boolean }[];
 };
