@@ -33,7 +33,7 @@ pipeline/        Python (uv). `uv run pipeline all` rebuilds every output; steps
   tests/         49 tests, including integrity checks on the JSON the web app reads
 web/             Next.js 16 (Cache Components), Tailwind v4. Reads web/public/data/*.json on the server
   src/app/       page.tsx (home: BMC head office hero, interactive map, stats, ward table), plan/[slug]/page.tsx (the planner), method/page.tsx, layout.tsx, globals.css (all tokens)
-  src/components/stage/    ward-stage.tsx (the map: flat or 3D, camera, ward cards, summary card), types.ts; lib/view.ts is its tested camera maths; components/bmc-office.tsx is the hero illustration, components/guide.tsx the Mumbaiya tour; app/audit, app/contractors, app/complaints are the evidence pages
+  src/components/stage/    ward-stage.tsx (the real MapLibre map of Mumbai with wards, flat or 3D, ward cards, summary card), types.ts; lib/basemap.ts is the map style in the site's colours, lib/geo.ts the label and bounds helpers; components/bmc-office.tsx is the hero illustration, components/guide.tsx the Mumbaiya tour; app/audit, app/contractors, app/complaints are the evidence pages
   src/components/planner/  planner.tsx (state in the URL), controls, figures, budget-line, ledger (rows + score arithmetic), weights-panel, plan-map, csv
   src/lib/       planner.ts (re-score, fill, exact knapsack: pure, tested), data.ts (server JSON readers), types.ts, format.ts, factors.ts, map.ts
   tests/planner.test.mjs   run with `npm test` (Node's test runner)
@@ -60,6 +60,8 @@ Git: work on a `prathik/<topic>` branch, merge into `dev` with `--no-ff`, push. 
 - **Walkthrough video:** `docs/walkthrough.mp4` (94 s, 1920x1080, burned-in captions, no voice; `docs/walkthrough.srt` has the same captions). Re-record after UI changes: `cd web && npx next build && npx next start -p 3100`, then `node scripts/walkthrough/record.mjs /tmp/walkthrough-out http://localhost:3100 && python3 scripts/walkthrough/encode.py /tmp/walkthrough-out` (needs google-chrome-stable and ffmpeg). It drives the real site and the guide; captions live in `record.mjs`.
 
 - **Mobile:** checked for sideways scroll at 320 to 1440 px. Phones get a Menu button in the header; the map controls stack below 1024 px (`wide` in `ward-stage.tsx` is 950 px of stage width to match `lg`).
+
+- **Map:** MapLibre GL 6.16.0 with OpenFreeMap tiles (OpenStreetMap data, free, no key). The worker file is vendored in `web/public/vendor/`; keep it in step with the package version. Headless Chrome cannot draw the tiles, so check the map in a real browser.
 
 ## 7. Gotchas
 - The dev server can serve a stale stylesheet after a branch switch (symptoms: black or unstyled page, old colours). Stop it, `rm -rf web/.next`, start it again.

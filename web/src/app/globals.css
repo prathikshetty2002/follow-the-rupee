@@ -327,3 +327,16 @@ input[type="range"] {
   border-radius: 1rem;
   animation: guide-flash 2.6s ease-in-out 1 !important;
 }
+
+/* The real map inside the stage: quiet MapLibre chrome in the site's colours. */
+.stage-map .maplibregl-canvas:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: -6px;
+}
+.stage-map .maplibregl-cooperative-gesture-screen {
+  background: color-mix(in srgb, var(--card) 72%, transparent);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+}
